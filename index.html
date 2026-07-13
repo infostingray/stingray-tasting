@@ -165,7 +165,7 @@ img{display:block;max-width:100%}
   box-shadow:0 18px 40px -14px rgba(0,0,0,.6);
   aspect-ratio:4/4.6;
   background-size:cover;background-position:center;
-  touch-action:none;
+  touch-action:pan-y;
 }
 .dish .glare{
   position:absolute;inset:0;
@@ -190,7 +190,7 @@ img{display:block;max-width:100%}
 .hscroll{
   display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
   scrollbar-width:none;margin:0 -20px;padding:0 20px;
-  touch-action:pan-x;
+  touch-action:pan-x pan-y;
 }
 .hscroll::-webkit-scrollbar{display:none}
 .hslide{
@@ -606,6 +606,42 @@ img{display:block;max-width:100%}
 .cat .glyph{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){
   .splash{transition:none}.spname span{transition:none}
+}
+</style>
+<style id="v5">
+/* ═════════ V5 — real 3D layer ═════════ */
+/* 3D scroll reveals: sections tilt up into place */
+.site .sec{perspective:900px}
+.r{opacity:0;transform:translateY(22px) rotateX(9deg);transform-origin:50% 0}
+.r.in{opacity:1;transform:translateY(0) rotateX(0)}
+/* 3D flip dish (front = photo, back = recipe card) */
+.d3{position:relative;transform-style:preserve-3d;will-change:transform;touch-action:pan-y;cursor:grab}
+.d3:active{cursor:grabbing}
+.d3 .d3f{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.d3 .back{
+  position:absolute;inset:0;transform:rotateY(180deg);
+  border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:18px;
+}
+.back .bk-k{font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin-bottom:10px}
+.back .bk-n{font-size:19px;line-height:1.15}
+.back .bk-d{font-family:var(--mono);font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;margin-top:8px}
+.back .bk-p{font-size:24px;margin-top:12px}
+.back .bk-o{font-family:var(--mono);font-size:6.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.5;margin-top:14px}
+/* 3D photo cube */
+.cubewrap{perspective:820px;display:flex;justify-content:center;margin-top:24px;touch-action:pan-y;cursor:grab}
+.cubewrap:active{cursor:grabbing}
+.cube{position:relative;width:138px;height:138px;transform-style:preserve-3d;will-change:transform}
+.cface{
+  position:absolute;inset:0;border-radius:10px;
+  background-size:cover;background-position:center;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14), 0 18px 36px -16px rgba(0,0,0,.55);
+}
+.cube-hint{font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.45;margin-top:34px;text-align:center}
+@media(prefers-reduced-motion:reduce){
+  .r{transform:translateY(10px)}
 }
 </style>
 </head>
@@ -1348,5 +1384,130 @@ updateDeck=function(inst){
 };
 })();
 </script>
-</body>
+<script id="v5js">
+/* ═════════ V5 — 3D interactions: flip dish, photo cube ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+const LIGHT=['#F4EEE1','#F2EBDC','#EFE9DB'];
+
+/* generic horizontal drag-rotate helper: returns controller */
+function spinnable(el,onRot,opts){
+  let rot=opts.start||0,vel=0,drag=0,px=0,raf=null;
+  const render=()=>onRot(rot);
+  function inertia(){
+    raf=requestAnimationFrame(()=>{
+      rot+=vel;vel*=.93;render();
+      if(Math.abs(vel)>.35)inertia();
+      else{raf=null;opts.settle&&opts.settle(rot,set)}
+    });
+  }
+  function set(v,animate){
+    if(animate&&!RM){
+      el.style.transition='transform .65s cubic-bezier(.3,.9,.3,1)';
+      requestAnimationFrame(()=>{rot=v;render();
+        setTimeout(()=>{el.style.transition='none'},680)});
+    }else{rot=v;render()}
+    opts.onSet&&opts.onSet(rot);
+  }
+  el.addEventListener('pointerdown',e=>{
+    e.stopPropagation();
+    drag=1;px=e.clientX;
+    if(raf){cancelAnimationFrame(raf);raf=null}
+    el.style.transition='none';
+    try{el.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!drag)return;
+    const dx=e.clientX-px;
+    if(drag===1&&Math.abs(dx)>6){drag=2;buzz(6)}
+    if(drag===2){rot+=dx*.55;vel=dx*.55;px=e.clientX;render()}
+    else px=e.clientX;
+  });
+  const up=()=>{
+    if(!drag)return;
+    const wasDrag=drag===2;drag=0;
+    if(wasDrag&&!RM)inertia();
+    else if(!wasDrag&&opts.tap)opts.tap(rot,set);
+    else opts.settle&&opts.settle(rot,set);
+  };
+  el.addEventListener('pointerup',up);
+  el.addEventListener('pointercancel',up);
+  render();
+  return {get:()=>rot,set,isBusy:()=>!!raf||drag===2};
+}
+
+function enhance3D(site,d,imgs){
+  /* ── 3D FLIP DISH ── */
+  const oldDish=site.querySelector('[data-dish]');
+  if(oldDish){
+    const dish=oldDish.cloneNode(true);          // strip old hover-tilt listeners
+    oldDish.replaceWith(dish);
+    dish.style.transform='';
+    const zone=dish.parentElement;
+    const d3=document.createElement('div');
+    d3.className='d3';
+    zone.insertBefore(d3,dish);
+    d3.appendChild(dish);
+    dish.classList.add('d3f');
+    const light=LIGHT.includes(d.bg);
+    const back=document.createElement('div');
+    back.className='d3f back';
+    back.style.background=light?'#FFFDF7':'#15130F';
+    back.style.color=light?'#26251F':d.tx;
+    back.style.border=`1px solid ${hexA(d.ac,.45)}`;
+    back.style.backgroundImage=`repeating-linear-gradient(0deg,${hexA(d.ac,.07)} 0 1px,transparent 1px 9px)`;
+    back.innerHTML=`
+      <div class="bk-k" style="color:${d.ac}">the recipe card</div>
+      <div class="bk-n">${d.dish.n}</div>
+      <div class="bk-d">${d.dish.d}</div>
+      <div class="bk-p" style="color:${d.ac}">${d.dish.p}</div>
+      <div class="bk-o">order it on your real site \u2192</div>`;
+    d3.appendChild(back);
+    const hint=site.querySelector('.dish-hint');
+    if(hint)hint.textContent='drag to spin \u00b7 tap to flip \u2014 there\u2019s a back side';
+    spinnable(d3,r=>{d3.style.transform=`rotateY(${r}deg)`},{
+      settle:(r,set)=>set(Math.round(r/180)*180,true),
+      tap:(r,set)=>{buzz(10);set(Math.round(r/180)*180+180,true)}
+    });
+  }
+  /* ── 3D PHOTO CUBE ── */
+  const gd=site.querySelector('[data-gdots]');
+  if(gd&&imgs){
+    const faces=[imgs.gal[0][0],imgs.gal[1][0],imgs.gal[2][0],imgs.dish];
+    const wrap=document.createElement('div');
+    wrap.className='cubewrap';
+    const cube=document.createElement('div');
+    cube.className='cube';
+    cube.innerHTML=faces.map((u,i)=>
+      `<div class="cface" style="transform:rotateY(${i*90}deg) translateZ(69px);background-image:url('${u}'),radial-gradient(circle,${hexA(d.ac,.45)},${hexA(d.ac,.12)})"></div>`
+    ).join('');
+    wrap.appendChild(cube);
+    const hint=document.createElement('div');
+    hint.className='cube-hint';
+    hint.style.color=d.ac;
+    hint.textContent='the room in 3d \u2014 give it a spin';
+    gd.after(hint);
+    gd.after(wrap);
+    const ctl=spinnable(cube,r=>{cube.style.transform=`rotateX(-9deg) rotateY(${r}deg)`},{});
+    if(!RM){
+      (function auto(){
+        if(!ctl.isBusy())ctl.set(ctl.get()+.22,false);
+        requestAnimationFrame(auto);
+      })();
+    }
+  }
+}
+
+/* chain onto the deck lifecycle (after v4) */
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs,imgs=IMGS[cat];
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    enhance3D(ph.querySelector('.site'),ds[+ph.dataset.i],imgs);
+  });
+};
+})();
+</script>\n</body>
 </html>
