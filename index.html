@@ -1066,6 +1066,37 @@ img{display:block;max-width:100%}
 /* version badge */
 #ver{color:var(--bone-faint)}
 </style>
+<style id="v14">
+/* ═════════ V14 — the award pass: taller stage, coverflow, WebGL sea ═════════ */
+/* taller phone, arrows on the glass */
+#deck{width:min(90vw,356px);aspect-ratio:9/19.4}
+#tasting{padding-top:calc(58px + env(safe-area-inset-top))}
+#plateName{font-size:19px}
+#plateIdx{font-size:8px}
+.deck-controls{margin-top:8px}
+#deckWrap .arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:6;
+  background:rgba(7,7,8,.55);backdrop-filter:blur(5px);
+  border-color:rgba(237,234,227,.22);
+}
+#deckWrap .arrow:first-of-type{left:-2px}
+#deckWrap .arrow:last-of-type{right:-2px}
+/* coverflow */
+.phone.pos-left{transform:translateX(-72%) rotateY(40deg) scale(.84);opacity:.45}
+.phone.pos-right{transform:translateX(72%) rotateY(-40deg) scale(.84);opacity:.45}
+#deck{transform-style:preserve-3d}
+#deck::after{
+  content:'';position:absolute;left:-24%;right:-24%;top:100%;height:70px;margin-top:14px;
+  background:radial-gradient(50% 100% at 50% 0, var(--amb), transparent 72%);
+  opacity:.3;filter:blur(20px);pointer-events:none;transition:background 1.1s;
+}
+/* physical phone frame details */
+.phone::before{content:'';position:absolute;right:-3px;top:118px;width:3px;height:56px;background:#26262b;border-radius:2px;z-index:0}
+.phone::after{content:'';position:absolute;left:-3px;top:96px;width:3px;height:34px;background:#26262b;border-radius:2px;box-shadow:0 46px 0 #26262b;z-index:0}
+/* the sea */
+#sea{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.55}
+@media(prefers-reduced-motion:reduce){#sea{display:none}}
+</style>
 </head>
 <body>
 
@@ -2441,7 +2472,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 13';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 14';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2475,6 +2506,70 @@ if(!RM){
   });
   const up=()=>{down=false;deckEl.style.setProperty('--dragY','0deg')};
   wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+}
+})();
+</script>
+<script id="v14js">
+/* ═════════ V14 — coverflow arrows + WebGL particle sea ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* move the arrows onto the stage */
+const wrap=document.querySelector('#deckWrap');
+const prev=document.querySelector('#prevBtn'),next=document.querySelector('#nextBtn');
+if(wrap&&prev&&next){wrap.appendChild(prev);wrap.appendChild(next)}
+
+/* WebGL particle ocean — kings of the digital seas */
+if(!RM){
+  const tag=document.createElement('script');
+  tag.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  tag.onload=()=>{try{initSea()}catch(e){}};
+  document.head.appendChild(tag);
+}
+function initSea(){
+  const cv=document.createElement('canvas');cv.id='sea';
+  document.getElementById('grain').before(cv);
+  const renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:false});
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(55,1,0.1,100);
+  cam.position.set(0,2.4,7);cam.lookAt(0,0,0);
+  const COLS=70,ROWS=34,N=COLS*ROWS;
+  const pos=new Float32Array(N*3);
+  let i=0;
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    pos[i++]=(c/COLS-0.5)*22;
+    pos[i++]=0;
+    pos[i++]=(r/ROWS-0.5)*16-2;
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const mat=new THREE.PointsMaterial({size:0.05,transparent:true,opacity:0.85});
+  scene.add(new THREE.Points(geo,mat));
+  let mx=0,tgx=0,frame=0;
+  addEventListener('pointermove',e=>{tgx=(e.clientX/innerWidth-0.5)},{passive:true});
+  const amb=()=>getComputedStyle(document.documentElement).getPropertyValue('--amb').trim()||'#3B4C5C';
+  function size(){
+    const w=innerWidth,h=innerHeight;
+    renderer.setSize(w,h,false);
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+    cam.aspect=w/h;cam.updateProjectionMatrix();
+  }
+  size();addEventListener('resize',size);
+  (function tick(t){
+    requestAnimationFrame(tick);
+    const p=geo.attributes.position.array;
+    const tt=t*0.00045;
+    for(let k=0;k<N;k++){
+      const x=p[k*3],z=p[k*3+2];
+      p[k*3+1]=Math.sin(x*0.55+tt*2)*0.32+Math.cos(z*0.7+tt*1.4)*0.26;
+    }
+    geo.attributes.position.needsUpdate=true;
+    mx+=(tgx-mx)*0.04;
+    cam.position.x=mx*1.6;
+    cam.lookAt(0,0,-1);
+    if(++frame%30===0)mat.color.set(amb());
+    renderer.render(scene,cam);
+  })(0);
 }
 })();
 </script>
