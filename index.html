@@ -1116,6 +1116,48 @@ img{display:block;max-width:100%}
 .mhead .mphd{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;pointer-events:none}
 .mhead>.hwrap{position:relative;z-index:2}
 </style>
+<style id="v19">
+/* ═════════ V19 — the wow layer ═════════ */
+.fx-canvas{position:absolute;inset:0;z-index:1;touch-action:pan-y}
+.fx-cover{position:absolute;inset:0;z-index:1;pointer-events:none;transition:background .12s linear}
+/* Sucré scratch card */
+.scratchwrap{position:relative;margin-top:16px;width:210px;height:84px;border-radius:12px;overflow:hidden;
+  background:#FFFDF7;border:1px solid rgba(201,154,91,.5);box-shadow:0 10px 24px -12px rgba(58,42,38,.3)}
+.scratchwrap .under{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#3A2A26}
+.scratchwrap .under b{font-size:15px;font-weight:500}
+.scratchwrap .under span{font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;color:#C99A5B;margin-top:4px}
+.scratchwrap canvas{position:absolute;inset:0;cursor:grab;touch-action:pan-y}
+.scratchlbl{font-family:var(--mono);font-size:6.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.6;margin-top:8px}
+/* Joura receipt */
+.ticket{position:absolute;top:-4px;right:12px;width:118px;z-index:5;background:#F7F4EA;color:#264A3A;
+  border-radius:0 0 2px 2px;padding:10px 10px 14px;font-family:var(--mono);font-size:6.5px;letter-spacing:.08em;
+  transform:translateY(-110%);transition:transform .6s cubic-bezier(.3,.9,.3,1);
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.4)}
+.ticket.print{transform:translateY(0)}
+.ticket::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:7px;
+  background:radial-gradient(circle at 5px -1px,#F7F4EA 4px,transparent 5px);background-size:11px 7px}
+.ticket .tl{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;padding:2.5px 0;border-bottom:1px dashed rgba(38,74,58,.25)}
+.ticket .tl:last-child{border:none}
+.ticket.print .tl{opacity:1;transform:none}
+.ticket .th{font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid rgba(38,74,58,.4);margin-bottom:4px;padding-bottom:4px}
+/* Sitt Nour wish lantern */
+.wisher{position:absolute;width:12px;height:16px;border-radius:6px;z-index:4;pointer-events:none;
+  background:radial-gradient(circle at 50% 60%,#FFE9B0,#E4B872 70%);
+  box-shadow:0 0 18px 6px rgba(228,184,114,.5);
+  animation:wishup 2.6s ease-out forwards}
+@keyframes wishup{0%{opacity:0;transform:translateY(0) scale(.5)}12%{opacity:1}100%{opacity:0;transform:translateY(-150px) scale(1)}}
+/* S&C citrus squeeze */
+.squeeze{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;z-index:4;pointer-events:none;
+  background:conic-gradient(#D8862B 0 25%,#E8A34B 0 50%,#D8862B 0 75%,#E8A34B 0);
+  box-shadow:0 0 0 4px rgba(216,134,43,.3);animation:sqz .8s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes sqz{0%{transform:scale(0) rotate(-40deg)}60%{transform:scale(1.1) rotate(6deg)}100%{transform:scale(1) rotate(0);opacity:0}}
+/* Qashta steam */
+.steam{position:absolute;bottom:0;width:5px;height:70px;border-radius:5px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(242,232,213,.4));filter:blur(4px);
+  animation:steamup 3.6s ease-in-out infinite}
+@keyframes steamup{0%{transform:translateY(16px) scaleY(.5);opacity:0}30%{opacity:.9}100%{transform:translateY(-70px) translateX(10px) scaleY(1.15);opacity:0}}
+@media(prefers-reduced-motion:reduce){.wisher,.squeeze,.steam{animation:none;display:none}}
+</style>
 </head>
 <body>
 
@@ -2468,7 +2510,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 18';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 19';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2636,6 +2678,310 @@ buildDeck=function(){
         head.prepend(b);
       }
     }
+  });
+};
+})();
+</script>
+<script id="v19js">
+/* ═════════ V19 — a never-seen-before per design ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+
+/* shared: canvas wipe layer (frost / foil). Returns nothing if canvas unsupported. */
+function wipeLayer(host,fillFn,opts){
+  try{
+    const cv=document.createElement('canvas');
+    cv.className='fx-canvas';host.appendChild(cv);
+    const ctx=cv.getContext('2d');if(!ctx){cv.remove();return}
+    const size=()=>{cv.width=host.clientWidth||320;cv.height=host.clientHeight||220;fillFn(ctx,cv)};
+    requestAnimationFrame(size);
+    let wiping=false;
+    const erase=(x,y)=>{ctx.globalCompositeOperation='destination-out';
+      ctx.beginPath();ctx.arc(x,y,opts.r||30,0,7);ctx.fill();
+      ctx.globalCompositeOperation='source-over'};
+    cv.addEventListener('pointerdown',e=>{wiping=true;const r=cv.getBoundingClientRect();erase(e.clientX-r.left,e.clientY-r.top);buzz(5)});
+    cv.addEventListener('pointermove',e=>{if(!wiping)return;const r=cv.getBoundingClientRect();erase(e.clientX-r.left,e.clientY-r.top)});
+    const up=()=>wiping=false;
+    cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);cv.addEventListener('pointerleave',up);
+    if(opts.refog&&!RM)setInterval(()=>{ctx.globalAlpha=.045;fillFn(ctx,cv);ctx.globalAlpha=1},450);
+  }catch(e){}
+}
+
+const FX={};
+
+/* Velvet Hour — constellation: your finger connects the stars */
+FX['Velvet Hour']=(site)=>{
+  const hero=site.querySelector('.hero');if(!hero)return;
+  try{
+    const cv=document.createElement('canvas');cv.className='fx-canvas';cv.style.pointerEvents='none';
+    hero.appendChild(cv);
+    const ctx=cv.getContext('2d');if(!ctx){cv.remove();return}
+    let W,H,stars=[];
+    const size=()=>{W=cv.width=hero.clientWidth||320;H=cv.height=hero.clientHeight||520;
+      stars=Array.from({length:26},()=>({x:Math.random()*W,y:Math.random()*H*.7,r:Math.random()*1.4+.5,p:Math.random()*6}))};
+    requestAnimationFrame(size);
+    let mx=-999,my=-999;
+    hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+    hero.addEventListener('pointerleave',()=>{mx=my=-999});
+    if(!RM)(function draw(t){
+      requestAnimationFrame(draw);
+      if(!W)return;ctx.clearRect(0,0,W,H);
+      stars.forEach(s=>{
+        const a=.35+Math.sin(t*.002+s.p)*.3;
+        ctx.fillStyle=`rgba(232,222,201,${a})`;
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fill();
+        const dx=s.x-mx,dy=s.y-my,dd=Math.hypot(dx,dy);
+        if(dd<110){ctx.strokeStyle=`rgba(201,169,106,${(1-dd/110)*.6})`;ctx.lineWidth=.6;
+          ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(mx,my);ctx.stroke()}
+      });
+    })(0);
+  }catch(e){}
+};
+
+/* Onyx — flashlight: the room is dark until your finger lights it */
+FX['Onyx']=(site)=>{
+  const hero=site.querySelector('.hero');const ph=hero&&hero.querySelector('.hph');if(!ph)return;
+  const cover=document.createElement('div');cover.className='fx-cover';
+  const set=(x,y)=>cover.style.background=`radial-gradient(circle 130px at ${x}px ${y}px, transparent 0 64px, rgba(12,12,17,.9) 128px)`;
+  set(160,200);
+  hero.insertBefore(cover,hero.querySelector('.hwrap'));
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();set(e.clientX-r.left,e.clientY-r.top)});
+};
+
+/* Smoke & Citrus — press the banner: a citrus wheel bursts juice */
+FX['Smoke & Citrus']=(site,d)=>{
+  const head=site.querySelector('.mhead');if(!head)return;
+  head.addEventListener('pointerdown',e=>{
+    if(e.target.closest('[data-sheet]'))return;
+    const r=head.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+    const w=document.createElement('div');w.className='squeeze';w.style.left=x+'px';w.style.top=y+'px';
+    head.appendChild(w);setTimeout(()=>w.remove(),850);buzz(8);
+    for(let i=0;i<6;i++){
+      const j=document.createElement('i');j.className='pcl';
+      j.style.cssText=`left:${x}px;top:${y}px;width:5px;height:8px;border-radius:50% 50% 50% 0;background:#E8A34B;`;
+      head.appendChild(j);
+      const a=Math.random()*Math.PI*2,rr=34+Math.random()*30;
+      try{j.animate([{transform:'translate(0,0)',opacity:1},{transform:`translate(${Math.cos(a)*rr}px,${Math.sin(a)*rr+20}px)`,opacity:0}],{duration:700,easing:'ease-out',fill:'forwards'})}catch(_){}
+      setTimeout(()=>j.remove(),750);
+    }
+  });
+};
+
+/* Casa Luna — living letters: touch the name, the fresh dough jumps */
+FX['Casa Luna']=(site)=>{
+  const nm=site.querySelector('.h-casa .nm');if(!nm||nm.dataset.split)return;
+  nm.dataset.split=1;
+  const parts=[...nm.childNodes];
+  nm.innerHTML='';
+  parts.forEach(node=>{
+    if(node.nodeType===3){
+      [...node.textContent].forEach(ch=>{
+        const s=document.createElement('span');
+        s.textContent=ch;s.style.display='inline-block';s.style.transition='transform .35s cubic-bezier(.3,1.8,.4,1)';
+        s.addEventListener('pointerenter',()=>{s.style.transform=`translateY(-9px) rotate(${Math.random()*10-5}deg)`;buzz(4);setTimeout(()=>s.style.transform='',380)});
+        s.addEventListener('pointerdown',e=>{e.stopPropagation();s.style.transform=`translateY(-12px) rotate(${Math.random()*14-7}deg)`;setTimeout(()=>s.style.transform='',400)});
+        nm.appendChild(s);
+      });
+    }else nm.appendChild(node);
+  });
+};
+
+/* Forno — press & hold anywhere: the fire surges, the dial flares */
+FX['Forno']=(site)=>{
+  const hero=site.querySelector('.hero');const b=site.querySelector('.h-forno .deg b');if(!hero)return;
+  let hold=null;
+  hero.addEventListener('pointerdown',e=>{
+    if(e.target.closest('[data-sheet]'))return;
+    const r=hero.getBoundingClientRect(),x=e.clientX-r.left;
+    buzz(8);
+    if(b){b.style.transition='transform .25s';b.style.transform='scale(1.3)';b.style.display='inline-block'}
+    hold=setInterval(()=>{
+      const s=document.createElement('i');s.className='pcl';
+      s.style.cssText=`left:${x+(Math.random()-0.5)*50}px;bottom:0;top:auto;width:5px;height:5px;border-radius:50%;background:#FFB347;box-shadow:0 0 8px #E2582B;`;
+      hero.appendChild(s);
+      try{s.animate([{transform:'translateY(0)',opacity:1},{transform:`translateY(-${120+Math.random()*80}px) translateX(${(Math.random()-0.5)*40}px)`,opacity:0}],{duration:900,easing:'ease-out',fill:'forwards'})}catch(_){}
+      setTimeout(()=>s.remove(),950);
+    },60);
+  });
+  const stop=()=>{clearInterval(hold);hold=null;if(b)b.style.transform=''};
+  hero.addEventListener('pointerup',stop);hero.addEventListener('pointercancel',stop);hero.addEventListener('pointerleave',stop);
+};
+
+/* Osteria — the wine has physics: it tilts against your scroll */
+FX['Osteria 21']=(site)=>{
+  const wine=site.querySelector('.wine');if(!wine)return;
+  wine.style.transformOrigin='50% 100%';
+  let last=site.scrollTop,vel=0,tilt=0;
+  site.addEventListener('scroll',()=>{vel=site.scrollTop-last;last=site.scrollTop},{passive:true});
+  if(!RM)(function loop(){
+    requestAnimationFrame(loop);
+    const target=Math.max(-12,Math.min(12,vel*.6));
+    tilt+=(target-tilt)*.08;vel*=.9;
+    wine.style.transform=`rotate(${tilt}deg)`;
+  })();
+};
+
+/* Beit Zaytoun — slide your finger: the courtyard changes hour */
+FX['Beit Zaytoun']=(site)=>{
+  const hero=site.querySelector('.hero');if(!hero)return;
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect();
+    const t=Math.max(0,Math.min(1,(e.clientX-r.left)/(r.width||300)));
+    site.querySelectorAll('.h-beit .arches em').forEach(el=>el.style.opacity=t*0.9);
+  });
+};
+
+/* Sitt Nour — hold the banner: release a wish lantern */
+FX['Sitt Nour']=(site)=>{
+  const head=site.querySelector('.mhead');if(!head)return;
+  let t=null;
+  head.addEventListener('pointerdown',e=>{
+    if(e.target.closest('[data-sheet]'))return;
+    const r=head.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+    t=setTimeout(()=>{
+      const w=document.createElement('div');w.className='wisher';
+      w.style.left=(x-6)+'px';w.style.top=(y-8)+'px';
+      head.appendChild(w);setTimeout(()=>w.remove(),2700);buzz([10,30,10]);
+    },550);
+  });
+  const c=()=>clearTimeout(t);
+  head.addEventListener('pointerup',c);head.addEventListener('pointercancel',c);head.addEventListener('pointerleave',c);
+};
+
+/* Joura — the kitchen prints your ticket as you scroll in */
+FX['Joura']=(site,d)=>{
+  const hero=site.querySelector('.hero');if(!hero)return;
+  const tk=document.createElement('div');
+  tk.className='ticket';
+  tk.innerHTML=`<div class="tl th">joura \u00b7 order #042</div>
+    <div class="tl" style="transition-delay:.25s">1\u00d7 man\u2019oushe dlx <b style="float:right">5</b></div>
+    <div class="tl" style="transition-delay:.5s">1\u00d7 shawarma bowl <b style="float:right">9</b></div>
+    <div class="tl" style="transition-delay:.75s">extra garlic <b style="float:right">0</b></div>
+    <div class="tl" style="transition-delay:1s;font-weight:700">yalla \u2014 12 min</div>`;
+  hero.appendChild(tk);
+  let done=false;
+  site.addEventListener('scroll',()=>{
+    if(done)return;
+    if(site.scrollTop>(site.clientHeight||500)*.25){
+      done=true;tk.classList.add('print');buzz(10);
+      setTimeout(()=>tk.classList.remove('print'),4200);
+    }
+  },{passive:true});
+};
+
+/* Hop Saint — the crest is magnetic */
+FX['Hop Saint']=(site)=>{
+  const hero=site.querySelector('.hero'),crest=site.querySelector('.h-hop .crest');
+  if(!hero||!crest)return;
+  crest.style.transition='transform .25s ease-out';
+  hero.addEventListener('pointermove',e=>{
+    const r=crest.getBoundingClientRect();
+    const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
+    const dd=Math.hypot(dx,dy);
+    if(dd<140){const f=(1-dd/140)*14;crest.style.transform=`translate(${dx/dd*f}px,${dy/dd*f}px)`}
+    else crest.style.transform='';
+  });
+  hero.addEventListener('pointerleave',()=>crest.style.transform='');
+};
+
+/* Brass Tap — the glass is frosted: wipe it clear */
+FX['The Brass Tap']=(site)=>{
+  const hero=site.querySelector('.hero');if(!hero)return;
+  wipeLayer(hero,(ctx,cv)=>{
+    const g=ctx.createLinearGradient(0,0,0,cv.height);
+    g.addColorStop(0,'rgba(224,232,238,.55)');g.addColorStop(1,'rgba(190,200,208,.42)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.fillStyle='rgba(255,255,255,.08)';
+    for(let i=0;i<40;i++)ctx.fillRect(Math.random()*cv.width,Math.random()*cv.height,2,2);
+  },{r:34,refog:true});
+  const hint=document.createElement('div');
+  hint.className='t3hint';hint.style.cssText='position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:2;color:#EFB35C;font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.8;pointer-events:none';
+  hint.textContent='wipe the frost off the glass';
+  hero.appendChild(hint);
+  setTimeout(()=>hint.remove(),6000);
+};
+
+/* Barrel & Bone — heat haze over the smoker */
+FX['Barrel & Bone']=(site)=>{
+  const ph=site.querySelector('.mphd');if(!ph||RM)return;
+  try{
+    if(!document.getElementById('hazeFilter')){
+      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('width','0');svg.setAttribute('height','0');svg.style.position='absolute';
+      svg.innerHTML='<filter id="hazeFilter"><feTurbulence id="hazeT" type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7"/></filter>';
+      document.body.appendChild(svg);
+      let ph2=0;
+      setInterval(()=>{ph2+=0.06;
+        const t=document.getElementById('hazeT');
+        if(t)t.setAttribute('baseFrequency',`0.012 ${(0.05+Math.sin(ph2)*0.015).toFixed(3)}`);
+      },120);
+    }
+    ph.style.filter='url(#hazeFilter)';
+  }catch(e){}
+};
+
+/* Sucré — scratch the gold foil: flavour of the day */
+FX['Sucr\u00e9']=(site,d)=>{
+  const hero=site.querySelector('.hero .hwrap');if(!hero||hero.querySelector('.scratchwrap'))return;
+  const wrap=document.createElement('div');
+  wrap.className='scratchwrap';
+  wrap.innerHTML='<div class="under"><b>rose \u00b7 lychee</b><span>flavour of the day</span></div>';
+  hero.appendChild(wrap);
+  const lbl=document.createElement('div');
+  lbl.className='scratchlbl';lbl.style.color='#C99A5B';lbl.textContent='scratch the gold foil \u2193';
+  hero.insertBefore(lbl,wrap);
+  wipeLayer(wrap,(ctx,cv)=>{
+    const g=ctx.createLinearGradient(0,0,cv.width,cv.height);
+    g.addColorStop(0,'#D8B173');g.addColorStop(.5,'#F0DCAE');g.addColorStop(1,'#C99A5B');
+    ctx.fillStyle=g;ctx.fillRect(0,0,cv.width,cv.height);
+  },{r:16});
+};
+
+/* MELT — the name is liquid: it wobbles as you scroll */
+FX['MELT']=(site)=>{
+  const nm=site.querySelector('.h-melt .nm');if(!nm||nm.dataset.liquid)return;
+  nm.dataset.liquid=1;
+  const txt=nm.textContent;nm.textContent='';
+  const spans=[...txt].map(ch=>{const s=document.createElement('span');s.textContent=ch;s.style.display='inline-block';nm.appendChild(s);return s});
+  if(RM)return;
+  site.addEventListener('scroll',()=>{
+    const y=site.scrollTop;
+    spans.forEach((s,i)=>s.style.transform=`translateY(${Math.sin(y*0.04+i*1.4)*7}px)`);
+  },{passive:true});
+};
+
+/* Qashta — steam rises off the baklava banner */
+FX['Qashta']=(site)=>{
+  const head=site.querySelector('.mhead');if(!head||RM)return;
+  [22,46,70].forEach((x,i)=>{
+    const s=document.createElement('div');s.className='steam';
+    s.style.left=x+'%';s.style.animationDelay=(i*1.1)+'s';
+    head.appendChild(s);
+  });
+};
+
+/* magnetic reserve buttons — everywhere, subtle */
+function magnet(site){
+  site.querySelectorAll('.sfoot button, .mhead [data-sheet]').forEach(b=>{
+    b.style.transition='transform .2s ease-out';
+    b.addEventListener('pointermove',e=>{
+      const r=b.getBoundingClientRect();
+      const dx=(e.clientX-(r.left+r.width/2))*.12,dy=(e.clientY-(r.top+r.height/2))*.18;
+      b.style.transform=`translate(${Math.max(-7,Math.min(7,dx))}px,${Math.max(-5,Math.min(5,dy))}px)`;
+    });
+    b.addEventListener('pointerleave',()=>b.style.transform='');
+  });
+}
+
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs;
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    const d=ds[+ph.dataset.i],site=ph.querySelector('.site');
+    if(FX[d.name])try{FX[d.name](site,d)}catch(e){}
+    magnet(site);
   });
 };
 })();
