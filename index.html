@@ -1923,7 +1923,7 @@ function spinnable(el,onRot,opts){
 function enhance3D(site,d,imgs){
   /* ── 3D FLIP DISH ── */
   const oldDish=site.querySelector('[data-dish]');
-  if(oldDish){
+  if(oldDish&&d.name==='Velvet Hour'){
     const dish=oldDish.cloneNode(true);          // strip old hover-tilt listeners
     oldDish.replaceWith(dish);
     dish.style.transform='';
@@ -1956,7 +1956,7 @@ function enhance3D(site,d,imgs){
   }
   /* ── 3D PHOTO CUBE ── */
   const gd=site.querySelector('[data-gdots]');
-  if(gd&&imgs){
+  if(gd&&imgs&&d.name==='Casa Luna'){
     const faces=[imgs.gal[0][0],imgs.gal[1][0],imgs.gal[2][0],imgs.dish];
     const wrap=document.createElement('div');
     wrap.className='cubewrap';
@@ -1969,7 +1969,7 @@ function enhance3D(site,d,imgs){
     const hint=document.createElement('div');
     hint.className='cube-hint';
     hint.style.color=d.ac;
-    hint.textContent='the room in 3d \u2014 give it a spin';
+    hint.textContent='la cucina in 3d \u2014 give it a spin';
     gd.after(hint);
     gd.after(wrap);
     const ctl=spinnable(cube,r=>{cube.style.transform=`rotateX(-9deg) rotateY(${r}deg)`},{});
