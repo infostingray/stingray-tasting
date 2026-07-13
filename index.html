@@ -899,6 +899,72 @@ img{display:block;max-width:100%}
 }
 @keyframes stickIn{from{transform:scale(2.2) rotate(-14deg);opacity:0}to{transform:scale(1) rotate(var(--rr,6deg));opacity:1}}
 </style>
+<style id="v11">
+/* ═════════ V11 — live client plate + branding wow pass ═════════ */
+/* live OF\u00f4lies plate */
+.liveFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0E0B18}
+.liveTop{
+  position:absolute;top:36px;left:50%;transform:translateX(-50%);z-index:4;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+  font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;
+  background:rgba(7,7,8,.75);color:#F5E3C8;padding:8px 14px;border-radius:100px;
+  border:1px solid rgba(242,166,90,.4);backdrop-filter:blur(4px);
+}
+.liveTop i{width:5px;height:5px;border-radius:50%;background:#6BE38A;animation:obpulse 1.4s infinite}
+.liveBar{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:4;
+  text-decoration:none;font-family:var(--mono);font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--bone);color:var(--ink);padding:12px 20px;border-radius:100px;white-space:nowrap;
+  box-shadow:0 10px 26px -8px rgba(0,0,0,.6);
+}
+/* ── WOW pass ── */
+/* Onyx: chromatic aberration + scanlines */
+.h-onyx .nm{text-shadow:2.5px 0 rgba(255,94,168,.85),-2.5px 0 rgba(94,242,255,.85),0 0 10px rgba(159,216,255,.9),0 0 34px rgba(80,150,255,.55)}
+.h-onyx::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(159,216,255,.05) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
+/* Forno: fire-gradient FOR */
+.h-forno .nm span:first-child{background:linear-gradient(180deg,#FFE9B0,#FFB347 45%,#E2582B);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Sucr\u00e9: gold-foil shimmer on the name */
+.h-sucre .nm{background:linear-gradient(110deg,#3A2A26 42%,#C99A5B 50%,#3A2A26 58%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 3.4s ease-in-out infinite}
+@keyframes foil{0%,100%{background-position:110% 0}50%{background-position:-10% 0}}
+/* Casa Luna: giant watermark */
+.h-casa::after{content:'LUNA';position:absolute;right:-14px;bottom:52px;font-family:'Fraunces',serif;font-style:italic;font-size:96px;color:rgba(255,255,255,.1);transform:rotate(-90deg);transform-origin:bottom right;pointer-events:none;letter-spacing:-.02em}
+/* MELT: cherry + jelly wobble */
+.h-melt .nm{position:relative;animation:jelly 3.4s ease-in-out infinite;display:inline-block}
+@keyframes jelly{0%,100%{transform:skewX(0)}46%{transform:skewX(0)}50%{transform:skewX(-3deg) scaleY(1.02)}54%{transform:skewX(2deg)}58%{transform:skewX(0)}}
+.h-melt .nm::after{content:'\1F352';position:absolute;top:-16px;right:-14px;font-size:26px;transform:rotate(14deg)}
+/* Joura: riso offset + halftone */
+.h-joura .nm{text-shadow:4px 4px 0 rgba(242,235,220,.55)}
+.h-joura::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(242,235,220,.14) 1px,transparent 1.6px);background-size:9px 9px}
+/* Beit Zaytoun: cement-tile band */
+.h-beit::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:22px;pointer-events:none;
+  background:
+    conic-gradient(from 45deg at 50% 50%, #9E3B30 0 25%, #F2EBDC 0 50%, #7D8B4E 0 75%, #E8A34B 0);
+  background-size:22px 22px;opacity:.85;border-top:2px solid #2B241C;
+}
+/* Sitt Nour: lantern pulse */
+.h-sitt .nm{text-shadow:0 0 26px rgba(228,184,114,.55);animation:lantern 3s ease-in-out infinite}
+@keyframes lantern{0%,100%{text-shadow:0 0 18px rgba(228,184,114,.4)}50%{text-shadow:0 0 34px rgba(228,184,114,.75)}}
+/* Brass Tap: glass shine sweep */
+.h-brass::after{content:'';position:absolute;top:-20%;bottom:-20%;left:-40%;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.09),transparent);transform:skewX(-18deg);animation:shine 5.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,60%,100%{left:-40%}30%{left:120%}}
+/* Barrel & Bone: letterpress */
+.h-barrel .nm{text-shadow:0 1px 0 rgba(255,255,255,.12),0 -1px 1px rgba(0,0,0,.8)}
+/* Hop Saint: label frame */
+.h-hop .hwrap{box-shadow:inset 0 0 0 1px rgba(62,92,65,.45),inset 0 0 0 5px transparent,inset 0 0 0 6px rgba(62,92,65,.25);border-radius:4px}
+/* Smoke & Citrus: rotating smoke ring */
+.h-smoke::after{content:'';position:absolute;top:26%;left:50%;width:190px;height:190px;margin-left:-95px;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent,rgba(216,134,43,.18),transparent 40%);animation:spin 12s linear infinite;filter:blur(6px)}
+/* Osteria: candle breath in the arch */
+.h-osteria .arch{animation:archglow 4s ease-in-out infinite}
+@keyframes archglow{0%,100%{box-shadow:0 0 0 rgba(200,176,132,0)}50%{box-shadow:0 0 34px rgba(200,176,132,.28)}}
+/* Velvet: tracking-in name */
+.h-velvet .nm i{animation:trackin 1.4s cubic-bezier(.2,.8,.2,1) both}
+.h-velvet .nm i:nth-child(2){animation-delay:.15s}
+@keyframes trackin{from{letter-spacing:.35em;opacity:0}to{letter-spacing:.01em;opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .h-sucre .nm,.h-melt .nm,.h-sitt .nm,.h-brass::after,.h-smoke::after,.h-osteria .arch,.h-velvet .nm i{animation:none}
+}
+</style>
 </head>
 <body>
 
@@ -1010,6 +1076,9 @@ const IMGS={
 const CATS={
 lounge:{label:'Lounge',glyph:'☾',accent:'#C9A96A',desc:'after-dark · signature pours',
  designs:[
+  {name:'OF\u00f4lies',iframe:'https://ofolies.com/',live:1,
+   font:"'Fraunces',serif",bg:'#0E0B18',tx:'#F5E3C8',ac:'#F2A65A',
+   heroClass:'',hero:'',pull:'',story:'',dish:{n:'',d:'',p:''},tabs:[],hours:'daily \u00b7 4pm\u2013late',loc:'zaarour',cta:'reserve'},
   {name:'Sundown',font:"'Fraunces',serif",bg:'#171226',tx:'#F5E3C8',ac:'#F2A65A',
    heroClass:'h-sun',
    hero:`<div class="skyA"></div><div class="skyB"></div>
@@ -1596,6 +1665,7 @@ const SPLASH={
 'Barrel & Bone':{t:'fill',k:'smokehouse',fillc:'radial-gradient(75% 100% at 50% 100%,rgba(226,88,43,.7),rgba(20,18,16,.15))'},
 'Sucr\u00e9':{t:'rise',k:'p\u00e2tisserie fine',html:'<div style="position:relative;width:64px;height:44px"><i style="position:absolute;left:0;right:0;top:0;height:16px;border-radius:50%;background:#E9B7C4;display:block"></i><i style="position:absolute;left:6px;right:6px;top:14px;height:8px;border-radius:6px;background:#C99A5B;display:block"></i><i style="position:absolute;left:0;right:0;top:22px;height:16px;border-radius:50%;background:#E9B7C4;display:block"></i></div>'},
 'MELT':{t:'fill',k:'gelato \u00b7 cookies',fillc:'linear-gradient(180deg,#FFF3E4,#FFD3E0)'},
+'OF\u00f4lies':{t:'rise',k:'live client \u00b7 zaarour',html:'<div style="width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#FFE3A0,#F2A65A 60%,rgba(242,166,90,.15) 80%,transparent 85%);box-shadow:0 0 40px rgba(242,166,90,.6)"></div>'},
 'Sundown':{t:'rise',k:'sunset lounge \u00b7 zaarour',html:'<div style="width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#FFE3A0,#F2A65A 60%,rgba(242,166,90,.15) 80%,transparent 85%);box-shadow:0 0 40px rgba(242,166,90,.6)"></div>'},
 'Qashta':{t:'rise',k:'\u0642\u0634\u0637\u0629',html:'<div style="width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 50% 42%,#F2E8D5 38%,#E8B04B 40% 46%,#20362A 48%);box-shadow:0 0 0 4px rgba(232,176,75,.3)"></div>'}
 };
@@ -1605,7 +1675,7 @@ const OPENH={
 'Casa Luna':[12,23,'noon'],'Forno':[17,24,'5 pm'],'Osteria 21':[19,24,'7 pm'],
 'Beit Zaytoun':[12,23,'noon'],'Sitt Nour':[19,25,'7 pm'],'Joura':[11,26,'11 am'],
 'The Brass Tap':[16,26,'4 pm'],'Hop Saint':[15,24,'3 pm'],'Barrel & Bone':[17,25,'5 pm'],
-'Sucr\u00e9':[8,20,'8 am'],'MELT':[12,26,'noon'],'Qashta':[9,25,'9 am'],'Sundown':[16,26,'4 pm']
+'Sucr\u00e9':[8,20,'8 am'],'MELT':[12,26,'noon'],'Qashta':[9,25,'9 am'],'Sundown':[16,26,'4 pm'],'OF\u00f4lies':[16,26,'4 pm']
 };
 
 const PRESS={
@@ -2224,6 +2294,33 @@ buildDeck=function(){
     if(SIG[d.name])SIG[d.name](site,d);
     site.dataset.book='button';
   });
+};
+})();
+</script>
+<script id="v11js">
+/* ═════════ V11 — live client plate + no forms, ever ═════════ */
+(function(){
+function liveSite(d){
+  const s=document.createElement('div');
+  s.className='site';s.style.background=d.bg;s.style.overflow='hidden';
+  s.innerHTML=`
+    <div class="liveTop"><i></i>live client \u2014 the real site, in your hand</div>
+    <iframe class="liveFrame" src="${d.iframe}" loading="eager" referrerpolicy="no-referrer" allow="autoplay"></iframe>
+    <a class="liveBar" href="${d.iframe}" target="_blank" rel="noopener">of\u00f4lies.com \u2014 open full \u2197</a>`;
+  s.querySelectorAll('.liveTop,.liveBar').forEach(e=>e.addEventListener('pointerdown',ev=>ev.stopPropagation()));
+  s.dataset.book='live';
+  return s;
+}
+const _mini=miniSite;
+miniSite=function(d,c,catKey){
+  if(d.iframe)return liveSite(d);
+  return _mini(d,c,catKey);
+};
+/* remove every booking sheet from the DOM after each deck build */
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  document.querySelectorAll('#deck .sheet, #deck .sheet-veil').forEach(e=>e.remove());
 };
 })();
 </script>
