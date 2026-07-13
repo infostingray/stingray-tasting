@@ -582,7 +582,7 @@ img{display:block;max-width:100%}
   100%{transform:translate(-50%,-95%) scale(1);opacity:0}
 }
 /* spark burst on reserve */
-.rsv .rbtn{position:relative;overflow:visible}
+.sheet .confirm{position:relative;overflow:visible}
 .spark{
   position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;
   margin:-2px 0 0 -2px;pointer-events:none;animation:sparkfly .6s ease-out forwards;
@@ -1200,13 +1200,18 @@ runIntro();
 if(param&&CATS[param])setTimeout(()=>openCat(param),reduced?300:2400);
 </script>
 <script id="v4js">
-/* ═════════ V4 — preloaders & delight layer ═════════ */
+/* V4 — preloaders & delight layer (fitted to live build) */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 
 /* kitchen cards get food photography on hover */
-const CATPH={lounge:IMG.barDark,italian:IMG.pizza,lebanese:IMG.mezze,pub:IMG.beer};
+const CATPH={
+  lounge:IMGS.lounge.gal[1][0],
+  italian:IMGS.italian.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],
+  pub:IMGS.pub.gal[2][0]
+};
 document.querySelectorAll('#cats .cat').forEach((b,i)=>{
   const k=Object.keys(CATS)[i];
   const d=document.createElement('div');
@@ -1216,21 +1221,20 @@ document.querySelectorAll('#cats .cat').forEach((b,i)=>{
 
 /* branded splash config per design */
 const SPLASH={
-'Velvet Hour':{t:'rise',k:'lounge · rooftop',html:'<div style="width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#F0E0BC,#C9A96A 62%,transparent 82%);box-shadow:0 0 36px rgba(201,169,106,.55)"></div>'},
+'Velvet Hour':{t:'rise',k:'lounge \u00b7 rooftop',html:'<div style="width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#F0E0BC,#C9A96A 62%,transparent 82%);box-shadow:0 0 36px rgba(201,169,106,.55)"></div>'},
 'Onyx':{t:'neon',k:'listening bar',glow:'#9FD8FF'},
 'Smoke & Citrus':{t:'rise',k:'cocktail atelier',html:'<div style="width:54px;height:54px;border-radius:50%;background:conic-gradient(#D8862B 0 25%,#E8A34B 0 50%,#D8862B 0 75%,#E8A34B 0);box-shadow:0 0 0 4px rgba(216,134,43,.3)"></div>'},
 'Casa Luna':{t:'wipe',k:'cucina di famiglia',pat:'repeating-linear-gradient(45deg,#B33A2B 0 10px,rgba(179,58,43,.15) 10px 20px)'},
-'Forno':{t:'fill',k:'wood-fired · napoli',fillc:'linear-gradient(180deg,#FFB347,#E2582B)',count:485},
-'Osteria 21':{t:'rise',k:'osteria · enoteca',html:'<div style="width:56px;height:76px;border:1px solid #C8B084;border-radius:34px 34px 4px 4px;display:flex;align-items:center;justify-content:center;font-style:italic;color:#C8B084;font-size:16px">21</div>'},
-'Beit Zaytoun':{t:'rise',k:'بيت زيتون',html:'<div style="display:flex;gap:5px;align-items:flex-end"><i style="display:block;width:16px;height:34px;border-radius:16px 16px 0 0;background:#C96A3B"></i><i style="display:block;width:16px;height:46px;border-radius:16px 16px 0 0;background:#E8A34B"></i><i style="display:block;width:16px;height:34px;border-radius:16px 16px 0 0;background:#9E3B30"></i></div>'},
-'Sitt Nour':{t:'fill',k:'ست نور',fillc:'radial-gradient(85% 100% at 50% 100%,rgba(192,138,62,.75),rgba(23,19,16,.2))'},
+'Forno':{t:'fill',k:'wood-fired \u00b7 napoli',fillc:'linear-gradient(180deg,#FFB347,#E2582B)',count:485},
+'Osteria 21':{t:'rise',k:'osteria \u00b7 enoteca',html:'<div style="width:56px;height:76px;border:1px solid #C8B084;border-radius:34px 34px 4px 4px;display:flex;align-items:center;justify-content:center;font-style:italic;color:#C8B084;font-size:16px">21</div>'},
+'Beit Zaytoun':{t:'rise',k:'\u0628\u064a\u062a \u0632\u064a\u062a\u0648\u0646',html:'<div style="display:flex;gap:5px;align-items:flex-end"><i style="display:block;width:16px;height:34px;border-radius:16px 16px 0 0;background:#C96A3B"></i><i style="display:block;width:16px;height:46px;border-radius:16px 16px 0 0;background:#E8A34B"></i><i style="display:block;width:16px;height:34px;border-radius:16px 16px 0 0;background:#9E3B30"></i></div>'},
+'Sitt Nour':{t:'fill',k:'\u0633\u062a \u0646\u0648\u0631',fillc:'radial-gradient(85% 100% at 50% 100%,rgba(192,138,62,.75),rgba(23,19,16,.2))'},
 'Joura':{t:'wipe',k:'street levant',pat:'repeating-linear-gradient(-45deg,#E4B04A 0 14px,rgba(228,176,74,.12) 14px 28px)'},
-'The Brass Tap':{t:'fill',k:'taproom · hamra',fillc:'linear-gradient(180deg,#EFB35C,#8A5320)',foam:1},
+'The Brass Tap':{t:'fill',k:'taproom \u00b7 hamra',fillc:'linear-gradient(180deg,#EFB35C,#8A5320)',foam:1},
 'Hop Saint':{t:'wipe',k:'craft & kitchen',pat:'repeating-linear-gradient(90deg,#3E5C41 0 16px,rgba(62,92,65,.1) 16px 32px)'},
 'Barrel & Bone':{t:'fill',k:'smokehouse',fillc:'radial-gradient(75% 100% at 50% 100%,rgba(226,88,43,.7),rgba(20,18,16,.15))'}
 };
 
-/* live opening hours per design: [openH, closeH(+24 if past midnight), label] */
 const OPENH={
 'Velvet Hour':[19,26,'7 pm'],'Onyx':[20,28,'8 pm'],'Smoke & Citrus':[18,25,'6 pm'],
 'Casa Luna':[12,23,'noon'],'Forno':[17,24,'5 pm'],'Osteria 21':[19,24,'7 pm'],
@@ -1238,13 +1242,12 @@ const OPENH={
 'The Brass Tap':[16,26,'4 pm'],'Hop Saint':[15,24,'3 pm'],'Barrel & Bone':[17,25,'5 pm']
 };
 
-/* press marquees for select designs */
 const PRESS={
-'Velvet Hour':'★★★★★ time out beirut — best rooftop 2026 · reservations recommended · ',
-'Forno':'“the real napoli deal” — l\u2019orient today · 48h dough · wood fire only · ',
-'Beit Zaytoun':'★★★★★ zomato · taste of beirut award 2026 · family recipes since forever · ',
-'Sitt Nour':'★★★★★ tripadvisor — doha\u2019s finest levantine table · arak service nightly · ',
-'The Brass Tap':'voted #1 match night in town · 12 rotating taps · kitchen till 1am · '
+'Velvet Hour':'\u2605\u2605\u2605\u2605\u2605 time out beirut \u2014 best rooftop 2026 \u00b7 reservations recommended \u00b7 ',
+'Forno':'\u201cthe real napoli deal\u201d \u2014 l\u2019orient today \u00b7 48h dough \u00b7 wood fire only \u00b7 ',
+'Beit Zaytoun':'\u2605\u2605\u2605\u2605\u2605 zomato \u00b7 taste of beirut award 2026 \u00b7 family recipes since forever \u00b7 ',
+'Sitt Nour':'\u2605\u2605\u2605\u2605\u2605 tripadvisor \u2014 doha\u2019s finest levantine table \u00b7 arak service nightly \u00b7 ',
+'The Brass Tap':'voted #1 match night in town \u00b7 12 rotating taps \u00b7 kitchen till 1am \u00b7 '
 };
 
 function makeSplash(d){
@@ -1253,7 +1256,7 @@ function makeSplash(d){
   sp.className='splash';
   sp.style.background=d.bg;sp.style.color=d.tx;sp.style.fontFamily=d.font;
   let fx='';
-  if(cfg.t==='fill')fx=`<div class="spfill" style="background:${cfg.fillc}">${cfg.foam?'<div class="spfoam"></div>':''}</div>${cfg.count?'<div class="spcount">0°C</div>':''}`;
+  if(cfg.t==='fill')fx=`<div class="spfill" style="background:${cfg.fillc}">${cfg.foam?'<div class="spfoam"></div>':''}</div>${cfg.count?'<div class="spcount">0\u00b0C</div>':''}`;
   if(cfg.t==='wipe')fx=`<div class="spwipe" style="background:${cfg.pat}"></div>`;
   const rise=cfg.t==='rise'?`<div class="sprise">${cfg.html}</div>`:'';
   const name=[...d.name].map((ch,i)=>`<span style="transition-delay:${(.28+i*.045).toFixed(3)}s">${ch===' '?'&nbsp;':ch}</span>`).join('');
@@ -1263,7 +1266,6 @@ function makeSplash(d){
 }
 
 function enhance(site,d){
-  /* open-now badge before the info row */
   const o=OPENH[d.name];
   if(o){
     const now=new Date();const h=now.getHours()+now.getMinutes()/60;
@@ -1275,7 +1277,6 @@ function enhance(site,d){
     const info=site.querySelector('.info');
     if(info)info.parentElement.insertBefore(b,info);
   }
-  /* press marquee after the story */
   const p=PRESS[d.name];
   if(p){
     const sec=document.createElement('div');
@@ -1286,23 +1287,21 @@ function enhance(site,d){
     const story=site.querySelector('.story');
     if(story)story.after(sec);
   }
-  /* double-tap gallery cards to ♥ */
-  site.querySelectorAll('.gcard').forEach(g=>{
+  site.querySelectorAll('.hslide').forEach(g=>{
     let last=0;
     g.addEventListener('pointerup',()=>{
       const t=Date.now();
       if(t-last<340){
-        const h=document.createElement('div');
-        h.className='hpop';h.textContent='♥';
-        g.appendChild(h);setTimeout(()=>h.remove(),800);
+        const hp=document.createElement('div');
+        hp.className='hpop';hp.textContent='\u2665';
+        g.appendChild(hp);setTimeout(()=>hp.remove(),800);
         buzz(12);
       }
       last=t;
     });
   });
-  /* spark burst + haptic on reserve */
-  const rb=site.querySelector('.rbtn');
-  if(rb)rb.addEventListener('click',()=>{
+  const cb=site.querySelector('[data-confirm]');
+  if(cb)cb.addEventListener('click',()=>{
     buzz([12,40,12]);
     if(RM)return;
     for(let i=0;i<12;i++){
@@ -1312,15 +1311,13 @@ function enhance(site,d){
       s.style.setProperty('--sx',(Math.cos(a)*r).toFixed(0)+'px');
       s.style.setProperty('--sy',(Math.sin(a)*r).toFixed(0)+'px');
       s.style.background=d.ac;
-      rb.appendChild(s);setTimeout(()=>s.remove(),650);
+      cb.appendChild(s);setTimeout(()=>s.remove(),650);
     }
   });
-  /* haptic on dish grab */
-  const dish=site.querySelector('.dish3d');
+  const dish=site.querySelector('[data-dish]');
   if(dish)dish.addEventListener('pointerdown',()=>buzz(8));
 }
 
-/* layer onto the existing deck lifecycle */
 const _build=buildDeck,_update=updateDeck;
 buildDeck=function(){
   _build();
@@ -1344,7 +1341,7 @@ updateDeck=function(inst){
   const c=sp.querySelector('.spcount');
   if(c){
     const t0=performance.now();
-    const tick=n=>{const k=Math.min(1,(n-t0)/950);c.textContent=Math.round(485*k)+'°C';if(k<1)requestAnimationFrame(tick)};
+    const tick=n=>{const k=Math.min(1,(n-t0)/950);c.textContent=Math.round(485*k)+'\u00b0C';if(k<1)requestAnimationFrame(tick)};
     requestAnimationFrame(tick);
   }
   setTimeout(()=>sp.classList.add('done'),c?1600:1300);
