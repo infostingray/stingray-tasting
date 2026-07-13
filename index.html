@@ -93,7 +93,7 @@ img{display:block;max-width:100%}
 .kitchen-h{font-weight:200;font-stretch:75%;font-size:clamp(30px,7.5vw,52px);letter-spacing:-.02em;line-height:1.02;text-align:center;margin-bottom:8px}
 .kitchen-sub{font-size:12.5px;color:var(--bone-dim);font-weight:300;margin-bottom:34px;text-align:center}
 .cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:420px}
-@media(min-width:760px){.cats{max-width:640px;grid-template-columns:repeat(4,1fr)}}
+@media(min-width:760px){.cats{max-width:760px;grid-template-columns:repeat(5,1fr)}}
 .cat{
   position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;
   background:rgba(237,234,227,.025);padding:26px 16px 20px;cursor:pointer;text-align:left;
@@ -644,6 +644,62 @@ img{display:block;max-width:100%}
   .r{transform:translateY(10px)}
 }
 </style>
+<style id="v6">
+/* ═════════ V6 — dessert identities ═════════ */
+/* Sucré — blush patisserie */
+.h-sucre{align-items:flex-start}
+.h-sucre .scallop{
+  position:absolute;top:0;left:0;right:0;height:16px;
+  background:radial-gradient(circle at 13px -5px,#E9B7C4 13px,transparent 14px);
+  background-size:26px 16px;
+}
+.h-sucre .mac{position:relative;width:64px;height:44px;margin-bottom:20px;animation:macFloat 4.5s ease-in-out infinite}
+@keyframes macFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.h-sucre .mac i{position:absolute;display:block}
+.h-sucre .mac .m1{left:0;right:0;top:0;height:17px;border-radius:50%;background:#E9B7C4}
+.h-sucre .mac .m2{left:6px;right:6px;top:15px;height:9px;border-radius:6px;background:#C99A5B}
+.h-sucre .mac .m3{left:0;right:0;top:23px;height:17px;border-radius:50%;background:#E9B7C4}
+.h-sucre .nm{font-size:52px;font-style:italic;line-height:1;margin-top:8px}
+.h-sucre .hr{width:34px;height:1px;background:#C99A5B;margin:16px 0}
+.h-sucre .tg{font-size:11.5px;font-style:italic;opacity:.8}
+/* MELT — dripping gelato poster */
+.h-melt{align-items:flex-start;justify-content:center}
+.h-melt .drips{position:absolute;top:0;left:0;right:0;height:60px;z-index:2}
+.h-melt .drips i{position:absolute;top:0;display:block;background:#FFF3E4;border-radius:0 0 22px 22px}
+.h-melt .drips i:nth-child(1){left:2%;width:11%;height:34px}
+.h-melt .drips i:nth-child(2){left:15%;width:13%;height:52px;animation:dripDrop 3.2s ease-in-out infinite}
+.h-melt .drips i:nth-child(3){left:30%;width:10%;height:28px}
+.h-melt .drips i:nth-child(4){left:42%;width:14%;height:44px}
+.h-melt .drips i:nth-child(5){left:58%;width:11%;height:58px;animation:dripDrop 4s ease-in-out infinite .6s}
+.h-melt .drips i:nth-child(6){left:71%;width:13%;height:32px}
+.h-melt .drips i:nth-child(7){left:86%;width:12%;height:46px}
+@keyframes dripDrop{0%,100%{height:44px}50%{height:60px}}
+.h-melt .nm{
+  font-family:'Bebas Neue',sans-serif;font-size:104px;line-height:.9;letter-spacing:.02em;
+  color:#FFF3E4;text-shadow:5px 5px 0 #5A2B1E;
+}
+.h-melt .tg{font-family:var(--mono);font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;margin-top:14px;color:#5A2B1E;font-weight:700}
+/* Qashta — levantine sweets house */
+.h-qashta{align-items:center;text-align:center;justify-content:center}
+.h-qashta .orn{
+  position:absolute;top:0;left:0;right:0;height:40px;
+  background:radial-gradient(circle at 9px 20px, transparent 7px, rgba(232,176,75,.45) 7px 8px, transparent 8px);
+  background-size:44px 40px;
+}
+.h-qashta .ar{font-size:56px;color:#E8B04B;line-height:1;margin-bottom:6px}
+.h-qashta .nm{font-size:30px;letter-spacing:.12em;text-transform:uppercase}
+.h-qashta .syrup{
+  width:70px;height:14px;margin:14px auto 0;
+  border-bottom:2px solid #E8B04B;border-radius:0 0 60% 60%;
+  position:relative;opacity:.85;
+}
+.h-qashta .syrup::after{
+  content:'';position:absolute;left:50%;top:100%;width:3px;height:10px;margin-left:-1.5px;
+  background:#E8B04B;border-radius:0 0 3px 3px;animation:syrupDrip 2.4s ease-in infinite;
+}
+@keyframes syrupDrip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:1}100%{transform:translateY(14px);opacity:0}}
+.h-qashta .tg{font-family:var(--mono);font-size:7px;letter-spacing:.28em;text-transform:uppercase;opacity:.7;margin-top:12px}
+</style>
 </head>
 <body>
 
@@ -745,7 +801,10 @@ const IMGS={
   dish:U('1504674900247-0877df9cc836')},
  pub:{
   gal:[[U('1568901346375-23c9450c58cd'),'the kitchen'],[U('1514933651103-005eec06c04b'),'the bar'],[U('1571091718767-18b5b1457add'),'match night']],
-  dish:U('1544025162-d76694265947')}
+  dish:U('1544025162-d76694265947')},
+ dessert:{
+  gal:[[U('1551024601-bec78aea704b'),'the counter'],[U('1578985545062-69928b1d9587'),'the showcase'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
+  dish:U('1563805042-7684c019e1cb')}
 };
 
 /* ═════════ DESIGN DATA ═════════ */
@@ -923,6 +982,53 @@ pub:{label:'Pub',glyph:'♠',accent:'#C77B2E',desc:'taps · burgers · match nig
    tabs:[['from the smoker',[['Brisket, 12hr','oak-smoked','19'],['Pork ribs','half rack','16'],['Bone marrow toast','parsley salad','11']]],
          ['to wash it down',[['Smoked porter','dark & deep','7'],['Bourbon flight','three pours','15'],['Stout float','dessert, allegedly','6']]]],
    hours:'wed–sun · 5pm–1am',loc:'dbayeh',cta:'reserve a table'}
+ ]},
+dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'sugar \u00b7 butter \u00b7 joy',
+ designs:[
+  {name:'Sucr\u00e9',font:"'Cormorant Garamond',serif",bg:'#F9EDE8',tx:'#3A2A26',ac:'#C99A5B',
+   heroClass:'h-sucre',
+   hero:`<div class="scallop"></div>
+     <div class="mac"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
+     <div class="sk" style="color:#C99A5B">p\u00e2tisserie fine</div>
+     <div class="nm">Sucr\u00e9</div>
+     <div class="hr"></div>
+     <div class="tg">little luxuries, baked daily.</div>
+     <button class="chip-cta" data-sheet style="border:1px solid #C99A5B;color:#3A2A26">order a box</button>
+     <div class="down">\u2193</div>`,
+   pull:'\u201cButter is a love language. We are fluent.\u201d',
+   story:'A blush-pink corner of Paris in the neighbourhood \u2014 laminated doughs at dawn, macarons by ten, and a vitrine that empties itself by late afternoon. Come early, or come tomorrow.',
+   dish:{n:'The Paris-Brest',d:'hazelnut praline \u00b7 choux',p:'$9'},
+   tabs:[['p\u00e2tisserie',[['Paris-Brest','hazelnut praline','9'],['Tarte citron','torched meringue','8'],['Mille-feuille','vanilla bean','8']]],
+         ['macarons',[['Pistache','the classic','3'],['Rose-lychee','delicate \u00b7 floral','3'],['Salted caramel','the crowd favourite','3']]]],
+   hours:'tue\u2013sun \u00b7 8am\u20138pm',loc:'achrafieh corner',cta:'order your box'},
+  {name:'MELT',font:"'Archivo',sans-serif",bg:'#FF7FA5',tx:'#FFF3E4',ac:'#5A2B1E',
+   heroClass:'h-melt',
+   hero:`<div class="drips"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+     <div class="nm">MELT</div>
+     <div class="tg">gelato \u00b7 cookies \u00b7 chaos</div>
+     <button class="chip-cta" data-sheet style="background:#5A2B1E;color:#FFF3E4">order the mess</button>
+     <div class="down">\u2193</div>`,
+   pull:'\u201cWarning: everything here drips. That\u2019s the point.\u201d',
+   story:'Warm cookies straight off the tray, gelato stacked until physics complains, and fudge poured with zero restraint. Napkins are free. Regret is not on the menu.',
+   dish:{n:'Triple Melt Stack',d:'warm cookie \u00b7 gelato \u00b7 fudge',p:'$8'},
+   tabs:[['scoops',[['Pistachio overload','double roasted','5'],['Burnt honey','salty finish','5'],['Dark choc 70%','for adults','5']]],
+         ['cookies',[['The OG','molten center','4'],['Lotus smash','biscoff bomb','5'],['Half & half','cookie + gelato','7']]]],
+   hours:'daily \u00b7 noon\u20132am',loc:'dbayeh strip',cta:'order the mess'},
+  {name:'Qashta',font:"'Marcellus',serif",bg:'#20362A',tx:'#F2E8D5',ac:'#E8B04B',
+   heroClass:'h-qashta',
+   hero:`<div class="orn"></div>
+     <div class="ar">\u0642\u0634\u0637\u0629</div>
+     <div class="nm">Qashta</div>
+     <div class="syrup"></div>
+     <div class="tg">levantine sweets \u00b7 syrup-first</div>
+     <button class="chip-cta" data-sheet style="border:1px solid #E8B04B;color:#E8B04B">reserve your knefeh</button>
+     <div class="down">\u2193</div>`,
+   pull:'\u201cThe knefeh arrives hot, or it does not arrive at all.\u201d',
+   story:'Pistachio green walls, copper trays, and orange-blossom syrup poured at the table. Sweets the way the Levant has always made them \u2014 generous, warm, and slightly dangerous.',
+   dish:{n:'Knefeh Nabulsieh',d:'melting cheese \u00b7 orange blossom syrup',p:'$7'},
+   tabs:[['the classics',[['Knefeh nabulsieh','hot \u00b7 melting','7'],['Baklava assortment','pistachio-heavy','9'],['Halawet el jibn','rose syrup','6']]],
+         ['with qashta',[['Znoud el sitt','crispy \u00b7 creamy','6'],['Atayef qashta','seasonal ritual','5'],['Booza w qashta','stretchy ice cream','5']]]],
+   hours:'daily \u00b7 9am\u20131am',loc:'jdeideh \u00b7 corner of sweet',cta:'reserve your knefeh'}
  ]}
 };
 
@@ -1246,7 +1352,8 @@ const CATPH={
   lounge:IMGS.lounge.gal[1][0],
   italian:IMGS.italian.gal[0][0],
   lebanese:IMGS.lebanese.gal[0][0],
-  pub:IMGS.pub.gal[2][0]
+  pub:IMGS.pub.gal[2][0],
+  dessert:IMGS.dessert.gal[0][0]
 };
 document.querySelectorAll('#cats .cat').forEach((b,i)=>{
   const k=Object.keys(CATS)[i];
@@ -1268,14 +1375,18 @@ const SPLASH={
 'Joura':{t:'wipe',k:'street levant',pat:'repeating-linear-gradient(-45deg,#E4B04A 0 14px,rgba(228,176,74,.12) 14px 28px)'},
 'The Brass Tap':{t:'fill',k:'taproom \u00b7 hamra',fillc:'linear-gradient(180deg,#EFB35C,#8A5320)',foam:1},
 'Hop Saint':{t:'wipe',k:'craft & kitchen',pat:'repeating-linear-gradient(90deg,#3E5C41 0 16px,rgba(62,92,65,.1) 16px 32px)'},
-'Barrel & Bone':{t:'fill',k:'smokehouse',fillc:'radial-gradient(75% 100% at 50% 100%,rgba(226,88,43,.7),rgba(20,18,16,.15))'}
+'Barrel & Bone':{t:'fill',k:'smokehouse',fillc:'radial-gradient(75% 100% at 50% 100%,rgba(226,88,43,.7),rgba(20,18,16,.15))'},
+'Sucr\u00e9':{t:'rise',k:'p\u00e2tisserie fine',html:'<div style="position:relative;width:64px;height:44px"><i style="position:absolute;left:0;right:0;top:0;height:16px;border-radius:50%;background:#E9B7C4;display:block"></i><i style="position:absolute;left:6px;right:6px;top:14px;height:8px;border-radius:6px;background:#C99A5B;display:block"></i><i style="position:absolute;left:0;right:0;top:22px;height:16px;border-radius:50%;background:#E9B7C4;display:block"></i></div>'},
+'MELT':{t:'fill',k:'gelato \u00b7 cookies',fillc:'linear-gradient(180deg,#FFF3E4,#FFD3E0)'},
+'Qashta':{t:'rise',k:'\u0642\u0634\u0637\u0629',html:'<div style="width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 50% 42%,#F2E8D5 38%,#E8B04B 40% 46%,#20362A 48%);box-shadow:0 0 0 4px rgba(232,176,75,.3)"></div>'}
 };
 
 const OPENH={
 'Velvet Hour':[19,26,'7 pm'],'Onyx':[20,28,'8 pm'],'Smoke & Citrus':[18,25,'6 pm'],
 'Casa Luna':[12,23,'noon'],'Forno':[17,24,'5 pm'],'Osteria 21':[19,24,'7 pm'],
 'Beit Zaytoun':[12,23,'noon'],'Sitt Nour':[19,25,'7 pm'],'Joura':[11,26,'11 am'],
-'The Brass Tap':[16,26,'4 pm'],'Hop Saint':[15,24,'3 pm'],'Barrel & Bone':[17,25,'5 pm']
+'The Brass Tap':[16,26,'4 pm'],'Hop Saint':[15,24,'3 pm'],'Barrel & Bone':[17,25,'5 pm'],
+'Sucr\u00e9':[8,20,'8 am'],'MELT':[12,26,'noon'],'Qashta':[9,25,'9 am']
 };
 
 const PRESS={
@@ -1283,7 +1394,9 @@ const PRESS={
 'Forno':'\u201cthe real napoli deal\u201d \u2014 l\u2019orient today \u00b7 48h dough \u00b7 wood fire only \u00b7 ',
 'Beit Zaytoun':'\u2605\u2605\u2605\u2605\u2605 zomato \u00b7 taste of beirut award 2026 \u00b7 family recipes since forever \u00b7 ',
 'Sitt Nour':'\u2605\u2605\u2605\u2605\u2605 tripadvisor \u2014 doha\u2019s finest levantine table \u00b7 arak service nightly \u00b7 ',
-'The Brass Tap':'voted #1 match night in town \u00b7 12 rotating taps \u00b7 kitchen till 1am \u00b7 '
+'The Brass Tap':'voted #1 match night in town \u00b7 12 rotating taps \u00b7 kitchen till 1am \u00b7 ',
+'MELT':'\u201cdangerously good\u201d \u2014 everyone, always \u00b7 warm trays every 20 min \u00b7 ',
+'Qashta':'\u2605\u2605\u2605\u2605\u2605 \u201cthe knefeh of the year\u201d \u2014 beirut eats \u00b7 syrup poured tableside \u00b7 '
 };
 
 function makeSplash(d){
