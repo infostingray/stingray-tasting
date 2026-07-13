@@ -1102,6 +1102,11 @@ img{display:block;max-width:100%}
 #sea{display:none!important}
 #deck::after{display:none!important}
 </style>
+<style id="v17">
+/* V17 — cinematic photo heroes (dark brands) */
+.hero .hph{position:absolute;inset:-8% 0;background-size:cover;background-position:center;z-index:0;pointer-events:none}
+.hero .hwrap{position:relative;z-index:2}
+</style>
 </head>
 <body>
 
@@ -1216,25 +1221,6 @@ lounge:{label:'Lounge',glyph:'☾',accent:'#C9A96A',desc:'after-dark · signatur
   {name:'OF\u00f4lies',iframe:'https://ofolies.com/',live:1,
    font:"'Fraunces',serif",bg:'#0E0B18',tx:'#F5E3C8',ac:'#F2A65A',
    heroClass:'',hero:'',pull:'',story:'',dish:{n:'',d:'',p:''},tabs:[],hours:'daily \u00b7 4pm\u2013late',loc:'zaarour',cta:'reserve'},
-  {name:'Sundown',font:"'Fraunces',serif",bg:'#171226',tx:'#F5E3C8',ac:'#F2A65A',
-   heroClass:'h-sun',
-   hero:`<div class="skyA"></div><div class="skyB"></div>
-     <div class="stars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-     <div class="sun" data-sun>\u2600</div>
-     <div class="ridge"></div><div class="ridge r2"></div>
-     <div class="suninner">
-       <div class="sk" style="color:#F2A65A">sunset lounge \u00b7 zaarour</div>
-       <div class="nm">Sundown</div>
-       <div class="tg">drag the sun. own the hour.</div>
-       <button class="chip-cta" data-sheet style="border:1px solid #F2A65A;color:#F5E3C8">reserve your sunset</button>
-     </div>
-     <div class="down">\u2193</div>`,
-   pull:'\u201cThe mountain does the show. We just pour.\u201d',
-   story:'A terrace above the clouds in Zaarour \u2014 the sun drops behind the ridge, the sky does its thing, and every table faces the performance. Scroll, and the day passes. Drag the sun, and you decide when.',
-   dish:{n:'The Golden Hour',d:'spritz \u00b7 apricot \u00b7 thyme',p:'$13'},
-   tabs:[['sundown pours',[['Golden Hour spritz','apricot \u00b7 thyme','13'],['Ridge Line','gin \u00b7 pine','14'],['Last Light','mezcal \u00b7 blood orange','15']]],
-         ['while it sets',[['Halloumi \u0026 honey','charred','11'],['Sunset board','for two','19'],['Za\u2019atar fries','obviously','7']]]],
-   hours:'daily \u00b7 4pm\u2013late',loc:'zaarour \u00b7 1,900m',cta:'reserve your sunset'},
   {name:'Velvet Hour',font:"'Cormorant Garamond',serif",bg:'#0B0A0C',tx:'#E8DEC9',ac:'#C9A96A',
    heroClass:'h-velvet',
    hero:`<div class="moon plx"></div>
@@ -2440,11 +2426,7 @@ buildDeck=function(){
 function liveSite(d){
   const s=document.createElement('div');
   s.className='site';s.style.background=d.bg;s.style.overflow='hidden';
-  s.innerHTML=`
-    <div class="liveTop"><i></i>live client \u2014 the real site, in your hand</div>
-    <iframe class="liveFrame" src="${d.iframe}" loading="eager" referrerpolicy="no-referrer" allow="autoplay"></iframe>
-    <a class="liveBar" href="${d.iframe}" target="_blank" rel="noopener">of\u00f4lies.com \u2014 open full \u2197</a>`;
-  s.querySelectorAll('.liveTop,.liveBar').forEach(e=>e.addEventListener('pointerdown',ev=>ev.stopPropagation()));
+  s.innerHTML=`<iframe class="liveFrame" src="${d.iframe}" loading="eager" referrerpolicy="no-referrer" allow="autoplay"></iframe>`;
   s.dataset.book='live';
   return s;
 }
@@ -2477,7 +2459,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 16';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 17';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2571,6 +2553,33 @@ function initSea(){
     renderer.render(scene,cam);
   })(0);
 }
+})();
+</script>
+<script id="v17js">
+/* V17 — photo backdrops behind the dark heroes */
+(function(){
+const PH=()=>({
+'Velvet Hour':[IMGS.lounge.gal[0][0],'linear-gradient(180deg,rgba(11,10,12,.6) 0%,rgba(11,10,12,.35) 45%,rgba(11,10,12,.94) 100%)'],
+'Onyx':[IMGS.lounge.gal[2][0],'linear-gradient(180deg,rgba(12,12,17,.72) 0%,rgba(12,12,17,.5) 45%,rgba(12,12,17,.95) 100%)'],
+'Joura':[IMGS.lebanese.gal[1][0],'linear-gradient(180deg,rgba(38,74,58,.78) 0%,rgba(38,74,58,.55) 45%,rgba(20,42,32,.95) 100%)'],
+'The Brass Tap':[IMGS.pub.gal[1][0],'linear-gradient(180deg,rgba(25,20,16,.66) 0%,rgba(25,20,16,.45) 45%,rgba(25,20,16,.95) 100%)'],
+'Barrel & Bone':[IMGS.lebanese.gal[1][0],'linear-gradient(180deg,rgba(20,18,16,.7) 0%,rgba(20,18,16,.5) 45%,rgba(20,18,16,.96) 100%)']
+});
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs,map=PH();
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    const d=ds[+ph.dataset.i],cfg=map[d.name];
+    if(!cfg)return;
+    const hero=ph.querySelector('.site .hero');
+    if(!hero||hero.querySelector('.hph'))return;
+    const b=document.createElement('div');
+    b.className='hph';
+    b.style.backgroundImage=`${cfg[1]},url('${cfg[0]}')`;
+    hero.prepend(b);
+  });
+};
 })();
 </script>
 </body>
