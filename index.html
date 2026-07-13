@@ -1097,6 +1097,110 @@ img{display:block;max-width:100%}
 #sea{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.55}
 @media(prefers-reduced-motion:reduce){#sea{display:none}}
 </style>
+<style id="v15">
+/* ═════════ V15 — a 3D centerpiece inside every site ═════════ */
+.t3d{text-align:center;overflow:visible}
+.t3stage{perspective:900px;display:flex;justify-content:center;align-items:center;min-height:190px;padding:6px 0}
+.p3{transform-style:preserve-3d;position:relative}
+.t3hint{font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.5;margin-top:10px}
+/* photo disc modes */
+.disc{border-radius:50%;background-size:cover;background-position:center;position:relative;
+  box-shadow:0 26px 40px -18px rgba(0,0,0,.65), inset 0 0 0 4px rgba(255,255,255,.1)}
+.disc.wob{width:158px;height:158px;transform:rotateX(52deg)}
+.wobwrap{transform-style:preserve-3d;animation:wobspin 9s linear infinite}
+@keyframes wobspin{to{transform:rotateZ(360deg)}}
+.coin{width:132px;height:132px;transform-style:preserve-3d;animation:coinspin 5s linear infinite}
+@keyframes coinspin{to{transform:rotateY(360deg)}}
+.coin .disc{position:absolute;inset:0;backface-visibility:hidden}
+.coin .disc.b{transform:rotateY(180deg)}
+/* turntable (Onyx) */
+.h-onyx .vinyl{display:none}
+.tt{transform:rotateX(56deg);transform-style:preserve-3d}
+.tt .platter{width:168px;height:168px;border-radius:50%;background:#1A1A22;box-shadow:0 20px 34px -14px rgba(0,0,0,.7),inset 0 0 0 1px rgba(159,216,255,.25)}
+.tt .rec{position:absolute;inset:10px;border-radius:50%;background:repeating-radial-gradient(circle,#0A0A0E 0 2px,#15151D 2px 4px);animation:wobspin 3.5s linear infinite}
+.tt .rec::after{content:'';position:absolute;inset:38%;border-radius:50%;background:#9FD8FF}
+.tt .arm{position:absolute;top:-8px;right:-14px;width:4px;height:96px;background:#3A3A46;transform:rotate(24deg);transform-origin:top;border-radius:3px}
+.tt .arm::after{content:'';position:absolute;bottom:-6px;left:-4px;width:12px;height:14px;background:#3A3A46;border-radius:3px}
+/* citrus orbit (S&C) */
+.orb{transform:rotateX(62deg);transform-style:preserve-3d;width:170px;height:170px;animation:wobspin 10s linear infinite}
+.orb::before{content:'';position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(216,134,43,.4)}
+.orb i{position:absolute;width:40px;height:40px;border-radius:50%;
+  background:conic-gradient(#D8862B 0 25%,#E8A34B 0 50%,#D8862B 0 75%,#E8A34B 0);
+  box-shadow:0 0 0 3px rgba(216,134,43,.25);transform:rotateX(-62deg)}
+.orb i:nth-child(1){top:-18px;left:65px}
+.orb i:nth-child(2){bottom:8px;left:-6px}
+.orb i:nth-child(3){bottom:8px;right:-6px}
+/* mezze tray (Beit) */
+.tray{width:176px;height:176px;border-radius:50%;transform:rotateX(55deg);transform-style:preserve-3d;
+  background:radial-gradient(circle at 42% 36%,#E8C88E,#B98A46 62%,#8A6330 78%);
+  box-shadow:0 24px 40px -16px rgba(0,0,0,.55),inset 0 0 0 2px rgba(43,36,28,.35);
+  animation:wobspin 12s linear infinite}
+.tray .mez{position:absolute;width:52px;height:52px;border-radius:50%;background-size:cover;background-position:center;
+  box-shadow:0 6px 12px rgba(0,0,0,.35),inset 0 0 0 3px #F2EBDC}
+.tray .mez:nth-child(1){top:6px;left:62px}
+.tray .mez:nth-child(2){bottom:14px;left:12px}
+.tray .mez:nth-child(3){bottom:14px;right:12px}
+/* lantern (Sitt Nour) */
+.lant{transform-style:preserve-3d;animation:lantspin 8s linear infinite}
+@keyframes lantspin{to{transform:rotateY(360deg)}}
+.lant .body{width:58px;height:88px;border-radius:26px 26px 18px 18px;
+  background:linear-gradient(90deg,#6B4A22,#E4B872 30%,#C08A3E 55%,#6B4A22);
+  box-shadow:0 0 34px rgba(228,184,114,.5),inset 0 0 14px rgba(255,224,160,.8);position:relative}
+.lant .body::before{content:'';position:absolute;top:-14px;left:50%;width:26px;height:16px;margin-left:-13px;
+  background:linear-gradient(90deg,#5A3D1C,#C08A3E,#5A3D1C);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.lant .body::after{content:'';position:absolute;top:-22px;left:50%;width:14px;height:10px;margin-left:-7px;border:2px solid #C08A3E;border-bottom:none;border-radius:8px 8px 0 0}
+.lant.swing{animation:lantswing .9s ease}
+@keyframes lantswing{0%{transform:rotateZ(0)}25%{transform:rotateZ(10deg)}55%{transform:rotateZ(-7deg)}80%{transform:rotateZ(4deg)}100%{transform:rotateZ(0)}}
+/* shawarma spit (Joura) */
+.spitwrap{position:relative;height:170px;display:flex;align-items:center;justify-content:center}
+.spit{width:66px;height:126px;border-radius:33px/18px;position:relative;overflow:hidden;
+  background:repeating-linear-gradient(90deg,#7A4220 0 12px,#B06A35 12px 24px,#8A4B26 24px 34px);
+  background-size:220% 100%;animation:spitroll 1.4s linear infinite;
+  box-shadow:inset -14px 0 22px rgba(0,0,0,.45),inset 14px 0 22px rgba(0,0,0,.45)}
+@keyframes spitroll{to{background-position-x:-68px}}
+.spit::after{content:'';position:absolute;left:50%;top:-16px;bottom:-16px;width:4px;margin-left:-2px;background:#D8D3C4;border-radius:2px}
+.spitglow{position:absolute;right:14%;top:50%;width:60px;height:120px;transform:translateY(-50%);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,140,60,.55),transparent 70%);filter:blur(8px);animation:flame 1.8s ease-in-out infinite alternate}
+/* tap lever + pint (Brass) */
+.tapstage{position:relative;height:200px;display:flex;align-items:flex-end;justify-content:center;gap:34px}
+.lever{position:relative;width:70px;height:150px}
+.lever .base{position:absolute;bottom:0;left:50%;width:16px;height:44px;margin-left:-8px;background:linear-gradient(90deg,#6B4A22,#C77B2E,#6B4A22);border-radius:4px}
+.lever .stick{position:absolute;bottom:40px;left:50%;width:9px;height:84px;margin-left:-4.5px;border-radius:6px;
+  background:linear-gradient(90deg,#8A5320,#EFB35C,#8A5320);transform-origin:bottom center;cursor:grab;touch-action:none}
+.lever .stick::after{content:'';position:absolute;top:-18px;left:50%;width:26px;height:26px;margin-left:-13px;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#F6E7C8,#C77B2E)}
+.lever .spout{position:absolute;bottom:34px;right:-16px;width:22px;height:9px;background:#8A5320;border-radius:0 5px 5px 0}
+.pint{position:relative;width:64px;height:104px;border:2px solid rgba(239,230,214,.5);border-top:none;border-radius:0 0 12px 12px;overflow:visible}
+.pint .fill{position:absolute;left:2px;right:2px;bottom:2px;height:0%;background:linear-gradient(180deg,#EFB35C,#8A5320);border-radius:0 0 9px 9px}
+.pint .foam{position:absolute;left:0;right:0;height:12px;border-radius:8px;background:#F6EFDF;opacity:0;bottom:calc(2px + var(--fh,0%))}
+.stream{position:absolute;top:-92px;left:50%;width:6px;height:0;margin-left:-3px;background:linear-gradient(180deg,#EFB35C,#C77B2E);border-radius:3px}
+/* ember depth (Barrel) */
+.embfield{position:relative;width:200px;height:170px;transform-style:preserve-3d}
+.embfield i{position:absolute;border-radius:50%;background:#E2915C;box-shadow:0 0 10px #E2582B;animation:embrise linear infinite}
+@keyframes embrise{from{transform:translateY(60px) translateZ(var(--z,0));opacity:0}20%{opacity:1}to{transform:translateY(-110px) translateZ(var(--z,0));opacity:0}}
+/* macaron tower (Sucré) */
+.tower{transform-style:preserve-3d;animation:lantspin 11s linear infinite;position:relative;width:90px;height:150px}
+.tower .tm{position:absolute;left:50%;width:78px;height:50px;margin-left:-39px;cursor:pointer;transition:transform .3s cubic-bezier(.3,1.6,.4,1)}
+.tower .tm i{position:absolute;display:block;left:0;right:0}
+.tower .tm .s1{top:0;height:19px;border-radius:50%}
+.tower .tm .s2{top:16px;height:10px;border-radius:8px;left:7px;right:7px;background:#F7E6C4}
+.tower .tm .s3{top:25px;height:19px;border-radius:50%}
+.tower .tm.hop{transform:translateY(-14px)}
+/* syrup scene (Qashta) */
+.syrupstage{position:relative;height:190px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px}
+.syrupstage .kdisc{width:150px;height:150px;transform:rotateX(55deg)}
+.syrupstage .pour{position:absolute;top:0;left:50%;width:5px;margin-left:-2.5px;height:96px;border-radius:3px;
+  background:linear-gradient(180deg,transparent,#E8B04B 30%);transform-origin:top;animation:pourdrip 2.6s ease-in-out infinite}
+@keyframes pourdrip{0%,100%{transform:scaleY(.2);opacity:0}25%{transform:scaleY(1);opacity:1}70%{transform:scaleY(1);opacity:1}90%{transform:scaleY(.15);opacity:0}}
+.syrupstage .rip{position:absolute;bottom:66px;left:50%;width:30px;height:12px;margin-left:-15px;border-radius:50%;
+  border:2px solid rgba(232,176,75,.7);animation:ripple 2.6s ease-out infinite}
+@keyframes ripple{0%,20%{transform:scale(.3);opacity:0}35%{opacity:1}80%{transform:scale(2.4);opacity:0}100%{opacity:0}}
+/* osteria chefcard tilt */
+.chefcard.tilt3d{transition:transform .18s ease-out;will-change:transform}
+@media(prefers-reduced-motion:reduce){
+  .wobwrap,.coin,.tt .rec,.orb,.tray,.lant,.spit,.tower,.embfield i,.syrupstage .pour,.syrupstage .rip{animation:none}
+}
+</style>
 </head>
 <body>
 
@@ -2472,7 +2576,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 14';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 15';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2571,6 +2675,158 @@ function initSea(){
     renderer.render(scene,cam);
   })(0);
 }
+})();
+</script>
+<script id="v15js">
+/* ═════════ V15 — 3D centerpieces per design ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+
+function sec(site,d,label,hint,inner){
+  const s=document.createElement('div');
+  s.className='sec t3d';
+  s.innerHTML=`<span class="slabel" style="color:${d.ac}">${label}</span>
+    <div class="t3stage">${inner}</div>
+    <div class="t3hint" style="color:${d.ac}">${hint}</div>`;
+  const anchor=site.querySelector('.hero')||site.querySelector('.mhead');
+  if(anchor)anchor.after(s);
+  return s;
+}
+function dragSpin(el,apply,speed){
+  let rot=0,vel=0,drag=false,px=0;
+  el.style.animation='none';
+  (function loop(){if(!drag){rot+=vel;vel=Math.abs(vel)>speed?vel*0.96:(vel<0?-speed:speed)}apply(rot);requestAnimationFrame(loop)})();
+  el.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;px=e.clientX;buzz(6);try{el.setPointerCapture(e.pointerId)}catch(_){}});
+  el.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-px;rot+=dx*.8;vel=dx*.8;px=e.clientX});
+  const up=()=>drag=false;
+  el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+}
+
+const D3={};
+
+D3['Onyx']=(site,d,imgs)=>{
+  const s=sec(site,d,'the booth \u00b7 3d','drag the record \u2014 it never skips',
+    `<div class="p3 tt"><div class="platter"><div class="rec"></div></div><div class="arm"></div></div>`);
+  const rec=s.querySelector('.rec');
+  if(!RM)dragSpin(rec,r=>rec.style.transform=`rotate(${r}deg)`,1.6);
+};
+D3['Smoke & Citrus']=(site,d,imgs)=>{
+  sec(site,d,'the garnish orbit \u00b7 3d','citrus in orbit \u2014 smoke below',
+    `<div class="p3 orb"><i></i><i></i><i></i></div>`);
+};
+D3['Forno']=(site,d,imgs)=>{
+  const s=sec(site,d,'the toss \u00b7 3d','drag \u2014 spin the pie',
+    `<div class="p3 wobwrap"><div class="disc wob" style="background-image:url('${imgs.dish}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.1)})"></div></div>`);
+  const w=s.querySelector('.wobwrap');
+  if(!RM)dragSpin(w,r=>w.style.transform=`rotateZ(${r}deg)`,0.7);
+};
+D3['Beit Zaytoun']=(site,d,imgs)=>{
+  const s=sec(site,d,'the mezze carousel \u00b7 3d','drag the tray \u2014 mezze never stops',
+    `<div class="p3 tray">
+      <div class="mez" style="background-image:url('${imgs.gal[0][0]}')"></div>
+      <div class="mez" style="background-image:url('${imgs.gal[1][0]}')"></div>
+      <div class="mez" style="background-image:url('${imgs.dish}')"></div>
+    </div>`);
+  const t=s.querySelector('.tray');
+  if(!RM)dragSpin(t,r=>t.style.transform=`rotateX(55deg) rotateZ(${r}deg)`,0.5);
+};
+D3['Sitt Nour']=(site,d,imgs)=>{
+  const s=sec(site,d,'the lantern \u00b7 3d','tap \u2014 make it swing',
+    `<div class="p3 lant"><div class="body"></div></div>`);
+  const l=s.querySelector('.lant');
+  l.addEventListener('pointerdown',e=>{e.stopPropagation();l.classList.remove('swing');void l.offsetWidth;l.classList.add('swing');buzz(10)});
+};
+D3['Joura']=(site,d,imgs)=>{
+  sec(site,d,'the spit \u00b7 always turning','it has not stopped since 2019',
+    `<div class="spitwrap"><div class="spitglow"></div><div class="spit"></div></div>`);
+};
+D3['Hop Saint']=(site,d,imgs)=>{
+  sec(site,d,'the seal \u00b7 3d','our crest, minted',
+    `<div class="p3 coin">
+      <div class="disc" style="background:radial-gradient(circle at 40% 32%,#EFE9DB,#C9DFA9 70%);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-size:52px;color:#3E5C41">h</div>
+      <div class="disc b" style="background:radial-gradient(circle at 40% 32%,#3E5C41,#2C4230);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:#EFE9DB">EST 2026</div>
+    </div>`);
+};
+D3['The Brass Tap']=(site,d,imgs)=>{
+  const s=sec(site,d,'the pour \u00b7 3d','pull the tap \u2014 hold it down',
+    `<div class="tapstage">
+      <div class="lever"><div class="base"></div><div class="spout"></div><div class="stick"></div></div>
+      <div class="pint"><div class="stream"></div><div class="fill"></div><div class="foam"></div></div>
+    </div>`);
+  const stick=s.querySelector('.stick'),fill=s.querySelector('.fill'),foam=s.querySelector('.foam'),stream=s.querySelector('.stream');
+  let drag=false,py=0,ang=0,level=0,raf;
+  const render=()=>{
+    stick.style.transform=`rotate(${-ang}deg)`;
+    const pouring=ang>18&&level<100;
+    stream.style.height=pouring?'92px':'0';
+    if(pouring){level=Math.min(100,level+0.9);fill.style.height=level+'%';
+      if(level>12){foam.style.opacity=1;foam.style.setProperty('--fh',level+'%')}}
+  };
+  stick.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;py=e.clientY;buzz(8);try{stick.setPointerCapture(e.pointerId)}catch(_){}
+    (function loop(){if(!drag&&ang<=0)return;render();raf=requestAnimationFrame(loop)})()});
+  stick.addEventListener('pointermove',e=>{if(!drag)return;ang=Math.max(0,Math.min(52,ang+(e.clientY-py)*.6));py=e.clientY});
+  const up=()=>{if(!drag)return;drag=false;
+    const back=()=>{ang=Math.max(0,ang-4);render();if(ang>0)requestAnimationFrame(back)};back();
+    if(level>=100)buzz([12,50,12])};
+  stick.addEventListener('pointerup',up);stick.addEventListener('pointercancel',up);
+};
+D3['Barrel & Bone']=(site,d,imgs)=>{
+  const s=sec(site,d,'the chamber \u00b7 3d','embers, in depth',
+    `<div class="p3 embfield">${Array.from({length:14},(_,i)=>{
+      const z=(i%3-1)*40, x=8+Math.random()*84, sz=3+Math.random()*4, du=(2.4+Math.random()*2.4).toFixed(1), de=(Math.random()*3).toFixed(1);
+      return `<i style="left:${x}%;bottom:0;width:${sz}px;height:${sz}px;--z:${z}px;animation-duration:${du}s;animation-delay:-${de}s"></i>`}).join('')}
+    </div>`);
+};
+D3['Sucr\u00e9']=(site,d,imgs)=>{
+  const cols=['#E9B7C4','#C9E4C5','#F5D7A1','#C7B9E2'];
+  const s=sec(site,d,'la tour \u00b7 3d','tap a macaron \u2014 it curtsies',
+    `<div class="p3 tower">${cols.map((c,i)=>`
+      <div class="tm" style="bottom:${i*34}px;z-index:${i+1}">
+        <i class="s1" style="background:${c}"></i><i class="s2"></i><i class="s3" style="background:${c}"></i>
+      </div>`).join('')}</div>`);
+  s.querySelectorAll('.tm').forEach(m=>m.addEventListener('pointerdown',e=>{
+    e.stopPropagation();buzz(8);
+    m.classList.add('hop');setTimeout(()=>m.classList.remove('hop'),350);
+  }));
+};
+D3['MELT']=(site,d,imgs)=>{
+  const s=sec(site,d,'the cookie \u00b7 3d','drag \u2014 flip the cookie',
+    `<div class="p3 coin">
+      <div class="disc" style="background-image:url('${imgs.gal[2][0]}'),radial-gradient(circle,${hexA('#5A2B1E',.5)},${hexA('#5A2B1E',.15)})"></div>
+      <div class="disc b" style="background:radial-gradient(circle at 45% 38%,#7A3C24,#4A2114);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:7.5px;letter-spacing:.18em;color:#FFF3E4;text-align:center">molten<br>center</div>
+    </div>`);
+  const c=s.querySelector('.coin');
+  if(!RM)dragSpin(c,r=>c.style.transform=`rotateY(${r}deg)`,1.4);
+};
+D3['Qashta']=(site,d,imgs)=>{
+  sec(site,d,'the pour \u00b7 3d','orange-blossom syrup, on loop',
+    `<div class="syrupstage">
+      <div class="pour"></div><div class="rip"></div>
+      <div class="disc kdisc" style="background-image:url('${imgs.dish}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.12)})"></div>
+    </div>`);
+};
+D3['Osteria 21']=(site,d,imgs)=>{
+  const card=site.querySelector('.chefcard');
+  if(!card||RM)return;
+  card.classList.add('tilt3d');
+  card.addEventListener('pointermove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(600px) rotateY(${x*14}deg) rotateX(${-y*10}deg)`;
+  });
+  card.addEventListener('pointerleave',()=>card.style.transform='');
+};
+
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs,imgs=IMGS[cat];
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    const d=ds[+ph.dataset.i];
+    if(D3[d.name])D3[d.name](ph.querySelector('.site'),d,imgs);
+  });
+};
 })();
 </script>
 </body>
