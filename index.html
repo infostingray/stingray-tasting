@@ -777,6 +777,61 @@ img{display:block;max-width:100%}
 .slideres.locked .strack{animation:none;opacity:1}
 .slideres.locked .knob{transition:transform .3s}
 </style>
+<style id="v9">
+/* ═════════ V9 — 15 signature booking mechanics ═════════ */
+/* concierge chat */
+.chatbox{margin-top:14px;text-align:left;display:none}
+.chatbox.on{display:block}
+.cb{max-width:82%;padding:10px 13px;border-radius:14px;font-size:11px;line-height:1.5;margin-bottom:8px;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.cb.show{opacity:1;transform:none}
+.cb.guest{margin-left:auto;border-bottom-right-radius:4px}
+.cb.host{border-bottom-left-radius:4px}
+.cb.typing i{display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;margin:0 1.5px;animation:tdot 1s infinite}
+.cb.typing i:nth-child(2){animation-delay:.15s}.cb.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+/* hold-to-book (vertical fill lives via --p) */
+.holdbtn{position:relative;overflow:hidden}
+.holdbtn .hfill{position:absolute;left:0;right:0;bottom:0;height:0%;pointer-events:none}
+.holdbtn span{position:relative;z-index:1}
+/* time wheel */
+.twheel{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px;touch-action:pan-x pan-y}
+.twheel::-webkit-scrollbar{display:none}
+.tw{flex:0 0 auto;font-family:var(--mono);font-size:9px;letter-spacing:.14em;padding:12px 16px;border-radius:100px;border:1px solid;background:transparent;cursor:pointer;transition:all .3s}
+.tw.off{opacity:.25}
+/* seats stepper */
+.stepbox{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px}
+.stepbox button{width:40px;height:40px;border-radius:50%;border:1px solid;background:transparent;font-size:16px;cursor:pointer}
+.stepbox .num{font-size:30px;min-width:44px}
+/* doorbell */
+.bellbtn{font-size:30px;background:transparent;border:none;cursor:pointer;display:block;margin:0 auto 8px;transition:transform .15s}
+.bellbtn.ring{animation:bellswing .8s ease}
+@keyframes bellswing{0%{transform:rotate(0)}20%{transform:rotate(18deg)}40%{transform:rotate(-14deg)}60%{transform:rotate(9deg)}80%{transform:rotate(-5deg)}100%{transform:rotate(0)}}
+/* candle */
+.candle{position:relative;width:16px;height:40px;margin:0 auto 10px;border-radius:4px}
+.candle .fl{position:absolute;left:50%;top:-14px;width:10px;height:14px;margin-left:-5px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0;transform:scale(.3);transform-origin:bottom;transition:opacity .4s,transform .4s}
+.candle.lit .fl{opacity:1;transform:scale(1);animation:flick .6s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.08) rotate(3deg)}}
+/* rubber stamp */
+.stampmark{position:absolute;left:50%;top:50%;padding:8px 16px;border:3px solid;border-radius:6px;font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;pointer-events:none;transform:translate(-50%,-50%) rotate(-10deg) scale(3);opacity:0;animation:stampIn .45s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes stampIn{to{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
+/* smash */
+.smashbtn{transition:transform .12s}
+.smashbtn.hit{transform:scale(1.08)}
+/* order basket pill */
+.basketpill{position:sticky;bottom:14px;z-index:6;display:none;margin:0 auto;width:max-content;font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;padding:14px 22px;border-radius:100px;cursor:pointer;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
+.basketpill.on{display:block}
+.addable{cursor:pointer}
+.addflash{animation:addfl .4s ease}
+@keyframes addfl{30%{transform:translateX(4px)}}
+/* macaron box */
+.macrow{display:flex;justify-content:center;gap:12px;margin-bottom:14px}
+.macd{width:30px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform .25s,border-color .25s}
+.macd.pick{transform:translateY(-6px) scale(1.12)}
+/* knock */
+.knockhint{font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-top:10px}
+.booked-note{font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;opacity:0;margin-top:10px;transition:opacity .5s}
+.booked-note.show{opacity:.6}
+</style>
 </head>
 <body>
 
@@ -1699,7 +1754,8 @@ buildDeck=function(){
   });
 };
 })();
-</script>\n<script id="v7js">
+</script>
+<script id="v7js">
 /* ═════════ V7 — structural archetypes: editorial / menu-first / poster ═════════ */
 (function(){
 const LAYOUT={
@@ -1848,8 +1904,9 @@ updateDeck=function(inst){
   if(tag)tag.textContent=TAG[L];
 };
 })();
-</script>\n<script id="v8js">
-/* ═════════ V8 — booking mechanics per concept ═════════ */
+</script>
+<script id="v9js">
+/* ═════════ V9 — one signature booking mechanic per design ═════════ */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
@@ -1860,109 +1917,321 @@ function sparks(el,color){
     const a=Math.random()*Math.PI*2,r=30+Math.random()*30;
     s.style.setProperty('--sx',(Math.cos(a)*r).toFixed(0)+'px');
     s.style.setProperty('--sy',(Math.sin(a)*r).toFixed(0)+'px');
-    s.style.background=color;
-    el.appendChild(s);setTimeout(()=>s.remove(),650);
+    s.style.background=color;el.appendChild(s);setTimeout(()=>s.remove(),650);
   }
 }
-const stripListeners=el=>{const c=el.cloneNode(true);el.replaceWith(c);return c};
+const strip=el=>{const c=el.cloneNode(true);el.replaceWith(c);c.addEventListener('pointerdown',e=>e.stopPropagation());return c};
+const note=(after,txt)=>{const n=document.createElement('div');n.className='booked-note';n.textContent=txt;after.after(n);requestAnimationFrame(()=>n.classList.add('show'))};
+const heroScroll=(site,sel)=>{site.querySelectorAll('.hwrap [data-sheet], .mhead [data-sheet]').forEach(b=>{
+  const c=strip(b);c.addEventListener('click',()=>{const t=site.querySelector(sel);t&&t.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})});
+})};
+const mainCTA=site=>site.querySelector('.sfoot [data-sheet]')||site.querySelector('.bigres')||site.querySelector('[data-sheet]');
 
-function bookingFor(site,d){
-  const isMenu=!!site.querySelector('.menuXL');
-  const isPoster=!!site.querySelector('[data-crow]');
+const M={};
 
-  if(!isMenu&&!isPoster){
-    /* STORY SITE — keep the sheet, but pre-fill it so confirm works instantly */
-    const g=site.querySelector('[data-g] .ch'),t=site.querySelector('[data-t] .ch');
-    if(g)g.click();if(t)t.click();
-    return;
-  }
+/* 1 — sheet: the classic form, pre-filled & never stuck */
+M.sheet=(site,d)=>{
+  const g=site.querySelector('[data-g] .ch'),t=site.querySelector('[data-t] .ch');
+  if(g)g.click();if(t)t.click();
+  site.dataset.book='sheet';
+};
 
-  if(isMenu){
-    /* MENU-FIRST — one tap, zero form */
-    site.querySelectorAll('[data-sheet]').forEach(btn=>{
-      const b=stripListeners(btn);
-      b.style.position='relative';b.style.overflow='visible';
-      b.addEventListener('pointerdown',e=>e.stopPropagation());
-      b.addEventListener('click',()=>{
-        if(b.classList.contains('booked'))return;
-        b.classList.add('booked');
-        b.textContent='\u2713 table held \u2014 see you tonight';
-        buzz([12,40,12]);sparks(b,d.ac);
-        let sub=b.parentElement.querySelector('.insta-sub');
-        if(!sub){sub=document.createElement('div');sub.className='insta-sub';
-          sub.textContent='one tap. no forms. this is how your guests will book.';
-          b.after(sub);}
-        requestAnimationFrame(()=>sub.classList.add('show'));
-      });
-    });
-    return;
-  }
+/* 2 — one-tap morph */
+M.tap=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;b.dataset.done=1;
+    b.textContent='\u2713 table held \u2014 see you tonight';
+    buzz([12,40,12]);sparks(b,d.ac);
+    note(b,'one tap. no forms. ever.');
+  });
+  site.dataset.book='tap';
+};
 
-  /* POSTER — slide to book */
-  const resCard=site.querySelector('.bigres');
-  if(resCard){
-    const soft=hexA(d.ac,.4);
-    const slider=document.createElement('div');
-    slider.className='slideres';
-    slider.style.borderColor=soft;
-    slider.innerHTML=`
-      <div class="sfill" style="background:${d.ac}"></div>
-      <div class="strack">slide to book \u2192</div>
-      <div class="knob" style="background:${d.ac};color:${d.bg}">\u2192</div>`;
-    resCard.replaceWith(slider);
-    const knob=slider.querySelector('.knob'),fill=slider.querySelector('.sfill'),track=slider.querySelector('.strack');
-    let drag=false,x=0,max=0;
-    knob.addEventListener('pointerdown',e=>{
-      if(slider.classList.contains('locked'))return;
-      e.stopPropagation();drag=true;
-      max=slider.clientWidth-knob.clientWidth-8;
-      try{knob.setPointerCapture(e.pointerId)}catch(_){}
-    });
-    knob.addEventListener('pointermove',e=>{
-      if(!drag)return;
-      const r=slider.getBoundingClientRect();
-      x=Math.max(0,Math.min(max,e.clientX-r.left-knob.clientWidth/2));
-      knob.style.transform=`translateX(${x}px)`;
-      fill.style.width=(x+44)+'px';
-    });
-    const up=()=>{
-      if(!drag)return;drag=false;
-      if(x>max*.82){
-        slider.classList.add('locked');
-        knob.style.transform=`translateX(${max}px)`;
-        knob.textContent='\u2713';fill.style.width='100%';fill.style.opacity=.9;
-        track.textContent='booked \u2014 table held';
-        track.style.color=d.bg;track.style.position='relative';track.style.zIndex=1;
-        buzz([12,50,12]);sparks(slider,'#ffffff');
-      }else{
-        knob.style.transition='transform .35s cubic-bezier(.3,1.4,.5,1)';
-        knob.style.transform='translateX(0)';fill.style.width='0';
-        setTimeout(()=>knob.style.transition='',380);
-        x=0;
-      }
-    };
-    knob.addEventListener('pointerup',up);
-    knob.addEventListener('pointercancel',up);
-  }
-  /* poster hero CTA scrolls to the card row instead of opening a form */
-  site.querySelectorAll('.hwrap [data-sheet]').forEach(btn=>{
-    const b=stripListeners(btn);
-    b.addEventListener('pointerdown',e=>e.stopPropagation());
-    b.addEventListener('click',()=>{
-      const row=site.querySelector('[data-crow]');
-      if(row)row.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+/* 3 — slide to book */
+M.slide=(site,d)=>{
+  heroScroll(site,'[data-crow]');
+  const target=mainCTA(site);
+  const soft=hexA(d.ac,.4);
+  const slider=document.createElement('div');
+  slider.className='slideres';slider.style.borderColor=soft;
+  slider.innerHTML=`<div class="sfill" style="background:${d.ac}"></div><div class="strack">slide to book \u2192</div><div class="knob" style="background:${d.ac};color:${d.bg}">\u2192</div>`;
+  target.replaceWith(slider);
+  const knob=slider.querySelector('.knob'),fill=slider.querySelector('.sfill'),track=slider.querySelector('.strack');
+  let drag=false,x=0,max=0;
+  knob.addEventListener('pointerdown',e=>{if(slider.classList.contains('locked'))return;e.stopPropagation();drag=true;max=slider.clientWidth-knob.clientWidth-8;try{knob.setPointerCapture(e.pointerId)}catch(_){}});
+  knob.addEventListener('pointermove',e=>{if(!drag)return;const r=slider.getBoundingClientRect();x=Math.max(0,Math.min(max,e.clientX-r.left-22));knob.style.transform=`translateX(${x}px)`;fill.style.width=(x+44)+'px'});
+  const up=()=>{if(!drag)return;drag=false;
+    if(x>max*.82){slider.classList.add('locked');knob.style.transform=`translateX(${max}px)`;knob.textContent='\u2713';fill.style.width='100%';fill.style.opacity=.9;track.textContent='booked \u2014 table held';track.style.color=d.bg;track.style.position='relative';track.style.zIndex=1;buzz([12,50,12]);sparks(slider,'#fff')}
+    else{knob.style.transition='transform .35s cubic-bezier(.3,1.4,.5,1)';knob.style.transform='translateX(0)';fill.style.width='0';setTimeout(()=>knob.style.transition='',380);x=0}};
+  knob.addEventListener('pointerup',up);knob.addEventListener('pointercancel',up);
+  site.dataset.book='slide';
+};
+
+/* 4 — hold to book (themed fill + label) */
+M.hold=(site,d,cfg)=>{
+  heroScroll(site,'.sfoot, [data-crow]');
+  const b=strip(mainCTA(site));
+  b.classList.add('holdbtn');
+  b.innerHTML=`<div class="hfill" style="background:${cfg.fill}"></div><span>${cfg.label}</span>`;
+  const fillEl=b.querySelector('.hfill'),lab=b.querySelector('span');
+  let raf=null,p=0,down=false;
+  const step=()=>{if(!down)return;p=Math.min(1,p+0.016);fillEl.style.height=(p*100)+'%';
+    if(p>=1){down=false;lab.textContent=cfg.done;fillEl.style.height='100%';buzz([12,50,12]);sparks(b,'#fff');b.dataset.done=1;return}
+    raf=requestAnimationFrame(step)};
+  b.addEventListener('pointerdown',e=>{if(b.dataset.done)return;e.stopPropagation();down=true;buzz(8);raf=requestAnimationFrame(step)});
+  const rel=()=>{if(b.dataset.done||!down)return;down=false;cancelAnimationFrame(raf);p=0;fillEl.style.height='0%'};
+  b.addEventListener('pointerup',rel);b.addEventListener('pointerleave',rel);b.addEventListener('pointercancel',rel);
+  site.dataset.book='hold';
+};
+
+/* 5 — time wheel: pick a time, done */
+M.wheel=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=mainCTA(site);
+  const soft=hexA(d.ac,.4);
+  const wrap=document.createElement('div');
+  wrap.className='twheel';
+  wrap.innerHTML=['7:00','7:30','8:30','9:00','10:00','10:30','11:30'].map(t=>`<button class="tw" style="border-color:${soft};color:${d.tx}">${t}</button>`).join('');
+  b.replaceWith(wrap);
+  wrap.addEventListener('pointerdown',e=>e.stopPropagation());
+  wrap.querySelectorAll('.tw').forEach(c=>c.addEventListener('click',()=>{
+    if(wrap.dataset.done)return;wrap.dataset.done=1;
+    wrap.querySelectorAll('.tw').forEach(x=>x!==c&&x.classList.add('off'));
+    c.style.background=d.ac;c.style.color=d.bg;c.textContent='\u2713 '+c.textContent+' \u2014 seat held';
+    buzz([12,40,12]);sparks(c,d.ac);note(wrap,'pick a time. that\u2019s the whole form.');
+  }));
+  site.dataset.book='wheel';
+};
+
+/* 6 — seats stepper */
+M.stepper=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  const soft=hexA(d.ac,.4);
+  const box=document.createElement('div');
+  box.className='stepbox';
+  box.innerHTML=`<button style="border-color:${soft};color:${d.tx}">\u2212</button><div class="num" style="color:${d.ac}">2</div><button style="border-color:${soft};color:${d.tx}">+</button>`;
+  b.before(box);
+  box.addEventListener('pointerdown',e=>e.stopPropagation());
+  const num=box.querySelector('.num'),btns=box.querySelectorAll('button');
+  let n=2;
+  btns[0].addEventListener('click',()=>{n=Math.max(1,n-1);num.textContent=n;buzz(6)});
+  btns[1].addEventListener('click',()=>{n=Math.min(12,n+1);num.textContent=n;buzz(6)});
+  b.addEventListener('click',()=>{if(b.dataset.done)return;b.dataset.done=1;
+    b.textContent=`\u2713 table for ${n} \u2014 held`;buzz([12,40,12]);sparks(b,d.ac)});
+  site.dataset.book='stepper';
+};
+
+/* 7 — the doorbell */
+M.bell=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  const bell=document.createElement('button');
+  bell.className='bellbtn';bell.textContent='\uD83D\uDD14';
+  b.before(bell);
+  bell.addEventListener('pointerdown',e=>e.stopPropagation());
+  const ring=()=>{
+    bell.classList.remove('ring');void bell.offsetWidth;bell.classList.add('ring');
+    buzz([15,60,15]);
+    if(!b.dataset.done){b.dataset.done=1;b.textContent='ding \u2014 ahla w sahla, table held';sparks(b,d.ac)}
+  };
+  bell.addEventListener('click',ring);
+  b.addEventListener('click',ring);
+  site.dataset.book='bell';
+};
+
+/* 8 — light a candle */
+M.candle=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  const c=document.createElement('div');
+  c.className='candle';
+  c.style.background=`linear-gradient(180deg,${hexA(d.ac,.9)},${hexA(d.ac,.5)})`;
+  c.innerHTML=`<div class="fl" style="background:radial-gradient(circle at 50% 70%,#FFE9B0,#E8A34B 70%)"></div>`;
+  b.before(c);
+  b.textContent='light a candle to reserve';
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;b.dataset.done=1;
+    c.classList.add('lit');buzz([10,40,10]);
+    b.textContent='\u2713 your table glows \u2014 held';sparks(b,d.ac);
+  });
+  site.dataset.book='candle';
+};
+
+/* 9 — street order basket */
+M.basket=(site,d)=>{
+  heroScroll(site,'[data-crow]');
+  const target=mainCTA(site);
+  const card=target.closest('.ccard');
+  target.remove();
+  if(card){const k=card.querySelector('.cbig');if(k)k.textContent='tap the dishes \u2192 build your order'}
+  const pill=document.createElement('div');
+  pill.className='basketpill';
+  pill.style.background=d.ac;pill.style.color=d.bg;
+  pill.textContent='0 items \u2014 order';
+  site.appendChild(pill);
+  let n=0;
+  site.querySelectorAll('.mrows div').forEach(row=>{
+    row.classList.add('addable');
+    row.addEventListener('pointerdown',e=>e.stopPropagation());
+    row.addEventListener('click',()=>{
+      if(pill.dataset.done)return;
+      n++;buzz(8);row.classList.remove('addflash');void row.offsetWidth;row.classList.add('addflash');
+      pill.classList.add('on');pill.textContent=`${n} item${n>1?'s':''} \u2014 tap to order`;
     });
   });
-}
+  pill.addEventListener('pointerdown',e=>e.stopPropagation());
+  pill.addEventListener('click',()=>{
+    if(!n||pill.dataset.done)return;pill.dataset.done=1;
+    pill.textContent=`\u2713 order placed \u2014 ready in 12 min`;
+    buzz([12,50,12]);sparks(pill,'#fff');
+  });
+  site.dataset.book='basket';
+};
+
+/* 10 — rubber stamp */
+M.stamp=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  b.style.position='relative';b.style.overflow='visible';
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;b.dataset.done=1;
+    const st=document.createElement('div');
+    st.className='stampmark';st.textContent='booked';
+    st.style.borderColor=d.ac;st.style.color=d.ac;st.style.background=hexA(d.bg,.85);
+    b.appendChild(st);buzz([20,30,20]);
+    note(b,'stamped. your table is in the book.');
+  });
+  site.dataset.book='stamp';
+};
+
+/* 11 — smash it (tap 5 times) */
+M.smash=(site,d)=>{
+  heroScroll(site,'[data-crow]');
+  const b=strip(mainCTA(site));
+  b.classList.add('smashbtn');
+  let hits=0;const need=5;
+  b.textContent=`smash to order \u00d7${need}`;
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;
+    hits++;buzz(10);
+    b.classList.remove('hit');void b.offsetWidth;b.classList.add('hit');
+    b.style.transform=`scale(${1+hits*0.03})`;
+    if(hits>=need){b.dataset.done=1;b.style.transform='';b.textContent='SMASHED \u2014 order in \uD83E\uDD24';buzz([20,60,20]);sparks(b,'#fff')}
+    else b.textContent=`smash \u00d7${need-hits} more`;
+  });
+  site.dataset.book='smash';
+};
+
+/* 12 — knock twice */
+M.knock=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  b.textContent='knock to enter';
+  const hint=document.createElement('div');
+  hint.className='knockhint';hint.style.color=d.ac;hint.textContent='(twice \u2014 like at teta\u2019s door)';
+  b.after(hint);
+  let last=0;
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;
+    const t=Date.now();buzz(14);
+    if(t-last<800){b.dataset.done=1;b.textContent='\u2713 ahlan! table held';hint.textContent='the door is always open for you.';sparks(b,d.ac);buzz([12,50,12])}
+    else{b.textContent='knock\u2026 (once more)'}
+    last=t;
+  });
+  site.dataset.book='knock';
+};
+
+/* 13 — build the macaron box */
+M.macaron=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  const row=document.createElement('div');
+  row.className='macrow';
+  const cols=['#E9B7C4','#C9E4C5','#F5D7A1','#C7B9E2','#F2B8A0'];
+  row.innerHTML=cols.map(c=>`<div class="macd" style="background:radial-gradient(circle at 50% 30%,${c},${c}dd);box-shadow:0 3px 0 ${hexA(d.ac,.3)}"></div>`).join('');
+  b.before(row);
+  row.addEventListener('pointerdown',e=>e.stopPropagation());
+  b.textContent='pick two \u2014 then reserve the box';
+  let picked=0;
+  row.querySelectorAll('.macd').forEach(m=>m.addEventListener('click',()=>{
+    if(b.dataset.done)return;
+    m.classList.toggle('pick');
+    m.style.borderColor=m.classList.contains('pick')?d.ac:'transparent';
+    picked=row.querySelectorAll('.pick').length;buzz(6);
+    b.textContent=picked>=2?'reserve the box \u2192':'pick two \u2014 then reserve the box';
+  }));
+  b.addEventListener('click',()=>{
+    if(b.dataset.done||picked<2)return;b.dataset.done=1;
+    b.textContent='\u2713 box tied & held \uD83C\uDF80';buzz([12,40,12]);sparks(b,d.ac);
+  });
+  site.dataset.book='macaron';
+};
+
+/* 14 — concierge chat */
+M.chat=(site,d)=>{
+  heroScroll(site,'.sfoot');
+  const b=strip(mainCTA(site));
+  const light=['#F4EEE1','#F2EBDC','#EFE9DB','#F9EDE8'].includes(d.bg);
+  const box=document.createElement('div');
+  box.className='chatbox';
+  b.after(box);
+  const bub=(cls,html)=>{const e=document.createElement('div');e.className='cb '+cls;e.innerHTML=html;
+    e.style.background=cls.includes('guest')?d.ac:(light?'rgba(0,0,0,.06)':'rgba(255,255,255,.08)');
+    e.style.color=cls.includes('guest')?d.bg:d.tx;
+    box.appendChild(e);requestAnimationFrame(()=>e.classList.add('show'));return e};
+  b.addEventListener('click',()=>{
+    if(b.dataset.done)return;b.dataset.done=1;
+    b.style.display='none';box.classList.add('on');
+    bub('guest','table for two, tonight?');
+    setTimeout(()=>{const t=bub('host typing','<i></i><i></i><i></i>');
+      setTimeout(()=>{t.remove();bub('host','with pleasure. 9pm, by the window? \uD83D\uDD6F');
+        setTimeout(()=>{bub('guest','perfect.');
+          setTimeout(()=>{bub('host','\u2713 held under your name. see you tonight.');buzz([12,40,12]);
+            note(box,'your concierge, built in. answers in seconds.');
+          },700);
+        },800);
+      },1100);
+    },600);
+  });
+  site.dataset.book='chat';
+};
+
+/* 15 — pour the pint (hold, themed) → uses M.hold with pint config */
+
+/* ── assignment: one mechanic per design ── */
+const BOOK={
+'Velvet Hour':['chat'],
+'Onyx':['slide'],
+'Smoke & Citrus':['wheel'],
+'Casa Luna':['sheet'],
+'Forno':['hold',{fill:'linear-gradient(180deg,#FFB347,#E2582B)',label:'hold \u2014 90 seconds in the fire',done:'\u2713 fired \u2014 table held'}],
+'Osteria 21':['stepper'],
+'Beit Zaytoun':['bell'],
+'Sitt Nour':['candle'],
+'Joura':['basket'],
+'Hop Saint':['stamp'],
+'The Brass Tap':['hold',{fill:'linear-gradient(180deg,#F6EFDF 0 12%,#EFB35C 12%)',label:'hold \u2014 pour your pint',done:'\u2713 poured \u2014 stool saved'}],
+'Barrel & Bone':['tap'],
+'Sucr\u00e9':['macaron'],
+'MELT':['smash'],
+'Qashta':['knock']
+};
 
 const _build=buildDeck;
 buildDeck=function(){
   _build();
   const ds=CATS[cat].designs;
   document.querySelectorAll('#deck .phone').forEach(ph=>{
-    bookingFor(ph.querySelector('.site'),ds[+ph.dataset.i]);
+    const d=ds[+ph.dataset.i];
+    const site=ph.querySelector('.site');
+    const cfg=BOOK[d.name]||['sheet'];
+    M[cfg[0]](site,d,cfg[1]);
   });
 };
 })();
-</script>\n</body>
+</script>
+</body>
 </html>
