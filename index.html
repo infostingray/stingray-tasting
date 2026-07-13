@@ -965,6 +965,86 @@ img{display:block;max-width:100%}
   .h-sucre .nm,.h-melt .nm,.h-sitt .nm,.h-brass::after,.h-smoke::after,.h-osteria .arch,.h-velvet .nm i{animation:none}
 }
 </style>
+<style id="v12">
+/* ═════════ V12 — brand elevation pass (no preloader names) ═════════ */
+/* VELVET HOUR — cinematic moonfield */
+.h-velvet{background:radial-gradient(130% 90% at 50% -12%,#251A30 0%,#0B0A0C 62%)}
+.h-velvet::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(232,222,201,.5) .6px,transparent 1px);
+  background-size:56px 56px;opacity:.35}
+.h-velvet .moon{width:132px;height:132px;top:44px;right:auto;left:50%;transform:translateX(-50%);opacity:.9}
+.h-velvet .nm{font-size:50px;position:relative;z-index:2;mix-blend-mode:screen}
+.h-velvet .hr{height:52px;background:linear-gradient(#C9A96A,transparent);position:relative}
+.h-velvet .hr::after{content:'';position:absolute;top:-3px;left:-2px;width:5px;height:5px;border-radius:50%;background:#C9A96A}
+/* ONYX — reflection */
+.h-onyx .nm{font-size:64px;position:relative}
+.h-onyx .nm::after{content:'ONYX';position:absolute;top:100%;left:0;right:0;transform:scaleY(-1);
+  opacity:.16;background:linear-gradient(180deg,#9FD8FF 0%,transparent 62%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+/* SMOKE & CITRUS — the ampersand is the brand */
+.h-smoke .nm{font-size:36px}
+.h-smoke .nm em{font-size:66px;display:inline-block;transform:translateY(8px) rotate(-6deg)}
+.h-smoke .citrus{width:66px;height:66px;box-shadow:0 0 0 5px rgba(216,134,43,.28),0 0 34px rgba(216,134,43,.3)}
+/* CASA LUNA — hand feel */
+.h-casa .nm{font-size:54px}
+.h-casa .tg{position:relative;display:inline-block;padding-bottom:8px}
+.h-casa .tg::after{content:'';position:absolute;left:0;right:14%;bottom:0;height:5px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23B33A2B' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat:repeat-x}
+.h-casa .stamp{box-shadow:inset 0 0 0 3px rgba(244,238,225,.35)}
+/* FORNO — the furnace */
+.h-forno{background:radial-gradient(120% 70% at 50% 115%,#7A2115 0%,#B33A2B 55%)}
+.h-forno .nm{font-size:96px}
+.h-forno::before{content:'EST \00b7 485\00b0C \00b7 NAPOLI RULES';position:absolute;top:50%;right:10px;
+  transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:6.5px;
+  letter-spacing:.34em;text-transform:uppercase;opacity:.55;pointer-events:none}
+/* OSTERIA — the cellar bulb */
+.h-osteria .arch{width:172px;height:236px}
+.h-osteria .arch::after{content:'';position:absolute;top:16px;left:50%;width:6px;height:6px;margin-left:-3px;
+  border-radius:50%;background:#F0D9A8;box-shadow:0 0 18px 6px rgba(240,217,168,.5);animation:lantern 3.4s ease-in-out infinite}
+/* BEIT — grander arches */
+.h-beit .arches i{width:52px;height:118px;border-radius:52px 52px 0 0}
+.h-beit .arches i:nth-child(2){height:140px;margin-top:-22px}
+.h-beit .ar{font-size:19px}
+.h-beit .nm{font-size:36px}
+/* SITT NOUR — gilded corners */
+.h-sitt .hwrap{position:relative}
+.h-sitt .hwrap::before,.h-sitt .hwrap::after{content:'';position:absolute;width:34px;height:34px;pointer-events:none;border:1px solid rgba(228,184,114,.65)}
+.h-sitt .hwrap::before{top:66px;left:10px;border-right:none;border-bottom:none}
+.h-sitt .hwrap::after{bottom:54px;right:10px;border-left:none;border-top:none}
+.h-sitt .nm{font-size:40px}
+/* JOURA — torn poster */
+.h-joura::before{content:'';position:absolute;left:0;right:0;bottom:0;height:16px;background:#E4B04A;
+  clip-path:polygon(0 100%,0 46%,4% 78%,9% 38%,14% 72%,20% 30%,26% 70%,33% 42%,40% 76%,47% 34%,54% 70%,61% 40%,68% 74%,75% 32%,82% 68%,89% 42%,95% 72%,100% 40%,100% 100%);pointer-events:none}
+.h-joura .nm{font-size:80px}
+/* BRASS TAP — coaster ring + bigger twelve */
+.h-brass .twelve{font-size:206px;top:8px}
+.h-brass .inner{position:relative}
+.h-brass .inner::before{content:'';position:absolute;top:-44px;left:-14px;width:110px;height:110px;border-radius:50%;
+  border:9px solid rgba(239,179,92,.12);pointer-events:none}
+/* HOP SAINT — crest leaf */
+.h-hop .crest{width:72px;height:72px;position:relative}
+.h-hop .crest::after{content:'\273F';position:absolute;top:-8px;right:-8px;font-size:15px;font-style:normal;color:#3E5C41;background:#EFE9DB;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border:1px solid #3E5C41}
+/* BARREL — smoke wisps */
+.h-barrel::before{content:'';position:absolute;bottom:120px;left:32%;width:3px;height:90px;border-radius:3px;
+  background:linear-gradient(180deg,transparent,rgba(233,223,206,.22));filter:blur(3px);
+  animation:wisp 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes wisp{0%,100%{transform:translateY(0) translateX(0);opacity:.5}50%{transform:translateY(-26px) translateX(8px);opacity:.9}}
+.h-barrel .nm{font-size:37px}
+/* SUCRÉ — double scallop, plumper macaron */
+.h-sucre .scallop::after{content:'';position:absolute;top:14px;left:13px;right:-13px;height:14px;
+  background:radial-gradient(circle at 13px -5px,rgba(201,154,91,.5) 12px,transparent 13px);background-size:26px 14px}
+.h-sucre .mac{width:78px;height:52px;filter:drop-shadow(0 10px 10px rgba(58,42,38,.18))}
+.h-sucre .nm{font-size:60px}
+/* MELT — glossier, louder */
+.h-melt .nm{font-size:118px;text-shadow:6px 6px 0 #5A2B1E}
+.h-melt .drips i::after{content:'';position:absolute;top:4px;left:3px;width:4px;height:60%;border-radius:4px;background:rgba(255,255,255,.55)}
+/* QASHTA — engraved tray */
+.h-qashta::before{content:'';position:absolute;top:50%;left:50%;width:210px;height:210px;margin:-105px 0 0 -105px;
+  border-radius:50%;border:1px solid rgba(232,176,75,.3);box-shadow:inset 0 0 0 8px transparent,inset 0 0 0 9px rgba(232,176,75,.18);pointer-events:none}
+.h-qashta .ar{font-size:64px}
+@media(prefers-reduced-motion:reduce){.h-barrel::before,.h-osteria .arch::after{animation:none}}
+</style>
 </head>
 <body>
 
@@ -2321,6 +2401,16 @@ const _build=buildDeck;
 buildDeck=function(){
   _build();
   document.querySelectorAll('#deck .sheet, #deck .sheet-veil').forEach(e=>e.remove());
+};
+})();
+</script>
+<script id="v12js">
+/* V12 — sites load directly: no name-splash preloaders */
+(function(){
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  document.querySelectorAll('#deck .splash').forEach(e=>e.remove());
 };
 })();
 </script>
