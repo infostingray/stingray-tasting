@@ -1107,6 +1107,15 @@ img{display:block;max-width:100%}
 .hero .hph{position:absolute;inset:-8% 0;background-size:cover;background-position:center;z-index:0;pointer-events:none}
 .hero .hwrap{position:relative;z-index:2}
 </style>
+<style id="v18">
+/* ═════════ V18 — photo atmosphere everywhere + kill the flicker ═════════ */
+/* flicker fix: no more live drag-tilt (it fought the transition) */
+.phone.pos-active{transform:translateX(0) scale(1)!important}
+/* menu-first heads become photo banners */
+.mhead{position:relative;min-height:224px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.mhead .mphd{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;pointer-events:none}
+.mhead>.hwrap{position:relative;z-index:2}
+</style>
 </head>
 <body>
 
@@ -2459,7 +2468,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 17';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 18';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2578,6 +2587,55 @@ buildDeck=function(){
     b.className='hph';
     b.style.backgroundImage=`${cfg[1]},url('${cfg[0]}')`;
     hero.prepend(b);
+  });
+};
+})();
+</script>
+<script id="v18js">
+/* V18 — atmosphere pass: every design gets its photo backdrop */
+(function(){
+/* [img, scrim] — dark brands get dark scrims, light brands get a frosted veil in their own tone */
+const MAP=()=>({
+/* story / poster heroes */
+'Casa Luna':[IMGS.italian.gal[1][0],'linear-gradient(180deg,rgba(244,238,225,.86) 0%,rgba(244,238,225,.78) 45%,rgba(244,238,225,.96) 100%)'],
+'Forno':[IMGS.italian.gal[0][0],'linear-gradient(180deg,rgba(179,58,43,.82) 0%,rgba(179,58,43,.68) 45%,rgba(120,32,22,.96) 100%)'],
+'Beit Zaytoun':[IMGS.lebanese.gal[0][0],'linear-gradient(180deg,rgba(242,235,220,.86) 0%,rgba(242,235,220,.76) 45%,rgba(242,235,220,.96) 100%)'],
+'Hop Saint':[IMGS.pub.gal[2][0],'linear-gradient(180deg,rgba(239,233,219,.88) 0%,rgba(239,233,219,.78) 45%,rgba(239,233,219,.96) 100%)'],
+'Sucr\u00e9':[U('1555507036-ab1f4038808a'),'linear-gradient(180deg,rgba(249,237,232,.88) 0%,rgba(249,237,232,.8) 45%,rgba(249,237,232,.97) 100%)'],
+'MELT':[IMGS.dessert.dish,'linear-gradient(180deg,rgba(255,127,165,.88) 0%,rgba(255,127,165,.78) 45%,rgba(214,80,124,.95) 100%)']
+});
+/* menu-first photo banner heads */
+const MHEAD=()=>({
+'Smoke & Citrus':[IMGS.lounge.gal[1][0],'linear-gradient(180deg,rgba(21,16,9,.55) 0%,rgba(21,16,9,.86) 100%)'],
+'Osteria 21':[IMGS.italian.gal[2][0],'linear-gradient(180deg,rgba(28,26,22,.55) 0%,rgba(28,26,22,.88) 100%)'],
+'Sitt Nour':[IMGS.lebanese.gal[2][0],'linear-gradient(180deg,rgba(23,19,16,.55) 0%,rgba(23,19,16,.88) 100%)'],
+'Barrel & Bone':[IMGS.lebanese.gal[1][0],'linear-gradient(180deg,rgba(20,18,16,.6) 0%,rgba(20,18,16,.9) 100%)'],
+'Qashta':[U('1519676867240-f03562e64548'),'linear-gradient(180deg,rgba(32,54,42,.62) 0%,rgba(32,54,42,.9) 100%)']
+});
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs,hm=MAP(),mm=MHEAD();
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    const d=ds[+ph.dataset.i],site=ph.querySelector('.site');
+    const h=hm[d.name];
+    if(h){
+      const hero=site.querySelector('.hero');
+      if(hero&&!hero.querySelector('.hph')){
+        const b=document.createElement('div');b.className='hph';
+        b.style.backgroundImage=`${h[1]},url('${h[0]}')`;
+        hero.prepend(b);
+      }
+    }
+    const m=mm[d.name];
+    if(m){
+      const head=site.querySelector('.mhead');
+      if(head&&!head.querySelector('.mphd')){
+        const b=document.createElement('div');b.className='mphd';
+        b.style.backgroundImage=`${m[1]},url('${m[0]}')`;
+        head.prepend(b);
+      }
+    }
   });
 };
 })();
