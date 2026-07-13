@@ -747,6 +747,36 @@ img{display:block;max-width:100%}
 .pquote .qtrack{display:inline-block;font-style:italic;font-size:13px;animation:pmarq 14s linear infinite}
 .chint{font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.45;text-align:center;padding:10px 0 0}
 </style>
+<style id="v8">
+/* ═════════ V8 — three booking mechanics + unfreeze ═════════ */
+/* sheet: confirm is never disabled, sheet scrolls freely */
+.sheet{touch-action:pan-y}
+.sheet .confirm{opacity:1;pointer-events:auto}
+/* instant one-tap booking (menu-first) */
+.big-cta.booked,.chip-cta.booked{letter-spacing:.14em}
+.insta-sub{font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;opacity:0;margin-top:10px;transition:opacity .5s}
+.insta-sub.show{opacity:.6}
+/* slide-to-book (poster) */
+.slideres{
+  position:relative;margin-top:14px;height:52px;border-radius:100px;
+  border:1px solid;overflow:hidden;touch-action:pan-y;user-select:none;
+}
+.slideres .strack{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.7;
+  animation:slideHint 2.2s ease-in-out infinite;
+}
+@keyframes slideHint{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.slideres .sfill{position:absolute;top:0;bottom:0;left:0;width:0;opacity:.25}
+.slideres .knob{
+  position:absolute;top:4px;left:4px;width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  cursor:grab;will-change:transform;box-shadow:0 6px 16px -6px rgba(0,0,0,.5);
+}
+.slideres .knob:active{cursor:grabbing}
+.slideres.locked .strack{animation:none;opacity:1}
+.slideres.locked .knob{transition:transform .3s}
+</style>
 </head>
 <body>
 
@@ -1816,6 +1846,122 @@ updateDeck=function(inst){
   }
   const tag=pi&&pi.querySelector('.ctag');
   if(tag)tag.textContent=TAG[L];
+};
+})();
+</script>\n<script id="v8js">
+/* ═════════ V8 — booking mechanics per concept ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+function sparks(el,color){
+  if(RM)return;
+  for(let i=0;i<12;i++){
+    const s=document.createElement('i');s.className='spark';
+    const a=Math.random()*Math.PI*2,r=30+Math.random()*30;
+    s.style.setProperty('--sx',(Math.cos(a)*r).toFixed(0)+'px');
+    s.style.setProperty('--sy',(Math.sin(a)*r).toFixed(0)+'px');
+    s.style.background=color;
+    el.appendChild(s);setTimeout(()=>s.remove(),650);
+  }
+}
+const stripListeners=el=>{const c=el.cloneNode(true);el.replaceWith(c);return c};
+
+function bookingFor(site,d){
+  const isMenu=!!site.querySelector('.menuXL');
+  const isPoster=!!site.querySelector('[data-crow]');
+
+  if(!isMenu&&!isPoster){
+    /* STORY SITE — keep the sheet, but pre-fill it so confirm works instantly */
+    const g=site.querySelector('[data-g] .ch'),t=site.querySelector('[data-t] .ch');
+    if(g)g.click();if(t)t.click();
+    return;
+  }
+
+  if(isMenu){
+    /* MENU-FIRST — one tap, zero form */
+    site.querySelectorAll('[data-sheet]').forEach(btn=>{
+      const b=stripListeners(btn);
+      b.style.position='relative';b.style.overflow='visible';
+      b.addEventListener('pointerdown',e=>e.stopPropagation());
+      b.addEventListener('click',()=>{
+        if(b.classList.contains('booked'))return;
+        b.classList.add('booked');
+        b.textContent='\u2713 table held \u2014 see you tonight';
+        buzz([12,40,12]);sparks(b,d.ac);
+        let sub=b.parentElement.querySelector('.insta-sub');
+        if(!sub){sub=document.createElement('div');sub.className='insta-sub';
+          sub.textContent='one tap. no forms. this is how your guests will book.';
+          b.after(sub);}
+        requestAnimationFrame(()=>sub.classList.add('show'));
+      });
+    });
+    return;
+  }
+
+  /* POSTER — slide to book */
+  const resCard=site.querySelector('.bigres');
+  if(resCard){
+    const soft=hexA(d.ac,.4);
+    const slider=document.createElement('div');
+    slider.className='slideres';
+    slider.style.borderColor=soft;
+    slider.innerHTML=`
+      <div class="sfill" style="background:${d.ac}"></div>
+      <div class="strack">slide to book \u2192</div>
+      <div class="knob" style="background:${d.ac};color:${d.bg}">\u2192</div>`;
+    resCard.replaceWith(slider);
+    const knob=slider.querySelector('.knob'),fill=slider.querySelector('.sfill'),track=slider.querySelector('.strack');
+    let drag=false,x=0,max=0;
+    knob.addEventListener('pointerdown',e=>{
+      if(slider.classList.contains('locked'))return;
+      e.stopPropagation();drag=true;
+      max=slider.clientWidth-knob.clientWidth-8;
+      try{knob.setPointerCapture(e.pointerId)}catch(_){}
+    });
+    knob.addEventListener('pointermove',e=>{
+      if(!drag)return;
+      const r=slider.getBoundingClientRect();
+      x=Math.max(0,Math.min(max,e.clientX-r.left-knob.clientWidth/2));
+      knob.style.transform=`translateX(${x}px)`;
+      fill.style.width=(x+44)+'px';
+    });
+    const up=()=>{
+      if(!drag)return;drag=false;
+      if(x>max*.82){
+        slider.classList.add('locked');
+        knob.style.transform=`translateX(${max}px)`;
+        knob.textContent='\u2713';fill.style.width='100%';fill.style.opacity=.9;
+        track.textContent='booked \u2014 table held';
+        track.style.color=d.bg;track.style.position='relative';track.style.zIndex=1;
+        buzz([12,50,12]);sparks(slider,'#ffffff');
+      }else{
+        knob.style.transition='transform .35s cubic-bezier(.3,1.4,.5,1)';
+        knob.style.transform='translateX(0)';fill.style.width='0';
+        setTimeout(()=>knob.style.transition='',380);
+        x=0;
+      }
+    };
+    knob.addEventListener('pointerup',up);
+    knob.addEventListener('pointercancel',up);
+  }
+  /* poster hero CTA scrolls to the card row instead of opening a form */
+  site.querySelectorAll('.hwrap [data-sheet]').forEach(btn=>{
+    const b=stripListeners(btn);
+    b.addEventListener('pointerdown',e=>e.stopPropagation());
+    b.addEventListener('click',()=>{
+      const row=site.querySelector('[data-crow]');
+      if(row)row.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+    });
+  });
+}
+
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs;
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    bookingFor(ph.querySelector('.site'),ds[+ph.dataset.i]);
+  });
 };
 })();
 </script>\n</body>
