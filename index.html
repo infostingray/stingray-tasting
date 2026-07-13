@@ -700,6 +700,53 @@ img{display:block;max-width:100%}
 @keyframes syrupDrip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:1}100%{transform:translateY(14px);opacity:0}}
 .h-qashta .tg{font-family:var(--mono);font-size:7px;letter-spacing:.28em;text-transform:uppercase;opacity:.7;margin-top:12px}
 </style>
+<style id="v7">
+/* ═════════ V7 — three site concepts (structural DNA) ═════════ */
+/* ── concept tag in funnel UI ── */
+.ctag{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:7px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:100px;border:1px solid var(--line);color:var(--bone-dim)}
+/* ── B: MENU-FIRST ── */
+.mhead{padding:52px 20px 20px}
+.mhead .mrow{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.mhead .nm2{font-size:26px;line-height:1}
+.mhead .tg2{font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.6;margin-top:8px}
+.menuXL{padding:8px 20px 26px}
+.menuXL .gk{font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin:24px 0 10px}
+.menuXL .it{display:flex;align-items:baseline;gap:8px;padding:12px 0;border-bottom:1px dashed}
+.menuXL .it .n2{font-size:15px;flex:0 1 auto}
+.menuXL .it .lead{flex:1;border-bottom:1px dotted;opacity:.3;transform:translateY(-3px)}
+.menuXL .it .p2{font-size:14px;flex:0 0 auto}
+.menuXL .it .d2{flex-basis:100%;font-family:var(--mono);font-size:6.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;margin-top:3px}
+.band{height:150px;margin:8px 0;background-size:cover;background-position:center;position:relative}
+.band span{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;color:#fff}
+.band::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5))}
+.chefcard{display:flex;align-items:center;gap:14px;margin:20px 20px 0;padding:14px;border-radius:14px;border:1px solid}
+.chefcard .cimg{width:62px;height:62px;border-radius:50%;background-size:cover;background-position:center;flex:0 0 auto;box-shadow:0 8px 18px -8px rgba(0,0,0,.5)}
+.chefcard .ck{font-family:var(--mono);font-size:6px;letter-spacing:.24em;text-transform:uppercase;opacity:.6}
+.chefcard .cn{font-size:15px;margin-top:3px}
+.chefcard .cp{margin-left:auto;font-size:17px}
+/* ── C: POSTER / STORIES ── */
+.crow{
+  display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:6px 20px 14px;margin:0;scrollbar-width:none;touch-action:pan-x pan-y;
+}
+.crow::-webkit-scrollbar{display:none}
+.ccard{
+  flex:0 0 76%;scroll-snap-align:center;border-radius:16px;overflow:hidden;
+  min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:16px;position:relative;border:1px solid;
+}
+.ccard.photo{background-size:cover;background-position:center}
+.ccard .ck2{font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.65;margin-bottom:8px}
+.ccard .cbig{font-size:22px;line-height:1.1}
+.ccard .mrows{margin-top:10px}
+.ccard .mrows div{display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.ccard .mrows div:last-child{border:none}
+.ccard .cprice{font-size:26px;margin-top:6px}
+.ccard .bigres{margin-top:14px;border:none;cursor:pointer;font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;padding:15px;border-radius:100px;width:100%}
+.pquote{padding:14px 0!important;border-top:1px solid;border-bottom:1px solid;overflow:hidden;white-space:nowrap}
+.pquote .qtrack{display:inline-block;font-style:italic;font-size:13px;animation:pmarq 14s linear infinite}
+.chint{font-family:var(--mono);font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.45;text-align:center;padding:10px 0 0}
+</style>
 </head>
 <body>
 
@@ -1620,6 +1667,155 @@ buildDeck=function(){
   document.querySelectorAll('#deck .phone').forEach(ph=>{
     enhance3D(ph.querySelector('.site'),ds[+ph.dataset.i],imgs);
   });
+};
+})();
+</script>\n<script id="v7js">
+/* ═════════ V7 — structural archetypes: editorial / menu-first / poster ═════════ */
+(function(){
+const LAYOUT={
+'Velvet Hour':'editorial','Onyx':'poster','Smoke & Citrus':'menu',
+'Casa Luna':'editorial','Forno':'poster','Osteria 21':'menu',
+'Beit Zaytoun':'editorial','Joura':'poster','Sitt Nour':'menu',
+'Hop Saint':'editorial','The Brass Tap':'poster','Barrel & Bone':'menu',
+'Sucr\u00e9':'editorial','MELT':'poster','Qashta':'menu'
+};
+const TAG={editorial:'concept \u00b7 story site',menu:'concept \u00b7 menu-first',poster:'concept \u00b7 poster / swipe'};
+const isL=b=>['#F4EEE1','#F2EBDC','#EFE9DB','#F9EDE8'].includes(b);
+
+function sheetHTML(d,light,soft){
+  return `
+    <div class="sheet-veil" data-veil></div>
+    <div class="sheet" data-sheet-el style="background:${light?'#fff':'#131110'};color:${d.tx};font-family:${d.font};box-shadow:0 -18px 50px rgba(0,0,0,.4)">
+      <button class="xclose" data-close>\u2715</button>
+      <div class="grab"></div>
+      <div class="stepper">
+        <div class="sh-t">${d.cta}</div>
+        <div class="sh-s" style="color:${d.ac};opacity:1">live demo \u2014 this works on your real site too</div>
+        <div class="fk">guests</div>
+        <div class="chips" data-g>
+          <button class="ch" style="border-color:${soft}">2</button>
+          <button class="ch" style="border-color:${soft}">4</button>
+          <button class="ch" style="border-color:${soft}">6+</button>
+        </div>
+        <div class="fk">tonight at</div>
+        <div class="chips" data-t>
+          <button class="ch" style="border-color:${soft}">7:30</button>
+          <button class="ch" style="border-color:${soft}">9:00</button>
+          <button class="ch" style="border-color:${soft}">10:30</button>
+        </div>
+        <button class="confirm" data-confirm style="background:${d.ac};color:${d.bg}">confirm the table</button>
+      </div>
+      <div class="done">
+        <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="25" stroke="${d.ac}"/><path d="M18 29 l7 7 l14 -15" stroke="${d.ac}"/></svg>
+        <div class="dt">Table held.</div>
+        <div class="ds">this is how easy it\u2019ll be for<br>your guests. every night.</div>
+      </div>
+    </div>`;
+}
+
+/* B — MENU-FIRST: the menu IS the site */
+function menuFirst(d,imgs){
+  const s=document.createElement('div');
+  s.className='site';
+  s.style.background=d.bg;s.style.color=d.tx;s.style.fontFamily=d.font;
+  const light=isL(d.bg),soft=hexA(d.ac,.3),softer=hexA(d.ac,.18);
+  const groups=d.tabs.map((t,gi)=>`
+    <div class="gk r" style="color:${d.ac}">\u2014 ${t[0]}</div>
+    ${t[1].map(m=>`
+      <div class="it r" style="border-color:${softer}">
+        <span class="n2">${m[0]}</span><span class="lead" style="border-color:${d.ac}"></span><span class="p2" style="color:${d.ac}">${m[2]}</span>
+        <span class="d2">${m[1]}</span>
+      </div>`).join('')}
+    ${gi<d.tabs.length-1?`<div class="band hslide r" style="background-image:url('${imgs.gal[gi][0]}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.1)});margin-left:-20px;margin-right:-20px"><span>${imgs.gal[gi][1]}</span></div>`:''}
+  `).join('');
+  s.innerHTML=`
+    <div class="sec mhead"><div class="hwrap">
+      <div class="sk" style="color:${d.ac}">${d.loc}</div>
+      <div class="mrow"><div class="nm2">${d.name}</div>
+      <button class="chip-cta" data-sheet style="border:1px solid ${d.ac};color:${d.ac};margin:0">${d.cta}</button></div>
+      <div class="tg2">the menu, straight up \u2014 no scrolling stories</div>
+    </div></div>
+    <div class="menuXL">${groups}</div>
+    <div class="chefcard r" style="border-color:${soft}">
+      <div class="cimg" style="background-image:url('${imgs.dish}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.1)})"></div>
+      <div><div class="ck" style="color:${d.ac}">chef recommends</div><div class="cn">${d.dish.n}</div></div>
+      <div class="cp" style="color:${d.ac}">${d.dish.p}</div>
+    </div>
+    <div class="sec"><div class="info r"><span>${d.hours}</span><span style="text-align:right">${d.loc}</span></div></div>
+    <div class="sec sfoot" style="border-top:1px solid ${soft}">
+      <button class="big-cta r" data-sheet style="background:${d.ac};color:${d.bg}">${d.cta}</button>
+      <div class="made">site by stingray \u2014 ads that leave a mark</div>
+    </div>
+    ${sheetHTML(d,light,soft)}`;
+  wireSite(s,d);
+  return s;
+}
+
+/* C — POSTER: hero + sideways stories */
+function poster(d,imgs){
+  const s=document.createElement('div');
+  s.className='site';
+  s.style.background=d.bg;s.style.color=d.tx;s.style.fontFamily=d.font;
+  const light=isL(d.bg),soft=hexA(d.ac,.3);
+  const cardBg=light?'rgba(0,0,0,.05)':'rgba(255,255,255,.05)';
+  const menuCards=d.tabs.map(t=>`
+    <div class="ccard" style="border-color:${soft};background:${cardBg}">
+      <div><div class="ck2" style="color:${d.ac}">${t[0]}</div>
+      <div class="mrows">${t[1].map(m=>`<div><span>${m[0]}</span><span style="color:${d.ac}">${m[2]}</span></div>`).join('')}</div></div>
+    </div>`).join('');
+  s.innerHTML=`
+    <div class="sec hero ${d.heroClass}"><div class="hwrap">${d.hero}</div></div>
+    <div class="sec pquote" style="border-color:${soft};padding-left:0;padding-right:0">
+      <div class="qtrack">${(d.pull+' \u00a0\u00b7\u00a0 ').repeat(6)}</div>
+    </div>
+    <div class="crow" data-crow>
+      <div class="ccard photo hslide" style="border-color:${soft};background-image:url('${imgs.dish}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.1)})">
+        <div class="ck2" style="color:#fff">tonight\u2019s signature</div>
+        <div class="cbig" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)">${d.dish.n}</div>
+        <div class="cprice" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)">${d.dish.p}</div>
+      </div>
+      ${menuCards}
+      <div class="ccard photo hslide" style="border-color:${soft};background-image:url('${imgs.gal[0][0]}'),radial-gradient(circle,${hexA(d.ac,.4)},${hexA(d.ac,.1)})">
+        <div class="ck2" style="color:#fff">${imgs.gal[0][1]}</div>
+      </div>
+      <div class="ccard" style="border-color:${soft};background:${cardBg};justify-content:center;text-align:center">
+        <div class="ck2" style="color:${d.ac}">${d.hours}</div>
+        <div class="cbig">${d.cta}</div>
+        <button class="bigres" data-sheet style="background:${d.ac};color:${d.bg}">book it</button>
+      </div>
+    </div>
+    <div class="chint" style="color:${d.ac}">\u2190 swipe the cards \u2014 the whole site lives sideways \u2192</div>
+    <div class="sec"><div class="info r" style="margin-top:6px"><span>${d.hours}</span><span style="text-align:right">${d.loc}</span></div></div>
+    <div class="sec sfoot" style="border-top:1px solid ${soft};padding-top:18px">
+      <div class="made">site by stingray \u2014 ads that leave a mark</div>
+    </div>
+    ${sheetHTML(d,light,soft)}`;
+  wireSite(s,d);
+  const crow=s.querySelector('[data-crow]');
+  crow.addEventListener('pointerdown',e=>e.stopPropagation());
+  return s;
+}
+
+/* swap the factory */
+const _mini=miniSite;
+miniSite=function(d,c,catKey){
+  const L=LAYOUT[d.name]||'editorial';
+  if(L==='editorial')return _mini(d,c,catKey);
+  return L==='menu'?menuFirst(d,IMGS[catKey]):poster(d,IMGS[catKey]);
+};
+
+/* show the concept tag in the funnel chrome */
+const _update=updateDeck;
+updateDeck=function(inst){
+  _update(inst);
+  const d=CATS[cat].designs[idx];
+  const L=LAYOUT[d.name]||'editorial';
+  const pi=document.querySelector('#plateIdx');
+  if(pi&&!pi.querySelector('.ctag')){
+    const t=document.createElement('span');t.className='ctag';pi.appendChild(document.createElement('br'));pi.appendChild(t);
+  }
+  const tag=pi&&pi.querySelector('.ctag');
+  if(tag)tag.textContent=TAG[L];
 };
 })();
 </script>\n</body>
