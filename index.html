@@ -1045,6 +1045,27 @@ img{display:block;max-width:100%}
 .h-qashta .ar{font-size:64px}
 @media(prefers-reduced-motion:reduce){.h-barrel::before,.h-osteria .arch::after{animation:none}}
 </style>
+<style id="v13">
+/* ═════════ V13 — bigger stage, cleaner heroes, live drag ═════════ */
+/* the phone finally fills the screen on mobile */
+#deck{width:min(88vw,344px)}
+#tasting{padding-top:calc(64px + env(safe-area-inset-top));padding-bottom:10px}
+.plate-meta{max-width:min(88vw,420px);margin-bottom:8px}
+#plateName{font-size:21px}
+.deck-controls{margin-top:10px;gap:14px}
+.arrow{width:40px;height:40px}
+.deck-actions{margin-top:10px;max-width:min(88vw,420px)}
+.deck-actions .btn{padding:14px 8px}
+.custom-note{margin-top:9px;font-size:7.5px}
+#course{top:calc(38px + env(safe-area-inset-top))}
+/* heroes breathe: no chip buttons in heroes */
+.hwrap .chip-cta,.hero .chip-cta{display:none!important}
+/* live 3D tilt while dragging the deck */
+.phone.pos-active{transform:translateX(0) scale(1) rotateY(var(--dragY,0deg))}
+#deckWrap{perspective:1100px}
+/* version badge */
+#ver{color:var(--bone-faint)}
+</style>
 </head>
 <body>
 
@@ -1217,7 +1238,7 @@ lounge:{label:'Lounge',glyph:'☾',accent:'#C9A96A',desc:'after-dark · signatur
    dish:{n:'Counter Omakase',d:'five pours · chef\u2019s call',p:'$48'},
    tabs:[['the list',[['Charred Paloma','grapefruit · ash rim','13'],['Yuzu Old Fashioned','smoked oak','15'],['Ash & Honey','scotch · burnt honey','14']]],
          ['zero proof',[['Citrus Cloud','yuzu · smoke','9'],['Garden Tonic','herbs · cucumber','8'],['Burnt Orange Fizz','no regrets','8']]]],
-   hours:'tue–sat · 6pm–1am',loc:'counter · saifi',cta:'take a seat'}
+   hours:'tue–sat · 6pm–1am',loc:'counter · saifi',cta:'reserve your seat'}
  ]},
 italian:{label:'Italian',glyph:'✻',accent:'#7D8B4E',desc:'trattoria · forno · vino',
  designs:[
@@ -2412,6 +2433,49 @@ buildDeck=function(){
   _build();
   document.querySelectorAll('#deck .splash').forEach(e=>e.remove());
 };
+})();
+</script>
+<script id="v13js">
+/* ═════════ V13 — version badge, drag tilt, brand-true dessert photography ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* visible version so cache confusion dies */
+const left=document.querySelector('#sysbar span');
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 13';left.appendChild(v)}
+
+/* per-design photography overrides (no more donuts on Qashta) */
+const OV={
+'Qashta':{
+  gal:[[U('1519676867240-f03562e64548'),'the baklava'],[U('1587049352846-4a222e784d38'),'the syrup'],[U('1578985545062-69928b1d9587'),'the tray']],
+  dish:U('1628102491629-778571d893a3')},
+'Sucr\u00e9':{
+  gal:[[U('1569864358642-9d1684040f43'),'the macarons'],[U('1555507036-ab1f4038808a'),'fresh at dawn'],[U('1578985545062-69928b1d9587'),'the showcase']],
+  dish:U('1569864358642-9d1684040f43')}
+};
+const _mini=miniSite;
+miniSite=function(d,c,k){
+  const o=OV[d.name];
+  if(!o)return _mini(d,c,k);
+  const keep=IMGS[k];IMGS[k]=o;
+  const s=_mini(d,c,k);
+  IMGS[k]=keep;
+  return s;
+};
+
+/* live 3D tilt while swiping the deck */
+if(!RM){
+  const wrap=document.querySelector('#deckWrap');
+  const deckEl=document.querySelector('#deck');
+  let down=false,x0=0;
+  wrap.addEventListener('pointerdown',e=>{down=true;x0=e.clientX});
+  wrap.addEventListener('pointermove',e=>{
+    if(!down)return;
+    const t=Math.max(-10,Math.min(10,(e.clientX-x0)*0.08));
+    deckEl.style.setProperty('--dragY',t+'deg');
+  });
+  const up=()=>{down=false;deckEl.style.setProperty('--dragY','0deg')};
+  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+}
 })();
 </script>
 </body>
