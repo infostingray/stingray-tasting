@@ -1325,6 +1325,54 @@ body{background:#050505}
 .sen-course .note i{font-style:normal;color:#C6472E}
 @media(prefers-reduced-motion:reduce){.sen-kanji.draw svg path{animation:none;stroke-dashoffset:0}}
 </style>
+<style id="v26">
+/* ═════════ V26 — kitchen fits mobile + Sen entrance ceremony ═════════ */
+/* homepage: 9 worlds must scroll on phones */
+#kitchen{
+  justify-content:flex-start;align-items:center;
+  overflow-y:auto;overscroll-behavior:contain;
+  padding:calc(78px + env(safe-area-inset-top)) 18px calc(96px + env(safe-area-inset-bottom));
+}
+#kitchen::-webkit-scrollbar{display:none}
+#kitchen .kitchen-h{margin-top:0;font-size:clamp(26px,6.6vw,44px)}
+#kitchen .kitchen-sub{margin-bottom:24px}
+.cats{gap:10px}
+.cat{padding:20px 14px 16px}
+.cat .glyph{font-size:22px;margin-bottom:10px}
+.cat .name{font-size:14.5px}
+.cat .desc{font-size:7.5px;margin-top:5px}
+.kitchen-note{margin-top:22px;padding-bottom:8px}
+/* ── SEN entrance: the noren parts ── */
+.sen-noren{position:absolute;inset:0;z-index:9;display:flex;pointer-events:none}
+.sen-noren i{
+  flex:1;position:relative;background:#14141B;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 7px);
+  transition:transform 1s cubic-bezier(.7,0,.2,1);
+  display:flex;align-items:center;justify-content:center;
+}
+.sen-noren i::after{content:'';position:absolute;left:0;right:0;bottom:0;height:12px;
+  background:radial-gradient(circle at 7px -2px,#14141B 6px,transparent 7px);background-size:14px 12px}
+.sen-noren i b{font-family:'Marcellus',serif;font-weight:400;font-size:34px;color:rgba(237,237,242,.55)}
+.sen-noren i:first-child{box-shadow:inset -24px 0 34px -22px rgba(0,0,0,.8)}
+.sen-noren i:last-child{box-shadow:inset 24px 0 34px -22px rgba(0,0,0,.8)}
+.sen-noren::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;margin-left:-.5px;
+  background:linear-gradient(180deg,transparent,rgba(198,71,46,.6),transparent);z-index:1;
+  animation:senseam 1.4s ease-in-out infinite}
+@keyframes senseam{50%{opacity:.4}}
+.sen-noren.part i:first-child{transform:translateX(-102%)}
+.sen-noren.part i:last-child{transform:translateX(102%)}
+.sen-noren.part::before{opacity:0}
+/* hero content rises after the curtain */
+.sen .low>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.sen.enter .low>*{opacity:1;transform:none}
+.sen.enter .low>*:nth-child(2){transition-delay:.12s}
+.sen.enter .low>*:nth-child(3){transition-delay:.24s}
+.sen.enter .low>*:nth-child(4){transition-delay:.36s}
+@media(prefers-reduced-motion:reduce){
+  .sen-noren{display:none}
+  .sen .low>*{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
@@ -2633,7 +2681,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 25';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 26';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3313,9 +3361,21 @@ function senSite(d){
       <div class="made">site by stingray \u2014 ads that leave a mark</div>
     </div>`;
 
-  /* kanji draws itself; tap to redraw */
+  /* entrance: the noren parts, then the room breathes in */
+  const noren=document.createElement('div');
+  noren.className='sen-noren';
+  noren.innerHTML='<i><b>\u5343</b></i><i><b>\u5bff\u53f8</b></i>';
+  s.querySelector('.sen-hero').appendChild(noren);
   const kj=s.querySelector('[data-kanji]');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>kj.classList.add('draw')));
+  const enter=()=>{
+    noren.classList.add('part');
+    setTimeout(()=>s.classList.add('enter'),350);
+    setTimeout(()=>kj.classList.add('draw'),650);
+    setTimeout(()=>noren.remove(),1400);
+    buzz(8);
+  };
+  if(RM){noren.remove();s.classList.add('enter');kj.classList.add('draw')}
+  else setTimeout(enter,900);
   kj.addEventListener('pointerdown',e=>{
     e.stopPropagation();buzz(8);
     kj.classList.remove('draw');void kj.offsetWidth;kj.classList.add('draw');
