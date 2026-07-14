@@ -1405,7 +1405,7 @@ body{background:#050505}
 </style>
 <style id="v31">
 /* ═══════════════ V31 — THE FLAGSHIP PASS ═══════════════ */
-.bsp{position:relative}
+/* .bsp must keep the base .site absolute positioning — that's the scroll container */
 .bsp .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .bsp .rv.in{opacity:1;transform:none}
 .bsp .blabel{font-family:var(--mono);font-size:6.5px;letter-spacing:.4em;text-transform:uppercase;display:block}
@@ -2945,7 +2945,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 31';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 32';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
