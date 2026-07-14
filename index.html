@@ -927,7 +927,7 @@ img{display:block;max-width:100%}
 .h-sucre .nm{background:linear-gradient(110deg,#3A2A26 42%,#C99A5B 50%,#3A2A26 58%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 3.4s ease-in-out infinite}
 @keyframes foil{0%,100%{background-position:110% 0}50%{background-position:-10% 0}}
 /* Casa Luna: giant watermark */
-.h-casa::after{content:'LUNA';position:absolute;right:-14px;bottom:52px;font-family:'Fraunces',serif;font-style:italic;font-size:96px;color:rgba(255,255,255,.1);transform:rotate(-90deg);transform-origin:bottom right;pointer-events:none;letter-spacing:-.02em}
+.h-casa::after{content:'LUNA';position:absolute;left:-10px;right:auto;bottom:40px;font-family:'Fraunces',serif;font-style:italic;font-size:92px;color:rgba(255,255,255,.12);transform:rotate(90deg);transform-origin:bottom left;pointer-events:none;letter-spacing:-.02em}
 /* MELT: cherry + jelly wobble */
 .h-melt .nm{position:relative;animation:jelly 3.4s ease-in-out infinite;display:inline-block}
 @keyframes jelly{0%,100%{transform:skewX(0)}46%{transform:skewX(0)}50%{transform:skewX(-3deg) scaleY(1.02)}54%{transform:skewX(2deg)}58%{transform:skewX(0)}}
@@ -2510,10 +2510,19 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 21';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 22';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
+'Casa Luna':{
+  gal:[[U('1565299624946-b28f40a0ae38'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
+  dish:U('1621996346565-e3dbc646d9a9')},
+'Forno':{
+  gal:[[U('1574071318508-1cdbab80d002'),'the diavola'],[U('1565299624946-b28f40a0ae38'),'dal forno'],[U('1414235077428-338989a2e8c0'),'the room']],
+  dish:U('1565299624946-b28f40a0ae38')},
+'Osteria 21':{
+  gal:[[U('1473093295043-cdd812d0e601'),'la cucina'],[U('1517248135467-4c7edcad34c4'),'the cellar'],[U('1621996346565-e3dbc646d9a9'),'the primi']],
+  dish:U('1414235077428-338989a2e8c0')},
 'Qashta':{
   gal:[[U('1519676867240-f03562e64548'),'the baklava'],[U('1587049352846-4a222e784d38'),'the syrup'],[U('1578985545062-69928b1d9587'),'the tray']],
   dish:U('1628102491629-778571d893a3')},
