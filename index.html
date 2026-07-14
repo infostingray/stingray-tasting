@@ -1373,6 +1373,30 @@ body{background:#050505}
   .sen .low>*{opacity:1;transform:none}
 }
 </style>
+<style id="v27">
+/* ═════════ V27 — SEN: hashiyasume, the knife game ═════════ */
+.sen-game{padding:34px 22px 26px}
+.sen-game .gk{font-family:var(--mono);font-size:6.5px;letter-spacing:.4em;text-transform:uppercase;color:#C6472E;display:block}
+.sen-game .gt{font-size:20px;letter-spacing:.14em;margin-top:10px}
+.sen-game .gh{font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-top:8px;line-height:2}
+.sen-arena{
+  position:relative;margin-top:16px;height:290px;border-radius:4px;overflow:hidden;
+  border:1px solid rgba(237,237,242,.12);
+  background:
+    radial-gradient(120% 80% at 50% 110%, rgba(198,71,46,.12), transparent 60%),
+    linear-gradient(180deg,#0E0E12,#101016);
+}
+.sen-arena canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
+.sen-score{
+  position:absolute;top:10px;left:12px;right:12px;z-index:2;display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(237,237,242,.65);
+  pointer-events:none;
+}
+.sen-score b{color:#C6472E;font-weight:400}
+.sen-flash{position:absolute;inset:0;background:rgba(112,160,70,.35);opacity:0;pointer-events:none;transition:opacity .4s}
+.sen-flash.on{opacity:1;transition:opacity .05s}
+@media(prefers-reduced-motion:reduce){.sen-game{display:none}}
+</style>
 </head>
 <body>
 
@@ -2681,7 +2705,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 26';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 27';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3349,6 +3373,16 @@ function senSite(d){
       <div class="ph" style="background-image:url('${IMGS.japanese.gal[1][0]}')"></div>
       <div class="k2">\u4fe1\u983c<small>shinrai \u00b7 trust</small></div>
     </div>
+    <div class="sen-game">
+      <span class="gk">\u7b78\u4f11\u3081 \u00b7 hashiyasume</span>
+      <div class="gt">The Knife</div>
+      <div class="gh">a palate cleanser between courses.<br>swipe to slice \u00b7 never cut the wasabi.</div>
+      <div class="sen-arena" data-arena>
+        <div class="sen-score"><span>cuts <b data-cuts>0</b></span><span>best <b data-best>0</b></span></div>
+        <canvas data-blade></canvas>
+        <div class="sen-flash" data-flash></div>
+      </div>
+    </div>
     <div class="sen-rules">
       <div class="rl"><i>\u4e00</i>phones sleep at the counter. the fish deserves your eyes.</div>
       <div class="rl"><i>\u4e8c</i>tell us allergies once. then let go.</div>
@@ -3409,6 +3443,109 @@ function senSite(d){
       if(!open){r.classList.add('open');buzz(6)}
     });
   });
+
+  /* ── hashiyasume: the knife ── */
+  (function(){
+    if(RM)return;
+    const arena=s.querySelector('[data-arena]'),cv=s.querySelector('[data-blade]');
+    if(!arena||!cv)return;
+    let ctx;try{ctx=cv.getContext('2d')}catch(e){}
+    if(!ctx){arena.parentElement.style.display='none';return}
+    const cutsEl=s.querySelector('[data-cuts]'),bestEl=s.querySelector('[data-best]'),flash=s.querySelector('[data-flash]');
+    const DPR=Math.min(devicePixelRatio||1,2);
+    let W=0,H=0;
+    const size=()=>{W=arena.clientWidth||300;H=arena.clientHeight||290;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)};
+    requestAnimationFrame(size);
+    const GLYPHS=[['\uD83C\uDF63',1],['\uD83C\uDF64',1],['\uD83C\uDF59',1],['\uD83D\uDC1F',2],['\uD83C\uDF71',2]];
+    let items=[],trail=[],parts=[],pops=[],cuts=0,best=0,down=false,tPrev=0;
+    function toss(){
+      const wasabi=Math.random()<0.16;
+      items.push({
+        x:30+Math.random()*(W-60),y:H+26,
+        vx:(Math.random()-0.5)*2.2,vy:-(8.6+Math.random()*3.4),
+        r:20,rot:Math.random()*6,vr:(Math.random()-0.5)*0.12,
+        g:wasabi?null:GLYPHS[Math.floor(Math.random()*GLYPHS.length)],wasabi
+      });
+    }
+    let spawnT=0;
+    function segHit(p1,p2,c,r){
+      const dx=p2.x-p1.x,dy=p2.y-p1.y,l2=dx*dx+dy*dy||1;
+      let t=((c.x-p1.x)*dx+(c.y-p1.y)*dy)/l2;t=Math.max(0,Math.min(1,t));
+      const px=p1.x+t*dx,py=p1.y+t*dy;
+      return Math.hypot(c.x-px,c.y-py)<r+7;
+    }
+    function slice(it){
+      items=items.filter(x=>x!==it);
+      if(it.wasabi){
+        cuts=Math.max(0,cuts-3);
+        flash.classList.add('on');setTimeout(()=>flash.classList.remove('on'),60);
+        pops.push({x:it.x,y:it.y,t:0,txt:'\u308f\u3055\u3073!!',c:'#8CBF5A'});
+        buzz([30,40,30]);
+      }else{
+        cuts+=it.g[1];best=Math.max(best,cuts);
+        pops.push({x:it.x,y:it.y,t:0,txt:'+'+it.g[1],c:'#C6472E'});
+        for(let i=0;i<7;i++)parts.push({x:it.x,y:it.y,vx:(Math.random()-0.5)*5,vy:-Math.random()*4,t:0});
+        buzz(9);
+      }
+      cutsEl.textContent=cuts;bestEl.textContent=best;
+    }
+    cv.addEventListener('pointerdown',e=>{e.stopPropagation();down=true;
+      const r=cv.getBoundingClientRect();trail=[{x:e.clientX-r.left,y:e.clientY-r.top,t:0}];
+      try{cv.setPointerCapture(e.pointerId)}catch(_){}});
+    cv.addEventListener('pointermove',e=>{
+      if(!down)return;
+      const r=cv.getBoundingClientRect(),p={x:e.clientX-r.left,y:e.clientY-r.top,t:0};
+      const prev=trail[trail.length-1];
+      trail.push(p);if(trail.length>9)trail.shift();
+      if(prev)items.slice().forEach(it=>{if(segHit(prev,p,it,it.r))slice(it)});
+    });
+    const up=()=>down=false;
+    cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+    (function loop(t){
+      requestAnimationFrame(loop);
+      if(!W){return}
+      const dt=Math.min(32,t-tPrev)/16.6;tPrev=t;
+      ctx.clearRect(0,0,W,H);
+      spawnT+=dt*16.6;
+      if(spawnT>1050){spawnT=0;toss();if(Math.random()<0.3)toss()}
+      /* items */
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      items=items.filter(it=>it.y<H+60);
+      items.forEach(it=>{
+        it.x+=it.vx*dt;it.y+=it.vy*dt;it.vy+=0.26*dt;it.rot+=it.vr*dt;
+        ctx.save();ctx.translate(it.x,it.y);ctx.rotate(it.rot);
+        if(it.wasabi){
+          ctx.fillStyle='#7FAF52';ctx.beginPath();ctx.arc(0,0,15,0,7);ctx.fill();
+          ctx.fillStyle='#5C8639';ctx.beginPath();ctx.arc(-4,-4,6,0,7);ctx.fill();
+          ctx.fillStyle='#EDEDF2';ctx.font='9px sans-serif';ctx.fillText('\u308f',0,1);
+        }else{ctx.font='30px sans-serif';ctx.fillText(it.g[0],0,0)}
+        ctx.restore();
+      });
+      /* blade trail */
+      trail.forEach(p=>p.t+=dt);
+      trail=trail.filter(p=>p.t<7);
+      if(trail.length>1){
+        for(let i=1;i<trail.length;i++){
+          const a=1-trail[i].t/7;
+          ctx.strokeStyle=`rgba(237,237,242,${a*.9})`;
+          ctx.lineWidth=3.4*a+0.6;ctx.lineCap='round';
+          ctx.beginPath();ctx.moveTo(trail[i-1].x,trail[i-1].y);ctx.lineTo(trail[i].x,trail[i].y);ctx.stroke();
+          ctx.strokeStyle=`rgba(198,71,46,${a*.5})`;ctx.lineWidth=7*a;ctx.stroke();
+        }
+      }
+      /* particles + score pops */
+      parts.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=0.2*dt;p.t+=dt});
+      parts=parts.filter(p=>p.t<26);
+      parts.forEach(p=>{ctx.fillStyle=`rgba(198,71,46,${1-p.t/26})`;ctx.fillRect(p.x,p.y,3,3)});
+      pops.forEach(p=>p.t+=dt);
+      pops=pops.filter(p=>p.t<34);
+      pops.forEach(p=>{
+        ctx.fillStyle=p.c;ctx.globalAlpha=1-p.t/34;
+        ctx.font='700 13px "JetBrains Mono",monospace';
+        ctx.fillText(p.txt,p.x,p.y-p.t*1.1);ctx.globalAlpha=1;
+      });
+    })(0);
+  })();
   return s;
 }
 
