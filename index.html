@@ -1202,6 +1202,46 @@ body{background:#050505}
 .custom-note b{color:var(--bone-dim)}
 .proof b{color:var(--bone-dim)}
 </style>
+<style id="v23">
+/* ═════════ V23 — nine worlds, one flagship each ═════════ */
+@media(min-width:760px){.cats{max-width:600px;grid-template-columns:repeat(3,1fr)}}
+/* SEN — omakase (menu-first: banner only, no hero art needed) */
+/* RITUAL — third-wave café */
+.h-ritual{background:radial-gradient(120% 90% at 50% -10%,#F2EAE0,#EAE0D2 70%)}
+.h-ritual .cup{position:relative;width:64px;height:46px;border-radius:0 0 30px 30px;background:linear-gradient(180deg,#FFFDF9,#EFE7DB);border:2px solid #3B2E22;margin-bottom:18px}
+.h-ritual .cup::before{content:'';position:absolute;right:-16px;top:8px;width:18px;height:20px;border:2px solid #3B2E22;border-left:none;border-radius:0 12px 12px 0}
+.h-ritual .cup::after{content:'';position:absolute;left:10px;right:10px;top:6px;height:8px;border-radius:50%;background:#6B4A2F}
+.h-ritual .st{position:absolute;top:-26px;left:18px;width:4px;height:22px;border-radius:4px;background:linear-gradient(180deg,transparent,rgba(59,46,34,.35));filter:blur(1.5px);animation:steamup 3s ease-in-out infinite}
+.h-ritual .st.s2{left:34px;animation-delay:1.2s}
+.h-ritual .nm{font-family:'Fraunces',serif;font-style:italic;font-size:56px;line-height:1;color:#3B2E22}
+.h-ritual .nm b{font-weight:400;color:#B0754A}
+.h-ritual .tg{font-size:11.5px;font-style:italic;color:#3B2E22;opacity:.75;margin-top:12px}
+.h-ritual .ring{position:absolute;top:60px;right:-20px;width:120px;height:120px;border-radius:50%;border:10px solid rgba(107,74,47,.12);pointer-events:none}
+/* VOLT — night club */
+.h-volt{background:radial-gradient(120% 100% at 50% 120%,#1B0B33,#07050D 70%)}
+.h-volt .lasers{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.h-volt .lasers i{position:absolute;top:-20%;bottom:-20%;width:2px;background:linear-gradient(180deg,transparent,#B44CFF,transparent)}
+.h-volt .lasers i:nth-child(1){left:16%;transform:rotate(16deg)}
+.h-volt .lasers i:nth-child(2){left:48%;transform:rotate(-12deg);background:linear-gradient(180deg,transparent,#4CFFD1,transparent)}
+.h-volt .lasers i:nth-child(3){left:78%;transform:rotate(22deg)}
+.h-volt .nm{
+  font-family:'Bebas Neue',sans-serif;font-size:112px;line-height:.86;letter-spacing:.03em;color:#F4F4FB;
+  text-shadow:3px 0 rgba(180,76,255,.9),-3px 0 rgba(76,255,209,.9),0 0 40px rgba(180,76,255,.5);
+  animation:voltstrobe 3.8s infinite;
+}
+@keyframes voltstrobe{0%,88%,92%,100%{opacity:1}90%{opacity:.35}91%{opacity:.8}}
+.h-volt .bpm{font-family:var(--mono);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#B44CFF;margin-top:14px}
+/* SEL — beach resort */
+.h-sel{background:linear-gradient(180deg,#BFE3EC 0%,#E9F4F4 46%,#F2E8D5 46.5%,#EAD9BC 100%)}
+.h-sel .sun{position:absolute;top:44px;right:34px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#FFF3D0,#F2C063 70%);box-shadow:0 0 34px rgba(242,192,99,.6)}
+.h-sel .hor{position:absolute;top:46%;left:0;right:0;height:1px;background:rgba(31,79,94,.35)}
+.h-sel .wave{position:absolute;left:-10%;right:-10%;height:16px;border-radius:50%;background:rgba(255,255,255,.5);filter:blur(2px)}
+.h-sel .wave.w1{top:52%;animation:selwave 6s ease-in-out infinite}
+.h-sel .wave.w2{top:58%;opacity:.6;animation:selwave 8s ease-in-out infinite reverse}
+@keyframes selwave{0%,100%{transform:translateX(-14px)}50%{transform:translateX(14px)}}
+.h-sel .nm{font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;letter-spacing:.24em;color:#1F4F5E;text-indent:.24em}
+.h-sel .tg{font-family:var(--mono);font-size:7px;letter-spacing:.32em;text-transform:uppercase;color:#1F4F5E;opacity:.7;margin-top:12px}
+</style>
 </head>
 <body>
 
@@ -2095,7 +2135,7 @@ const LAYOUT={
 'Casa Luna':'editorial','Forno':'poster','Osteria 21':'menu',
 'Beit Zaytoun':'editorial','Joura':'poster','Sitt Nour':'menu',
 'Hop Saint':'editorial','The Brass Tap':'poster','Barrel & Bone':'menu',
-'Sucr\u00e9':'editorial','MELT':'poster','Qashta':'menu'
+'Sucr\u00e9':'editorial','MELT':'poster','Qashta':'menu','Sen':'menu','Ritual':'editorial','VOLT':'poster','Sel':'editorial'
 };
 const TAG={editorial:'concept \u00b7 story site',menu:'concept \u00b7 menu-first',poster:'concept \u00b7 poster / swipe'};
 const isL=b=>['#F4EEE1','#F2EBDC','#EFE9DB','#F9EDE8'].includes(b);
@@ -2510,7 +2550,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 22';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 23';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -2991,6 +3031,137 @@ buildDeck=function(){
     const d=ds[+ph.dataset.i],site=ph.querySelector('.site');
     if(FX[d.name])try{FX[d.name](site,d)}catch(e){}
     magnet(site);
+  });
+};
+})();
+</script>
+<script id="v23js">
+/* ═════════ V23 — nine worlds, one flagship each ═════════ */
+(function(){
+const pick=(c,n)=>CATS[c]&&CATS[c].designs.find(d=>d.name===n);
+const OF=pick('lounge','OF\u00f4lies'),FORNO=pick('italian','Forno'),
+      BEIT=pick('lebanese','Beit Zaytoun'),SUCRE=pick('dessert','Sucr\u00e9'),MELT=pick('dessert','MELT');
+
+/* new world photography */
+IMGS.japanese={gal:[[U('1579584425555-c3ce17fd4351'),'the counter'],[U('1553621042-f6e147245754'),'the maki'],[U('1526318896980-cf78c088247c'),'the room']],dish:U('1579584425555-c3ce17fd4351')};
+IMGS.coffeeshop={gal:[[U('1495474472287-4d71bcdd2085'),'the pour'],[U('1453614512568-c4024d13c247'),'the room'],[U('1509042239860-f550ce710b93'),'the crema']],dish:U('1509042239860-f550ce710b93')};
+IMGS.nightclub={gal:[[U('1470229722913-7c0e2dbbafd3'),'the floor'],[U('1514525253161-7a46d19cd819'),'the lights'],[U('1493225457124-a3eb161ffa5f'),'the booth']],dish:U('1514525253161-7a46d19cd819')};
+IMGS.beach={gal:[[U('1507525428034-b723cf961d3e'),'the shore'],[U('1540541338287-41700207dee6'),'the pool'],[U('1519046904884-53103b34b206'),'golden hour']],dish:U('1540541338287-41700207dee6')};
+IMGS.icecream=IMGS.dessert;
+
+/* new flagships */
+const SEN={name:'Sen',font:"'Marcellus',serif",bg:'#101013',tx:'#EDEDF2',ac:'#C6472E',
+  heroClass:'',hero:'',
+  pull:'\u201cTwelve seats. One chef. No menu \u2014 only trust.\u201d',
+  story:'An omakase counter in near-silence \u2014 hinoki wood, twelve seats, and whatever the morning market decided. You don\u2019t order at Sen. You surrender.',
+  dish:{n:'Omakase \u00b7 12 courses',d:'chef\u2019s selection \u00b7 tonight',p:'$95'},
+  tabs:[['the counter',[['Omakase, 12 courses','the full surrender','95'],['Omakase, 8 courses','the introduction','65'],['Sake pairing','five pours','40']]],
+        ['to finish',[['Matcha, whisked','ceremonial','9'],['Yuzu sorbet','palate reset','7'],['Hojicha pudding','quiet ending','8']]]],
+  hours:'tue\u2013sat \u00b7 two seatings \u00b7 7 & 9:30',loc:'downtown \u00b7 twelve seats',cta:'request a seat'};
+
+const RITUAL={name:'Ritual',font:"'Fraunces',serif",bg:'#EFE7DB',tx:'#3B2E22',ac:'#B0754A',
+  heroClass:'h-ritual',
+  hero:`<div class="ring"></div>
+    <div class="inner" style="position:relative;z-index:2">
+    <div class="sk" style="color:#B0754A">third-wave \u00b7 slow bar</div>
+    <div class="cup" style="margin-top:16px"><i class="st"></i><i class="st s2"></i></div>
+    <div class="nm">ritual<b>.</b></div>
+    <div class="tg">the same cup, done right, every single day.</div>
+    </div><div class="down">\u2193</div>`,
+  pull:'\u201cCaffeine is the excuse. The ritual is the point.\u201d',
+  story:'Single-origin beans roasted twenty minutes away, water at exactly 93\u00b0, and a bar built for people who stay a while. No wifi passwords hidden here \u2014 stay all morning.',
+  dish:{n:'The Flat White',d:'single origin \u00b7 double ristretto',p:'$5'},
+  tabs:[['the bar',[['Flat white','the house standard','5'],['V60 pour-over','choose your origin','6'],['Espresso tonic','summer answer','6']]],
+        ['with it',[['Sourdough toast','burnt honey \u00b7 ricotta','7'],['Almond croissant','twice-baked','5'],['Date cake','olive oil \u00b7 warm','6']]]],
+  hours:'daily \u00b7 7am\u20136pm',loc:'mar mikhael corner',cta:'save your table'};
+
+const VOLT={name:'VOLT',font:"'Archivo',sans-serif",bg:'#0A0712',tx:'#F4F4FB',ac:'#B44CFF',
+  heroClass:'h-volt',
+  hero:`<div class="lasers"><i></i><i></i><i></i></div>
+    <div class="inner" style="position:relative;z-index:2">
+    <div class="nm">VOLT</div>
+    <div class="bpm">128 bpm \u00b7 doors midnight \u00b7 no photos</div>
+    </div><div class="down">\u2193</div>`,
+  pull:'\u201cWhat happens on the floor stays on the floor.\u201d',
+  story:'A concrete room, a sound system that costs more than the building, and a strict no-photos policy. VOLT doesn\u2019t do bottle sparklers. VOLT does bass.',
+  dish:{n:'The Table \u00b7 Front Left',d:'four guests \u00b7 two bottles',p:'$400'},
+  tabs:[['tables',[['Front left','closest to the booth','400'],['The balcony','above it all','350'],['Back bar','in the dark','250']]],
+        ['bottles',[['House vodka','with everything','120'],['Mezcal service','for the brave','160'],['Champagne','no sparklers, promise','180']]]],
+  hours:'fri\u2013sat \u00b7 midnight\u20136am',loc:'the industrial zone \u00b7 follow the bass',cta:'lock your table'};
+
+const SEL={name:'Sel',font:"'Cormorant Garamond',serif",bg:'#F2ECDF',tx:'#1F4F5E',ac:'#C98F4E',
+  heroClass:'h-sel',
+  hero:`<div class="sun"></div><div class="hor"></div>
+    <div class="wave w1"></div><div class="wave w2"></div>
+    <div class="inner" style="position:relative;z-index:2;margin-top:auto">
+    <div class="sk" style="color:#C98F4E">beach resort \u00b7 batroun coast</div>
+    <div class="nm" style="margin-top:10px">SEL</div>
+    <div class="tg">salt on your skin. nowhere to be.</div>
+    </div><div class="down">\u2193</div>`,
+  pull:'\u201cCheck-in is a formality. The sea already claimed you.\u201d',
+  story:'Whitewashed rooms above a private cove, a beach bar that follows the sun, and days measured in swims, not hours. Sel is what your out-of-office dreams about.',
+  dish:{n:'The Cove Cabana',d:'full day \u00b7 two sunbeds \u00b7 lunch',p:'$120'},
+  tabs:[['the day',[['Cove cabana','full day for two','120'],['Sunbed \u00b7 front row','towel service','45'],['Sunset table','beach bar','\u2014']]],
+        ['stay over',[['Sea room','balcony \u00b7 breakfast','180'],['The suite','private terrace','290'],['Cove house','sleeps six','520']]]],
+  hours:'season \u00b7 may\u2013october',loc:'batroun \u00b7 the private cove',cta:'claim your day'};
+
+/* rebuild CATS: nine worlds, one flagship each */
+Object.keys(CATS).forEach(k=>delete CATS[k]);
+Object.assign(CATS,{
+ lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
+ italian:{label:'Italian',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli rules',designs:[FORNO]},
+ japanese:{label:'Japanese',glyph:'\u3007',accent:'#C6472E',desc:'omakase \u00b7 twelve seats',designs:[SEN]},
+ lebanese:{label:'Lebanese',glyph:'\u274b',accent:'#9E3B30',desc:'mezze \u00b7 fire \u00b7 family',designs:[BEIT]},
+ coffeeshop:{label:'Coffee',glyph:'\u25d5',accent:'#B0754A',desc:'third-wave \u00b7 slow bar',designs:[RITUAL]},
+ nightclub:{label:'Night Club',glyph:'\u26a1',accent:'#B44CFF',desc:'128 bpm \u00b7 no photos',designs:[VOLT]},
+ dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'p\u00e2tisserie \u00b7 gold foil',designs:[SUCRE]},
+ icecream:{label:'Ice Cream',glyph:'\u2745',accent:'#FF7FA5',desc:'gelato \u00b7 it drips',designs:[MELT]},
+ beach:{label:'Beach Resort',glyph:'\u2600',accent:'#C98F4E',desc:'salt \u00b7 sun \u00b7 the cove',designs:[SEL]}
+});
+
+/* backdrops for the new worlds */
+/* (v18 maps are closures over IMGS at build time — extend by name here) */
+window.__V23_BD={
+ heroes:{
+  'Ritual':[IMGS.coffeeshop.gal[1][0],'linear-gradient(180deg,rgba(239,231,219,.88) 0%,rgba(239,231,219,.8) 45%,rgba(239,231,219,.97) 100%)'],
+  'VOLT':[IMGS.nightclub.gal[0][0],'linear-gradient(180deg,rgba(10,7,18,.72) 0%,rgba(10,7,18,.55) 45%,rgba(10,7,18,.95) 100%)'],
+  'Sel':[IMGS.beach.gal[0][0],'linear-gradient(180deg,rgba(242,236,223,.5) 0%,rgba(242,236,223,.55) 45%,rgba(242,236,223,.94) 100%)']
+ },
+ heads:{'Sen':[IMGS.japanese.gal[0][0],'linear-gradient(180deg,rgba(16,16,19,.55) 0%,rgba(16,16,19,.9) 100%)']}
+};
+
+/* rebuild kitchen cards for the nine worlds */
+const catsEl=document.querySelector('#cats');
+const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
+  lebanese:IMGS.lebanese.gal[0][0],coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
+catsEl.innerHTML='';
+Object.entries(CATS).forEach(([key,c])=>{
+  const b=document.createElement('button');
+  b.className='cat';b.style.setProperty('--c',c.accent);
+  b.innerHTML=`<div class="catph" style="background-image:url('${CATPH2[key]}')"></div><span class="glyph">${c.glyph}</span><span class="name">${c.label}</span><span class="desc">${c.desc}</span>`;
+  b.addEventListener('click',()=>openCat(key));
+  b.addEventListener('mouseenter',()=>setAmbient(c.accent));
+  catsEl.appendChild(b);
+});
+
+/* apply new-world backdrops after each build */
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  const ds=CATS[cat].designs;
+  document.querySelectorAll('#deck .phone').forEach(ph=>{
+    const d=ds[+ph.dataset.i],site=ph.querySelector('.site');
+    const h=window.__V23_BD.heroes[d.name];
+    if(h){const hero=site.querySelector('.hero');
+      if(hero&&!hero.querySelector('.hph')){
+        const b=document.createElement('div');b.className='hph';
+        b.style.backgroundImage=`${h[1]},url('${h[0]}')`;hero.prepend(b)}}
+    const m=window.__V23_BD.heads[d.name];
+    if(m){const head=site.querySelector('.mhead');
+      if(head&&!head.querySelector('.mphd')){
+        const b=document.createElement('div');b.className='mphd';
+        b.style.backgroundImage=`${m[1]},url('${m[0]}')`;head.prepend(b)}}
   });
 };
 })();
