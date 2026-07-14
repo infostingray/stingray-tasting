@@ -1653,7 +1653,7 @@ body{background:#050505}
 .beit2 .bplate{
   position:absolute;left:50%;top:56%;width:78px;height:78px;margin:-39px 0 0 -39px;border-radius:50%;
   background-size:cover;background-position:center;cursor:pointer;
-  box-shadow:0 10px 18px -6px rgba(43,36,28,.45),inset 0 0 0 5px #FBF6EA,inset 0 0 0 6px rgba(43,36,28,.15);
+  box-shadow:0 10px 18px -6px rgba(43,36,28,.45),inset 0 0 0 4px #FBF6EA,inset 0 0 0 5px rgba(43,36,28,.18);
   transform:translate(var(--ex,140%),var(--ey,0)) rotate(var(--er,35deg)) scale(.7);opacity:0;
   transition:transform .85s cubic-bezier(.2,1.15,.3,1),opacity .5s;
 }
@@ -1684,7 +1684,7 @@ body{background:#050505}
 <style id="v34">
 /* ═════════ V34 — The Table, illustrated by hand ═════════ */
 .beit2 .btspace{height:950px!important}
-.beit2 .bplate{background:none!important;overflow:visible}
+.beit2 .bplate{overflow:visible;background-size:cover!important;background-position:center!important}
 .beit2 .bplate .pf{position:absolute;inset:0;border-radius:50%;background:#FBF6EA;
   box-shadow:inset 0 0 0 1px rgba(43,36,28,.12),inset 0 -4px 10px rgba(43,36,28,.08)}
 .beit2 .bplate .pf::before,.beit2 .bplate .pf::after{content:'';position:absolute;border-radius:50%}
@@ -3151,7 +3151,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 36';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 37';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3964,18 +3964,17 @@ B['Forno']=(d)=>{
 B['Beit Zaytoun']=(d)=>{
   const s=document.createElement('div');s.className='site bsp beit2 cinew';
   const stars=Array.from({length:8},()=>`<i style="top:${(Math.random()*40).toFixed(0)}%;left:${(Math.random()*92+4).toFixed(0)}%;animation-delay:${(Math.random()*2).toFixed(1)}s"></i>`).join('');
+  const P=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=300&h=300&q=72`;
   const PLATES=[
-    {n:'hommus b\u2019zeit',pf:'pf-hommus',tx:'-72px',ty:'-52px',tr:'-6deg',ex:'-150%',ey:'-30%',er:'-40deg',gx:'150%',gy:'-20%',gr:'40deg'},
-    {n:'fattoush',pf:'pf-fattoush',tx:'66px',ty:'-58px',tr:'5deg',ex:'160%',ey:'-20%',er:'45deg',gx:'-160%',gy:'-30%',gr:'-45deg'},
-    {n:'kibbeh meshwiyye',pf:'pf-kibbeh',big:1,tx:'0px',ty:'6px',tr:'-2deg',ex:'0%',ey:'220%',er:'25deg',gx:'0%',gy:'-240%',gr:'-30deg'},
-    {n:'man\u2019oushe zaatar',pf:'pf-manoushe',tx:'-84px',ty:'44px',tr:'7deg',ex:'-160%',ey:'40%',er:'-50deg',gx:'160%',gy:'30%',gr:'50deg'},
-    {n:'the mezze round',pf:'pf-mezze',tx:'82px',ty:'40px',tr:'-5deg',ex:'165%',ey:'50%',er:'40deg',gx:'-165%',gy:'40%',gr:'-40deg'},
-    {n:'baklawa \u00b7 to finish',pf:'pf-baklawa',tx:'0px',ty:'-84px',tr:'3deg',ex:'0%',ey:'-240%',er:'-25deg',gx:'0%',gy:'240%',gr:'30deg'}
+    {n:'hommus b\u2019zeit',img:P('1577805947697-89e18249d767'),tx:'-72px',ty:'-52px',tr:'-6deg',ex:'-150%',ey:'-30%',er:'-40deg',gx:'150%',gy:'-20%',gr:'40deg'},
+    {n:'fattoush',img:P('1512621776951-a57141f2eefd'),tx:'66px',ty:'-58px',tr:'5deg',ex:'160%',ey:'-20%',er:'45deg',gx:'-160%',gy:'-30%',gr:'-45deg'},
+    {n:'meshwe \u00b7 off the fire',img:P('1544025162-d76694265947'),big:1,tx:'0px',ty:'6px',tr:'-2deg',ex:'0%',ey:'220%',er:'25deg',gx:'0%',gy:'-240%',gr:'-30deg'},
+    {n:'the mezze round',img:P('1540914124281-342587941389'),tx:'-78px',ty:'46px',tr:'6deg',ex:'-160%',ey:'44%',er:'-48deg',gx:'160%',gy:'34%',gr:'48deg'},
+    {n:'baklawa \u00b7 to finish',img:P('1519676867240-f03562e64548'),tx:'78px',ty:'42px',tr:'-4deg',ex:'165%',ey:'50%',er:'40deg',gx:'-165%',gy:'40%',gr:'-40deg'}
   ];
   const platesHtml=PLATES.map((p,i)=>`
     <div class="bplate${p.big?' big':''}" data-pl="${i}"
-      style="--tx:${p.tx};--ty:${p.ty};--tr:${p.tr};--ex:${p.ex};--ey:${p.ey};--er:${p.er};--gx:${p.gx};--gy:${p.gy};--gr:${p.gr}">
-      <i class="pf ${p.pf}"><i></i></i>
+      style="--tx:${p.tx};--ty:${p.ty};--tr:${p.tr};--ex:${p.ex};--ey:${p.ey};--er:${p.er};--gx:${p.gx};--gy:${p.gy};--gr:${p.gr};background-image:url('${p.img}')">
       <span>${p.n}</span><b class="yum">sahtein!</b>
     </div>`).join('');
   s.innerHTML=`
@@ -3987,7 +3986,6 @@ B['Beit Zaytoun']=(d)=>{
     <div class="barches"><i><em></em></i><i><em></em></i><i><em></em></i></div>
     <div class="blow">
       <div class="bnm">Beit Zaytoun</div>
-      <div class="bar-ar">\u0628\u064a\u062a \u0632\u064a\u062a\u0648\u0646</div>
       <div class="btg">the courtyard is open \u00b7 scroll \u2014 dinner is served</div>
     </div>
     <div class="htrack"><div class="hl">drag \u2014 afternoon to midnight</div><div class="line"></div><div class="knob" data-knob></div></div>
@@ -4002,7 +4000,7 @@ B['Beit Zaytoun']=(d)=>{
     </div>
     <div class="btspace"></div>
   </div>
-  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.lebanese.gal[1][0]}')"></div><b>\u0635\u062d\u062a\u064a\u0646</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.lebanese.gal[1][0]}')"></div><b>sahtein.</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="bsec rv"><span class="blabel" style="color:#9E3B30">the house</span>
     <div style="font-size:19px;line-height:1.5;margin-top:12px">Three arches, one long table, and a kitchen that answers to a grandmother. Plates arrive until the table says stop. The table never says stop.</div></div>
   ${res(s,'reserve the long table')}`;
@@ -4024,7 +4022,7 @@ B['Beit Zaytoun']=(d)=>{
   const tableSec=s.querySelector('.btable'),plates=[...s.querySelectorAll('.bplate')],
         btc=s.querySelector('[data-btc]'),cof=s.querySelector('[data-cof]');
   const N=PLATES.length,STEPS=N*2+1;
-  const IN_MSG=['hommus first \u2014 always','fattoush joins','the kibbeh lands','man\u2019oushe, obviously','is there room? there is room','and something sweet'];
+  const IN_MSG=['hommus first \u2014 always','fattoush joins','the meshwe lands','is there room? there is room','and something sweet'];
   s.addEventListener('scroll',()=>{
     const secTop=tableSec.offsetTop,vh=s.clientHeight||560;
     const span=Math.max(600,tableSec.offsetHeight-360)||1140;
