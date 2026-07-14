@@ -1637,6 +1637,50 @@ body{background:#050505}
   .bsp .rv{opacity:1;transform:none}
 }
 </style>
+<style id="v33">
+/* ═════════ V33 — BEIT ZAYTOUN: The Table (a meal in one scroll) ═════════ */
+.beit2 .btable{position:relative}
+.beit2 .btstick{position:sticky;top:0;height:360px;overflow:hidden;z-index:2;
+  background:linear-gradient(180deg,#F2EBDC,#EAE0C9)}
+.beit2 .bthead{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;
+  padding:13px 22px;border-bottom:1px solid rgba(43,36,28,.14);background:rgba(242,235,220,.9)}
+.beit2 .bthead .k{font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.6}
+.beit2 .bthead .v{font-family:var(--mono);font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:#9E3B30}
+.beit2 .btcloth{position:absolute;left:50%;top:56%;width:300px;height:230px;transform:translate(-50%,-50%);
+  border-radius:50%;background:radial-gradient(closest-side,#FBF6EA,#F0E7D2 78%,#E2D4B6);
+  box-shadow:0 22px 44px -20px rgba(43,36,28,.4),inset 0 0 0 1px rgba(43,36,28,.1)}
+.beit2 .btcloth::after{content:'';position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(158,59,48,.3)}
+.beit2 .bplate{
+  position:absolute;left:50%;top:56%;width:78px;height:78px;margin:-39px 0 0 -39px;border-radius:50%;
+  background-size:cover;background-position:center;cursor:pointer;
+  box-shadow:0 10px 18px -6px rgba(43,36,28,.45),inset 0 0 0 5px #FBF6EA,inset 0 0 0 6px rgba(43,36,28,.15);
+  transform:translate(var(--ex,140%),var(--ey,0)) rotate(var(--er,35deg)) scale(.7);opacity:0;
+  transition:transform .85s cubic-bezier(.2,1.15,.3,1),opacity .5s;
+}
+.beit2 .bplate.on{transform:translate(var(--tx,0),var(--ty,0)) rotate(var(--tr,0deg)) scale(1);opacity:1}
+.beit2 .bplate.off{transform:translate(var(--gx,-160%),var(--gy,-10%)) rotate(var(--gr,-45deg)) scale(.72);opacity:0;
+  transition:transform .8s cubic-bezier(.6,-.1,.7,.4),opacity .6s .15s}
+.beit2 .bplate span{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--mono);font-size:6px;letter-spacing:.18em;text-transform:uppercase;color:#2B241C;opacity:.75}
+.beit2 .bplate.big{width:96px;height:96px;margin:-48px 0 0 -48px}
+.beit2 .bplate .yum{position:absolute;left:50%;top:-14px;transform:translateX(-50%) scale(0);
+  font-family:var(--mono);font-size:7px;letter-spacing:.14em;color:#9E3B30;transition:transform .3s cubic-bezier(.3,1.8,.4,1)}
+.beit2 .bplate.sah .yum{transform:translateX(-50%) scale(1)}
+.beit2 .bplate.sah{animation:sahbounce .45s cubic-bezier(.3,1.8,.4,1)}
+@keyframes sahbounce{40%{transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1.14)}}
+.beit2 .bcof{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%) scale(0);transition:transform .6s cubic-bezier(.3,1.6,.4,1)}
+.beit2 .bcof.show{transform:translate(-50%,-50%) scale(1)}
+.beit2 .bcof .cup{position:relative;width:44px;height:32px;border-radius:0 0 22px 22px;background:#FBF6EA;border:2px solid #2B241C}
+.beit2 .bcof .cup::before{content:'';position:absolute;right:-12px;top:5px;width:13px;height:15px;border:2px solid #2B241C;border-left:none;border-radius:0 10px 10px 0}
+.beit2 .bcof .cup::after{content:'';position:absolute;left:7px;right:7px;top:4px;height:6px;border-radius:50%;background:#4A2E1C}
+.beit2 .bcof .stm{position:absolute;top:-20px;left:12px;width:4px;height:17px;border-radius:4px;
+  background:linear-gradient(180deg,transparent,rgba(43,36,28,.35));filter:blur(1.5px);animation:steamup 3s infinite}
+.beit2 .bcof .stm.b{left:26px;animation-delay:1.3s}
+.beit2 .bcof .cl{margin-top:14px;text-align:center;font-family:var(--mono);font-size:6.5px;letter-spacing:.22em;text-transform:uppercase;color:#2B241C;opacity:.7;line-height:2}
+.beit2 .btspace{height:1500px}
+.beit2 .bthint{position:absolute;bottom:12px;left:0;right:0;text-align:center;z-index:5;
+  font-family:var(--mono);font-size:6px;letter-spacing:.26em;text-transform:uppercase;opacity:.5}
+</style>
 </head>
 <body>
 
@@ -2945,7 +2989,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 32';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 33';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3751,10 +3795,23 @@ B['Forno']=(d)=>{
   return s;
 };
 
-/* ══ BEIT ZAYTOUN — drag the hour ══ */
+/* ══ BEIT ZAYTOUN — drag the hour + The Table ══ */
 B['Beit Zaytoun']=(d)=>{
   const s=document.createElement('div');s.className='site bsp beit2';
   const stars=Array.from({length:8},()=>`<i style="top:${(Math.random()*40).toFixed(0)}%;left:${(Math.random()*92+4).toFixed(0)}%;animation-delay:${(Math.random()*2).toFixed(1)}s"></i>`).join('');
+  const PLATES=[
+    {n:'hommus b\u2019zeit',img:U('1577805947697-89e18249d767'),tx:'-72px',ty:'-52px',tr:'-6deg',ex:'-150%',ey:'-30%',er:'-40deg',gx:'150%',gy:'-20%',gr:'40deg'},
+    {n:'fattoush',img:U('1512621776951-a57141f2eefd'),tx:'66px',ty:'-58px',tr:'5deg',ex:'160%',ey:'-20%',er:'45deg',gx:'-160%',gy:'-30%',gr:'-45deg'},
+    {n:'kibbeh meshwiyye',img:U('1544025162-d76694265947'),big:1,tx:'0px',ty:'6px',tr:'-2deg',ex:'0%',ey:'220%',er:'25deg',gx:'0%',gy:'-240%',gr:'-30deg'},
+    {n:'man\u2019oushe zaatar',img:U('1509440159596-0249088772ff'),tx:'-84px',ty:'44px',tr:'7deg',ex:'-160%',ey:'40%',er:'-50deg',gx:'160%',gy:'30%',gr:'50deg'},
+    {n:'the mezze round',img:U('1540914124281-342587941389'),tx:'82px',ty:'40px',tr:'-5deg',ex:'165%',ey:'50%',er:'40deg',gx:'-165%',gy:'40%',gr:'-40deg'},
+    {n:'baklawa \u00b7 to finish',img:U('1519676867240-f03562e64548'),tx:'0px',ty:'-84px',tr:'3deg',ex:'0%',ey:'-240%',er:'-25deg',gx:'0%',gy:'240%',gr:'30deg'}
+  ];
+  const platesHtml=PLATES.map((p,i)=>`
+    <div class="bplate${p.big?' big':''}" data-pl="${i}"
+      style="--tx:${p.tx};--ty:${p.ty};--tr:${p.tr};--ex:${p.ex};--ey:${p.ey};--er:${p.er};--gx:${p.gx};--gy:${p.gy};--gr:${p.gr};background-image:url('${p.img}')">
+      <span>${p.n}</span><b class="yum">sahtein!</b>
+    </div>`).join('');
   s.innerHTML=`
   <div class="bhero">
     <div class="sky"></div><div class="sky2"></div>
@@ -3763,31 +3820,68 @@ B['Beit Zaytoun']=(d)=>{
     <div class="blow">
       <div class="bnm">Beit Zaytoun</div>
       <div class="bar-ar">\u0628\u064a\u062a \u0632\u064a\u062a\u0648\u0646</div>
-      <div class="btg">the courtyard is open \u00b7 est. before you were born</div>
+      <div class="btg">the courtyard is open \u00b7 scroll \u2014 dinner is served</div>
     </div>
     <div class="htrack"><div class="hl">drag \u2014 afternoon to midnight</div><div class="line"></div><div class="knob" data-knob></div></div>
   </div>
-  <div class="bsec rv"><span class="blabel" style="color:#9E3B30">01 \u00b7 the house</span>
-    <div style="font-size:19px;line-height:1.5;margin-top:12px">Three arches, one long table, and a kitchen that answers to a grandmother. The hour changes. The hospitality doesn\u2019t.</div></div>
-  <div class="bsec rv"><span class="blabel" style="color:#9E3B30">02 \u00b7 the table fills</span>
-    <div class="bmz">
-      <div class="plate"><b>Hommus b\u2019zeit</b><span>silk \u00b7 pine nuts \u00b7 fire oil</span><span class="p">7</span></div>
-      <div class="plate"><b>Kibbeh nayyeh</b><span>sunday only \u00b7 raw \u00b7 sacred</span><span class="p">14</span></div>
-      <div class="plate"><b>Batata harra</b><span>crisp \u00b7 cilantro \u00b7 heat</span><span class="p">8</span></div>
-      <div class="plate"><b>Fatteh</b><span>yogurt \u00b7 chickpea \u00b7 ghee</span><span class="p">10</span></div>
-    </div></div>
+  <div class="btable">
+    <div class="btstick">
+      <div class="bthead"><span class="k">the table \u00b7 beit zaytoun</span><span class="v" data-btc>setting the table\u2026</span></div>
+      <div class="btcloth"></div>
+      ${platesHtml}
+      <div class="bcof" data-cof><div class="cup"><i class="stm"></i><i class="stm b"></i></div><div class="cl">then coffee.<br>then you stay another hour.</div></div>
+      <div class="bthint">keep scrolling \u00b7 tap a plate \u00b7 sahtein</div>
+    </div>
+    <div class="btspace"></div>
+  </div>
+  <div class="bsec rv"><span class="blabel" style="color:#9E3B30">the house</span>
+    <div style="font-size:19px;line-height:1.5;margin-top:12px">Three arches, one long table, and a kitchen that answers to a grandmother. Plates arrive until the table says stop. The table never says stop.</div></div>
   ${res(s,'reserve the long table')}`;
+
+  /* hour drag (kept) */
   const knob=s.querySelector('[data-knob]'),track=s.querySelector('.htrack');
   let t=0.12,drag=false;
-  const set=()=>{s.style.setProperty('--t',t.toFixed(3));
+  const setT=()=>{s.style.setProperty('--t',t.toFixed(3));
     const w=track.clientWidth||280;knob.style.left=(t*w)+'px'};
-  requestAnimationFrame(set);
+  requestAnimationFrame(setT);
   knob.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;buzz(6);try{knob.setPointerCapture(e.pointerId)}catch(_){}});
   knob.addEventListener('pointermove',e=>{if(!drag)return;
     const r=track.getBoundingClientRect();
-    t=Math.max(0,Math.min(1,(e.clientX-r.left)/(r.width||280)));set()});
+    t=Math.max(0,Math.min(1,(e.clientX-r.left)/(r.width||280)));setT()});
   const up=()=>drag=false;
   knob.addEventListener('pointerup',up);knob.addEventListener('pointercancel',up);
+
+  /* The Table — the meal in one scroll */
+  const tableSec=s.querySelector('.btable'),plates=[...s.querySelectorAll('.bplate')],
+        btc=s.querySelector('[data-btc]'),cof=s.querySelector('[data-cof]');
+  const N=PLATES.length,STEPS=N*2+1;
+  const IN_MSG=['hommus first \u2014 always','fattoush joins','the kibbeh lands','man\u2019oushe, obviously','is there room? there is room','and something sweet'];
+  s.addEventListener('scroll',()=>{
+    const secTop=tableSec.offsetTop,vh=s.clientHeight||560;
+    const span=(tableSec.offsetHeight-360)||1140;
+    const p=Math.max(0,Math.min(1,(s.scrollTop-secTop)/span));
+    const step=Math.floor(p*STEPS);
+    plates.forEach((pl,i)=>{
+      pl.classList.toggle('on',step>=i+1&&step<N+1+i);
+      pl.classList.toggle('off',step>=N+1+i);
+    });
+    if(step===0)btc.textContent='setting the table\u2026';
+    else if(step<=N)btc.textContent=`plate 0${step} / 0${N} \u2014 ${IN_MSG[step-1]}`;
+    else if(step<STEPS)btc.textContent=`sahtein \u00b7 clearing ${String(step-N).padStart(2,'0')} / 0${N}`;
+    else btc.textContent='the table is yours';
+    cof.classList.toggle('show',step>=STEPS);
+  },{passive:true});
+
+  /* tap a plate — sahtein */
+  plates.forEach(pl=>{
+    pl.addEventListener('pointerdown',e=>e.stopPropagation());
+    pl.addEventListener('click',()=>{
+      if(!pl.classList.contains('on'))return;
+      pl.classList.remove('sah');void pl.offsetWidth;pl.classList.add('sah');
+      buzz(8);setTimeout(()=>pl.classList.remove('sah'),800);
+    });
+  });
+
   wireRv(s);
   cover(s,'btcover','<i></i><i></i>',null,950);
   return s;
