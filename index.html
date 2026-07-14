@@ -1843,6 +1843,32 @@ body{background:#050505}
 .melt2 .cinter b{font-weight:900;letter-spacing:-.02em;font-size:52px}
 .sel2 .cinter b{letter-spacing:.2em}
 </style>
+<style id="v38">
+/* ═════════ V38 — realism sweep ═════════ */
+/* beit: real coffee lands where the meal ends */
+.beit2 .cupph{width:86px;height:86px;border-radius:50%;margin:0 auto;background-size:cover;background-position:center;
+  box-shadow:0 12px 20px -8px rgba(43,36,28,.5),inset 0 0 0 4px #FBF6EA,inset 0 0 0 5px rgba(43,36,28,.18)}
+.beit2 .htrack .knob{width:26px;height:26px;margin-left:-13px;top:4px;
+  background:radial-gradient(circle at 40% 34%,#F6E7C8,#C98F4E 70%);box-shadow:0 4px 14px rgba(43,36,28,.4)}
+.beit2 .htrack .knob::after{width:7px;height:7px}
+/* sucré: flavour accent line replaces the drawn macaron */
+.suc2 .sfbar{width:52px;height:3px;border-radius:3px;margin:16px auto 0;background:var(--mac,#E9B7C4);transition:background .5s}
+.suc2 .snm{margin-top:96px}
+/* melt: the type melts harder now that it carries the show */
+.melt2 .mnm{margin-top:120px}
+.melt2 .mnm span{transform:translateY(calc(var(--melt,0)*16px)) skewX(calc(var(--melt,0)*-5deg)) scaleY(calc(1 + var(--melt,0)*.06))}
+.melt2 .mnm span:nth-child(2){transition-delay:.1s}
+.melt2 .mnm span:nth-child(3){transition-delay:.2s}
+.melt2 .mnm span:nth-child(4){transition-delay:.3s}
+/* sel: the sun becomes light, not a sticker */
+.sel2 .lsun{width:52px;height:52px;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,246,214,.95) 0 26%,rgba(242,192,99,.75) 44%,rgba(242,192,99,.18) 68%,transparent 72%);
+  box-shadow:0 0 60px 22px rgba(255,220,140,.45);filter:blur(.4px)}
+.sel2 .lsun::after{font-size:5px;opacity:.55;color:#F6F2E6;top:-13px}
+.sel2 .lfoam{opacity:.5}
+/* retired props stay retired */
+.barches,.rcup,.smac,.sscal,.mdrips{display:none!important}
+</style>
 </head>
 <body>
 
@@ -3151,7 +3177,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 37';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 38';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3983,7 +4009,6 @@ B['Beit Zaytoun']=(d)=>{
     <div class="cscrim sc-beit"></div>
     <div class="sky"></div><div class="sky2"></div>
     <div class="bstars">${stars}</div>
-    <div class="barches"><i><em></em></i><i><em></em></i><i><em></em></i></div>
     <div class="blow">
       <div class="bnm">Beit Zaytoun</div>
       <div class="btg">the courtyard is open \u00b7 scroll \u2014 dinner is served</div>
@@ -3995,7 +4020,7 @@ B['Beit Zaytoun']=(d)=>{
       <div class="bthead"><span class="k">the table \u00b7 beit zaytoun</span><span class="v" data-btc>setting the table\u2026</span></div>
       <div class="btcloth"></div>
       ${platesHtml}
-      <div class="bcof" data-cof><div class="cup"><i class="stm"></i><i class="stm b"></i></div><div class="cl">then coffee.<br>then you stay another hour.</div></div>
+      <div class="bcof" data-cof><div class="cupph" style="background-image:url('${P('1511920170033-f8396924c348')}')"></div><div class="cl">then coffee.<br>then you stay another hour.</div></div>
       <div class="bthint">keep scrolling \u00b7 tap a plate \u00b7 sahtein</div>
     </div>
     <div class="btspace"></div>
@@ -4064,7 +4089,6 @@ B['Ritual']=(d)=>{
     <div class="rring"></div>
     <div class="rlow">
       <span class="blabel" style="color:#B0754A">third-wave \u00b7 slow bar \u00b7 mar mikhael</span>
-      <div class="rcup" style="margin-top:18px"><i class="lvl"></i><i class="stm"></i><i class="stm b"></i></div>
       <div class="rnm">ritual<b>.</b></div>
       <div class="rtg">the same cup, done right, every single day.</div>
     </div>
@@ -4164,8 +4188,6 @@ B['Sucr\u00e9']=(d)=>{
   <div class="shero">
     <div class="cph" style="background-image:url('${U('1569864358642-9d1684040f43')}')"></div>
     <div class="cscrim sc-suc"></div>
-    <div class="sscal"></div>
-    <div class="smac"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
     <div class="slow">
       <div class="snm">Sucr\u00e9</div>
       <div class="stg">p\u00e2tisserie \u00b7 open at dawn \u00b7 gone by noon</div>
@@ -4175,7 +4197,7 @@ B['Sucr\u00e9']=(d)=>{
         <button data-c="#F5D7A1" data-n="passion \u00b7 the loud one" style="background:#F5D7A1"></button>
         <button data-c="#C7B9E2" data-n="lavande \u00b7 the quiet one" style="background:#C7B9E2"></button>
       </div>
-      <div class="sflname" data-sfn>rose \u00b7 the classic</div>
+      <div class="sfbar"></div><div class="sflname" data-sfn>rose \u00b7 the classic</div>
     </div>
   </div>
   <div class="ssec rv" style="text-align:center"><span class="blabel" style="color:#C99A5B">01 \u00b7 today, under the foil</span>
@@ -4235,10 +4257,9 @@ B['MELT']=(d)=>{
   <div class="mhero">
     <div class="cph" style="background-image:url('${IMGS.dessert.dish}')"></div>
     <div class="cscrim sc-melt"></div>
-    <div class="mdrips"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="mnm"><span>M</span><span>E</span><span>L</span><span>T</span></div>
     <div class="mtimer">melting since <b data-mt>0:00</b> \u2014 hurry</div>
-    <div class="mlow">pull the drips \u00b7 they fight back<br>gelato \u00b7 cookies \u00b7 chaos</div>
+    <div class="mlow">gelato \u00b7 cookies \u00b7 chaos<br>it is melting as you read this</div>
   </div>
   <div class="msec rv"><span class="blabel">01 \u00b7 today\u2019s wall</span>
     <div class="mflav">
@@ -4259,18 +4280,6 @@ B['MELT']=(d)=>{
     secs++;mt.textContent=Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
     s.style.setProperty('--melt',Math.min(1,secs/75).toFixed(3));
   },1000);
-  /* pull the drips (proven) */
-  s.querySelectorAll('.mdrips i').forEach(dr=>{
-    let drag=false,py=0,h0=0;
-    dr.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;py=e.clientY;
-      h0=dr.clientHeight;dr.style.transition='none';buzz(6);try{dr.setPointerCapture(e.pointerId)}catch(_){}});
-    dr.addEventListener('pointermove',e=>{if(!drag)return;
-      dr.style.height=Math.max(26,Math.min(h0+80,h0+(e.clientY-py)))+'px'});
-    const up=()=>{if(!drag)return;drag=false;
-      dr.style.transition='height .5s cubic-bezier(.3,1.8,.4,1)';dr.style.height='';
-      setTimeout(()=>dr.style.transition='',520);buzz(10)};
-    dr.addEventListener('pointerup',up);dr.addEventListener('pointercancel',up);
-  });
   s.querySelectorAll('.mflav .fl').forEach(f=>f.addEventListener('pointerdown',e=>{e.stopPropagation();buzz(7)}));
   wireRv(s);
   cover(s,'mcover','',null,950);
