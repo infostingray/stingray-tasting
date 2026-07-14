@@ -1158,6 +1158,17 @@ img{display:block;max-width:100%}
 @keyframes steamup{0%{transform:translateY(16px) scaleY(.5);opacity:0}30%{opacity:.9}100%{transform:translateY(-70px) translateX(10px) scaleY(1.15);opacity:0}}
 @media(prefers-reduced-motion:reduce){.wisher,.squeeze,.steam{animation:none;display:none}}
 </style>
+<style id="v20">
+/* ═════════ V20 — stability release ═════════ */
+/* iframes flicker when 3D-rotated: hide the live site unless it's the active plate */
+.phone:not(.pos-active) .liveFrame{visibility:hidden}
+/* arrows: no backdrop blur (shimmers on Android) */
+#deckWrap .arrow{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(7,7,8,.82)}
+/* magnetic buttons repainted during scroll — retired */
+.sfoot button,.mhead [data-sheet]{transform:none!important}
+/* kitchen grid back to 4 */
+@media(min-width:760px){.cats{max-width:640px;grid-template-columns:repeat(4,1fr)}}
+</style>
 </head>
 <body>
 
@@ -1249,7 +1260,7 @@ const U=id=>`https://images.unsplash.com/photo-${id}?w=680&q=70&auto=format&fit=
 /* real photography per category (Unsplash license, free to use) */
 const IMGS={
  lounge:{
-  gal:[[U('1514362545857-3bc16c4c7d1b'),'the room'],[U('1470337458703-46ad1756a187'),'the pour'],[U('1572116469696-31de0f17cc34'),'after dark']],
+  gal:[[U('1514933651103-005eec06c04b'),'the room'],[U('1470337458703-46ad1756a187'),'the pour'],[U('1572116469696-31de0f17cc34'),'after dark']],
   dish:U('1551024506-0bccd828d307')},
  italian:{
   gal:[[U('1565299624946-b28f40a0ae38'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
@@ -1399,50 +1410,6 @@ lebanese:{label:'Lebanese',glyph:'❋',accent:'#9E3B30',desc:'mezze · fire · f
    tabs:[['off the saj',[['Man\u2019oushe deluxe','zaatar · akkawi','5'],['Halloumi smash','honey · chili','8'],['Cheese roll','crispy edges','6']]],
          ['late night',[['Shawarma bowl','garlic overload','9'],['Fries bucket','sumac dust','5'],['Knefeh roll','the finisher','6']]]],
    hours:'daily · 11am–2am',loc:'badaro strip',cta:'order now'}
- ]},
-pub:{label:'Pub',glyph:'♠',accent:'#C77B2E',desc:'taps · burgers · match nights',
- designs:[
-  {name:'The Brass Tap',font:"'Bebas Neue',sans-serif",bg:'#191410',tx:'#EFE6D6',ac:'#C77B2E',
-   heroClass:'h-brass',
-   hero:`<div class="foam plx"></div>
-     <div class="twelve">12</div>
-     <div class="inner"><div class="sk" style="color:#C77B2E">taproom · kitchen</div>
-     <div class="nm">THE BRASS<br><b>TAP</b></div>
-     <div class="tg">12 taps. zero bad nights.</div></div>
-     <div class="down">↓</div>`,
-   pull:'“The big screen is big. The pours are bigger.”',
-   story:'Twelve rotating taps, a kitchen that takes burgers personally, and every match that matters on the wall. Your usual seat is waiting.',
-   dish:{n:'Smash Burger',d:'double patty · secret sauce',p:'$12'},
-   tabs:[['on tap',[['House lager','crisp · cold','6'],['IPA of the week','ask the bar','7'],['Amber ale','toasty','6']]],
-         ['off the grill',[['Smash burger','double · secret sauce','12'],['Loaded fries','brisket gravy','8'],['Hot wings','count the tears','9']]]],
-   hours:'daily · 4pm–2am',loc:'hamra',cta:'see what\u2019s pouring'},
-  {name:'Hop Saint',font:"'Fraunces',serif",bg:'#EFE9DB',tx:'#221E19',ac:'#3E5C41',
-   heroClass:'h-hop',
-   hero:`<div class="awning"></div>
-     <div class="crest plx">h</div>
-     <div class="nm">Hop <em>Saint</em></div>
-     <div class="tg">beer-first. food that keeps up.</div>
-     <div class="down">↓</div>`,
-   pull:'“Patron saint of the after-work pint.”',
-   story:'A craft house with a conscience — local brews, seasonal plates, and a garden that fills up the second the sun agrees. Dogs welcome, obviously.',
-   dish:{n:'Fried Chicken Sando',d:'hot honey · slaw',p:'$11'},
-   tabs:[['the chalkboard',[['Saison of the house','farmhouse ale','7'],['Hazy pale','tropical','7'],['Cider','dry apple','6']]],
-         ['the kitchen',[['Fried chicken sando','hot honey','11'],['Garden board','for the table','14'],['Stout brownie','yes, really','6']]]],
-   hours:'tue–sun · 3pm–12am',loc:'broumana',cta:'book a garden table'},
-  {name:'Barrel & Bone',font:"'Cormorant Garamond',serif",bg:'#141210',tx:'#E9DFCE',ac:'#A65D33',
-   heroClass:'h-barrel',
-   hero:`<div class="ember plx"></div>
-     <div class="sm">smokehouse · public house</div>
-     <div class="nm">Barrel<em>&amp;</em>Bone</div>
-     <div class="x"></div>
-     <div class="hrs">low &amp; slow since day one</div>
-     <div class="down">↓</div>`,
-   pull:'“Twelve hours in the smoker. Worth every one.”',
-   story:'Oak smoke, dark wood, and meat that falls apart if you look at it wrong. A public house for people who take their brisket seriously.',
-   dish:{n:'Brisket, 12hr',d:'oak-smoked · burnt ends',p:'$19'},
-   tabs:[['from the smoker',[['Brisket, 12hr','oak-smoked','19'],['Pork ribs','half rack','16'],['Bone marrow toast','parsley salad','11']]],
-         ['to wash it down',[['Smoked porter','dark & deep','7'],['Bourbon flight','three pours','15'],['Stout float','dessert, allegedly','6']]]],
-   hours:'wed–sun · 5pm–1am',loc:'dbayeh',cta:'reserve a table'}
  ]},
 dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'sugar \u00b7 butter \u00b7 joy',
  designs:[
@@ -2510,7 +2477,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 19';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 20';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
