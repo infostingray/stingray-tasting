@@ -3858,7 +3858,7 @@ B['Beit Zaytoun']=(d)=>{
   const IN_MSG=['hommus first \u2014 always','fattoush joins','the kibbeh lands','man\u2019oushe, obviously','is there room? there is room','and something sweet'];
   s.addEventListener('scroll',()=>{
     const secTop=tableSec.offsetTop,vh=s.clientHeight||560;
-    const span=(tableSec.offsetHeight-360)||1140;
+    const span=Math.max(600,tableSec.offsetHeight-360)||1140;
     const p=Math.max(0,Math.min(1,(s.scrollTop-secTop)/span));
     const step=Math.floor(p*STEPS);
     plates.forEach((pl,i)=>{
@@ -3867,9 +3867,9 @@ B['Beit Zaytoun']=(d)=>{
     });
     if(step===0)btc.textContent='setting the table\u2026';
     else if(step<=N)btc.textContent=`plate 0${step} / 0${N} \u2014 ${IN_MSG[step-1]}`;
-    else if(step<STEPS)btc.textContent=`sahtein \u00b7 clearing ${String(step-N).padStart(2,'0')} / 0${N}`;
+    else if(p<0.965)btc.textContent=`sahtein \u00b7 clearing ${String(Math.min(N,step-N)).padStart(2,'0')} / 0${N}`;
     else btc.textContent='the table is yours';
-    cof.classList.toggle('show',step>=STEPS);
+    cof.classList.toggle('show',p>=0.965);
   },{passive:true});
 
   /* tap a plate — sahtein */
