@@ -17,7 +17,7 @@
   --bone-dim:rgba(237,234,227,.55);
   --bone-faint:rgba(237,234,227,.28);
   --line:rgba(237,234,227,.14);
-  --amb:#2423e0;
+  --amb:#FF4D2E;
   --mono:'Space Mono',monospace;
   --sans:'Archivo',sans-serif;
 }
@@ -1744,6 +1744,28 @@ body{background:#050505}
   repeating-linear-gradient(-45deg,transparent 0 7px,rgba(122,78,26,.4) 7px 8.5px),
   radial-gradient(circle at 50% 50%,#DCA94E 0 62%,#C98F3A 63% 66%,#FBF6EA 67%)!important}
 </style>
+<style id="v35">
+/* ═════════ V35 — stingray taste: the selling color ═════════ */
+:root{--taste:#FF4D2E;--taste-l:#FF7A5C;--taste-d:#C93318}
+/* the lockup: stingray (blue system) · taste (flame product) */
+#tst{font-family:var(--sans);font-weight:800;font-style:italic;color:var(--taste);margin-left:5px;letter-spacing:-.02em}
+/* product accents move to flame; the sysbar/wordmark dot stays bluebonnet (the agency speaks, taste sells) */
+.intro-h em{color:var(--taste)}
+.res-h em{color:var(--taste)}
+.ctag{border-color:rgba(255,77,46,.45)}
+#dots i.on{background:var(--taste)}
+.cat:hover,.cat:focus-visible{border-color:var(--taste)}
+.cat .desc{transition:color .3s}
+.cat:hover .desc{color:var(--taste-l)}
+#plateIdx b{color:var(--taste-l)}
+.kitchen-note b{color:var(--taste-l)}
+.btn:focus-visible{outline-color:var(--taste)}
+/* the money buttons burn */
+.tastebtn{background:var(--taste)!important;border-color:var(--taste)!important;color:#FFF7F2!important;
+  box-shadow:0 12px 30px -10px rgba(255,77,46,.55)}
+.tastebtn:hover{background:var(--taste-d)!important;border-color:var(--taste-d)!important}
+::selection{background:rgba(255,77,46,.35)}
+</style>
 </head>
 <body>
 
@@ -2292,7 +2314,7 @@ function step(dir){
 }
 $('#prevBtn').addEventListener('click',()=>step(-1));
 $('#nextBtn').addEventListener('click',()=>step(1));
-$('#reCat').addEventListener('click',()=>{goto('kitchen');setAmbient('#2423e0')});
+$('#reCat').addEventListener('click',()=>{goto('kitchen');setAmbient('#FF4D2E')});
 
 /* horizontal swipe between phones */
 let sx=null,sy=null;
@@ -3052,7 +3074,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 34';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 35';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4213,6 +4235,20 @@ miniSite=function(d,c,k){
   if(B[d.name])return B[d.name](d);
   return _mini(d,c,k);
 };
+})();
+</script>
+<script id="v35js">
+/* V35 — stingray taste lockup + flame CTAs */
+(function(){
+const wm=document.querySelector('#wordmark');
+if(wm&&!document.querySelector('#tst')){
+  const t=document.createElement('span');t.id='tst';t.textContent='taste';
+  wm.appendChild(t);
+}
+document.querySelectorAll('button').forEach(b=>{
+  const tx=(b.textContent||'').toLowerCase();
+  if(/start (the )?tasting|start from this one|reserve (a|your) (slot|table)|talk to us/.test(tx))b.classList.add('tastebtn');
+});
 })();
 </script>
 </body>
