@@ -1242,6 +1242,65 @@ body{background:#050505}
 .h-sel .nm{font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;letter-spacing:.24em;color:#1F4F5E;text-indent:.24em}
 .h-sel .tg{font-family:var(--mono);font-size:7px;letter-spacing:.32em;text-transform:uppercase;color:#1F4F5E;opacity:.7;margin-top:12px}
 </style>
+<style id="v24">
+/* ═════════ V24 — SEN: the first bespoke flagship ═════════ */
+.sen{background:#0C0C0E;color:#EDEDF2;font-family:'Marcellus',serif}
+.sen *{box-sizing:border-box}
+/* hero */
+.sen-hero{position:relative;min-height:100%;display:flex;overflow:hidden}
+.sen-hero .ph{position:absolute;inset:-6% 0;background-size:cover;background-position:center;
+  filter:brightness(.5) saturate(.85);animation:senken 26s ease-in-out infinite alternate}
+@keyframes senken{from{transform:scale(1)}to{transform:scale(1.1)}}
+.sen-hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,14,.55) 0%,rgba(12,12,14,.25) 45%,rgba(12,12,14,.96) 100%)}
+.sen-kanji{
+  position:absolute;top:52px;right:22px;z-index:2;
+  font-size:120px;line-height:1;color:rgba(237,237,242,.94);
+  text-shadow:0 0 60px rgba(198,71,46,.35);
+  animation:senbreathe 6s ease-in-out infinite;
+}
+@keyframes senbreathe{0%,100%{opacity:.88}50%{opacity:1}}
+.sen-kanji small{display:block;font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--mono);color:#C6472E;margin-top:14px;text-align:right}
+.sen-hero .low{position:relative;z-index:2;margin-top:auto;padding:0 22px 46px;width:100%}
+.sen-k{font-family:var(--mono);font-size:6.5px;letter-spacing:.4em;text-transform:uppercase;color:#C6472E}
+.sen-nm{font-size:46px;line-height:1;letter-spacing:.3em;margin-top:12px;text-indent:.05em}
+.sen-tg{font-family:var(--mono);font-size:7px;letter-spacing:.24em;text-transform:uppercase;opacity:.6;margin-top:12px;line-height:2}
+.sen-rule{width:1px;height:38px;background:linear-gradient(#C6472E,transparent);margin-top:18px}
+.sen .down2{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;opacity:.5;animation:hintBob2 1.8s ease-in-out infinite}
+/* sticky course counter */
+.sen-track{position:sticky;top:0;z-index:6;background:rgba(12,12,14,.88);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:space-between;padding:13px 22px;border-bottom:1px solid rgba(237,237,242,.08)}
+.sen-track .tk{font-family:var(--mono);font-size:7px;letter-spacing:.3em;text-transform:uppercase;color:rgba(237,237,242,.55)}
+.sen-track .tn{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:#C6472E}
+.sen-progress{position:absolute;left:0;bottom:-1px;height:1px;background:#C6472E;width:0;transition:width .25s ease-out}
+/* courses */
+.sen-courses{padding:10px 0 8px}
+.sen-course{display:flex;align-items:baseline;gap:16px;padding:17px 22px;border-bottom:1px solid rgba(237,237,242,.06);
+  opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.sen-course.in{opacity:1;transform:none}
+.sen-course .no{font-family:var(--mono);font-size:8px;color:#C6472E;flex:0 0 24px;letter-spacing:.1em}
+.sen-course .jp{font-size:15px;flex:0 0 auto;min-width:64px;letter-spacing:.14em}
+.sen-course .en{font-family:var(--mono);font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;flex:1;text-align:right;line-height:1.9}
+/* interlude */
+.sen-inter{position:relative;height:210px;overflow:hidden;margin:8px 0}
+.sen-inter .ph{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.6)}
+.sen-inter .k2{position:absolute;left:22px;bottom:18px;font-size:44px;color:#EDEDF2;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.sen-inter .k2 small{display:block;font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;color:#C6472E;margin-top:6px}
+/* the rules */
+.sen-rules{padding:34px 22px}
+.sen-rules .rl{display:flex;gap:14px;align-items:baseline;padding:10px 0;font-family:var(--mono);font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;line-height:1.9;opacity:.75}
+.sen-rules .rl i{font-style:normal;color:#C6472E}
+/* reserve */
+.sen-res{padding:8px 22px 52px;text-align:center}
+.sen-res .price{font-size:30px;letter-spacing:.1em;margin-bottom:4px}
+.sen-res .pk{font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:22px}
+.sen-res button{
+  width:100%;border:1px solid #C6472E;background:transparent;color:#EDEDF2;cursor:pointer;
+  font-family:var(--mono);font-size:9px;letter-spacing:.34em;text-transform:uppercase;padding:19px;
+  transition:background .35s,color .35s;
+}
+.sen-res button:hover{background:#C6472E}
+.sen-res .made{font-family:var(--mono);font-size:6px;letter-spacing:.24em;text-transform:uppercase;opacity:.3;margin-top:28px}
+</style>
 </head>
 <body>
 
@@ -2550,7 +2609,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 23';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 24';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3163,6 +3222,85 @@ buildDeck=function(){
         const b=document.createElement('div');b.className='mphd';
         b.style.backgroundImage=`${m[1]},url('${m[0]}')`;head.prepend(b)}}
   });
+};
+})();
+</script>
+<script id="v24js">
+/* ═════════ V24 — SEN, hand-built ═════════ */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const COURSES=[
+['01','\u5148\u4ed8','sakizuke \u00b7 the opening'],
+['02','\u690e\u8338','chawanmushi \u00b7 silk custard'],
+['03','\u9bdb','tai \u00b7 sea bream, aged two days'],
+['04','\u9c15','botan ebi \u00b7 sweet prawn'],
+['05','\u9caa','saba \u00b7 cured mackerel'],
+['06','\u4e2d\u30c8\u30ed','ch\u016btoro \u00b7 the argument ender'],
+['07','\u96f2\u4e39','uni \u00b7 hokkaido, this morning'],
+['08','\u7a74\u5b50','anago \u00b7 sea eel, brushed'],
+['09','\u5375','tamago \u00b7 the chef\u2019s signature'],
+['10','\u6c41\u7269','owan \u00b7 the quiet broth'],
+['11','\u6293\u5bff\u53f8','temaki \u00b7 eaten in one breath'],
+['12','\u7518\u5473','kanmi \u00b7 hojicha \u00b7 the ending']
+];
+
+function senSite(d){
+  const s=document.createElement('div');
+  s.className='site sen';
+  const courses=COURSES.map(c=>`
+    <div class="sen-course"><span class="no">${c[0]}</span><span class="jp">${c[1]}</span><span class="en">${c[2]}</span></div>`).join('');
+  s.innerHTML=`
+    <div class="sen-hero">
+      <div class="ph" style="background-image:url('${IMGS.japanese.gal[0][0]}')"></div>
+      <div class="scrim"></div>
+      <div class="sen-kanji">\u5343<small>sen \u00b7 \u5343</small></div>
+      <div class="low">
+        <div class="sen-k">omakase \u00b7 twelve seats \u00b7 downtown</div>
+        <div class="sen-nm">SEN</div>
+        <div class="sen-tg">no menu. only trust.<br>two seatings \u00b7 7:00 &amp; 9:30</div>
+        <div class="sen-rule"></div>
+      </div>
+      <div class="down2">\u2193</div>
+    </div>
+    <div class="sen-track"><span class="tk">tonight \u00b7 the twelve</span><span class="tn" data-sentn>course 01 / 12</span><div class="sen-progress" data-senp></div></div>
+    <div class="sen-courses">${courses}</div>
+    <div class="sen-inter">
+      <div class="ph" style="background-image:url('${IMGS.japanese.gal[1][0]}')"></div>
+      <div class="k2">\u4fe1\u983c<small>shinrai \u00b7 trust</small></div>
+    </div>
+    <div class="sen-rules">
+      <div class="rl"><i>\u4e00</i>phones sleep at the counter. the fish deserves your eyes.</div>
+      <div class="rl"><i>\u4e8c</i>tell us allergies once. then let go.</div>
+      <div class="rl"><i>\u4e09</i>twelve seats, two seatings. late means next season.</div>
+    </div>
+    <div class="sen-res">
+      <div class="price">$95</div>
+      <div class="pk">twelve courses \u00b7 per guest</div>
+      <button data-sheet>request a seat</button>
+      <div class="made">site by stingray \u2014 ads that leave a mark</div>
+    </div>`;
+
+  /* course reveal + sticky counter */
+  const rows=[...s.querySelectorAll('.sen-course')];
+  const tn=s.querySelector('[data-sentn]'),pr=s.querySelector('[data-senp]');
+  s.addEventListener('scroll',()=>{
+    const st=s.scrollTop,vh=s.clientHeight||560;
+    rows.forEach(r=>{if(r.offsetTop<st+vh*.92)r.classList.add('in')});
+    let idx=0;
+    rows.forEach((r,i)=>{if(r.offsetTop<st+vh*.45)idx=i});
+    tn.textContent=`course ${String(idx+1).padStart(2,'0')} / 12`;
+    pr.style.width=((idx+1)/12*100)+'%';
+  },{passive:true});
+  if(RM)rows.forEach(r=>r.classList.add('in'));
+  else requestAnimationFrame(()=>{rows.slice(0,3).forEach(r=>r.classList.add('in'))});
+  return s;
+}
+
+const _mini=miniSite;
+miniSite=function(d,c,k){
+  if(d.name==='Sen')return senSite(d);
+  return _mini(d,c,k);
 };
 })();
 </script>
