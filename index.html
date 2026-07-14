@@ -1766,6 +1766,83 @@ body{background:#050505}
 .tastebtn:hover{background:var(--taste-d)!important;border-color:var(--taste-d)!important}
 ::selection{background:rgba(255,77,46,.35)}
 </style>
+<style id="v36">
+/* ═════════ V36 — CINEMA: photo-first foundation for all worlds ═════════ */
+.cph{position:absolute;inset:-7% 0;background-size:cover;background-position:center;z-index:0;
+  animation:senken 24s ease-in-out infinite alternate}
+.cscrim{position:absolute;inset:0;z-index:1;pointer-events:none}
+.cinter{position:relative;height:210px;overflow:hidden;display:flex;align-items:flex-end;padding:0 22px 18px}
+.cinter .cbg{position:absolute;inset:-6% 0;background-size:cover;background-position:center}
+.cinter::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,8,.15),rgba(5,5,8,.72))}
+.cinter b{position:relative;z-index:2;font-weight:inherit;color:#F4F1EA;text-shadow:0 2px 26px rgba(0,0,0,.6);font-size:44px;line-height:1}
+.cinter small{position:relative;z-index:2;display:block;font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,241,234,.7);margin-top:8px}
+/* scrims */
+.sc-forno{background:linear-gradient(180deg,rgba(74,13,7,.62) 0%,rgba(122,26,14,.34) 45%,rgba(58,9,4,.95) 100%)}
+.sc-beit{background:linear-gradient(180deg,rgba(38,28,16,.5) 0%,rgba(38,28,16,.22) 40%,rgba(30,22,12,.9) 100%)}
+.sc-rit{background:linear-gradient(180deg,rgba(32,23,15,.6) 0%,rgba(32,23,15,.3) 45%,rgba(26,18,11,.93) 100%)}
+.sc-volt{background:linear-gradient(180deg,rgba(7,5,13,.7) 0%,rgba(20,8,38,.45) 45%,rgba(7,5,13,.96) 100%)}
+.sc-suc{background:linear-gradient(180deg,rgba(46,28,24,.55) 0%,rgba(46,28,24,.3) 45%,rgba(38,22,18,.92) 100%)}
+.sc-melt{background:linear-gradient(180deg,rgba(214,80,124,.68) 0%,rgba(214,80,124,.4) 45%,rgba(140,38,72,.94) 100%)}
+.sc-sel{background:linear-gradient(180deg,rgba(20,45,58,.28) 0%,rgba(20,45,58,.06) 42%,rgba(16,38,50,.82) 100%)}
+/* hero content rides above the cinema */
+.forno2 .fnm,.forno2 .fdeg,.forno2 .fhold{position:relative;z-index:3}
+.forno2 .fglow{position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
+  background:radial-gradient(120% 70% at 50% 112%,rgba(255,166,80,.9) 0%,rgba(226,88,43,.5) 34%,transparent 62%);
+  opacity:calc(.18 + var(--fire,0)*.82);transition:opacity .15s}
+.forno2 .fhero{background:#2A0B06}
+.beit2 .blow,.beit2 .barches,.beit2 .htrack{position:relative;z-index:3}
+.beit2 .bstars{z-index:2}
+.beit2 .bhero .sky{background:linear-gradient(180deg,rgba(246,231,200,.32),rgba(232,200,142,.14) 60%,rgba(120,80,40,.25));z-index:1}
+.beit2 .bhero .sky2{z-index:1}
+.beit2.cinew .bnm,.beit2.cinew .bar-ar{color:#F6EEDD}
+.beit2.cinew .bar-ar{color:#F2C08A}
+.beit2.cinew .btg{color:rgba(246,238,221,.85)}
+.beit2.cinew .htrack .line{background:#F6EEDD;opacity:.5}
+.beit2.cinew .htrack .hl{color:rgba(246,238,221,.75);opacity:1}
+.beit2.cinew .barches i{border-color:rgba(246,238,221,.8)}
+.rit2 .rlow,.rit2 .rring{position:relative;z-index:3}
+.rit2 .rring{position:absolute;z-index:2;border-color:rgba(240,220,190,.25)}
+.rit2.cinew .rnm{color:#F4EDE2}
+.rit2.cinew .rnm b{color:#E8A76B}
+.rit2.cinew .rtg{color:rgba(244,237,226,.85)}
+.rit2.cinew .rlow .blabel{color:#E8A76B!important}
+.rit2.cinew .rcup{border-color:#F4EDE2;background:rgba(255,253,249,.9)}
+.rit2 .rhero{background:#1E140C}
+.volt2 .vnm,.volt2 .vbpm,.volt2 .vhold{position:relative;z-index:3}
+.volt2 .vlz{z-index:2}
+.suc2 .smac,.suc2 .slow,.suc2 .sscal{position:relative;z-index:3}
+.suc2 .sscal{position:absolute;z-index:3}
+.suc2.cinew .snm{background:linear-gradient(110deg,#F9EDE8 42%,#E9C486 50%,#F9EDE8 58%);background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.suc2.cinew .stg{color:rgba(249,237,232,.85)}
+.suc2.cinew .sflname{color:#E9C486}
+.suc2 .shero{background:#2A1712}
+.melt2 .mdrips{z-index:3}
+.melt2 .mnm,.melt2 .mtimer,.melt2 .mlow{position:relative;z-index:3}
+.melt2 .mhero{background:#8C2648}
+.sel2 .lsky{background:linear-gradient(180deg,
+  color-mix(in srgb,rgba(191,227,236,.4) calc((1 - var(--t))*100%),rgba(20,27,58,.85)),
+  color-mix(in srgb,rgba(233,244,244,.2) calc((1 - var(--t))*100%),rgba(42,36,80,.8)));z-index:1}
+.sel2 .lsea{background:linear-gradient(180deg,
+  color-mix(in srgb,rgba(156,205,216,.28) calc((1 - var(--t))*100%),rgba(27,42,74,.85)),
+  color-mix(in srgb,rgba(242,232,213,.3) calc((1 - var(--t))*100%),rgba(58,52,84,.85)));z-index:1}
+.sel2 .lfoam,.sel2 .lstars{z-index:2}
+.sel2 .lsun{z-index:4}
+.sel2 .llow{z-index:4}
+.sel2.cinew .lnm{color:#F6F2E6!important}
+.sel2.cinew .ltg{color:rgba(246,242,230,.88)!important}
+.sel2.cinew .llow .blabel{color:#F2C063!important}
+.sel2.cinew .lsun::after{color:#F6F2E6;opacity:.85}
+/* interlude type per world */
+.forno2 .cinter b{font-size:56px;letter-spacing:.02em}
+.volt2 .cinter b{font-family:'Bebas Neue',sans-serif;font-size:58px;letter-spacing:.04em;
+  text-shadow:2px 0 rgba(180,76,255,.8),-2px 0 rgba(76,255,209,.8),0 2px 26px rgba(0,0,0,.6)}
+.beit2 .cinter b{font-size:40px}
+.rit2 .cinter b{font-style:italic}
+.suc2 .cinter b{font-style:italic}
+.melt2 .cinter b{font-weight:900;letter-spacing:-.02em;font-size:52px}
+.sel2 .cinter b{letter-spacing:.2em}
+</style>
 </head>
 <body>
 
@@ -3074,7 +3151,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 35';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 36';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3840,9 +3917,11 @@ const B={};
 
 /* ══ FORNO — hold the fire ══ */
 B['Forno']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp forno2';
+  const s=document.createElement('div');s.className='site bsp forno2 cinew';
   s.innerHTML=`
   <div class="fhero">
+    <div class="cph" style="background-image:url('${IMGS.italian.gal[0][0]}')"></div>
+    <div class="cscrim sc-forno"></div>\n    <div class="fglow"></div>
     <div class="ph" style="background-image:url('${IMGS.italian.gal[0][0]}')"></div>
     <div class="fnm">FOR<i>NO</i></div>
     <div class="fdeg"><b data-deg>20\u00b0C</b>the oven \u00b7 right now</div>
@@ -3854,6 +3933,7 @@ B['Forno']=(d)=>{
     <div class="it"><b>MARGHERITA</b><span>san marzano \u00b7 fior di latte \u00b7 basil</span><span class="p">11</span></div>
     <div class="it"><b>DIAVOLA</b><span>spianata \u00b7 chili honey \u00b7 smoked mozz</span><span class="p">14</span></div>
     <div class="it"><b>VERDE</b><span>pistachio cream \u00b7 mortadella \u00b7 stracciatella</span><span class="p">16</span></div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.italian.gal[2][0]}')"></div><b>FUOCO</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="fmq rv"><div>485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 </div></div>
   ${res(s,'book the counter')}`;
   const hero=s.querySelector('.fhero'),deg=s.querySelector('[data-deg]');
@@ -3882,7 +3962,7 @@ B['Forno']=(d)=>{
 
 /* ══ BEIT ZAYTOUN — drag the hour + The Table ══ */
 B['Beit Zaytoun']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp beit2';
+  const s=document.createElement('div');s.className='site bsp beit2 cinew';
   const stars=Array.from({length:8},()=>`<i style="top:${(Math.random()*40).toFixed(0)}%;left:${(Math.random()*92+4).toFixed(0)}%;animation-delay:${(Math.random()*2).toFixed(1)}s"></i>`).join('');
   const PLATES=[
     {n:'hommus b\u2019zeit',pf:'pf-hommus',tx:'-72px',ty:'-52px',tr:'-6deg',ex:'-150%',ey:'-30%',er:'-40deg',gx:'150%',gy:'-20%',gr:'40deg'},
@@ -3900,6 +3980,8 @@ B['Beit Zaytoun']=(d)=>{
     </div>`).join('');
   s.innerHTML=`
   <div class="bhero">
+    <div class="cph" style="background-image:url('${IMGS.lebanese.gal[0][0]}')"></div>
+    <div class="cscrim sc-beit"></div>
     <div class="sky"></div><div class="sky2"></div>
     <div class="bstars">${stars}</div>
     <div class="barches"><i><em></em></i><i><em></em></i><i><em></em></i></div>
@@ -3920,6 +4002,7 @@ B['Beit Zaytoun']=(d)=>{
     </div>
     <div class="btspace"></div>
   </div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.lebanese.gal[1][0]}')"></div><b>\u0635\u062d\u062a\u064a\u0646</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="bsec rv"><span class="blabel" style="color:#9E3B30">the house</span>
     <div style="font-size:19px;line-height:1.5;margin-top:12px">Three arches, one long table, and a kitchen that answers to a grandmother. Plates arrive until the table says stop. The table never says stop.</div></div>
   ${res(s,'reserve the long table')}`;
@@ -3975,9 +4058,11 @@ B['Beit Zaytoun']=(d)=>{
 
 /* ══ RITUAL — the strength dial ══ */
 B['Ritual']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp rit2';
+  const s=document.createElement('div');s.className='site bsp rit2 cinew';
   s.innerHTML=`
   <div class="rhero">
+    <div class="cph" style="background-image:url('${IMGS.coffeeshop.dish}')"></div>
+    <div class="cscrim sc-rit"></div>
     <div class="rring"></div>
     <div class="rlow">
       <span class="blabel" style="color:#B0754A">third-wave \u00b7 slow bar \u00b7 mar mikhael</span>
@@ -3992,6 +4077,7 @@ B['Ritual']=(d)=>{
       <div class="dbar"><i></i></div>
       <div class="dv" data-dv>1 : <b>15</b> \u2014 the house balance</div>
     </div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.coffeeshop.gal[1][0]}')"></div><b>slow.</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="rsec rmenu rv"><span class="blabel" style="color:#B0754A">02 \u00b7 the bar</span>
     <div class="it"><b>Flat white</b><span class="p">5</span></div>
     <div class="it"><b>V60 pour-over \u00b7 your dial</b><span class="p">6</span></div>
@@ -4025,10 +4111,12 @@ B['Ritual']=(d)=>{
 
 /* ══ VOLT — hold for the drop ══ */
 B['VOLT']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp volt2';
+  const s=document.createElement('div');s.className='site bsp volt2 cinew';
   s.innerHTML=`
   <div class="vwrap">
   <div class="vhero">
+    <div class="cph" style="background-image:url('${IMGS.nightclub.gal[0][0]}')"></div>
+    <div class="cscrim sc-volt"></div>
     <div class="vlz"><i></i><i></i><i></i></div>
     <div class="vnm">VOLT</div>
     <div class="vbpm"><b data-bpm>090</b> bpm \u00b7 doors midnight \u00b7 no photos</div>
@@ -4037,6 +4125,7 @@ B['VOLT']=(d)=>{
   </div>
   <div class="vsec rv"><span class="blabel" style="color:#B44CFF">01 \u00b7 the room</span>
     <div style="font-size:15px;line-height:1.7;margin-top:12px;opacity:.85">A concrete box. A sound system worth more than the building. No bottle sparklers, no birthday shout-outs. VOLT does bass.</div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.nightclub.gal[1][0]}')"></div><b>LOUDER</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="vsec rv"><span class="blabel" style="color:#B44CFF">02 \u00b7 tables</span>
     <div class="vtb"><b>FRONT LEFT</b><span>closest to the booth \u00b7 4 guests</span><span class="p">$400</span></div>
     <div class="vtb"><b>THE BALCONY</b><span>above it all \u00b7 6 guests</span><span class="p">$350</span></div>
@@ -4072,9 +4161,11 @@ B['VOLT']=(d)=>{
 
 /* ══ SUCRÉ — flavour atelier ══ */
 B['Sucr\u00e9']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp suc2';
+  const s=document.createElement('div');s.className='site bsp suc2 cinew';
   s.innerHTML=`
   <div class="shero">
+    <div class="cph" style="background-image:url('${U('1569864358642-9d1684040f43')}')"></div>
+    <div class="cscrim sc-suc"></div>
     <div class="sscal"></div>
     <div class="smac"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
     <div class="slow">
@@ -4092,6 +4183,7 @@ B['Sucr\u00e9']=(d)=>{
   <div class="ssec rv" style="text-align:center"><span class="blabel" style="color:#C99A5B">01 \u00b7 today, under the foil</span>
     <div class="scratchwrap"><div class="under"><b>rose \u00b7 lychee</b><span>flavour of the day</span></div></div>
     <div class="scratchlbl" style="color:#C99A5B">scratch the gold \u2193</div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${U('1555507036-ab1f4038808a')}')"></div><b>douceur</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="ssec smenu rv"><span class="blabel" style="color:#C99A5B">02 \u00b7 the vitrine</span>
     <div class="it"><b>Macarons, box of six</b><span class="p">14</span></div>
     <div class="it"><b>Twice-baked almond croissant</b><span class="p">5</span></div>
@@ -4140,9 +4232,11 @@ B['Sucr\u00e9']=(d)=>{
 
 /* ══ MELT — it melts while you watch ══ */
 B['MELT']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp melt2';
+  const s=document.createElement('div');s.className='site bsp melt2 cinew';
   s.innerHTML=`
   <div class="mhero">
+    <div class="cph" style="background-image:url('${IMGS.dessert.dish}')"></div>
+    <div class="cscrim sc-melt"></div>
     <div class="mdrips"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="mnm"><span>M</span><span>E</span><span>L</span><span>T</span></div>
     <div class="mtimer">melting since <b data-mt>0:00</b> \u2014 hurry</div>
@@ -4155,6 +4249,7 @@ B['MELT']=(d)=>{
       <div class="fl" style="--rr:-2deg">HALVA SWIRL<small>beirut represent</small></div>
       <div class="fl" style="--rr:3deg">COOKIE MONSTER<small>blue. deal with it.</small></div>
     </div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.dessert.gal[2][0]}')"></div><b>DRIP</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="msec rv"><span class="blabel">02 \u00b7 the math</span>
     <div style="font-weight:900;font-size:34px;letter-spacing:-.02em;line-height:1.15;margin-top:10px">1 scoop 4 \u00b7 2 scoops 7<br>3 scoops = free cone \u00b7 you earned it</div></div>
   ${res(s,'skip the line')}`;
@@ -4186,10 +4281,12 @@ B['MELT']=(d)=>{
 
 /* ══ SEL — drag the sun over the cove ══ */
 B['Sel']=(d)=>{
-  const s=document.createElement('div');s.className='site bsp sel2';
+  const s=document.createElement('div');s.className='site bsp sel2 cinew';
   const stars=Array.from({length:9},()=>`<i style="top:${(Math.random()*80).toFixed(0)}%;left:${(Math.random()*92+4).toFixed(0)}%;animation-delay:${(Math.random()*2).toFixed(1)}s"></i>`).join('');
   s.innerHTML=`
   <div class="lhero">
+    <div class="cph" style="background-image:url('${IMGS.beach.gal[0][0]}')"></div>
+    <div class="cscrim sc-sel"></div>
     <div class="lsky"></div><div class="lsea"></div>
     <div class="lstars">${stars}</div>
     <div class="lfoam"></div>
@@ -4203,6 +4300,7 @@ B['Sel']=(d)=>{
   <div class="lsec rv"><span class="blabel" style="color:#C98F4E">01 \u00b7 the day</span>
     <div class="pass"><b>Cove cabana</b><span>full day \u00b7 two sunbeds \u00b7 lunch on the rocks</span><span class="p">$120</span></div>
     <div class="pass"><b>Front-row sunbed</b><span>towel service \u00b7 first swim rights</span><span class="p">$45</span></div></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.beach.gal[2][0]}')"></div><b>SEL</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="lsec rv"><span class="blabel" style="color:#C98F4E">02 \u00b7 stay over</span>
     <div class="pass"><b>Sea room</b><span>balcony \u00b7 breakfast \u00b7 the sound of it</span><span class="p">$180</span></div>
     <div class="pass"><b>The cove house</b><span>sleeps six \u00b7 private steps to the water</span><span class="p">$520</span></div></div>
