@@ -1869,6 +1869,52 @@ body{background:#050505}
 /* retired props stay retired */
 .barches,.rcup,.smac,.sscal,.mdrips{display:none!important}
 </style>
+<style id="v39">
+/* ═════════ V39 — THE AWARD LAYER ═════════ */
+.fgrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E")}
+.cph{will-change:transform}
+.fbake{position:relative}
+.fbake .fbstick{position:sticky;top:0;height:400px;z-index:2;overflow:hidden;background:#2A0B06;
+  display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fbake .fbpz{width:210px;height:210px;border-radius:50%;background-size:cover;background-position:center;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.8), inset 0 0 0 1px rgba(247,239,223,.15), inset 0 0 calc(var(--bake,0)*54px) calc(var(--bake,0)*14px) rgba(40,10,4,.85);
+  filter:brightness(calc(1.14 - var(--bake,0)*.24)) saturate(calc(1 + var(--bake,0)*.35)) contrast(calc(1 + var(--bake,0)*.12))}
+.fbake .fbt{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:#FFE3A0;margin-top:18px;
+  text-shadow:0 0 calc(8px + var(--bake,0)*26px) rgba(242,166,90,.7)}
+.fbake .fbk{font-family:var(--mono);font-size:7px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,239,223,.7);margin-top:8px}
+.fbake .fbspace{height:820px}
+.rpour{position:relative}
+.rpour .rpstick{position:sticky;top:0;height:380px;z-index:2;background:#1E140C;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rpour .rpcup{width:190px;height:190px;border-radius:50%;background-size:cover;background-position:center;
+  clip-path:inset(calc((1 - var(--pour,0))*100%) 0 0 0 round 50%);
+  box-shadow:0 26px 50px -18px rgba(0,0,0,.7)}
+.rpour .rpring{position:absolute;width:192px;height:192px;border-radius:50%;border:1px solid rgba(240,220,190,.3)}
+.rpour .rpt{font-family:var(--mono);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#E8A76B;margin-top:20px}
+.rpour .rpt b{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:22px;letter-spacing:0;color:#F4EDE2;display:block;margin-top:6px}
+.rpour .rpspace{height:760px}
+.vline{padding:30px 0 12px;overflow:hidden;border-top:1px solid rgba(244,244,251,.12)}
+.vline .vrow{white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:54px;line-height:1.04;letter-spacing:.03em;will-change:transform}
+.vline .vrow b{font-weight:400;color:transparent;-webkit-text-stroke:1.2px rgba(244,244,251,.85)}
+.vline .vrow i{font-style:normal;color:#B44CFF;font-size:.42em;vertical-align:.5em;margin:0 14px}
+.vline .vk{font-family:var(--mono);font-size:6.5px;letter-spacing:.4em;text-transform:uppercase;color:#B44CFF;padding:0 22px 14px;display:block}
+.svit{padding:30px 0 6px;border-top:1px solid rgba(58,42,38,.14)}
+.svit .vk2{font-family:var(--mono);font-size:6.5px;letter-spacing:.4em;text-transform:uppercase;color:#C99A5B;padding:0 22px 14px;display:block}
+.svit .strip{display:flex;gap:12px;overflow-x:auto;padding:2px 22px 18px;scroll-snap-type:x mandatory}
+.svit .strip::-webkit-scrollbar{display:none}
+.svit .card{flex:0 0 168px;scroll-snap-align:center}
+.svit .card .im{height:190px;border-radius:4px;background-size:cover;background-position:center;
+  box-shadow:0 16px 30px -14px rgba(58,42,38,.4)}
+.svit .card b{display:block;font-style:italic;font-weight:400;font-size:14px;margin-top:10px}
+.svit .card span{font-family:var(--mono);font-size:8px;color:#C99A5B}
+.melt2.frozen .mhero .cph{filter:saturate(.65) brightness(1.12) hue-rotate(-18deg)}
+.melt2 .mfroze{position:absolute;top:52px;left:0;right:0;text-align:center;z-index:4;
+  font-family:var(--mono);font-size:7px;letter-spacing:.3em;text-transform:uppercase;color:#CFF3FF;
+  opacity:0;transition:opacity .3s;pointer-events:none}
+.melt2.frozen .mfroze{opacity:1}
+@media(prefers-reduced-motion:reduce){.fgrain{display:none}}
+</style>
 </head>
 <body>
 
@@ -3177,7 +3223,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 38';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 39';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3961,6 +4007,14 @@ B['Forno']=(d)=>{
     <div class="it"><b>VERDE</b><span>pistachio cream \u00b7 mortadella \u00b7 stracciatella</span><span class="p">16</span></div></div>
   <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.italian.gal[2][0]}')"></div><b>FUOCO</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="fmq rv"><div>485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 </div></div>
+  <div class="fbake">
+    <div class="fbstick">
+      <div class="fbpz" style="background-image:url('${P2('1565299624946-b28f40a0ae38')}')"></div>
+      <div class="fbt" data-fbt>90</div>
+      <div class="fbk" data-fbk>seconds in the fire \u00b7 scroll</div>
+    </div>
+    <div class="fbspace"></div>
+  </div>
   ${res(s,'book the counter')}`;
   const hero=s.querySelector('.fhero'),deg=s.querySelector('[data-deg]');
   let fire=0,hold=null,emb=null,raf;
@@ -3981,6 +4035,14 @@ B['Forno']=(d)=>{
   const stop=()=>{hold=false;clearInterval(emb);cancelAnimationFrame(raf);
     const cool=()=>{fire=Math.max(0,fire-0.02);set();if(fire>0)requestAnimationFrame(cool)};cool()};
   hero.addEventListener('pointerup',stop);hero.addEventListener('pointercancel',stop);
+  const bake=s.querySelector('.fbake'),fbt=s.querySelector('[data-fbt]'),fbk=s.querySelector('[data-fbk]');
+  s.addEventListener('scroll',()=>{
+    const span=Math.max(600,bake.offsetHeight-400);
+    const p=Math.max(0,Math.min(1,(s.scrollTop-bake.offsetTop)/span));
+    s.style.setProperty('--bake',p.toFixed(3));
+    fbt.textContent=Math.max(0,Math.round(90-p*90));
+    fbk.textContent=p<0.33?'seconds in the fire \u00b7 scroll':p<0.72?'leopard spots forming \u00b7 hold your nerve':p<0.97?'the edge blisters \u00b7 almost':'pull it. now.';
+  },{passive:true});
   wireRv(s);
   cover(s,'fcover','<i></i>',null,1000);
   return s;
@@ -4100,6 +4162,14 @@ B['Ritual']=(d)=>{
       <div class="dv" data-dv>1 : <b>15</b> \u2014 the house balance</div>
     </div></div>
   <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.coffeeshop.gal[1][0]}')"></div><b>slow.</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
+  <div class="rpour">
+    <div class="rpstick">
+      <div class="rpring"></div>
+      <div class="rpcup" style="background-image:url('${P2('1511920170033-f8396924c348')}')"></div>
+      <div class="rpt">the pour \u00b7 v60 <b data-rpt>0:00 \u00b7 bloom</b></div>
+    </div>
+    <div class="rpspace"></div>
+  </div>
   <div class="rsec rmenu rv"><span class="blabel" style="color:#B0754A">02 \u00b7 the bar</span>
     <div class="it"><b>Flat white</b><span class="p">5</span></div>
     <div class="it"><b>V60 pour-over \u00b7 your dial</b><span class="p">6</span></div>
@@ -4124,6 +4194,14 @@ B['Ritual']=(d)=>{
     str=Math.max(0,Math.min(1,(e.clientX-r.left)/(r.width||280)));set()});
   const up=()=>drag=false;
   dial.addEventListener('pointerup',up);dial.addEventListener('pointercancel',up);dial.addEventListener('pointerleave',up);
+  const rp=s.querySelector('.rpour'),rpt=s.querySelector('[data-rpt]');
+  s.addEventListener('scroll',()=>{
+    const span=Math.max(600,rp.offsetHeight-380);
+    const p=Math.max(0,Math.min(1,(s.scrollTop-rp.offsetTop)/span));
+    s.style.setProperty('--pour',p.toFixed(3));
+    const sec=Math.round(p*30);
+    rpt.textContent=`0:${String(sec).padStart(2,'0')} \u00b7 `+(p<0.2?'bloom':p<0.85?'the spiral':'rest \u00b7 then drink');
+  },{passive:true});
   wireRv(s);
   cover(s,'rcover','<i></i>',(c)=>{},1150);
   const rc=s.querySelector('.rcover');
@@ -4144,6 +4222,12 @@ B['VOLT']=(d)=>{
     <div class="vbpm"><b data-bpm>090</b> bpm \u00b7 doors midnight \u00b7 no photos</div>
     <div class="vhold">press &amp; hold \u2014<br>build the drop</div>
     <div class="vflash" data-vflash></div>
+  </div>
+  <div class="vline">
+    <span class="vk">this month \u00b7 the booth</span>
+    <div class="vrow" data-vr="0.5">K\u00d8SMOS <i>\u25cf</i> <b>ANA VOID</b> <i>\u25cf</i> LAYAL <i>\u25cf</i> <b>DIMA 96</b> <i>\u25cf</i> K\u00d8SMOS <i>\u25cf</i> <b>ANA VOID</b></div>
+    <div class="vrow" data-vr="-0.35" style="margin-top:6px"><b>SATURDAYS</b> <i>\u25cf</i> STRICTLY VINYL <i>\u25cf</i> <b>SATURDAYS</b> <i>\u25cf</i> STRICTLY VINYL <i>\u25cf</i> <b>SATURDAYS</b></div>
+    <div class="vrow" data-vr="0.7" style="margin-top:6px">B2B TIL SUNRISE <i>\u25cf</i> <b>NO PHONES</b> <i>\u25cf</i> B2B TIL SUNRISE <i>\u25cf</i> <b>NO PHONES</b> <i>\u25cf</i> B2B</div>
   </div>
   <div class="vsec rv"><span class="blabel" style="color:#B44CFF">01 \u00b7 the room</span>
     <div style="font-size:15px;line-height:1.7;margin-top:12px;opacity:.85">A concrete box. A sound system worth more than the building. No bottle sparklers, no birthday shout-outs. VOLT does bass.</div></div>
@@ -4176,6 +4260,12 @@ B['VOLT']=(d)=>{
   });
   const up=()=>hold=false;
   hero.addEventListener('pointerup',up);hero.addEventListener('pointercancel',up);
+  const rows2=[...s.querySelectorAll('.vrow')];
+  s.addEventListener('scroll',()=>{
+    const st=s.scrollTop;
+    rows2.forEach(r=>r.style.transform=`translateX(${-120 - st*parseFloat(r.dataset.vr)*0.35}px)`);
+  },{passive:true});
+  rows2.forEach(r=>r.style.transform='translateX(-120px)');
   wireRv(s);
   cover(s,'vcover','',null,950);
   return s;
@@ -4204,6 +4294,15 @@ B['Sucr\u00e9']=(d)=>{
     <div class="scratchwrap"><div class="under"><b>rose \u00b7 lychee</b><span>flavour of the day</span></div></div>
     <div class="scratchlbl" style="color:#C99A5B">scratch the gold \u2193</div></div>
   <div class="cinter rv"><div class="cbg" style="background-image:url('${U('1555507036-ab1f4038808a')}')"></div><b>douceur</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
+  <div class="svit rv">
+    <span class="vk2">the vitrine \u00b7 this morning</span>
+    <div class="strip">
+      <div class="card"><div class="im" style="background-image:url('${P2('1569864358642-9d1684040f43')}')"></div><b>macarons du jour</b><span>2.5 / pc</span></div>
+      <div class="card"><div class="im" style="background-image:url('${P2('1555507036-ab1f4038808a')}')"></div><b>croissant, twice-baked</b><span>5</span></div>
+      <div class="card"><div class="im" style="background-image:url('${P2('1578985545062-69928b1d9587')}')"></div><b>g\u00e2teau du matin</b><span>7 / slice</span></div>
+      <div class="card"><div class="im" style="background-image:url('${P2('1519676867240-f03562e64548')}')"></div><b>the levant shelf</b><span>6</span></div>
+    </div>
+  </div>
   <div class="ssec smenu rv"><span class="blabel" style="color:#C99A5B">02 \u00b7 the vitrine</span>
     <div class="it"><b>Macarons, box of six</b><span class="p">14</span></div>
     <div class="it"><b>Twice-baked almond croissant</b><span class="p">5</span></div>
@@ -4275,11 +4374,22 @@ B['MELT']=(d)=>{
   /* melt clock */
   const mt=s.querySelector('[data-mt]');
   let secs=0;
+  let frozen=false,scrollMelt=0;
   const iv=setInterval(()=>{
     if(!document.contains(s)){clearInterval(iv);return}
-    secs++;mt.textContent=Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
-    s.style.setProperty('--melt',Math.min(1,secs/75).toFixed(3));
+    if(!frozen)secs++;
+    mt.textContent=Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
+    s.style.setProperty('--melt',Math.min(1,Math.max(secs/75,scrollMelt)).toFixed(3));
   },1000);
+  s.addEventListener('scroll',()=>{
+    scrollMelt=Math.min(1,s.scrollTop/((s.clientHeight||560)*1.4));
+    s.style.setProperty('--melt',Math.min(1,Math.max(secs/75,scrollMelt)).toFixed(3));
+  },{passive:true});
+  const hero2=s.querySelector('.mhero');
+  const fz=document.createElement('div');fz.className='mfroze';fz.textContent='phew. it held \u2014 for now';hero2.appendChild(fz);
+  hero2.addEventListener('pointerdown',e=>{if(e.target.closest('[data-sheet]'))return;frozen=true;s.classList.add('frozen');buzz(6)});
+  const unfz=()=>{frozen=false;s.classList.remove('frozen')};
+  hero2.addEventListener('pointerup',unfz);hero2.addEventListener('pointercancel',unfz);
   s.querySelectorAll('.mflav .fl').forEach(f=>f.addEventListener('pointerdown',e=>{e.stopPropagation();buzz(7)}));
   wireRv(s);
   cover(s,'mcover','',null,950);
@@ -4323,7 +4433,12 @@ B['Sel']=(d)=>{
     sun.style.opacity=1-Math.max(0,(t-0.82))*5;
   };
   requestAnimationFrame(set);
-  sun.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;buzz(6);try{sun.setPointerCapture(e.pointerId)}catch(_){}});
+  let manual=false;
+  s.addEventListener('scroll',()=>{
+    if(manual)return;
+    t=Math.min(0.95,0.18+(s.scrollTop/((s.clientHeight||560)*1.6))*0.8);set();
+  },{passive:true});
+  sun.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;manual=true;buzz(6);try{sun.setPointerCapture(e.pointerId)}catch(_){}});
   sun.addEventListener('pointermove',e=>{if(!drag)return;
     const r=hero.getBoundingClientRect();
     t=Math.max(0,Math.min(1,(e.clientX-r.left)/(r.width||320)*1.12-0.08));set()});
@@ -4354,6 +4469,31 @@ document.querySelectorAll('button').forEach(b=>{
   const tx=(b.textContent||'').toLowerCase();
   if(/start (the )?tasting|start from this one|reserve (a|your) (slot|table)|talk to us/.test(tx))b.classList.add('tastebtn');
 });
+})();
+</script>
+<script id="v39js">
+/* V39 — award layer: grain + photo parallax on all cinema heroes */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.P2=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&h=560&q=72`;
+const _build=buildDeck;
+buildDeck=function(){
+  _build();
+  document.querySelectorAll('#deck .site').forEach(site=>{
+    site.querySelectorAll('.cph').forEach(ph=>{
+      const hero=ph.parentElement;
+      if(!hero.querySelector('.fgrain')){
+        const g=document.createElement('div');g.className='fgrain';hero.appendChild(g);
+      }
+    });
+    if(RM||site.dataset.plx)return;
+    site.dataset.plx=1;
+    const ph=site.querySelector('.cph');
+    if(ph)site.addEventListener('scroll',()=>{
+      ph.style.transform=`translateY(${Math.min(120,site.scrollTop*0.22)}px)`;
+    },{passive:true});
+  });
+};
 })();
 </script>
 </body>
