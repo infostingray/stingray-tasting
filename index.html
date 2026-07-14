@@ -17,7 +17,7 @@
   --bone-dim:rgba(237,234,227,.55);
   --bone-faint:rgba(237,234,227,.28);
   --line:rgba(237,234,227,.14);
-  --amb:#3B4C5C;
+  --amb:#2423e0;
   --mono:'Space Mono',monospace;
   --sans:'Archivo',sans-serif;
 }
@@ -1169,6 +1169,39 @@ img{display:block;max-width:100%}
 /* kitchen grid back to 4 */
 @media(min-width:760px){.cats{max-width:640px;grid-template-columns:repeat(4,1fr)}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="v21">
+/* ═════════ V21 — stingray guidelines: Poppins / JetBrains / bluebonnet ═════════ */
+:root{
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --sans:'Poppins',sans-serif;
+  --bone:#f4f4fb;
+  --bone-dim:rgba(244,244,251,.6);
+  --bone-faint:rgba(244,244,251,.32);
+  --line:rgba(244,244,251,.14);
+  --blue:#2423e0;--blue-l:#5d5cff;--blue-d:#1a19a8;
+  --ink:#050505;
+}
+body{background:#050505}
+/* headline voice: Poppins heavy, italic mark in bluebonnet */
+.intro-h{font-family:var(--sans);font-weight:800;font-stretch:normal;letter-spacing:-.045em;line-height:1.02}
+.intro-h em{font-family:var(--sans);font-weight:800;font-style:italic;color:var(--blue-l)}
+.intro-sub{font-family:var(--sans);font-weight:300}
+.kitchen-h{font-family:var(--sans);font-weight:700;font-stretch:normal;letter-spacing:-.03em}
+.res-h{font-family:var(--sans);font-weight:800;font-stretch:normal;letter-spacing:-.03em}
+.res-h em{font-family:var(--sans);font-weight:800;font-style:italic;color:var(--blue-l)}
+/* plate name: system voice, not serif */
+#plateName{font-family:var(--sans);font-style:normal;font-weight:700;letter-spacing:-.02em;text-transform:lowercase}
+/* chrome accents in bluebonnet */
+#wordmark i{color:var(--blue-l)}
+#sysbar .dot{background:var(--blue-l)}
+.cat:hover,.cat:focus-visible{border-color:var(--blue-l)}
+.ctag{border-color:rgba(93,92,255,.4);color:var(--bone-dim)}
+#dots i.on{background:var(--blue-l)}
+.btn:focus-visible{outline-color:var(--blue-l)}
+.custom-note b{color:var(--bone-dim)}
+.proof b{color:var(--bone-dim)}
+</style>
 </head>
 <body>
 
@@ -1717,7 +1750,7 @@ function step(dir){
 }
 $('#prevBtn').addEventListener('click',()=>step(-1));
 $('#nextBtn').addEventListener('click',()=>step(1));
-$('#reCat').addEventListener('click',()=>{goto('kitchen');setAmbient('#3B4C5C')});
+$('#reCat').addEventListener('click',()=>{goto('kitchen');setAmbient('#2423e0')});
 
 /* horizontal swipe between phones */
 let sx=null,sy=null;
@@ -2477,7 +2510,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 VER 20';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 21';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
