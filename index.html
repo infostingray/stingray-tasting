@@ -1301,6 +1301,30 @@ body{background:#050505}
 .sen-res button:hover{background:#C6472E}
 .sen-res .made{font-family:var(--mono);font-size:6px;letter-spacing:.24em;text-transform:uppercase;opacity:.3;margin-top:28px}
 </style>
+<style id="v25">
+/* V25 — one flagship per world: carousel chrome retired */
+#prevBtn,#nextBtn,#dots,.deck-controls,#scrollHint{display:none!important}
+#plateIdx b{color:var(--bone-dim)}
+/* SEN wow layer */
+.sen-kanji svg{width:118px;height:118px;display:block;cursor:pointer}
+.sen-kanji svg path{fill:none;stroke:#EDEDF2;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:240;stroke-dashoffset:240;filter:drop-shadow(0 0 18px rgba(198,71,46,.3))}
+.sen-kanji.draw svg path{animation:sdraw .8s cubic-bezier(.4,0,.2,1) forwards}
+.sen-kanji.draw svg path:nth-child(2){animation-delay:.55s}
+.sen-kanji.draw svg path:nth-child(3){animation-delay:1.05s}
+@keyframes sdraw{to{stroke-dashoffset:0}}
+.sen-kanji .khint{font-family:var(--mono);font-size:5.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(237,237,242,.4);text-align:right;margin-top:8px}
+/* course spotlight */
+.sen-course.in{opacity:.45;transform:none;transition:opacity .45s ease}
+.sen-course.in.live{opacity:1}
+.sen-course.in.live .jp{color:#C6472E;text-shadow:0 0 22px rgba(198,71,46,.4)}
+.sen-course{cursor:pointer;flex-wrap:wrap}
+.sen-course .note{flex-basis:100%;max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);
+  font-family:var(--mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;line-height:2;color:rgba(237,237,242,.5)}
+.sen-course.open .note{max-height:52px;padding-top:8px}
+.sen-course .note i{font-style:normal;color:#C6472E}
+@media(prefers-reduced-motion:reduce){.sen-kanji.draw svg path{animation:none;stroke-dashoffset:0}}
+</style>
 </head>
 <body>
 
@@ -1839,7 +1863,7 @@ function updateDeck(instant){
   const pn=$('#plateName');
   pn.style.opacity=0;
   setTimeout(()=>{pn.textContent=d.name;pn.style.opacity=1},instant?0:180);
-  $('#plateIdx').innerHTML=`direction 0${idx+1} / 0${n}<br><b>of many — yours is custom</b>`;
+  $('#plateIdx').innerHTML=`the flagship<br><b>yours gets built custom</b>`;
   setAmbient(d.ac);
 }
 function step(dir){
@@ -2609,7 +2633,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 24';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 25';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -3226,35 +3250,43 @@ buildDeck=function(){
 })();
 </script>
 <script id="v24js">
-/* ═════════ V24 — SEN, hand-built ═════════ */
+/* ═════════ SEN — bespoke flagship (wow edition) ═════════ */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 
 const COURSES=[
-['01','\u5148\u4ed8','sakizuke \u00b7 the opening'],
-['02','\u690e\u8338','chawanmushi \u00b7 silk custard'],
-['03','\u9bdb','tai \u00b7 sea bream, aged two days'],
-['04','\u9c15','botan ebi \u00b7 sweet prawn'],
-['05','\u9caa','saba \u00b7 cured mackerel'],
-['06','\u4e2d\u30c8\u30ed','ch\u016btoro \u00b7 the argument ender'],
-['07','\u96f2\u4e39','uni \u00b7 hokkaido, this morning'],
-['08','\u7a74\u5b50','anago \u00b7 sea eel, brushed'],
-['09','\u5375','tamago \u00b7 the chef\u2019s signature'],
-['10','\u6c41\u7269','owan \u00b7 the quiet broth'],
-['11','\u6293\u5bff\u53f8','temaki \u00b7 eaten in one breath'],
-['12','\u7518\u5473','kanmi \u00b7 hojicha \u00b7 the ending']
+['01','\u5148\u4ed8','sakizuke \u00b7 the opening','<i>chef</i> \u2014 eat this in one bite. no soy.'],
+['02','\u8339\u84b8','chawanmushi \u00b7 silk custard','<i>chef</i> \u2014 the spoon goes straight down.'],
+['03','\u9bdb','tai \u00b7 sea bream, aged two days','<i>chef</i> \u2014 day two is when tai wakes up.'],
+['04','\u9c15','botan ebi \u00b7 sweet prawn','<i>chef</i> \u2014 the head returns fried. wait for it.'],
+['05','\u9baf','saba \u00b7 cured mackerel','<i>chef</i> \u2014 six hours in salt, four in vinegar.'],
+['06','\u4e2d\u30c8\u30ed','ch\u016btoro \u00b7 the argument ender','<i>chef</i> \u2014 no wasabi needed. trust me once.'],
+['07','\u96f2\u4e39','uni \u00b7 hokkaido, this morning','<i>chef</i> \u2014 flight landed at 11. you\u2019re eating it at 8.'],
+['08','\u7a74\u5b50','anago \u00b7 sea eel, brushed','<i>chef</i> \u2014 the brush is older than the restaurant.'],
+['09','\u5375','tamago \u00b7 the chef\u2019s signature','<i>chef</i> \u2014 judge me on this one.'],
+['10','\u6c41\u7269','owan \u00b7 the quiet broth','<i>chef</i> \u2014 both hands on the bowl. always.'],
+['11','\u624b\u5dfb','temaki \u00b7 eaten in one breath','<i>chef</i> \u2014 the nori is crisp for 40 seconds. go.'],
+['12','\u7518\u5473','kanmi \u00b7 hojicha \u00b7 the ending','<i>chef</i> \u2014 stay as long as you like.']
 ];
 
 function senSite(d){
   const s=document.createElement('div');
   s.className='site sen';
   const courses=COURSES.map(c=>`
-    <div class="sen-course"><span class="no">${c[0]}</span><span class="jp">${c[1]}</span><span class="en">${c[2]}</span></div>`).join('');
+    <div class="sen-course"><span class="no">${c[0]}</span><span class="jp">${c[1]}</span><span class="en">${c[2]}</span><span class="note">${c[3]}</span></div>`).join('');
   s.innerHTML=`
     <div class="sen-hero">
       <div class="ph" style="background-image:url('${IMGS.japanese.gal[0][0]}')"></div>
       <div class="scrim"></div>
-      <div class="sen-kanji">\u5343<small>sen \u00b7 \u5343</small></div>
+      <div class="sen-kanji" data-kanji>
+        <svg viewBox="0 0 100 100" aria-label="sen">
+          <path d="M66 12 C55 22 42 28 26 32"/>
+          <path d="M14 46 L86 46"/>
+          <path d="M52 46 C52 62 51 78 48 92"/>
+        </svg>
+        <div class="khint">tap \u2014 redraw \u5343</div>
+      </div>
       <div class="low">
         <div class="sen-k">omakase \u00b7 twelve seats \u00b7 downtown</div>
         <div class="sen-nm">SEN</div>
@@ -3281,19 +3313,42 @@ function senSite(d){
       <div class="made">site by stingray \u2014 ads that leave a mark</div>
     </div>`;
 
-  /* course reveal + sticky counter */
+  /* kanji draws itself; tap to redraw */
+  const kj=s.querySelector('[data-kanji]');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>kj.classList.add('draw')));
+  kj.addEventListener('pointerdown',e=>{
+    e.stopPropagation();buzz(8);
+    kj.classList.remove('draw');void kj.offsetWidth;kj.classList.add('draw');
+  });
+
+  /* reveal + spotlight follows your dinner */
   const rows=[...s.querySelectorAll('.sen-course')];
   const tn=s.querySelector('[data-sentn]'),pr=s.querySelector('[data-senp]');
+  let liveIdx=-1;
   s.addEventListener('scroll',()=>{
     const st=s.scrollTop,vh=s.clientHeight||560;
     rows.forEach(r=>{if(r.offsetTop<st+vh*.92)r.classList.add('in')});
     let idx=0;
     rows.forEach((r,i)=>{if(r.offsetTop<st+vh*.45)idx=i});
-    tn.textContent=`course ${String(idx+1).padStart(2,'0')} / 12`;
-    pr.style.width=((idx+1)/12*100)+'%';
+    if(idx!==liveIdx){
+      liveIdx=idx;
+      rows.forEach((r,i)=>r.classList.toggle('live',i===idx));
+      tn.textContent=`course ${String(idx+1).padStart(2,'0')} / 12`;
+      pr.style.width=((idx+1)/12*100)+'%';
+    }
   },{passive:true});
   if(RM)rows.forEach(r=>r.classList.add('in'));
-  else requestAnimationFrame(()=>{rows.slice(0,3).forEach(r=>r.classList.add('in'))});
+  else requestAnimationFrame(()=>{rows.slice(0,3).forEach(r=>r.classList.add('in'));rows[0].classList.add('live')});
+
+  /* tap a course — the chef whispers */
+  rows.forEach(r=>{
+    r.addEventListener('pointerdown',e=>e.stopPropagation());
+    r.addEventListener('click',()=>{
+      const open=r.classList.contains('open');
+      rows.forEach(x=>x.classList.remove('open'));
+      if(!open){r.classList.add('open');buzz(6)}
+    });
+  });
   return s;
 }
 
