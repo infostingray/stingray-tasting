@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v79">
+<meta name="build" content="v80">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2500,6 +2500,23 @@ body{font-family:var(--sans)}
 .mmStage.toss .markface{opacity:0!important}
 .mmStage.toss .emberline,.mmStage.toss .charfill{display:none!important}
 </style>
+<style id="v80">
+/* ═════════ V80 · categories · Matin ═════════ */
+#cats .cat:last-child{grid-column:1/-1;min-height:98px}
+.h-morning{overflow:hidden}
+.h-morning .mtph{position:absolute;inset:-4%;
+  background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=760&q=72');
+  background-size:cover;background-position:center}
+.h-morning .mtsc{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(244,237,226,.2),rgba(244,237,226,.55) 55%,rgba(244,237,226,.96))}
+.h-morning .inner{position:relative;z-index:2}
+.h-morning .nm{font-family:'Fraunces',serif;font-size:58px;line-height:1;color:#2A2118}
+.h-morning .nm i{font-style:italic}
+.h-morning .tg{font-family:var(--mono);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#5A4632;margin-top:10px}
+.h-morning .mclock{margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:#B0754A}
+.h-morning .chip-cta{position:relative;z-index:2;margin-top:20px}
+.h-morning .down{position:relative;z-index:2;color:#5A4632}
+</style>
 </head>
 <body>
 
@@ -2606,6 +2623,7 @@ const WA_NUMBER='9613613188'; // ← swap to the sales WhatsApp
 const U=id=>`https://images.unsplash.com/photo-${id}?w=680&q=70&auto=format&fit=crop`;
 
 /* real photography per category (Unsplash license, free to use) */
+const IMGS_LB_GAL=[[U('1699345461139-73dfeecab9b6'),'the table'],[U('1555939594-58d7cb561ad1'),'off the fire'],[U('1676014959543-81df1079b423'),'to finish']];
 const IMGS={
  lounge:{
   gal:[[U('1514933651103-005eec06c04b'),'the room'],[U('1470337458703-46ad1756a187'),'the pour'],[U('1572116469696-31de0f17cc34'),'after dark']],
@@ -2624,7 +2642,11 @@ const IMGS={
   dish:U('1563805042-7684c019e1cb')},
 american:{
   gal:[[U('1572802419224-296b0aeee0d9'),'the double'],[U('1594212699903-ec8a3eca50f5'),'with fries'],[U('1553979459-d2229ba7433b'),'up close']],
-  dish:U('1568901346375-23c9450c58cd')}
+  dish:U('1568901346375-23c9450c58cd')},
+restaurant:{gal:IMGS_LB_GAL,dish:U('1637949385133-3de79e927ef3')},
+cafe:{
+  gal:[[U('1509042239860-f550ce710b93'),'the pour'],[U('1551024601-bec78aea704b'),'the counter'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
+  dish:U('1555507036-ab1f4038808a')}
 };
 
 /* ═════════ DESIGN DATA ═════════ */
@@ -3116,6 +3138,7 @@ $('#pickBtn').addEventListener('click',()=>{
 $('#backToDeck').addEventListener('click',()=>{goto('tasting');updateDeck(true)});
 
 /* ═════════ ENTRY · ?type= skips the kitchen ═════════ */
+const __AL={italian:'restaurant',japanese:'restaurant',lebanese:'restaurant',coffeeshop:'cafe',nightclub:'lounge',beach:'lounge',icecream:'dessert'};
 const param=new URLSearchParams(location.search).get('type');
 runIntro();
 /* deep links handled after the nine worlds are built (v41) */
@@ -4327,6 +4350,21 @@ const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EF
  tabs:[['the stack',[['The Classic','single \u00b7 shredded lettuce','9'],['The Double','how it should be','12'],['The Triple','you were warned','15']]],
        ['sides & shakes',[['Crinkle fries','salted hard','5'],['Cheese fries','over the top','7'],['Vanilla shake','real scoop \u00b7 thick','6']]]],
  hours:'daily \u00b7 noon\u2013midnight',loc:'dbayeh highway',cta:'order up \u2192'};
+const MATIN={name:'Matin',font:"'Fraunces',serif",bg:'#F4EDE2',tx:'#2A2118',ac:'#B0754A',
+ heroClass:'h-morning',
+ hero:`<div class="mtph plx"></div><div class="mtsc"></div>
+   <div class="inner"><div class="sk" style="color:#B0754A">caf\u00e9 & bakery \u00b7 since sunrise</div>
+   <div class="nm"><i>Matin</i></div>
+   <div class="tg">the first pour, the first batch.</div>
+   <div class="mclock" data-mclock>fresh batch \u00b7 --:--</div></div>
+   <button class="chip-cta" data-sheet style="background:#B0754A;color:#FFF6EA;border:none">save a seat</button>
+   <div class="down">\u2193</div>`,
+ pull:'\u201cButter, steam, and a table by the window.\u201d',
+ story:'Croissants out at seven, sourdough at nine, and an espresso machine that never sleeps past six. Mornings here are a ritual \u2014 flaky, golden, unhurried.',
+ dish:{n:'Croissant + Flat White',d:'the opening move',p:'8'},
+ tabs:[['morning',[['Croissant','laminated \u00b7 27 layers','4'],['Flat white','double ristretto','5'],['Sourdough toast','burnt honey \u00b7 labneh','7']]],
+       ['all day',[['Grilled halloumi bun','chili jam','9'],['Lemon tart','torched to order','6'],['Cold brew','48h steep','6']]]],
+ hours:'daily \u00b7 6am\u20136pm',loc:'the corner \u00b7 jdeideh',cta:'save a seat'};
 
 /* new world photography */
 IMGS.japanese={gal:[[U('1579584425555-c3ce17fd4351'),'the counter'],[U('1553621042-f6e147245754'),'the maki'],[U('1526318896980-cf78c088247c'),'the room']],dish:U('1579584425555-c3ce17fd4351')};
@@ -4395,11 +4433,10 @@ const SEL={name:'Sel',font:"'Cormorant Garamond',serif",bg:'#F2ECDF',tx:'#1F4F5E
 Object.keys(CATS).forEach(k=>delete CATS[k]);
 Object.assign(CATS,{
  lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
- italian:{label:'Italian',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli rules',designs:[FORNO]},
- japanese:{label:'Japanese',glyph:'\u3007',accent:'#C6472E',desc:'omakase \u00b7 twelve seats',designs:[SEN]},
- lebanese:{label:'Lebanese',glyph:'\u274b',accent:'#9E3B30',desc:'mezze \u00b7 fire \u00b7 family',designs:[BEIT]},
- american:{label:'Burgers',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
- dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'p\u00e2tisserie \u00b7 gold foil',designs:[SUCRE]},
+ restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#9E3B30',desc:'fine \u00b7 casual \u00b7 yours',designs:[BEIT]},
+ cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#B0754A',desc:'slow mornings \u00b7 fresh ovens',designs:[MATIN]},
+ american:{label:'Fast Food',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
+ dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
 });
 
 /* backdrops for the new worlds */
@@ -4416,7 +4453,7 @@ window.__V23_BD={
 /* rebuild kitchen cards for the nine worlds */
 const catsEl=document.querySelector('#cats');
 const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
-  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1699345461139-73dfeecab9b6'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
   dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
 catsEl.innerHTML='';
 Object.entries(CATS).forEach(([key,c])=>{
@@ -5107,7 +5144,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v79</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v80</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5116,10 +5153,11 @@ if(intro&&!document.querySelector('#venture')){
 <script id="v41js">
 /* V41 · deep links for all nine worlds (runs after CATS rebuild) */
 (function(){
+const __AL2={italian:'restaurant',japanese:'restaurant',lebanese:'restaurant',coffeeshop:'cafe',nightclub:'lounge',beach:'lounge',icecream:'dessert'};
 const p=new URLSearchParams(location.search).get('type');
-if(!p||!CATS[p])return;
+if(!p||!CATS[(__AL2[p]||p)])return;
 const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-setTimeout(()=>openCat(p),rm?300:2400);
+setTimeout(()=>openCat(__AL2[p]||p),rm?300:2400);
 })();
 </script>
 <script id="v44js">
@@ -5179,7 +5217,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v79';
+  var v=document.createElement('span');v.id='hv';v.textContent='v80';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5215,5 +5253,16 @@ btns.forEach(b=>{
   });
 });
 })();
-</script></body>
+</script><script id="v80js">
+/* V80 · Matin runs on real time */
+(function(){
+setInterval(()=>{
+  const c=document.querySelector('[data-mclock]');
+  if(!c)return;
+  const d=new Date();
+  c.textContent='fresh batch \u00b7 '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+},1000);
+})();
+</script>
+</body>
 </html>
