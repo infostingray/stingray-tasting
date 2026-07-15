@@ -10,10 +10,10 @@
 <meta property="og:title" content="the tasting · your restaurant's future website, in your hand">
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=1200&h=630&q=75">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=1200&h=630&q=75">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
 <meta name="theme-color" content="#050505">
 <meta name="theme-color" content="#070708">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2114,14 +2114,14 @@ const IMGS={
   gal:[[U('1514933651103-005eec06c04b'),'the room'],[U('1470337458703-46ad1756a187'),'the pour'],[U('1572116469696-31de0f17cc34'),'after dark']],
   dish:U('1551024506-0bccd828d307')},
  italian:{
-  gal:[[U('1604382354936-07c5d9983bd3'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
+  gal:[[U('1579751626657-72bc17010498'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
   dish:U('1574071318508-1cdbab80d002')},
  lebanese:{
-  gal:[[U('1540914124281-342587941389'),'the mezze'],[U('1544025162-d76694265947'),'the fire'],[U('1517248135467-4c7edcad34c4'),'the house']],
+  gal:[[U('1540914124281-342587941389'),'the mezze'],[U('1555939594-58d7cb561ad1'),'the fire'],[U('1517248135467-4c7edcad34c4'),'the house']],
   dish:U('1504674900247-0877df9cc836')},
  pub:{
   gal:[[U('1568901346375-23c9450c58cd'),'the kitchen'],[U('1514933651103-005eec06c04b'),'the bar'],[U('1571091718767-18b5b1457add'),'match night']],
-  dish:U('1544025162-d76694265947')},
+  dish:U('1555939594-58d7cb561ad1')},
  dessert:{
   gal:[[U('1551024601-bec78aea704b'),'the counter'],[U('1578985545062-69928b1d9587'),'the showcase'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
   dish:U('1563805042-7684c019e1cb')}
@@ -3322,16 +3322,16 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 46';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 47';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
 'Casa Luna':{
-  gal:[[U('1604382354936-07c5d9983bd3'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
+  gal:[[U('1579751626657-72bc17010498'),'il forno'],[U('1473093295043-cdd812d0e601'),'the pasta'],[U('1414235077428-338989a2e8c0'),'la tavola']],
   dish:U('1621996346565-e3dbc646d9a9')},
 'Forno':{
-  gal:[[U('1574071318508-1cdbab80d002'),'the diavola'],[U('1604382354936-07c5d9983bd3'),'dal forno'],[U('1414235077428-338989a2e8c0'),'the room']],
-  dish:U('1604382354936-07c5d9983bd3')},
+  gal:[[U('1574071318508-1cdbab80d002'),'the diavola'],[U('1579751626657-72bc17010498'),'dal forno'],[U('1414235077428-338989a2e8c0'),'the room']],
+  dish:U('1579751626657-72bc17010498')},
 'Osteria 21':{
   gal:[[U('1473093295043-cdd812d0e601'),'la cucina'],[U('1517248135467-4c7edcad34c4'),'the cellar'],[U('1621996346565-e3dbc646d9a9'),'the primi']],
   dish:U('1414235077428-338989a2e8c0')},
@@ -4104,11 +4104,11 @@ B['Forno']=(d)=>{
     <div class="it"><b>MARGHERITA</b><span>san marzano \u00b7 fior di latte \u00b7 basil</span><span class="p">11</span></div>
     <div class="it"><b>DIAVOLA</b><span>spianata \u00b7 chili honey \u00b7 smoked mozz</span><span class="p">14</span></div>
     <div class="it"><b>VERDE</b><span>pistachio cream \u00b7 mortadella \u00b7 stracciatella</span><span class="p">16</span></div></div>
-  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.italian.gal[1][0]}')"></div><b>IMPASTO</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${U('1537734796389-e1fc293cf856')}')"></div><b>IMPASTO</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   <div class="fmq rv"><div>485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 485\u00b0C \u00b7 90 SECONDS \u00b7 NO EXCEPTIONS \u00b7 </div></div>
   <div class="fbake">
     <div class="fbstick">
-      <div class="fbpz" style="background-image:url('${P2('1604382354936-07c5d9983bd3')}')"></div>
+      <div class="fbpz" style="background-image:url('${P2('1579751626657-72bc17010498')}')"></div>
       <div class="fbt" data-fbt>90</div>
       <div class="fbk" data-fbk>seconds in the fire \u00b7 scroll</div>
     </div>
@@ -4140,9 +4140,9 @@ B['Beit Zaytoun']=(d)=>{
   const P=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=300&h=300&q=72`;
   const PLATES=[
     {n:'hommus b\u2019zeit',img:P('1577805947697-89e18249d767'),tx:'-72px',ty:'-52px',tr:'-6deg',ex:'-150%',ey:'-30%',er:'-40deg',gx:'150%',gy:'-20%',gr:'40deg'},
-    {n:'fattoush',img:P('1512621776951-a57141f2eefd'),tx:'66px',ty:'-58px',tr:'5deg',ex:'160%',ey:'-20%',er:'45deg',gx:'-160%',gy:'-30%',gr:'-45deg'},
-    {n:'meshwe \u00b7 off the fire',img:P('1544025162-d76694265947'),big:1,tx:'0px',ty:'6px',tr:'-2deg',ex:'0%',ey:'220%',er:'25deg',gx:'0%',gy:'-240%',gr:'-30deg'},
-    {n:'the mezze round',img:P('1540914124281-342587941389'),tx:'-78px',ty:'46px',tr:'6deg',ex:'-160%',ey:'44%',er:'-48deg',gx:'160%',gy:'34%',gr:'48deg'},
+    {n:'fattoush',img:P('1511690656952-34342bb7c2f2'),tx:'66px',ty:'-58px',tr:'5deg',ex:'160%',ey:'-20%',er:'45deg',gx:'-160%',gy:'-30%',gr:'-45deg'},
+    {n:'meshwe \u00b7 off the fire',img:P('1555939594-58d7cb561ad1'),big:1,tx:'0px',ty:'6px',tr:'-2deg',ex:'0%',ey:'220%',er:'25deg',gx:'0%',gy:'-240%',gr:'-30deg'},
+    {n:'the mezze round',img:P('1743674453093-592bed88018e'),tx:'-78px',ty:'46px',tr:'6deg',ex:'-160%',ey:'44%',er:'-48deg',gx:'160%',gy:'34%',gr:'48deg'},
     {n:'baklawa \u00b7 to finish',img:P('1519676867240-f03562e64548'),tx:'78px',ty:'42px',tr:'-4deg',ex:'165%',ey:'50%',er:'40deg',gx:'-165%',gy:'40%',gr:'-40deg'}
   ];
   const platesHtml=PLATES.map((p,i)=>`
@@ -4152,7 +4152,7 @@ B['Beit Zaytoun']=(d)=>{
     </div>`).join('');
   s.innerHTML=`
   <div class="bhero3">
-    <div class="cph" style="background-image:url('${U('1577805947697-89e18249d767')}')"></div>
+    <div class="cph" style="background-image:url('${U('1699345461139-73dfeecab9b6')}')"></div>
     <div class="cscrim sc-beit"></div>
     <div class="b3low">
       <span class="blabel" style="color:#F2C08A">beirut \u00b7 the long table \u00b7 since forever</span>
@@ -4616,7 +4616,7 @@ setTimeout(()=>openCat(p),rm?300:2400);
 (function(){
 const PH={
   lounge:U('1514362545857-3bc16c4c7d1b'),
-  italian:U('1604382354936-07c5d9983bd3'),
+  italian:U('1579751626657-72bc17010498'),
   japanese:U('1553621042-f6e147245754'),
   lebanese:U('1577805947697-89e18249d767'),
   coffeeshop:U('1509042239860-f550ce710b93'),
