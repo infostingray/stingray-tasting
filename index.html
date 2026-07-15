@@ -2034,6 +2034,13 @@ body{font-family:var(--sans)}
 #intro{padding-bottom:74px!important}
 #venture{bottom:14px}
 </style>
+<style id="v51">
+#venture{z-index:1}
+#intro:not(.active) #venture,.screen:not(.active) #venture{display:none!important}
+.isteps{margin:26px 0 30px;display:flex;flex-direction:column;gap:12px}
+.isteps span{font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-dim)}
+.isteps span b{color:var(--taste);font-weight:400;margin-right:10px}
+</style>
 </head>
 <body>
 
@@ -2049,7 +2056,12 @@ body{font-family:var(--sans)}
 <section class="screen active" id="intro">
   <div id="typeline"></div>
   <h1 class="intro-h reveal" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
-  <p class="intro-sub reveal" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, live reservations. Taste three directions built for your kind of place. Scroll them. Tap them. Book a table inside them.</p>
+  <p class="intro-sub reveal" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, live reservations. Pick your cuisine and taste the flagship built for your kind of place. Scroll it. Play it. Book a table inside it.</p>
+  <div class="isteps reveal">
+    <span><b>01</b> pick your cuisine</span>
+    <span><b>02</b> taste its flagship</span>
+    <span><b>03</b> reserve your build · live in 7 days</span>
+  </div>
   <button class="btn reveal" id="introBtn">begin the tasting →</button>
 </section>
 
@@ -4604,7 +4616,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v50</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v51</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
