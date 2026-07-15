@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v69">
+<meta name="build" content="v70">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2304,6 +2304,24 @@ body{font-family:var(--sans)}
 #intro #introBtn{display:inline-block!important;margin:26px auto 0!important}
 #intro #venture{position:static!important;display:block!important;margin:36px auto 0!important}
 </style>
+<style id="v70">
+/* ═════════ V70 · one screen, no scroll needed ═════════ */
+#intro{padding:60px 20px 22px!important}
+#intro .intro-h{font-size:clamp(24px,6vw,34px)!important;line-height:1.08}
+#intro #mm{margin-top:14px!important;max-width:330px!important}
+#intro .mmHead{font-size:6.5px}
+#intro .mmToggle{margin:9px 0 10px}
+#intro .mmToggle button{padding:7px 15px}
+#intro .mmStage{height:212px!important}
+.mmMark{padding:11px 13px!important;display:block!important;
+  background:radial-gradient(120% 120% at 50% 0%,#141008,#0B0906 70%)!important}
+.mmMark .mrow{padding:6px 0}
+.mmMark .mrow span{font-size:12.5px}
+.mmMark .mfoot{margin-top:7px}
+#intro .mmLine{margin-top:9px;font-size:6px}
+#intro #introBtn{margin:16px auto 0!important}
+#intro #venture{margin:18px auto 0!important}
+</style>
 </head>
 <body>
 
@@ -2331,29 +2349,11 @@ body{font-family:var(--sans)}
         <div class="f">last updated 2019 · zoom to read</div>
       </div>
       <div class="mmMark">
-        <div class="dishdeck" id="dishdeck">
-          <div class="heroDish oven" style="--bk:0">
-            <div class="hd bake" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hdrow"><span>Margherita · wood-fired</span><i></i><b>14</b></div>
-            <div class="tslide"><div class="ttrack"><div class="tknob" data-tk></div></div><b class="tdeg" data-td>20°C</b></div>
-            <div class="hdhint">slide · fire the oven</div>
-          </div>
-          <div class="heroDish" style="--dx:30" data-pay="sahtein." data-hint="drag · dress it b’zeit">
-            <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1637949385133-3de79e927ef3?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hdline"><i></i></div>
-            <div class="hdrow"><span>Hommus b’zeit</span><i></i><b>7</b></div>
-            <div class="hdhint">drag · dress it b’zeit</div>
-          </div>
-          <div class="heroDish" style="--dx:30" data-pay="to the table · yalla" data-hint="drag · off the fire">
-            <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1636447155412-d57350005073?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hdline"><i></i></div>
-            <div class="hdrow"><span>Meshwe · for the table</span><i></i><b>26</b></div>
-            <div class="hdhint">drag · off the fire</div>
-          </div>
-        </div>
-        <div class="deckdots"><i class="on"></i><i></i><i></i></div>
+        <div class="mp on"></div><div class="mp"></div><div class="mp"></div>
+        <div class="mov"></div>
+        <div class="mtitle" data-mtitle>tonight’s mix</div>
+        <div class="mrows" data-mrows></div>
+        <div class="mfoot"><span class="mhint">tap a dish · watch it plate</span><button class="mremix" data-remix>remix ⟳</button></div>
       </div>
     </div>
     <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
@@ -4912,7 +4912,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v69</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v70</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4972,8 +4972,8 @@ window.addEventListener('popstate',()=>{
 });
 })();
 </script>
-<script id="v67js">
-/* V67 · one module: menu ⇄ mark(dish deck) · fire the oven */
+<script id="v70js">
+/* V70 · one screen · menu-pdf ⇄ menu-alive */
 (function(){
 const intro=document.querySelector('#intro');
 document.querySelectorAll('.mmToggle button').forEach(b=>{
@@ -4984,55 +4984,48 @@ document.querySelectorAll('.mmToggle button').forEach(b=>{
     try{if(navigator.vibrate)navigator.vibrate(b.dataset.m==='menu'?4:[8,40,8])}catch(_){}
   });
 });
-/* oven: slide the temperature, cook the pie */
-const oven=document.querySelector('.heroDish.oven');
-if(oven){
-  const track=oven.querySelector('.ttrack'),knob=oven.querySelector('[data-tk]'),
-        deg=oven.querySelector('[data-td]'),hint=oven.querySelector('.hdhint');
-  let drag=false,doneO=false;
-  const set=p=>{
-    p=Math.max(0,Math.min(1,p));
-    oven.style.setProperty('--bk',p.toFixed(3));
-    knob.style.left=(p*100).toFixed(1)+'%';
-    deg.textContent=Math.round(20+p*465)+'\u00b0C';
-    if(p>0.96&&!doneO){doneO=true;hint.textContent='485\u00b0 \u00b7 pull it. now.';
-      try{if(navigator.vibrate)navigator.vibrate([12,60,12])}catch(_){}}
-    if(p<0.6&&doneO){doneO=false;hint.textContent='slide \u00b7 fire the oven'}
-  };
-  knob.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;
-    try{knob.setPointerCapture(e.pointerId)}catch(_){}
-    try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}});
-  knob.addEventListener('pointermove',e=>{if(!drag)return;
-    const r=track.getBoundingClientRect();
-    set((e.clientX-r.left)/(r.width||220))});
-  const up=()=>drag=false;
-  knob.addEventListener('pointerup',up);knob.addEventListener('pointercancel',up);
-}
-/* drag-line cards */
-document.querySelectorAll('#dishdeck .heroDish:not(.oven)').forEach(hd=>{
-  const line=hd.querySelector('.hdline'),hint=hd.querySelector('.hdhint');
-  let drag=false,fired=false;
-  const set=v=>{
-    const dx=Math.max(4,Math.min(96,v));
-    hd.style.setProperty('--dx',dx.toFixed(2));
-    if(dx<10&&!fired){fired=true;hint.textContent=hd.dataset.pay;
-      try{if(navigator.vibrate)navigator.vibrate([12,50,12])}catch(_){}}
-    if(dx>60&&fired){fired=false;hint.textContent=hd.dataset.hint}
-  };
-  line.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;
-    try{line.setPointerCapture(e.pointerId)}catch(_){}});
-  line.addEventListener('pointermove',e=>{if(!drag)return;
-    const r=hd.getBoundingClientRect();
-    set((e.clientX-r.left)/(r.width||300)*100)});
-  const up=()=>drag=false;
-  line.addEventListener('pointerup',up);line.addEventListener('pointercancel',up);
+const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&q=68`;
+const POOL=[
+  ['Hommus b\u2019zeit','7','beirut',Q('1637949385162-e416fb15b2ce')],
+  ['Meshwe \u00b7 off the fire','26','beirut',Q('1555939594-58d7cb561ad1')],
+  ['Baklawa \u00b7 to finish','9','beirut',Q('1676014959543-81df1079b423')],
+  ['Margherita \u00b7 wood-fired','14','napoli',Q('1579751626657-72bc17010498')],
+  ['Salmon nigiri \u00b7 six','12','tokyo',Q('1553621042-f6e147245754')],
+  ['Macarons du jour','8','paris',Q('1569864358642-9d1684040f43')],
+  ['The sundae \u00b7 melting','9','the gelateria',Q('1563805042-7684c019e1cb')],
+  ['Golden hour \u00b7 for two','11','the lounge',Q('1514362545857-3bc16c4c7d1b')]
+];
+const wrap=document.querySelector('[data-mrows]'),phs=[...document.querySelectorAll('.mmMark .mp')],
+      title=document.querySelector('[data-mtitle]'),remix=document.querySelector('[data-remix]');
+if(!wrap)return;
+let mix=[3,4,0],cur=0,timer=null;
+const show=i=>{cur=i;
+  [...wrap.children].forEach((r,n)=>r.classList.toggle('on',n===i));
+  phs.forEach((p,n)=>p.classList.toggle('on',n===i));
+};
+const restart=()=>{clearInterval(timer);timer=setInterval(()=>show((cur+1)%3),3200)};
+const render=()=>{
+  wrap.innerHTML=mix.map((pi,n)=>{const d=POOL[pi];
+    return `<div class="mrow${n===0?' on':''}" data-i="${n}"><span>${d[0]}<em>${d[2]}</em></span><i></i><b>${d[1]}</b></div>`}).join('');
+  mix.forEach((pi,n)=>phs[n].style.backgroundImage=`url('${POOL[pi][3]}')`);
+  title.textContent='tonight\u2019s mix \u00b7 '+[...new Set(mix.map(pi=>POOL[pi][2]))].join(' \u00d7 ');
+  [...wrap.children].forEach(r=>{
+    r.addEventListener('pointerdown',e=>e.stopPropagation());
+    r.addEventListener('click',()=>{show(+r.dataset.i);restart();
+      try{if(navigator.vibrate)navigator.vibrate(6)}catch(_){}});
+  });
+  show(0);restart();
+};
+remix.addEventListener('pointerdown',e=>e.stopPropagation());
+remix.addEventListener('click',()=>{
+  const others=POOL.map((_,i)=>i).filter(i=>!mix.includes(i));
+  const next=[];
+  while(next.length<3){const c=others[Math.floor(Math.random()*others.length)];if(!next.includes(c))next.push(c)}
+  mix=next;wrap.classList.add('roll');
+  try{if(navigator.vibrate)navigator.vibrate([8,40,8])}catch(_){}
+  setTimeout(()=>{render();wrap.classList.remove('roll')},380);
 });
-/* dots */
-const deck=document.querySelector('#dishdeck'),dots=[...document.querySelectorAll('.deckdots i')];
-if(deck)deck.addEventListener('scroll',()=>{
-  const i=Math.round(deck.scrollLeft/(deck.clientWidth||300));
-  dots.forEach((d,n)=>d.classList.toggle('on',n===Math.min(2,i)));
-},{passive:true});
+render();
 })();
 </script><script id="v68js">
 /* V68 · kill any lingering service worker / cache from older builds */
@@ -5046,7 +5039,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v69';
+  var v=document.createElement('span');v.id='hv';v.textContent='v70';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
