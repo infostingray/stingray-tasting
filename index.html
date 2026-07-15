@@ -2113,6 +2113,22 @@ body{font-family:var(--sans)}
 .mmLine{margin-top:14px;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);line-height:2}
 .mmLine b{color:var(--taste);font-weight:400}
 </style>
+<style id="v58">
+/* ═════════ V58 · clean black home + the spinning plate ═════════ */
+.heroReel{display:none!important}
+#intro::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+.mmMark{background:radial-gradient(120% 120% at 50% 0%,#141008,#0B0906 70%);display:flex;flex-direction:column;align-items:center}
+.mmMark .spin{width:126px;height:126px;border-radius:50%;background-size:cover;background-position:center;margin-top:12px;
+  box-shadow:0 18px 34px -12px rgba(0,0,0,.85),inset 0 0 0 5px #F6EEDD,inset 0 0 0 6px rgba(20,16,12,.4);
+  touch-action:none;cursor:grab;will-change:transform}
+.mmMark .spin:active{cursor:grabbing}
+.mmMark .spinHint{margin-top:12px;font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--taste-l)}
+#intro.menuMode .intro-h em{color:#8f8f8f;transition:color .5s}
+#intro.menuMode .tastebtn{filter:grayscale(1) brightness(.72);transition:filter .5s}
+#intro.menuMode .mmHead b{color:#8f8f8f}
+.intro-h em{transition:color .5s}
+.tastebtn{transition:filter .5s,background .3s}
+</style>
 </head>
 <body>
 
@@ -2141,11 +2157,8 @@ body{font-family:var(--sans)}
         <div class="f">last updated 2019 · zoom to read</div>
       </div>
       <div class="mmMark">
-        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1699345461139-73dfeecab9b6?auto=format&fit=crop&w=560&q=65')"></div>
-        <div class="ov"></div>
-        <div class="nm">Beit Zaytoun</div>
-        <div class="tg">the long table · beirut</div>
-        <div class="pill">reserve tonight</div>
+        <div class="spin" id="mmSpin" style="background-image:url('https://images.unsplash.com/photo-1637949385133-3de79e927ef3?auto=format&fit=crop&w=400&h=400&q=70')"></div>
+        <div class="spinHint">drag · give the plate a spin</div>
       </div>
     </div>
     <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
@@ -2155,7 +2168,6 @@ body{font-family:var(--sans)}
     <span><b>02</b> taste its flagship</span>
     <span><b>03</b> reserve your build · live in 7 days</span>
   </div>
-  <div class="hrCap reveal" id="hrCap">now tasting · beirut</div>
   <button class="btn reveal tastebtn" id="introBtn">begin the tasting →</button>
 </section>
 
@@ -2455,7 +2467,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#is','#mm','.isteps','#hrCap','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
+function revealIntro(){['#ih','#is','#mm','.isteps','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4771,63 +4783,6 @@ window.addEventListener('popstate',()=>{
 });
 })();
 </script>
-<script id="v55js">
-/* V55 · the tasting reel, navigable: swipe worlds, tap the caption to enter */
-(function(){
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const REEL=[
-  [U('1699345461139-73dfeecab9b6'),'beirut \u00b7 the long table','lebanese'],
-  [U('1579751626657-72bc17010498'),'napoli \u00b7 the fire','italian'],
-  [U('1553621042-f6e147245754'),'tokyo \u00b7 the counter','japanese'],
-  [U('1509042239860-f550ce710b93'),'the caf\u00e9 \u00b7 slow mornings','coffeeshop'],
-  [U('1569864358642-9d1684040f43'),'the patisserie \u00b7 douceur','dessert'],
-  [U('1563805042-7684c019e1cb'),'the gelateria \u00b7 melting','icecream'],
-  [U('1470229722913-7c0e2dbbafd3'),'the club \u00b7 after midnight','nightclub'],
-  [U('1514362545857-3bc16c4c7d1b'),'the lounge \u00b7 golden hour','lounge'],
-  [U('1507525428034-b723cf961d3e'),'the coast \u00b7 salt air','beach']
-];
-const intro=document.querySelector('#intro');
-const reel=document.createElement('div');reel.className='heroReel';
-reel.innerHTML=REEL.map(r=>`<div class="hr" style="background-image:url('${r[0]}')"></div>`).join('');
-intro.prepend(reel);
-const slides=[...reel.children],cap=document.querySelector('#hrCap');
-let i=0,timer=null;
-const paint=()=>{
-  slides.forEach((s,n)=>s.classList.toggle('on',n===i));
-  if(cap){cap.classList.add('sw');setTimeout(()=>{cap.innerHTML='now tasting \u00b7 '+REEL[i][1]+' <b>\u2192 tap to taste</b>';cap.classList.remove('sw')},420)}
-};
-const step=d=>{i=(i+d+REEL.length)%REEL.length;paint();restart()};
-const restart=()=>{clearInterval(timer);timer=setInterval(()=>step(1),4600)};
-paint();restart();
-if(cap){
-  cap.style.pointerEvents='auto';cap.style.cursor='pointer';
-  cap.addEventListener('click',()=>{try{if(navigator.vibrate)navigator.vibrate(8)}catch(_){}openCat(REEL[i][2])});
-}
-/* swipe the worlds */
-let sx=null,sy=null;
-intro.addEventListener('pointerdown',e=>{
-  if(e.target.closest('button,.hrCap'))return;
-  sx=e.clientX;sy=e.clientY;
-});
-intro.addEventListener('pointerup',e=>{
-  if(sx===null)return;
-  const dx=e.clientX-sx,dy=e.clientY-sy;sx=sy=null;
-  if(Math.abs(dx)>44&&Math.abs(dx)>Math.abs(dy)*1.4){
-    try{if(navigator.vibrate)navigator.vibrate(6)}catch(_){}
-    step(dx<0?1:-1);
-  }
-});
-/* parallax */
-if(!RM){
-  intro.addEventListener('pointermove',e=>{
-    const r=intro.getBoundingClientRect();
-    const dx=((e.clientX-r.left)/(r.width||1)-0.5)*14;
-    const dy=((e.clientY-r.top)/(r.height||1)-0.5)*10;
-    reel.style.transform=`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px)`;
-  });
-}
-})();
-</script>
 <script id="v57js">
 /* V57 · menu or mark: one tap, the whole page feels the difference */
 (function(){
@@ -4840,6 +4795,34 @@ document.querySelectorAll('.mmToggle button').forEach(b=>{
     try{if(navigator.vibrate)navigator.vibrate(b.dataset.m==='menu'?4:[8,40,8])}catch(_){}
   });
 });
+})();
+</script>
+<script id="v58js">
+/* V58 · the spinning plate: drag, momentum, glide */
+(function(){
+const p=document.querySelector('#mmSpin');
+if(!p)return;
+let rot=0,vel=0,dragging=false,lastA=0,raf=null;
+const ang=e=>{const r=p.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI};
+const paint=()=>{p.style.transform=`rotate(${rot.toFixed(1)}deg)`};
+const glide=()=>{
+  if(dragging)return;
+  vel*=0.965;rot+=vel;paint();
+  if(Math.abs(vel)>0.08)raf=requestAnimationFrame(glide);
+};
+p.addEventListener('pointerdown',e=>{
+  e.stopPropagation();dragging=true;lastA=ang(e);vel=0;cancelAnimationFrame(raf);
+  try{p.setPointerCapture(e.pointerId)}catch(_){}
+  try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}
+});
+p.addEventListener('pointermove',e=>{
+  if(!dragging)return;
+  const a=ang(e);let d=a-lastA;
+  if(d>180)d-=360;if(d<-180)d+=360;
+  rot+=d;vel=d;lastA=a;paint();
+});
+const up=()=>{if(!dragging)return;dragging=false;raf=requestAnimationFrame(glide)};
+p.addEventListener('pointerup',up);p.addEventListener('pointercancel',up);
 })();
 </script>
 </body>
