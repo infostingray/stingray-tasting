@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v61">
+<meta name="build" content="v62">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2153,6 +2153,23 @@ body{font-family:var(--sans)}
   background:radial-gradient(60% 45% at 32% 22%,rgba(255,250,240,.28),transparent 65%)}
 .mmMark .spin.whirl{filter:blur(.5px) saturate(1.2) brightness(1.05)}
 </style>
+<style id="v62">
+/* ═════════ V62 · the same menu, alive ═════════ */
+.mmMark{padding:14px 16px;display:block}
+.mmMark .mp{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease;
+  animation:senken 20s ease-in-out infinite alternate}
+.mmMark .mp.on{opacity:1}
+.mmMark .mov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,5,.5),rgba(10,8,5,.68) 55%,rgba(10,8,5,.86))}
+.mmMark .mtitle{position:relative;font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--taste-l)}
+.mmMark .mrow{position:relative;display:flex;align-items:baseline;gap:8px;padding:9px 0;cursor:pointer;
+  border-bottom:1px dotted rgba(246,238,221,.22)}
+.mmMark .mrow span{font-family:'Marcellus',serif;font-size:13.5px;color:rgba(246,238,221,.75);transition:color .3s,letter-spacing .3s}
+.mmMark .mrow i{flex:1;border-bottom:1px dotted rgba(246,238,221,.25);transform:translateY(-3px)}
+.mmMark .mrow b{font-family:var(--mono);font-size:9px;font-weight:400;color:rgba(242,192,138,.7);transition:color .3s}
+.mmMark .mrow.on span{color:#F6EEDD}
+.mmMark .mrow.on b{color:var(--taste)}
+.mmMark .mhint{position:relative;margin-top:9px;font-family:var(--mono);font-size:6px;letter-spacing:.26em;text-transform:uppercase;color:rgba(246,238,221,.55)}
+</style>
 </head>
 <body>
 
@@ -2181,9 +2198,15 @@ body{font-family:var(--sans)}
         <div class="f">last updated 2019 · zoom to read</div>
       </div>
       <div class="mmMark">
-        <div class="spin" id="mmSpin" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=400&h=400&q=72')"></div>
-        <i class="spinGlare"></i>
-        <div class="spinHint">drag · spin the pie</div>
+        <div class="mp on" style="background-image:url('https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=560&q=68')"></div>
+        <div class="mp" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=560&q=68')"></div>
+        <div class="mp" style="background-image:url('https://images.unsplash.com/photo-1676014959543-81df1079b423?auto=format&fit=crop&w=560&q=68')"></div>
+        <div class="mov"></div>
+        <div class="mtitle">the same menu · alive</div>
+        <div class="mrow on" data-i="0"><span>Hommus b’zeit</span><i></i><b>7</b></div>
+        <div class="mrow" data-i="1"><span>Meshwe · off the fire</span><i></i><b>26</b></div>
+        <div class="mrow" data-i="2"><span>Baklawa · to finish</span><i></i><b>9</b></div>
+        <div class="mhint">tap a dish · watch it plate</div>
       </div>
     </div>
     <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
@@ -4036,7 +4059,6 @@ Object.assign(CATS,{
  italian:{label:'Italian',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli rules',designs:[FORNO]},
  japanese:{label:'Japanese',glyph:'\u3007',accent:'#C6472E',desc:'omakase \u00b7 twelve seats',designs:[SEN]},
  lebanese:{label:'Lebanese',glyph:'\u274b',accent:'#9E3B30',desc:'mezze \u00b7 fire \u00b7 family',designs:[BEIT]},
- coffeeshop:{label:'Coffee',glyph:'\u25d5',accent:'#B0754A',desc:'third-wave \u00b7 slow bar',designs:[RITUAL]},
  nightclub:{label:'Night Club',glyph:'\u26a1',accent:'#B44CFF',desc:'128 bpm \u00b7 no photos',designs:[VOLT]},
  dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'p\u00e2tisserie \u00b7 gold foil',designs:[SUCRE]},
  icecream:{label:'Ice Cream',glyph:'\u2745',accent:'#FF7FA5',desc:'gelato \u00b7 it drips',designs:[MELT]},
@@ -4748,7 +4770,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v61</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v62</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4822,38 +4844,24 @@ document.querySelectorAll('.mmToggle button').forEach(b=>{
 });
 })();
 </script>
-<script id="v58js">
-/* V58 · the spinning plate: drag, momentum, glide */
+<script id="v62js">
+/* V62 · tap a dish, watch it plate */
 (function(){
-const p=document.querySelector('#mmSpin');
-if(!p)return;
-let rot=0,vel=0,dragging=false,lastA=0,raf=null;
-const ang=e=>{const r=p.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI};
-let lastTick=0;
-const paint=()=>{
-  p.style.transform=`rotate(${rot.toFixed(1)}deg)`;
-  p.classList.toggle('whirl',Math.abs(vel)>5);
-  const q=Math.floor(Math.abs(rot)/90);
-  if(q!==lastTick){lastTick=q;try{if(navigator.vibrate&&Math.abs(vel)>2)navigator.vibrate(3)}catch(_){}}
+const rows=[...document.querySelectorAll('.mmMark .mrow')];
+const phs=[...document.querySelectorAll('.mmMark .mp')];
+if(!rows.length)return;
+let cur=0,timer=null;
+const show=i=>{cur=i;
+  rows.forEach((r,n)=>r.classList.toggle('on',n===i));
+  phs.forEach((p,n)=>p.classList.toggle('on',n===i));
 };
-const glide=()=>{
-  if(dragging)return;
-  vel*=0.965;rot+=vel;paint();
-  if(Math.abs(vel)>0.08)raf=requestAnimationFrame(glide);
-};
-p.addEventListener('pointerdown',e=>{
-  e.stopPropagation();dragging=true;lastA=ang(e);vel=0;cancelAnimationFrame(raf);
-  try{p.setPointerCapture(e.pointerId)}catch(_){}
-  try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}
+const restart=()=>{clearInterval(timer);timer=setInterval(()=>show((cur+1)%rows.length),3200)};
+rows.forEach(r=>{
+  r.addEventListener('pointerdown',e=>e.stopPropagation());
+  r.addEventListener('click',()=>{show(+r.dataset.i);restart();
+    try{if(navigator.vibrate)navigator.vibrate(6)}catch(_){}});
 });
-p.addEventListener('pointermove',e=>{
-  if(!dragging)return;
-  const a=ang(e);let d=a-lastA;
-  if(d>180)d-=360;if(d<-180)d+=360;
-  rot+=d;vel=d;lastA=a;paint();
-});
-const up=()=>{if(!dragging)return;dragging=false;raf=requestAnimationFrame(glide)};
-p.addEventListener('pointerup',up);p.addEventListener('pointercancel',up);
+restart();
 })();
 </script>
 </body>
