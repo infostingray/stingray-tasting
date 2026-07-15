@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v74">
+<meta name="build" content="v75">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2429,6 +2429,44 @@ body{font-family:var(--sans)}
 .knote2{margin:20px auto 6px;max-width:320px;text-align:center;font-family:var(--mono);font-size:7px;
   letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);line-height:2.1;flex:0 0 auto}
 .knote2 b{color:var(--taste-l);font-weight:400}
+</style>
+<style id="v75">
+/* ═════════ V75 · fire, properly ═════════ */
+.mmStage.burn .emberline{height:4px;border-radius:60% 40% 55% 45%/70% 30% 60% 40%;
+  animation:emberclimb 1.5s cubic-bezier(.5,.05,.4,1) forwards;
+  filter:blur(.3px)}
+.mmStage.burn .emberline::after{content:'';position:absolute;left:3%;right:5%;top:5px;height:2px;border-radius:50%;
+  background:linear-gradient(90deg,transparent,rgba(255,190,110,.75) 40%,rgba(255,220,160,.9) 60%,transparent);
+  filter:blur(1px)}
+.mmStage.burn .charfill{animation:charrise 1.5s cubic-bezier(.5,.05,.4,1) forwards;
+  background:linear-gradient(180deg,rgba(28,14,7,.9),rgba(9,4,2,.98)),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E")}
+.mmStage.burn .charfill::before{content:'';position:absolute;left:0;right:0;top:-1px;height:8px;
+  background:linear-gradient(180deg,rgba(255,120,40,.5),transparent);filter:blur(2px)}
+.fember{position:absolute;z-index:9;width:3px;height:3px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#FFE7B8,#FF8A3C 65%,transparent);
+  box-shadow:0 0 8px 2px rgba(255,140,60,.75);
+  animation:emberrise .9s ease-out forwards}
+@keyframes emberrise{
+  30%{opacity:1}
+  to{transform:translate(6px,-70px) scale(.4);opacity:0}}
+.fsmoke{position:absolute;left:38%;bottom:20%;width:34px;height:120px;z-index:9;pointer-events:none;border-radius:50%;
+  background:linear-gradient(180deg,rgba(180,170,160,.14),transparent 75%);filter:blur(9px);
+  animation:smokedrift 2.2s ease-out forwards}
+@keyframes smokedrift{from{transform:translateY(30px) scaleY(.6);opacity:0}
+  25%{opacity:1}to{transform:translateY(-90px) scaleY(1.25) translateX(14px);opacity:0}}
+.mmStage.burn{transform:scale(1.025) rotate(-.35deg)}
+.markface{transition:opacity .7s ease 1.15s}
+.markface .mf1{filter:blur(6px);letter-spacing:.14em;
+  transition:transform .9s cubic-bezier(.2,1,.3,1) 1.2s,filter .9s ease 1.2s,letter-spacing 1.1s cubic-bezier(.2,1,.3,1) 1.2s}
+.mmStage.burn .mf1{filter:blur(0);letter-spacing:.01em}
+/* footer can only exist on the home, full stop */
+#venture{display:none!important}
+#intro.active #venture{display:block!important}
+/* the kitchen note breathes */
+.knote2{margin:36px auto 10px!important}
+#kitchen{padding-bottom:76px!important}
+@media(prefers-reduced-motion:reduce){.fember,.fsmoke{display:none}}
 </style>
 </head>
 <body>
@@ -5023,7 +5061,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v74</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v75</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5095,7 +5133,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v74';
+  var v=document.createElement('span');v.id='hv';v.textContent='v75';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5122,14 +5160,25 @@ btns.forEach(b=>{
     btns.forEach(x=>x.classList.toggle('on',x===b));
     intro.classList.remove('menuMode');
     stage.classList.add('burn');
-    try{if(navigator.vibrate)navigator.vibrate([10,60,14])}catch(_){}
+    try{if(navigator.vibrate)navigator.vibrate([8,40,10,40,14])}catch(_){}
+    const sr=stage.getBoundingClientRect(),SH=sr.height||216,SW=sr.width||330;
+    for(let k=0;k<11;k++){setTimeout(()=>{
+      if(!stage.classList.contains('burn'))return;
+      const e=document.createElement('i');e.className='fember';
+      e.style.left=(8+Math.random()*(SW-16))+'px';
+      e.style.top=(SH*(1-(k*120)/1400))+'px';
+      e.style.animationDuration=(0.7+Math.random()*0.6)+'s';
+      stage.appendChild(e);setTimeout(()=>e.remove(),1400);
+    },k*120)}
+    const sm=document.createElement('i');sm.className='fsmoke';stage.appendChild(sm);
+    setTimeout(()=>sm.remove(),2400);
     setTimeout(()=>{
       stage.classList.remove('burn');
       intro.classList.add('menuMode');
       btns.forEach(x=>x.classList.toggle('on',x.dataset.m==='menu'));
       burning=false;
       goto('kitchen');
-    },1750);
+    },2050);
   });
 });
 })();
