@@ -2076,6 +2076,12 @@ body{font-family:var(--sans)}
 .hrCap.sw{opacity:0}
 @media(prefers-reduced-motion:reduce){.heroReel .hr{animation:none}.heroReel{transition:none}}
 </style>
+<style id="v55">
+.chip.hot{border-color:rgba(255,77,46,.55);color:var(--taste-l)}
+.adnote{margin-top:12px;font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--taste);opacity:.85;text-align:center}
+.hrCap b{font-weight:400;color:var(--bone-dim);margin-left:6px}
+.hrCap{pointer-events:auto}
+</style>
 </head>
 <body>
 
@@ -2145,9 +2151,10 @@ body{font-family:var(--sans)}
       <span class="chip">full menu</span>
       <span class="chip">live reservations</span>
       <span class="chip">location &amp; hours</span>
-      <span class="chip">whatsapp ordering</span>
+      <span class="chip">whatsapp ordering</span><span class="chip hot">meta pixel + conversion events</span><span class="chip hot">retargeting audiences ready</span><span class="chip hot">campaign-grade tracking</span>
       <span class="chip">instagram feed</span>
     </div>
+    <div class="adnote">built by an ads agency first · every site arrives wired to sell</div>
     <a class="wa" id="waBtn" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
       reserve on whatsapp
@@ -4652,7 +4659,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v54</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v55</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4712,33 +4719,53 @@ window.addEventListener('popstate',()=>{
 });
 })();
 </script>
-<script id="v54js">
-/* V54 · the tasting reel: nine verified worlds breathing behind the headline */
+<script id="v55js">
+/* V55 · the tasting reel, navigable: swipe worlds, tap the caption to enter */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const REEL=[
-  [U('1699345461139-73dfeecab9b6'),'beirut \u00b7 the long table'],
-  [U('1579751626657-72bc17010498'),'napoli \u00b7 the fire'],
-  [U('1553621042-f6e147245754'),'tokyo \u00b7 the counter'],
-  [U('1509042239860-f550ce710b93'),'the caf\u00e9 \u00b7 slow mornings'],
-  [U('1569864358642-9d1684040f43'),'the patisserie \u00b7 douceur'],
-  [U('1563805042-7684c019e1cb'),'the gelateria \u00b7 melting'],
-  [U('1470229722913-7c0e2dbbafd3'),'the club \u00b7 after midnight'],
-  [U('1514362545857-3bc16c4c7d1b'),'the lounge \u00b7 golden hour'],
-  [U('1507525428034-b723cf961d3e'),'the coast \u00b7 salt air']
+  [U('1699345461139-73dfeecab9b6'),'beirut \u00b7 the long table','lebanese'],
+  [U('1579751626657-72bc17010498'),'napoli \u00b7 the fire','italian'],
+  [U('1553621042-f6e147245754'),'tokyo \u00b7 the counter','japanese'],
+  [U('1509042239860-f550ce710b93'),'the caf\u00e9 \u00b7 slow mornings','coffeeshop'],
+  [U('1569864358642-9d1684040f43'),'the patisserie \u00b7 douceur','dessert'],
+  [U('1563805042-7684c019e1cb'),'the gelateria \u00b7 melting','icecream'],
+  [U('1470229722913-7c0e2dbbafd3'),'the club \u00b7 after midnight','nightclub'],
+  [U('1514362545857-3bc16c4c7d1b'),'the lounge \u00b7 golden hour','lounge'],
+  [U('1507525428034-b723cf961d3e'),'the coast \u00b7 salt air','beach']
 ];
 const intro=document.querySelector('#intro');
 const reel=document.createElement('div');reel.className='heroReel';
 reel.innerHTML=REEL.map(r=>`<div class="hr" style="background-image:url('${r[0]}')"></div>`).join('');
 intro.prepend(reel);
 const slides=[...reel.children],cap=document.querySelector('#hrCap');
-let i=0;slides[0].classList.add('on');
-setInterval(()=>{
-  slides[i].classList.remove('on');
-  i=(i+1)%slides.length;
-  slides[i].classList.add('on');
-  if(cap){cap.classList.add('sw');setTimeout(()=>{cap.textContent='now tasting \u00b7 '+REEL[i][1];cap.classList.remove('sw')},500)}
-},4200);
+let i=0,timer=null;
+const paint=()=>{
+  slides.forEach((s,n)=>s.classList.toggle('on',n===i));
+  if(cap){cap.classList.add('sw');setTimeout(()=>{cap.innerHTML='now tasting \u00b7 '+REEL[i][1]+' <b>\u2192 tap to taste</b>';cap.classList.remove('sw')},420)}
+};
+const step=d=>{i=(i+d+REEL.length)%REEL.length;paint();restart()};
+const restart=()=>{clearInterval(timer);timer=setInterval(()=>step(1),4600)};
+paint();restart();
+if(cap){
+  cap.style.pointerEvents='auto';cap.style.cursor='pointer';
+  cap.addEventListener('click',()=>{try{if(navigator.vibrate)navigator.vibrate(8)}catch(_){}openCat(REEL[i][2])});
+}
+/* swipe the worlds */
+let sx=null,sy=null;
+intro.addEventListener('pointerdown',e=>{
+  if(e.target.closest('button,.hrCap'))return;
+  sx=e.clientX;sy=e.clientY;
+});
+intro.addEventListener('pointerup',e=>{
+  if(sx===null)return;
+  const dx=e.clientX-sx,dy=e.clientY-sy;sx=sy=null;
+  if(Math.abs(dx)>44&&Math.abs(dx)>Math.abs(dy)*1.4){
+    try{if(navigator.vibrate)navigator.vibrate(6)}catch(_){}
+    step(dx<0?1:-1);
+  }
+});
+/* parallax */
 if(!RM){
   intro.addEventListener('pointermove',e=>{
     const r=intro.getBoundingClientRect();
