@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v63">
+<meta name="build" content="v64">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2181,6 +2181,38 @@ body{font-family:var(--sans)}
 .mmMark .mremix:active{transform:scale(.95)}
 .mmMark .mrow{padding:7px 0}
 </style>
+<style id="v64">
+/* ═════════ V64 · the page scrolls + dish gestures ═════════ */
+#intro{justify-content:flex-start!important;overflow-y:auto!important;
+  padding-top:60px!important;padding-bottom:34px!important;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+#intro::-webkit-scrollbar{display:none}
+#intro>*{flex:0 0 auto}
+#venture{position:static!important;margin:40px 0 0!important;pointer-events:auto!important}
+/* action layers */
+.actL{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.oilStream{position:absolute;left:50%;top:0;width:3px;height:46%;margin-left:-1.5px;border-radius:3px;
+  background:linear-gradient(180deg,rgba(224,178,60,0),rgba(224,178,60,.85));filter:blur(.6px);
+  opacity:0;transform:scaleY(0);transform-origin:top}
+.oilPool{position:absolute;left:50%;top:44%;width:120px;height:64px;margin-left:-60px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(230,186,66,.5),rgba(212,160,40,.28) 60%,transparent 75%);
+  filter:blur(1px);transform:scale(0);opacity:0}
+.act-oil.acting .oilStream{opacity:1;transform:scaleY(1);transition:transform .35s,opacity .2s}
+.act-oil .oilPool{transform:scale(var(--ap,0));opacity:calc(var(--ap,0)*1)}
+.act-soy.acting .oilStream{opacity:1;transform:scaleY(1);transition:transform .35s;
+  background:linear-gradient(180deg,rgba(58,34,18,0),rgba(58,34,18,.9))}
+.act-soy .oilPool{background:radial-gradient(closest-side,rgba(58,34,18,.55),rgba(58,34,18,.3) 60%,transparent 75%);
+  transform:scale(var(--ap,0));opacity:calc(var(--ap,0)*1)}
+.fillL{position:absolute;left:0;right:0;bottom:0;height:calc(var(--ap,0)*100%);
+  background:linear-gradient(180deg,rgba(242,166,60,.4),rgba(201,120,24,.55));
+  mix-blend-mode:multiply;opacity:0;transition:opacity .3s}
+.act-fill .fillL{opacity:1}
+.speck{position:absolute;top:-6px;width:2.5px;height:2.5px;border-radius:50%;background:rgba(255,252,244,.95);
+  filter:blur(.4px);animation:speckfall 1.1s linear forwards}
+@keyframes speckfall{to{transform:translateY(190px);opacity:0}}
+.oilStream,.oilPool{transition:opacity .5s,transform .5s}
+@media(prefers-reduced-motion:reduce){.speck{display:none}}
+</style>
 </head>
 <body>
 
@@ -2213,6 +2245,10 @@ body{font-family:var(--sans)}
         <div class="mp"></div>
         <div class="mp"></div>
         <div class="mov"></div>
+        <div class="actL" data-actl>
+          <i class="oilStream"></i><i class="oilPool"></i>
+          <i class="fillL"></i>
+        </div>
         <div class="mtitle" data-mtitle>tonight’s mix · beirut</div>
         <div class="mrows" data-mrows></div>
         <div class="mfoot"><span class="mhint">tap a dish · watch it plate</span><button class="mremix" data-remix>remix ⟳</button></div>
@@ -4779,7 +4815,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v63</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v64</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4853,35 +4889,38 @@ document.querySelectorAll('.mmToggle button').forEach(b=>{
 });
 })();
 </script>
-<script id="v63js">
-/* V63 · the tasting-menu remixer: mix dishes across the worlds */
+<script id="v64js">
+/* V64 · dishes with gestures: pour the oil, fill the glass, fire it, dust the sugar */
 (function(){
 const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&q=68`;
 const POOL=[
-  ['Hommus b\u2019zeit','7','beirut',Q('1637949385162-e416fb15b2ce')],
-  ['Meshwe \u00b7 off the fire','26','beirut',Q('1555939594-58d7cb561ad1')],
-  ['Baklawa \u00b7 to finish','9','beirut',Q('1676014959543-81df1079b423')],
-  ['Margherita \u00b7 wood-fired','14','napoli',Q('1579751626657-72bc17010498')],
-  ['Salmon nigiri \u00b7 six','12','tokyo',Q('1553621042-f6e147245754')],
-  ['Macarons du jour','8','paris',Q('1569864358642-9d1684040f43')],
-  ['The sundae \u00b7 melting','9','the gelateria',Q('1563805042-7684c019e1cb')],
-  ['Golden hour \u00b7 for two','11','the lounge',Q('1514362545857-3bc16c4c7d1b')]
+  ['Hommus b\u2019zeit','7','beirut',Q('1637949385162-e416fb15b2ce'),'oil','hold \u00b7 pour the olive oil','b\u2019zeit \u00b7 sahtein.'],
+  ['Meshwe \u00b7 off the fire','26','beirut',Q('1555939594-58d7cb561ad1'),'fire','hold \u00b7 feed the fire','off the fire \u00b7 485\u00b0'],
+  ['Baklawa \u00b7 to finish','9','beirut',Q('1676014959543-81df1079b423'),'dust','hold \u00b7 dust the sugar','douceur.'],
+  ['Margherita \u00b7 wood-fired','14','napoli',Q('1579751626657-72bc17010498'),'fire','hold \u00b7 fire the pie','leopard spots \u00b7 pull it'],
+  ['Salmon nigiri \u00b7 six','12','tokyo',Q('1553621042-f6e147245754'),'soy','hold \u00b7 brush the soy','\u91ce \u00b7 itadakimasu'],
+  ['Macarons du jour','8','paris',Q('1569864358642-9d1684040f43'),'dust','hold \u00b7 dust the sugar','douceur.'],
+  ['The sundae \u00b7 melting','9','the gelateria',Q('1563805042-7684c019e1cb'),'dust','hold \u00b7 snow the sugar','before it melts \u00b7 go'],
+  ['Golden hour \u00b7 for two','11','the lounge',Q('1514362545857-3bc16c4c7d1b'),'fill','hold \u00b7 pour the glass','cin cin.']
 ];
 const wrap=document.querySelector('[data-mrows]'),phs=[...document.querySelectorAll('.mmMark .mp')],
-      title=document.querySelector('[data-mtitle]'),remix=document.querySelector('[data-remix]');
-if(!wrap)return;
-let mix=[0,1,2],cur=0,timer=null;
+      title=document.querySelector('[data-mtitle]'),remix=document.querySelector('[data-remix]'),
+      hint=document.querySelector('.mhint'),card=document.querySelector('.mmMark'),actl=document.querySelector('[data-actl]');
+if(!wrap||!card)return;
+let mix=[3,4,0],cur=0,timer=null;
+const D=()=>POOL[mix[cur]];
 const show=i=>{cur=i;
   [...wrap.children].forEach((r,n)=>r.classList.toggle('on',n===i));
-  phs.forEach((p,n)=>p.classList.toggle('on',n===i));
+  phs.forEach((p,n)=>{p.classList.toggle('on',n===i);p.style.filter=''});
+  if(hint)hint.textContent=D()[5];
+  card.className=card.className.replace(/ act-\w+/g,'')+' act-'+D()[4];
 };
-const restart=()=>{clearInterval(timer);timer=setInterval(()=>show((cur+1)%3),3200)};
+const restart=()=>{clearInterval(timer);timer=setInterval(()=>{if(!holding)show((cur+1)%3)},3600)};
 const render=()=>{
   wrap.innerHTML=mix.map((pi,n)=>{const d=POOL[pi];
     return `<div class="mrow${n===0?' on':''}" data-i="${n}"><span>${d[0]}<em>${d[2]}</em></span><i></i><b>${d[1]}</b></div>`}).join('');
   mix.forEach((pi,n)=>phs[n].style.backgroundImage=`url('${POOL[pi][3]}')`);
-  const cu=[...new Set(mix.map(pi=>POOL[pi][2]))].join(' \u00d7 ');
-  title.textContent='tonight\u2019s mix \u00b7 '+cu;
+  title.textContent='tonight\u2019s mix \u00b7 '+[...new Set(mix.map(pi=>POOL[pi][2]))].join(' \u00d7 ');
   [...wrap.children].forEach(r=>{
     r.addEventListener('pointerdown',e=>e.stopPropagation());
     r.addEventListener('click',()=>{show(+r.dataset.i);restart();
@@ -4892,14 +4931,50 @@ const render=()=>{
 remix.addEventListener('pointerdown',e=>e.stopPropagation());
 remix.addEventListener('click',()=>{
   const others=POOL.map((_,i)=>i).filter(i=>!mix.includes(i));
-  const pool=others.length>=3?others:POOL.map((_,i)=>i);
   const next=[];
-  while(next.length<3){const c=pool[Math.floor(Math.random()*pool.length)];if(!next.includes(c))next.push(c)}
-  mix=next;
-  wrap.classList.add('roll');
+  while(next.length<3){const c=others[Math.floor(Math.random()*others.length)];if(!next.includes(c))next.push(c)}
+  mix=next;wrap.classList.add('roll');
   try{if(navigator.vibrate)navigator.vibrate([8,40,8])}catch(_){}
   setTimeout(()=>{render();wrap.classList.remove('roll')},380);
 });
+/* ── the hold engine ── */
+let holding=false,prog=0,raf=null,last=0,dustT=0,done=false;
+const speck=()=>{
+  const s=document.createElement('i');s.className='speck';
+  s.style.left=(15+Math.random()*70)+'%';s.style.animationDuration=(0.9+Math.random()*0.6)+'s';
+  actl.appendChild(s);setTimeout(()=>s.remove(),1600);
+};
+const tick=t=>{
+  if(!holding)return;
+  const dt=(t-last)/1000;last=t;
+  if(!done)prog=Math.min(1,prog+dt/1.15);
+  card.style.setProperty('--ap',prog.toFixed(3));
+  const type=D()[4];
+  if(type==='fire'||type==='soy'){
+    const p=phs[cur];
+    p.style.filter=type==='fire'
+      ?`brightness(${(1+prog*0.18).toFixed(2)}) saturate(${(1+prog*0.4).toFixed(2)}) contrast(${(1+prog*0.1).toFixed(2)})`
+      :`brightness(${(1-prog*0.12).toFixed(2)}) saturate(${(1+prog*0.35).toFixed(2)})`;
+  }
+  if(type==='dust'&&t-dustT>150){dustT=t;speck()}
+  if(prog>=1&&!done){done=true;
+    if(hint)hint.textContent=D()[6];
+    try{if(navigator.vibrate)navigator.vibrate([10,50,10])}catch(_){}}
+  raf=requestAnimationFrame(tick);
+};
+card.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.mrow,[data-remix]'))return;
+  e.stopPropagation();
+  holding=true;done=false;prog=0;last=performance.now();card.classList.add('acting');
+  try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}
+  raf=requestAnimationFrame(tick);
+});
+const stop=()=>{if(!holding)return;holding=false;card.classList.remove('acting');
+  cancelAnimationFrame(raf);
+  setTimeout(()=>{if(!holding){prog=0;card.style.setProperty('--ap','0');
+    if(phs[cur])phs[cur].style.filter='';if(hint&&!done)hint.textContent=D()[5]}},900);
+};
+card.addEventListener('pointerup',stop);card.addEventListener('pointercancel',stop);card.addEventListener('pointerleave',stop);
 render();
 })();
 </script></body>
