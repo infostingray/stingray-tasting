@@ -2029,6 +2029,11 @@ body{font-family:var(--sans)}
 #sysbar{justify-content:flex-start}
 #venture{z-index:5}
 </style>
+<style id="v50">
+#course{display:none!important}
+#intro{padding-bottom:74px!important}
+#venture{bottom:14px}
+</style>
 </head>
 <body>
 
@@ -2053,7 +2058,6 @@ body{font-family:var(--sans)}
   <h2 class="kitchen-h">What kind of<br>place do you run?</h2>
   <p class="kitchen-sub">Every cuisine has its own light. Pick yours.</p>
   <div class="cats" id="cats"></div>
-  <div class="kitchen-note">something else? café · bakery · fine dining · beach club ·<br>we build for every table. just say so on whatsapp.</div>
 </section>
 
 <!-- ═══ THE TASTING ═══ -->
@@ -3326,7 +3330,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-document.querySelector('#vv')&&(document.querySelector('#vv').textContent='v49');
+document.querySelector('#vv')&&(document.querySelector('#vv').textContent='v50');
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4600,7 +4604,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v49</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v50</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
