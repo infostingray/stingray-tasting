@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v65">
+<meta name="build" content="v66">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2240,6 +2240,21 @@ body{font-family:var(--sans)}
   background:linear-gradient(180deg,rgba(5,5,5,.08),transparent 40%,rgba(5,5,5,.62))}
 #introBtn{margin-top:26px!important}
 </style>
+<style id="v66">
+/* ═════════ V66 · the deck + the toggle, one home ═════════ */
+#intro{justify-content:flex-start!important;overflow-y:auto!important;overflow-x:hidden!important;
+  padding-top:58px!important;padding-bottom:30px!important}
+#intro::after{display:none!important}
+#intro .intro-h{font-size:clamp(30px,7.5vw,44px)}
+.dishdeck{display:flex;gap:12px;width:100%;max-width:352px;margin:20px auto 0;
+  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.dishdeck::-webkit-scrollbar{display:none}
+.dishdeck .heroDish{flex:0 0 100%;scroll-snap-align:center;height:min(38vh,320px);margin:0}
+.deckdots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+.deckdots i{width:5px;height:5px;border-radius:50%;background:rgba(244,244,251,.25);transition:background .3s}
+.deckdots i.on{background:var(--taste)}
+#mm{margin-top:22px}
+</style>
 </head>
 <body>
 
@@ -2255,12 +2270,50 @@ body{font-family:var(--sans)}
 <section class="screen active" id="intro">
   <div id="typeline" style="display:none"></div>
   <h1 class="intro-h reveal" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
-  <div class="heroDish reveal" id="heroDish" style="--dx:30">
-    <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1537734796389-e1fc293cf856?auto=format&fit=crop&w=760&q=70')"></div>
-    <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=760&q=70')"></div>
-    <div class="hdline" data-hdl><i></i></div>
-    <div class="hdrow"><span>Margherita · wood-fired</span><i></i><b>14</b></div>
-    <div class="hdhint" data-hdh>drag the line · dough to fire</div>
+  <div class="dishdeck reveal" id="dishdeck">
+    <div class="heroDish" style="--dx:30" data-pay="485\u00b0 \u00b7 pull it. now." data-hint="drag \u00b7 dough to fire">
+      <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1537734796389-e1fc293cf856?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hdline"><i></i></div>
+      <div class="hdrow"><span>Margherita \u00b7 wood-fired</span><i></i><b>14</b></div>
+      <div class="hdhint">drag \u00b7 dough to fire</div>
+    </div>
+    <div class="heroDish" style="--dx:30" data-pay="sahtein." data-hint="drag \u00b7 dress it b\u2019zeit">
+      <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1637949385133-3de79e927ef3?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hdline"><i></i></div>
+      <div class="hdrow"><span>Hommus b\u2019zeit</span><i></i><b>7</b></div>
+      <div class="hdhint">drag \u00b7 dress it b\u2019zeit</div>
+    </div>
+    <div class="heroDish" style="--dx:30" data-pay="to the table \u00b7 yalla" data-hint="drag \u00b7 off the fire">
+      <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1636447155412-d57350005073?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=760&q=70')"></div>
+      <div class="hdline"><i></i></div>
+      <div class="hdrow"><span>Meshwe \u00b7 for the table</span><i></i><b>26</b></div>
+      <div class="hdhint">drag \u00b7 off the fire</div>
+    </div>
+  </div>
+  <div class="deckdots"><i class="on"></i><i></i><i></i></div>
+  <div class="mm reveal" id="mm">
+    <div class="mmHead">a menu \u00b7 or a mark? <b>tap to feel it</b></div>
+    <div class="mmToggle"><button data-m="menu">menu</button><button class="on" data-m="mark">mark</button></div>
+    <div class="mmStage" id="mmStage">
+      <div class="mmMenu">
+        <div class="t">menu_final_v3.pdf</div>
+        <div class="r"><span>Hommos</span><i></i><span>7</span></div>
+        <div class="r"><span>Mixed Grill</span><i></i><span>26</span></div>
+        <div class="r"><span>Soft Drinks</span><i></i><span>3</span></div>
+        <div class="f">last updated 2019 \u00b7 zoom to read</div>
+      </div>
+      <div class="mmMark">
+        <div class="mp on"></div><div class="mp"></div><div class="mp"></div>
+        <div class="mov"></div>
+        <div class="mtitle" data-mtitle>tonight\u2019s mix</div>
+        <div class="mrows" data-mrows></div>
+        <div class="mfoot"><span class="mhint">tap a dish \u00b7 watch it plate</span><button class="mremix" data-remix>remix \u27f3</button></div>
+      </div>
+    </div>
+    <div class="mmLine">what you taste here is our <b>minimum</b> \u00b7 with your brand + your photos, it only gets better</div>
   </div>
   <button class="btn reveal tastebtn" id="introBtn">begin the tasting →</button>
 </section>
@@ -2561,7 +2614,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#heroDish','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
+function revealIntro(){['#ih','#dishdeck','#mm','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4816,7 +4869,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v65</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v66</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4876,28 +4929,88 @@ window.addEventListener('popstate',()=>{
 });
 })();
 </script>
-<script id="v65js">
-/* V65 · dough to fire: drag reality across the dish */
+<script id="v66js">
+/* V66 · the dish deck + menu-or-mark, together */
 (function(){
-const hd=document.querySelector('#heroDish'),line=document.querySelector('[data-hdl]'),hint=document.querySelector('[data-hdh]');
-if(!hd)return;
-let drag=false,fired=false;
-const set=v=>{
-  const dx=Math.max(4,Math.min(96,v));
-  hd.style.setProperty('--dx',dx.toFixed(2));
-  if(dx<10&&!fired){fired=true;hint.textContent='485\u00b0 \u00b7 pull it. now.';
-    try{if(navigator.vibrate)navigator.vibrate([12,50,12])}catch(_){}}
-  if(dx>60&&fired){fired=false;hint.textContent='drag the line \u00b7 dough to fire'}
+/* deck: every card transforms */
+document.querySelectorAll('#dishdeck .heroDish').forEach(hd=>{
+  const line=hd.querySelector('.hdline'),hint=hd.querySelector('.hdhint');
+  let drag=false,fired=false;
+  const set=v=>{
+    const dx=Math.max(4,Math.min(96,v));
+    hd.style.setProperty('--dx',dx.toFixed(2));
+    if(dx<10&&!fired){fired=true;hint.textContent=hd.dataset.pay;
+      try{if(navigator.vibrate)navigator.vibrate([12,50,12])}catch(_){}}
+    if(dx>60&&fired){fired=false;hint.textContent=hd.dataset.hint}
+  };
+  line.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;
+    try{line.setPointerCapture(e.pointerId)}catch(_){}
+    try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}});
+  line.addEventListener('pointermove',e=>{if(!drag)return;
+    const r=hd.getBoundingClientRect();
+    set((e.clientX-r.left)/(r.width||320)*100)});
+  const up=()=>drag=false;
+  line.addEventListener('pointerup',up);line.addEventListener('pointercancel',up);
+});
+/* deck dots */
+const deck=document.querySelector('#dishdeck'),dots=[...document.querySelectorAll('.deckdots i')];
+if(deck)deck.addEventListener('scroll',()=>{
+  const i=Math.round(deck.scrollLeft/(deck.clientWidth||320));
+  dots.forEach((d,n)=>d.classList.toggle('on',n===Math.min(2,i)));
+},{passive:true});
+/* menu or mark toggle */
+const intro=document.querySelector('#intro');
+document.querySelectorAll('.mmToggle button').forEach(b=>{
+  b.addEventListener('pointerdown',e=>e.stopPropagation());
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.mmToggle button').forEach(x=>x.classList.toggle('on',x===b));
+    intro.classList.toggle('menuMode',b.dataset.m==='menu');
+    try{if(navigator.vibrate)navigator.vibrate(b.dataset.m==='menu'?4:[8,40,8])}catch(_){}
+  });
+});
+/* the remixer */
+const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&q=68`;
+const POOL=[
+  ['Hommus b\u2019zeit','7','beirut',Q('1637949385162-e416fb15b2ce')],
+  ['Meshwe \u00b7 off the fire','26','beirut',Q('1555939594-58d7cb561ad1')],
+  ['Baklawa \u00b7 to finish','9','beirut',Q('1676014959543-81df1079b423')],
+  ['Margherita \u00b7 wood-fired','14','napoli',Q('1579751626657-72bc17010498')],
+  ['Salmon nigiri \u00b7 six','12','tokyo',Q('1553621042-f6e147245754')],
+  ['Macarons du jour','8','paris',Q('1569864358642-9d1684040f43')],
+  ['The sundae \u00b7 melting','9','the gelateria',Q('1563805042-7684c019e1cb')],
+  ['Golden hour \u00b7 for two','11','the lounge',Q('1514362545857-3bc16c4c7d1b')]
+];
+const wrap=document.querySelector('[data-mrows]'),phs=[...document.querySelectorAll('.mmMark .mp')],
+      title=document.querySelector('[data-mtitle]'),remix=document.querySelector('[data-remix]');
+if(!wrap)return;
+let mix=[3,4,0],cur=0,timer=null;
+const show=i=>{cur=i;
+  [...wrap.children].forEach((r,n)=>r.classList.toggle('on',n===i));
+  phs.forEach((p,n)=>p.classList.toggle('on',n===i));
 };
-line.addEventListener('pointerdown',e=>{e.stopPropagation();drag=true;
-  try{line.setPointerCapture(e.pointerId)}catch(_){}
-  try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}});
-line.addEventListener('pointermove',e=>{if(!drag)return;
-  const r=hd.getBoundingClientRect();
-  set((e.clientX-r.left)/(r.width||344)*100)});
-const up=()=>drag=false;
-line.addEventListener('pointerup',up);line.addEventListener('pointercancel',up);
+const restart=()=>{clearInterval(timer);timer=setInterval(()=>show((cur+1)%3),3200)};
+const render=()=>{
+  wrap.innerHTML=mix.map((pi,n)=>{const d=POOL[pi];
+    return `<div class="mrow${n===0?' on':''}" data-i="${n}"><span>${d[0]}<em>${d[2]}</em></span><i></i><b>${d[1]}</b></div>`}).join('');
+  mix.forEach((pi,n)=>phs[n].style.backgroundImage=`url('${POOL[pi][3]}')`);
+  title.textContent='tonight\u2019s mix \u00b7 '+[...new Set(mix.map(pi=>POOL[pi][2]))].join(' \u00d7 ');
+  [...wrap.children].forEach(r=>{
+    r.addEventListener('pointerdown',e=>e.stopPropagation());
+    r.addEventListener('click',()=>{show(+r.dataset.i);restart();
+      try{if(navigator.vibrate)navigator.vibrate(6)}catch(_){}});
+  });
+  show(0);restart();
+};
+remix.addEventListener('pointerdown',e=>e.stopPropagation());
+remix.addEventListener('click',()=>{
+  const others=POOL.map((_,i)=>i).filter(i=>!mix.includes(i));
+  const next=[];
+  while(next.length<3){const c=others[Math.floor(Math.random()*others.length)];if(!next.includes(c))next.push(c)}
+  mix=next;wrap.classList.add('roll');
+  try{if(navigator.vibrate)navigator.vibrate([8,40,8])}catch(_){}
+  setTimeout(()=>{render();wrap.classList.remove('roll')},380);
+});
+render();
 })();
-</script>
-</body>
+</script></body>
 </html>
