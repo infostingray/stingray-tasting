@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v77">
+<meta name="build" content="v78">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2472,6 +2472,23 @@ body{font-family:var(--sans)}
 /* V77 · five cuisines, curated */
 #cats .cat:last-child{grid-column:1/-1;min-height:96px}
 </style>
+<style id="v78">
+/* ═════════ V78 · STACK, the burger world ═════════ */
+#cats .cat:last-child{grid-column:auto;min-height:110px}
+.h-stack{overflow:hidden}
+.h-stack .stkph{position:absolute;inset:-4%;
+  background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=760&q=72');
+  background-size:cover;background-position:center}
+.h-stack .stksc{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,7,4,.3),rgba(10,7,4,.45) 55%,rgba(13,10,7,.94))}
+.h-stack .inner{position:relative;z-index:2}
+.h-stack .nm{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:.92;letter-spacing:.05em;
+  color:#FFC93C;text-shadow:0 8px 36px rgba(0,0,0,.7)}
+.h-stack .tg{font-family:var(--mono);font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:#F4EFE6;margin-top:10px}
+.h-stack .chip-cta{position:relative;z-index:2;margin-top:22px;font-weight:700;letter-spacing:.16em;
+  box-shadow:0 14px 30px -10px rgba(255,201,60,.55)}
+.h-stack .down{position:relative;z-index:2}
+</style>
 </head>
 <body>
 
@@ -2593,7 +2610,10 @@ const IMGS={
   dish:U('1555939594-58d7cb561ad1')},
  dessert:{
   gal:[[U('1551024601-bec78aea704b'),'the counter'],[U('1578985545062-69928b1d9587'),'the showcase'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
-  dish:U('1563805042-7684c019e1cb')}
+  dish:U('1563805042-7684c019e1cb')},
+american:{
+  gal:[[U('1572802419224-296b0aeee0d9'),'the double'],[U('1594212699903-ec8a3eca50f5'),'with fries'],[U('1553979459-d2229ba7433b'),'up close']],
+  dish:U('1568901346375-23c9450c58cd')}
 };
 
 /* ═════════ DESIGN DATA ═════════ */
@@ -4282,6 +4302,20 @@ buildDeck=function(){
 const pick=(c,n)=>CATS[c]&&CATS[c].designs.find(d=>d.name===n);
 const OF=pick('lounge','OF\u00f4lies'),FORNO=pick('italian','Forno'),
       BEIT=pick('lebanese','Beit Zaytoun'),SUCRE=pick('dessert','Sucr\u00e9'),MELT=pick('dessert','MELT');
+const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EFE6',ac:'#FFC93C',
+ heroClass:'h-stack',
+ hero:`<div class="stkph plx"></div><div class="stksc"></div>
+   <div class="inner"><div class="sk" style="color:#FFC93C">smashburgers \u00b7 fries \u00b7 shakes</div>
+   <div class="nm">STACK</div>
+   <div class="tg">smashed loud. stacked louder.</div></div>
+   <button class="chip-cta" data-sheet style="background:#FFC93C;color:#1A1206;border:none">order up</button>
+   <div class="down">\u2193</div>`,
+ pull:'\u201cFlat-top thunder. Ask for it as a double.\u201d',
+ story:'Two smashed patties with burnt lace edges, american cheese doing what it was born to do, pickles for law and order. Fries drop every seven minutes. No forks in the building.',
+ dish:{n:'The Double',d:'two smashed \u00b7 double american \u00b7 pickles',p:'12'},
+ tabs:[['the stack',[['The Classic','single \u00b7 shredded lettuce','9'],['The Double','how it should be','12'],['The Triple','you were warned','15']]],
+       ['sides & shakes',[['Crinkle fries','salted hard','5'],['Cheese fries','over the top','7'],['Vanilla shake','real scoop \u00b7 thick','6']]]],
+ hours:'daily \u00b7 noon\u2013midnight',loc:'dbayeh highway',cta:'order up \u2192'};
 
 /* new world photography */
 IMGS.japanese={gal:[[U('1579584425555-c3ce17fd4351'),'the counter'],[U('1553621042-f6e147245754'),'the maki'],[U('1526318896980-cf78c088247c'),'the room']],dish:U('1579584425555-c3ce17fd4351')};
@@ -4353,6 +4387,7 @@ Object.assign(CATS,{
  italian:{label:'Italian',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli rules',designs:[FORNO]},
  japanese:{label:'Japanese',glyph:'\u3007',accent:'#C6472E',desc:'omakase \u00b7 twelve seats',designs:[SEN]},
  lebanese:{label:'Lebanese',glyph:'\u274b',accent:'#9E3B30',desc:'mezze \u00b7 fire \u00b7 family',designs:[BEIT]},
+ american:{label:'Burgers',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
  dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'p\u00e2tisserie \u00b7 gold foil',designs:[SUCRE]},
 });
 
@@ -4370,7 +4405,7 @@ window.__V23_BD={
 /* rebuild kitchen cards for the nine worlds */
 const catsEl=document.querySelector('#cats');
 const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
-  lebanese:IMGS.lebanese.gal[0][0],coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
   dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
 catsEl.innerHTML='';
 Object.entries(CATS).forEach(([key,c])=>{
@@ -5061,7 +5096,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v77</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v78</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5133,7 +5168,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v77';
+  var v=document.createElement('span');v.id='hv';v.textContent='v78';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
