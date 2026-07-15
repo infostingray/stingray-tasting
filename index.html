@@ -2024,6 +2024,11 @@ body{font-family:var(--sans)}
 #cats .cat:hover .catph,#cats .cat:focus-visible .catph{opacity:.78;transform:scale(1.07)}
 @media(prefers-reduced-motion:reduce){#cats .cat .catph{transform:none!important}}
 </style>
+<style id="v49">
+#intro{position:relative}
+#sysbar{justify-content:flex-start}
+#venture{z-index:5}
+</style>
 </head>
 <body>
 
@@ -2031,8 +2036,7 @@ body{font-family:var(--sans)}
 <div id="grain"></div>
 
 <header id="sysbar">
-  <span><span class="dot"></span>SYS stingray.os // f&amp;b division</span>
-  <span id="wordmark">stingray<i>.</i></span>
+  <span id="wordmark"><span class="dot"></span>stingray<i>.</i></span>
 </header>
 <div id="course"></div>
 
@@ -2330,7 +2334,7 @@ function goto(id){
 }
 
 /* ═════════ INTRO ═════════ */
-const typeStr='stingray.os // initializing the tasting…';
+const typeStr='initializing the tasting\u2026';
 const tl=$('#typeline');
 function runIntro(){
   if(reduced){tl.textContent=typeStr;revealIntro();return}
@@ -3322,7 +3326,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 48';left.appendChild(v)}
+document.querySelector('#vv')&&(document.querySelector('#vv').textContent='v49');
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4595,8 +4599,8 @@ const intro=document.querySelector('#intro');
 if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
-  v.style.cssText='margin-top:18px;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture';
+  v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v49</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4630,6 +4634,29 @@ document.querySelectorAll('#cats .cat').forEach((b,i)=>{
   let d=b.querySelector('.catph');
   if(!d){d=document.createElement('div');d.className='catph';b.prepend(d);}
   if(PH[k])d.style.backgroundImage=`url('${PH[k]}')`;
+});
+})();
+</script>
+<script id="v49js">
+/* V49 · in-app back: browser back walks the funnel, never dumps you out */
+(function(){
+const _goto=goto;let suppress=false;
+window.__scr='intro';
+goto=function(s){
+  _goto(s);window.__scr=s;
+  if(!suppress&&(s==='kitchen'||s==='tasting'||s==='reserve')){
+    try{history.pushState({s:s},'')}catch(_){}
+  }
+};
+try{history.replaceState({s:'intro'},'')}catch(_){}
+window.addEventListener('popstate',()=>{
+  suppress=true;
+  try{
+    if(window.__scr==='reserve'){const b=document.querySelector('#backToDeck');if(b){b.click()}else{goto('tasting')}}
+    else if(window.__scr==='tasting'){const b=document.querySelector('#reCat');if(b){b.click()}else{goto('kitchen')}}
+    else if(window.__scr==='kitchen'){goto('intro')}
+  }catch(_){}
+  suppress=false;
 });
 })();
 </script>
