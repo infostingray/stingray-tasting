@@ -2082,14 +2082,36 @@ body{font-family:var(--sans)}
 .hrCap b{font-weight:400;color:var(--bone-dim);margin-left:6px}
 .hrCap{pointer-events:auto}
 </style>
-<style id="v56">
-.hsteam{position:absolute;width:7px;height:74px;border-radius:8px;pointer-events:none;z-index:1;
-  background:linear-gradient(180deg,transparent,rgba(244,244,251,.16));filter:blur(4px);
-  animation:steamup 3.4s ease-out forwards}
-.heroReel{transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .5s ease}
-#intro.fired .heroReel{filter:brightness(1.14) saturate(1.25)}
-#intro.fired .hrCap{color:#FFB08A}
-@media(prefers-reduced-motion:reduce){.hsteam{display:none}}
+<style id="v57">
+/* ═════════ V57 · MENU OR MARK ═════════ */
+.mm{width:100%;max-width:340px;margin:22px auto 0}
+.mmHead{font-family:var(--mono);font-size:7px;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-dim);text-align:center}
+.mmHead b{color:var(--taste);font-weight:400;margin-left:8px}
+.mmToggle{display:flex;justify-content:center;gap:6px;margin:12px 0 14px}
+.mmToggle button{font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;
+  padding:8px 18px;border-radius:100px;border:1px solid rgba(244,244,251,.25);background:transparent;color:var(--bone-dim);transition:all .3s}
+.mmToggle button.on{border-color:var(--taste);color:#FFF7F2;background:var(--taste)}
+.mmStage{position:relative;height:168px;perspective:900px}
+.mmMenu,.mmMark{position:absolute;inset:0;border-radius:6px;backface-visibility:hidden;
+  transition:transform .7s cubic-bezier(.3,.9,.3,1),opacity .5s;overflow:hidden}
+.mmMenu{background:#EDEDEA;color:#333;padding:16px 18px;transform:rotateY(180deg)}
+.mmMenu .t{font-family:'Times New Roman',serif;font-size:12px;border-bottom:1px solid #bbb;padding-bottom:6px;color:#555}
+.mmMenu .r{display:flex;align-items:baseline;gap:8px;font-family:'Times New Roman',serif;font-size:12.5px;margin-top:11px;color:#3a3a3a}
+.mmMenu .r i{flex:1;border-bottom:1px dotted #999}
+.mmMenu .f{margin-top:13px;font-family:'Times New Roman',serif;font-size:9px;color:#8a8a8a;font-style:italic}
+.mmMark{transform:rotateY(0)}
+.mmMark .ph{position:absolute;inset:0;background-size:cover;background-position:center;animation:senken 20s ease-in-out infinite alternate}
+.mmMark .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,5,.15),rgba(10,8,5,.78))}
+.mmMark .nm{position:absolute;left:16px;bottom:44px;font-family:'Marcellus',serif;font-size:22px;color:#F6EEDD}
+.mmMark .tg{position:absolute;left:16px;bottom:28px;font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(246,238,221,.8)}
+.mmMark .pill{position:absolute;right:14px;bottom:24px;font-family:var(--mono);font-size:6.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:#FFF7F2;background:var(--taste);padding:7px 12px;border-radius:100px;box-shadow:0 8px 20px -8px rgba(255,77,46,.6)}
+#intro.menuMode .heroReel{filter:grayscale(1) brightness(.62)}
+#intro.menuMode .hrCap{color:#8a8a8a}
+#intro.menuMode #mm .mmMenu{transform:rotateY(0)}
+#intro.menuMode #mm .mmMark{transform:rotateY(-180deg)}
+.mmLine{margin-top:14px;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);line-height:2}
+.mmLine b{color:var(--taste);font-weight:400}
 </style>
 </head>
 <body>
@@ -2107,6 +2129,27 @@ body{font-family:var(--sans)}
   <div id="typeline"></div>
   <h1 class="intro-h reveal" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
   <p class="intro-sub reveal" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, live reservations. Pick your cuisine and taste the flagship built for your kind of place. Scroll it. Play it. Book a table inside it.</p>
+  <div class="mm reveal" id="mm">
+    <div class="mmHead">a menu · or a mark? <b>tap to feel it</b></div>
+    <div class="mmToggle"><button data-m="menu">menu</button><button class="on" data-m="mark">mark</button></div>
+    <div class="mmStage" id="mmStage">
+      <div class="mmMenu">
+        <div class="t">menu_final_v3.pdf</div>
+        <div class="r"><span>Hommos</span><i></i><span>7</span></div>
+        <div class="r"><span>Mixed Grill</span><i></i><span>26</span></div>
+        <div class="r"><span>Soft Drinks</span><i></i><span>3</span></div>
+        <div class="f">last updated 2019 · zoom to read</div>
+      </div>
+      <div class="mmMark">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1699345461139-73dfeecab9b6?auto=format&fit=crop&w=560&q=65')"></div>
+        <div class="ov"></div>
+        <div class="nm">Beit Zaytoun</div>
+        <div class="tg">the long table · beirut</div>
+        <div class="pill">reserve tonight</div>
+      </div>
+    </div>
+    <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
+  </div>
   <div class="isteps reveal">
     <span><b>01</b> pick your cuisine</span>
     <span><b>02</b> taste its flagship</span>
@@ -2412,7 +2455,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#is','.isteps','#hrCap','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
+function revealIntro(){['#ih','#is','#mm','.isteps','#hrCap','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4785,41 +4828,18 @@ if(!RM){
 }
 })();
 </script>
-<script id="v56js">
-/* V56 · the dishes are hot: ambient steam + hold-to-fire */
+<script id="v57js">
+/* V57 · menu or mark: one tap, the whole page feels the difference */
 (function(){
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const intro=document.querySelector('#intro');
-if(!intro)return;
-const wisp=(x,y,o)=>{
-  const s=document.createElement('i');s.className='hsteam';
-  s.style.left=x+'px';s.style.top=y+'px';
-  if(o)s.style.background='linear-gradient(180deg,transparent,rgba(255,214,186,.3))';
-  intro.appendChild(s);setTimeout(()=>s.remove(),3400);
-};
-if(!RM)setInterval(()=>{
-  if(!intro.classList.contains('active'))return;
-  const w=intro.clientWidth||380,h=intro.clientHeight||760;
-  wisp(30+Math.random()*(w-60),h*0.55+Math.random()*h*0.3,false);
-},760);
-/* hold to fire */
-let ht=null,hx=0,hy=0,firing=false;
-const cool=()=>{clearTimeout(ht);ht=null;if(firing){firing=false;intro.classList.remove('fired')}};
-intro.addEventListener('pointerdown',e=>{
-  if(e.target.closest('button,.hrCap'))return;
-  hx=e.clientX;hy=e.clientY;
-  ht=setTimeout(()=>{
-    firing=true;intro.classList.add('fired');
-    try{if(navigator.vibrate)navigator.vibrate(10)}catch(_){}
-    if(!RM){const r=intro.getBoundingClientRect();
-      for(let k=0;k<6;k++)setTimeout(()=>wisp(hx-r.left-24+Math.random()*48,hy-r.top-10+Math.random()*20,true),k*90)}
-  },260);
+document.querySelectorAll('.mmToggle button').forEach(b=>{
+  b.addEventListener('pointerdown',e=>e.stopPropagation());
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.mmToggle button').forEach(x=>x.classList.toggle('on',x===b));
+    intro.classList.toggle('menuMode',b.dataset.m==='menu');
+    try{if(navigator.vibrate)navigator.vibrate(b.dataset.m==='menu'?4:[8,40,8])}catch(_){}
+  });
 });
-intro.addEventListener('pointermove',e=>{
-  if(ht&&!firing&&(Math.abs(e.clientX-hx)>12||Math.abs(e.clientY-hy)>12))cool();
-});
-intro.addEventListener('pointerup',cool);
-intro.addEventListener('pointercancel',cool);
 })();
 </script>
 </body>
