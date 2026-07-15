@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v76">
+<meta name="build" content="v77">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2468,6 +2468,10 @@ body{font-family:var(--sans)}
 #kitchen{padding-bottom:76px!important}
 @media(prefers-reduced-motion:reduce){.fember,.fsmoke{display:none}}
 </style>
+<style id="v77">
+/* V77 · five cuisines, curated */
+#cats .cat:last-child{grid-column:1/-1;min-height:96px}
+</style>
 </head>
 <body>
 
@@ -2791,7 +2795,7 @@ function goto(id){
   const labels={kitchen:'course 01 · <b>the kitchen</b>',tasting:'course 02 · <b>the tasting</b>',reserve:''};
   if(labels[id]){courseEl.innerHTML=labels[id];courseEl.classList.add('show')}
   else courseEl.classList.remove('show');
-  $('#sig').classList.toggle('show',id!=='intro');
+  const sg=$('#sig');if(sg)sg.classList.toggle('show',id!=='intro');
 }
 
 /* ═════════ INTRO ═════════ */
@@ -4349,10 +4353,7 @@ Object.assign(CATS,{
  italian:{label:'Italian',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli rules',designs:[FORNO]},
  japanese:{label:'Japanese',glyph:'\u3007',accent:'#C6472E',desc:'omakase \u00b7 twelve seats',designs:[SEN]},
  lebanese:{label:'Lebanese',glyph:'\u274b',accent:'#9E3B30',desc:'mezze \u00b7 fire \u00b7 family',designs:[BEIT]},
- nightclub:{label:'Night Club',glyph:'\u26a1',accent:'#B44CFF',desc:'128 bpm \u00b7 no photos',designs:[VOLT]},
  dessert:{label:'Dessert',glyph:'\u2740',accent:'#E88AA6',desc:'p\u00e2tisserie \u00b7 gold foil',designs:[SUCRE]},
- icecream:{label:'Ice Cream',glyph:'\u2745',accent:'#FF7FA5',desc:'gelato \u00b7 it drips',designs:[MELT]},
- beach:{label:'Beach Resort',glyph:'\u2600',accent:'#C98F4E',desc:'salt \u00b7 sun \u00b7 the cove',designs:[SEL]}
 });
 
 /* backdrops for the new worlds */
@@ -5060,7 +5061,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v76</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v77</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5132,7 +5133,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v76';
+  var v=document.createElement('span');v.id='hv';v.textContent='v77';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
