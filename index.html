@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v68">
+<meta name="build" content="v69">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2287,6 +2287,23 @@ body{font-family:var(--sans)}
 .heroDish.oven .hdrow{bottom:74px}
 @media(prefers-reduced-motion:reduce){.tknob{box-shadow:none}}
 </style>
+<style id="v69">
+/* ═════════ V69 · THE HOME, REBUILT CLEAN · zero dependencies ═════════ */
+#intro{position:fixed!important;inset:0!important;z-index:10!important;
+  display:block!important;overflow-y:auto!important;overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;
+  padding:76px 20px 70px!important;text-align:center}
+#intro>*{opacity:1!important;transform:none!important;visibility:visible!important;
+  margin-left:auto!important;margin-right:auto!important}
+#intro .intro-h{font-size:clamp(30px,7.6vw,46px)!important;line-height:1.06;margin:0 auto!important}
+#intro #mm{display:block!important;width:100%!important;max-width:344px!important;
+  margin:22px auto 0!important;text-align:left}
+#intro #mm .mmHead,#intro #mm .mmLine{text-align:center}
+#intro .mmStage{position:relative!important;height:340px!important;perspective:900px}
+#intro .mmMenu,#intro .mmMark{position:absolute!important;inset:0!important}
+#intro #introBtn{display:inline-block!important;margin:26px auto 0!important}
+#intro #venture{position:static!important;display:block!important;margin:36px auto 0!important}
+</style>
 </head>
 <body>
 
@@ -2301,9 +2318,9 @@ body{font-family:var(--sans)}
 <!-- ═══ INTRO ═══ -->
 <section class="screen active" id="intro">
   <div id="typeline" style="display:none"></div>
-  <h1 class="intro-h reveal" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
-  <div class="mm reveal" id="mm">
-    <div class="mmHead">a menu \u00b7 or a mark? <b>tap to feel it</b></div>
+  <h1 class="intro-h" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
+  <div class="mm" id="mm">
+    <div class="mmHead">a menu · or a mark? <b>tap to feel it</b></div>
     <div class="mmToggle"><button data-m="menu">menu</button><button class="on" data-m="mark">mark</button></div>
     <div class="mmStage" id="mmStage">
       <div class="mmMenu">
@@ -2311,37 +2328,37 @@ body{font-family:var(--sans)}
         <div class="r"><span>Hommos</span><i></i><span>7</span></div>
         <div class="r"><span>Mixed Grill</span><i></i><span>26</span></div>
         <div class="r"><span>Soft Drinks</span><i></i><span>3</span></div>
-        <div class="f">last updated 2019 \u00b7 zoom to read</div>
+        <div class="f">last updated 2019 · zoom to read</div>
       </div>
       <div class="mmMark">
         <div class="dishdeck" id="dishdeck">
           <div class="heroDish oven" style="--bk:0">
             <div class="hd bake" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=760&q=70')"></div>
-            <div class="hdrow"><span>Margherita \u00b7 wood-fired</span><i></i><b>14</b></div>
-            <div class="tslide" data-ts><div class="ttrack"><div class="tknob" data-tk></div></div><b class="tdeg" data-td>20\u00b0C</b></div>
-            <div class="hdhint">slide \u00b7 fire the oven</div>
+            <div class="hdrow"><span>Margherita · wood-fired</span><i></i><b>14</b></div>
+            <div class="tslide"><div class="ttrack"><div class="tknob" data-tk></div></div><b class="tdeg" data-td>20°C</b></div>
+            <div class="hdhint">slide · fire the oven</div>
           </div>
-          <div class="heroDish" style="--dx:30" data-pay="sahtein." data-hint="drag \u00b7 dress it b\u2019zeit">
+          <div class="heroDish" style="--dx:30" data-pay="sahtein." data-hint="drag · dress it b’zeit">
             <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=760&q=70')"></div>
             <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1637949385133-3de79e927ef3?auto=format&fit=crop&w=760&q=70')"></div>
             <div class="hdline"><i></i></div>
-            <div class="hdrow"><span>Hommus b\u2019zeit</span><i></i><b>7</b></div>
-            <div class="hdhint">drag \u00b7 dress it b\u2019zeit</div>
+            <div class="hdrow"><span>Hommus b’zeit</span><i></i><b>7</b></div>
+            <div class="hdhint">drag · dress it b’zeit</div>
           </div>
-          <div class="heroDish" style="--dx:30" data-pay="to the table \u00b7 yalla" data-hint="drag \u00b7 off the fire">
+          <div class="heroDish" style="--dx:30" data-pay="to the table · yalla" data-hint="drag · off the fire">
             <div class="hd raw" style="background-image:url('https://images.unsplash.com/photo-1636447155412-d57350005073?auto=format&fit=crop&w=760&q=70')"></div>
             <div class="hd done" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=760&q=70')"></div>
             <div class="hdline"><i></i></div>
-            <div class="hdrow"><span>Meshwe \u00b7 for the table</span><i></i><b>26</b></div>
-            <div class="hdhint">drag \u00b7 off the fire</div>
+            <div class="hdrow"><span>Meshwe · for the table</span><i></i><b>26</b></div>
+            <div class="hdhint">drag · off the fire</div>
           </div>
         </div>
         <div class="deckdots"><i class="on"></i><i></i><i></i></div>
       </div>
     </div>
-    <div class="mmLine">what you taste here is our <b>minimum</b> \u00b7 with your brand + your photos, it only gets better</div>
+    <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
   </div>
-  <button class="btn reveal tastebtn" id="introBtn">begin the tasting →</button>
+  <button class="btn tastebtn" id="introBtn">begin the tasting →</button>
 </section>
 
 <!-- ═══ THE KITCHEN ═══ -->
@@ -2640,7 +2657,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#mm','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
+function revealIntro(){}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4895,7 +4912,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v68</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v69</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5029,7 +5046,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v68';
+  var v=document.createElement('span');v.id='hv';v.textContent='v69';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
