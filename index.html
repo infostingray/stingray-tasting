@@ -2138,6 +2138,20 @@ body{font-family:var(--sans)}
 #kitchen .cats,#cats{width:100%;max-width:372px;flex:0 0 auto}
 #kitchen .kitchen-h,#kitchen .kitchen-sub{flex:0 0 auto}
 </style>
+<style id="v60">
+/* ═════════ V60 · the cuisines, visible + the pie under a light ═════════ */
+#cats .cat{min-height:110px}
+#cats .cat .catph{opacity:.85;transform:scale(1.02)}
+#cats .cat::after{background:linear-gradient(180deg,rgba(5,5,5,.06),rgba(5,5,5,.34) 55%,rgba(5,5,5,.72))}
+#cats .cat .name{font-size:17px;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+#cats .cat .desc,#cats .cat .name{text-shadow:0 2px 12px rgba(0,0,0,.75)}
+#cats .cat:hover .catph,#cats .cat:focus-visible .catph{opacity:1;transform:scale(1.07)}
+.mmMark .spin{background-size:140%!important;background-position:center!important}
+.mmMark{position:relative}
+.spinGlare{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:126px;height:126px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(60% 45% at 32% 22%,rgba(255,250,240,.28),transparent 65%)}
+.mmMark .spin.whirl{filter:blur(.5px) saturate(1.2) brightness(1.05)}
+</style>
 </head>
 <body>
 
@@ -2167,6 +2181,7 @@ body{font-family:var(--sans)}
       </div>
       <div class="mmMark">
         <div class="spin" id="mmSpin" style="background-image:url('https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=400&h=400&q=72')"></div>
+        <i class="spinGlare"></i>
         <div class="spinHint">drag · spin the pie</div>
       </div>
     </div>
@@ -4813,7 +4828,13 @@ const p=document.querySelector('#mmSpin');
 if(!p)return;
 let rot=0,vel=0,dragging=false,lastA=0,raf=null;
 const ang=e=>{const r=p.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI};
-const paint=()=>{p.style.transform=`rotate(${rot.toFixed(1)}deg)`};
+let lastTick=0;
+const paint=()=>{
+  p.style.transform=`rotate(${rot.toFixed(1)}deg)`;
+  p.classList.toggle('whirl',Math.abs(vel)>5);
+  const q=Math.floor(Math.abs(rot)/90);
+  if(q!==lastTick){lastTick=q;try{if(navigator.vibrate&&Math.abs(vel)>2)navigator.vibrate(3)}catch(_){}}
+};
 const glide=()=>{
   if(dragging)return;
   vel*=0.965;rot+=vel;paint();
