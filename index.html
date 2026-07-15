@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="stingray taste">
 <meta property="og:title" content="the tasting · your restaurant's future website, in your hand">
-<meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · by the team behind OFôlies · live in 7 days.">
+<meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&h=630&q=75">
 <meta name="twitter:card" content="summary_large_image">
@@ -2030,11 +2030,7 @@ body{font-family:var(--sans)}
       reserve on whatsapp
     </a>
     <button class="btn ghost" id="backToDeck">← back to the tasting</button>
-    <div class="proof">
-      by the team behind<br>
-      <b>OFôlies · Al Beiruti Doha · World of Hospitality</b><br>
-      a stingray × swot creative hub venture
-    </div>
+    <div class="proof">stingray · a <b>swot creative hub</b> venture</div>
   </div>
 </section>
 
@@ -3265,7 +3261,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 41';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 42';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4533,7 +4529,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='margin-top:18px;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1';
-  v.innerHTML='by the team behind <b style="color:var(--bone-dim)">of\u00f4lies</b> \u00b7 <b style="color:var(--bone-dim)">al beiruti doha</b> \u00b7 <b style="color:var(--bone-dim)">world of hospitality</b><br>stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
