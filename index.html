@@ -2082,6 +2082,15 @@ body{font-family:var(--sans)}
 .hrCap b{font-weight:400;color:var(--bone-dim);margin-left:6px}
 .hrCap{pointer-events:auto}
 </style>
+<style id="v56">
+.hsteam{position:absolute;width:7px;height:74px;border-radius:8px;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,transparent,rgba(244,244,251,.16));filter:blur(4px);
+  animation:steamup 3.4s ease-out forwards}
+.heroReel{transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .5s ease}
+#intro.fired .heroReel{filter:brightness(1.14) saturate(1.25)}
+#intro.fired .hrCap{color:#FFB08A}
+@media(prefers-reduced-motion:reduce){.hsteam{display:none}}
+</style>
 </head>
 <body>
 
@@ -2151,7 +2160,7 @@ body{font-family:var(--sans)}
       <span class="chip">full menu</span>
       <span class="chip">live reservations</span>
       <span class="chip">location &amp; hours</span>
-      <span class="chip">whatsapp ordering</span><span class="chip hot">meta pixel + conversion events</span><span class="chip hot">retargeting audiences ready</span><span class="chip hot">campaign-grade tracking</span>
+      <span class="chip hot">meta pixel + conversion events</span><span class="chip hot">retargeting audiences ready</span><span class="chip hot">campaign-grade tracking</span>
       <span class="chip">instagram feed</span>
     </div>
     <div class="adnote">built by an ads agency first · every site arrives wired to sell</div>
@@ -4659,7 +4668,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v55</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v56</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4774,6 +4783,43 @@ if(!RM){
     reel.style.transform=`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px)`;
   });
 }
+})();
+</script>
+<script id="v56js">
+/* V56 · the dishes are hot: ambient steam + hold-to-fire */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const intro=document.querySelector('#intro');
+if(!intro)return;
+const wisp=(x,y,o)=>{
+  const s=document.createElement('i');s.className='hsteam';
+  s.style.left=x+'px';s.style.top=y+'px';
+  if(o)s.style.background='linear-gradient(180deg,transparent,rgba(255,214,186,.3))';
+  intro.appendChild(s);setTimeout(()=>s.remove(),3400);
+};
+if(!RM)setInterval(()=>{
+  if(!intro.classList.contains('active'))return;
+  const w=intro.clientWidth||380,h=intro.clientHeight||760;
+  wisp(30+Math.random()*(w-60),h*0.55+Math.random()*h*0.3,false);
+},760);
+/* hold to fire */
+let ht=null,hx=0,hy=0,firing=false;
+const cool=()=>{clearTimeout(ht);ht=null;if(firing){firing=false;intro.classList.remove('fired')}};
+intro.addEventListener('pointerdown',e=>{
+  if(e.target.closest('button,.hrCap'))return;
+  hx=e.clientX;hy=e.clientY;
+  ht=setTimeout(()=>{
+    firing=true;intro.classList.add('fired');
+    try{if(navigator.vibrate)navigator.vibrate(10)}catch(_){}
+    if(!RM){const r=intro.getBoundingClientRect();
+      for(let k=0;k<6;k++)setTimeout(()=>wisp(hx-r.left-24+Math.random()*48,hy-r.top-10+Math.random()*20,true),k*90)}
+  },260);
+});
+intro.addEventListener('pointermove',e=>{
+  if(ht&&!firing&&(Math.abs(e.clientX-hx)>12||Math.abs(e.clientY-hy)>12))cool();
+});
+intro.addEventListener('pointerup',cool);
+intro.addEventListener('pointercancel',cool);
 })();
 </script>
 </body>
