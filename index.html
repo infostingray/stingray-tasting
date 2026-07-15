@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v71">
+<meta name="build" content="v72">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2345,6 +2345,41 @@ body{font-family:var(--sans)}
 #intro #venture{margin:22px auto 0!important}
 @media(prefers-reduced-motion:reduce){#intro::before{animation:none}}
 </style>
+<style id="v72">
+/* ═════════ V72 · black home + the table that sets itself ═════════ */
+#intro::before{content:none!important}
+#intro::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")!important}
+#intro .intro-h{font-size:clamp(26px,6.6vw,38px)!important;text-shadow:none}
+#intro .intro-sub{font-size:13px;margin-top:12px!important;color:var(--bone-dim);text-shadow:none;max-width:320px}
+#intro #mm{display:block!important;width:100%;max-width:334px;margin:16px auto 0!important;text-align:left}
+#intro #mm .mmHead,#intro #mm .mmLine{text-align:center}
+#intro .mmStage{height:216px!important}
+.mmMark{padding:0!important;display:block!important;background:#120E09!important;overflow:hidden}
+.wtable{position:absolute;left:50%;top:56%;width:280px;height:170px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,#2E2216,#241A10 70%,#170F08);
+  box-shadow:inset 0 0 0 1px rgba(242,192,138,.14),inset 0 0 46px rgba(0,0,0,.55)}
+.mtitle2{position:absolute;top:10px;left:0;right:0;text-align:center;
+  font-family:var(--mono);font-size:6.5px;letter-spacing:.3em;text-transform:uppercase;color:#F2C08A}
+.wplate{position:absolute;left:50%;top:56%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;cursor:pointer;
+  background-size:cover;background-position:center;
+  box-shadow:0 14px 22px -8px rgba(0,0,0,.85),inset 0 0 0 3px #F6EEDD,inset 0 0 0 4px rgba(20,16,12,.4);
+  transform:translate(var(--ex),var(--ey)) rotate(var(--er)) scale(.7);opacity:0;
+  transition:transform .8s cubic-bezier(.2,1.15,.3,1),opacity .5s}
+.wplate.on{transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1);opacity:1}
+.wplate.off{transform:translate(calc(var(--ex)*-1),calc(var(--ey)*-1)) rotate(calc(var(--er)*-1)) scale(.72);opacity:0;
+  transition:transform .7s cubic-bezier(.6,-.1,.7,.4),opacity .5s .1s}
+.wplate.big{width:82px;height:82px;margin:-41px 0 0 -41px}
+.wplate span{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--mono);font-size:5.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,233,216,.8)}
+.wplate .yum2{position:absolute;left:50%;top:-13px;transform:translateX(-50%) scale(0);
+  font-family:var(--mono);font-size:6.5px;letter-spacing:.14em;color:#F2C08A;transition:transform .3s cubic-bezier(.3,1.8,.4,1)}
+.wplate.sah .yum2{transform:translateX(-50%) scale(1)}
+.wplate.sah{animation:sahbounce .45s cubic-bezier(.3,1.8,.4,1)}
+.whint{position:absolute;bottom:9px;left:0;right:0;text-align:center;
+  font-family:var(--mono);font-size:6px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,233,216,.55)}
+#intro #introBtn{margin:16px auto 0!important}
+#intro #venture{margin:16px auto 0!important}
+</style>
 </head>
 <body>
 
@@ -2360,11 +2395,28 @@ body{font-family:var(--sans)}
 <section class="screen active" id="intro">
   <div id="typeline" style="display:none"></div>
   <h1 class="intro-h" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
-  <p class="intro-sub" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, live reservations. Pick your cuisine and taste the flagship built for your kind of place. Scroll it. Play it. Book a table inside it.</p>
-  <div class="isteps">
-    <span><b>01</b> pick your cuisine</span>
-    <span><b>02</b> taste its flagship</span>
-    <span><b>03</b> reserve your build · live in 7 days</span>
+  <p class="intro-sub" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, live reservations.</p>
+  <div class="mm" id="mm">
+    <div class="mmHead">a menu · or a mark? <b>tap to feel it</b></div>
+    <div class="mmToggle"><button data-m="menu">menu</button><button class="on" data-m="mark">mark</button></div>
+    <div class="mmStage" id="mmStage">
+      <div class="mmMenu">
+        <div class="t">menu_final_v3.pdf</div>
+        <div class="r"><span>Hommos</span><i></i><span>7</span></div>
+        <div class="r"><span>Mixed Grill</span><i></i><span>26</span></div>
+        <div class="r"><span>Soft Drinks</span><i></i><span>3</span></div>
+        <div class="f">last updated 2019 · zoom to read</div>
+      </div>
+      <div class="mmMark">
+        <div class="wtable"></div>
+        <div class="mtitle2">the table sets itself</div>
+        <div class="wplate" data-w="0" style="--tx:-70px;--ty:-6px;--tr:-6deg;--ex:-160%;--ey:-20%;--er:-40deg;background-image:url('https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=300&h=300&q=72')"><span>hommus b’zeit</span><b class="yum2">sahtein!</b></div>
+        <div class="wplate big" data-w="1" style="--tx:8px;--ty:14px;--tr:3deg;--ex:0%;--ey:220%;--er:30deg;background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&h=300&q=72')"><span>meshwe</span><b class="yum2">sahtein!</b></div>
+        <div class="wplate" data-w="2" style="--tx:78px;--ty:-14px;--tr:6deg;--ex:165%;--ey:-30%;--er:45deg;background-image:url('https://images.unsplash.com/photo-1676014959543-81df1079b423?auto=format&fit=crop&w=300&h=300&q=72')"><span>baklawa</span><b class="yum2">sahtein!</b></div>
+        <div class="whint" data-wh>dinner is served · tap a plate</div>
+      </div>
+    </div>
+    <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
   </div>
   <button class="btn tastebtn" id="introBtn">begin the tasting →</button>
 </section>
@@ -4920,7 +4972,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v71</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v72</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4992,10 +5044,46 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v71';
+  var v=document.createElement('span');v.id='hv';v.textContent='v72';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
+})();
+</script>
+<script id="v72js">
+/* V72 · the table sets itself: land, hold, clear, loop */
+(function(){
+const intro=document.querySelector('#intro');
+document.querySelectorAll('.mmToggle button').forEach(b=>{
+  b.addEventListener('pointerdown',e=>e.stopPropagation());
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.mmToggle button').forEach(x=>x.classList.toggle('on',x===b));
+    intro.classList.toggle('menuMode',b.dataset.m==='menu');
+    try{if(navigator.vibrate)navigator.vibrate(b.dataset.m==='menu'?4:[8,40,8])}catch(_){}
+  });
+});
+const plates=[...document.querySelectorAll('.wplate')],wh=document.querySelector('[data-wh]');
+if(!plates.length)return;
+let step=0;
+setInterval(()=>{
+  step=(step+1)%9;
+  plates.forEach((p,i)=>{
+    p.classList.toggle('on',step>=i+1&&step<5+i);
+    p.classList.toggle('off',step>=5+i);
+  });
+  if(wh)wh.textContent=step===0?'setting the table\u2026'
+    :step<=3?'plate 0'+step+' / 03 \u00b7 tap it':step<=4?'dinner is served \u00b7 tap a plate'
+    :step<8?'sahtein \u00b7 clearing':'the table is yours';
+},1300);
+plates.forEach(p=>{
+  p.addEventListener('pointerdown',e=>e.stopPropagation());
+  p.addEventListener('click',()=>{
+    if(!p.classList.contains('on'))return;
+    p.classList.remove('sah');void p.offsetWidth;p.classList.add('sah');
+    try{if(navigator.vibrate)navigator.vibrate(8)}catch(_){}
+    setTimeout(()=>p.classList.remove('sah'),700);
+  });
+});
 })();
 </script>
 </body>
