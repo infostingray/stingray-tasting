@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v67">
+<meta name="build" content="v68">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2027,7 +2027,7 @@ body{font-family:var(--sans)}
 </style>
 <style id="v49">
 #intro{position:relative}
-#sysbar{justify-content:flex-start}
+#sysbar{justify-content:flex-start;display:flex}
 #venture{z-index:5}
 </style>
 <style id="v50">
@@ -4895,7 +4895,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v67</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v68</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5017,5 +5017,23 @@ if(deck)deck.addEventListener('scroll',()=>{
   dots.forEach((d,n)=>d.classList.toggle('on',n===Math.min(2,i)));
 },{passive:true});
 })();
-</script></body>
+</script><script id="v68js">
+/* V68 · kill any lingering service worker / cache from older builds */
+(function(){
+try{
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+  }
+  if(window.caches&&caches.keys){caches.keys().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{});}
+}catch(_){}
+/* version visible in the header itself */
+var sb=document.querySelector('#sysbar');
+if(sb&&!document.querySelector('#hv')){
+  var v=document.createElement('span');v.id='hv';v.textContent='v68';
+  v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
+  sb.appendChild(v);
+}
+})();
+</script>
+</body>
 </html>
