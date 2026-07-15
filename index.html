@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v78">
+<meta name="build" content="v79">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2488,6 +2488,17 @@ body{font-family:var(--sans)}
 .h-stack .chip-cta{position:relative;z-index:2;margin-top:22px;font-weight:700;letter-spacing:.16em;
   box-shadow:0 14px 30px -10px rgba(255,201,60,.55)}
 .h-stack .down{position:relative;z-index:2}
+</style>
+<style id="v79">
+/* ═════════ V79 · toss the menu ═════════ */
+.mmStage{perspective:1100px}
+.mmStage .mmMenu{transition:transform .3s,opacity .3s,filter .3s}
+.mmStage.toss .mmMenu{transform:rotateX(42deg) translateY(130%) rotate(-7deg) scale(.9)!important;
+  opacity:0;filter:blur(3px);
+  transition:transform .62s cubic-bezier(.45,0,.8,.4),opacity .5s .12s,filter .55s}
+.mmStage.toss{transform:none;filter:none}
+.mmStage.toss .markface{opacity:0!important}
+.mmStage.toss .emberline,.mmStage.toss .charfill{display:none!important}
 </style>
 </head>
 <body>
@@ -5096,7 +5107,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v78</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v79</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5168,7 +5179,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v78';
+  var v=document.createElement('span');v.id='hv';v.textContent='v79';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5193,27 +5204,14 @@ btns.forEach(b=>{
     /* MARK: burn the pdf, open the kitchen */
     burning=true;
     btns.forEach(x=>x.classList.toggle('on',x===b));
-    intro.classList.remove('menuMode');
-    stage.classList.add('burn');
-    try{if(navigator.vibrate)navigator.vibrate([8,40,10,40,14])}catch(_){}
-    const sr=stage.getBoundingClientRect(),SH=sr.height||216,SW=sr.width||330;
-    for(let k=0;k<11;k++){setTimeout(()=>{
-      if(!stage.classList.contains('burn'))return;
-      const e=document.createElement('i');e.className='fember';
-      e.style.left=(8+Math.random()*(SW-16))+'px';
-      e.style.top=(SH*(1-(k*120)/1400))+'px';
-      e.style.animationDuration=(0.7+Math.random()*0.6)+'s';
-      stage.appendChild(e);setTimeout(()=>e.remove(),1400);
-    },k*120)}
-    const sm=document.createElement('i');sm.className='fsmoke';stage.appendChild(sm);
-    setTimeout(()=>sm.remove(),2400);
+    stage.classList.add('toss');
+    try{if(navigator.vibrate)navigator.vibrate([6,50,10])}catch(_){}
+    setTimeout(()=>goto('kitchen'),620);
     setTimeout(()=>{
-      stage.classList.remove('burn');
-      intro.classList.add('menuMode');
+      stage.classList.remove('toss');
       btns.forEach(x=>x.classList.toggle('on',x.dataset.m==='menu'));
       burning=false;
-      goto('kitchen');
-    },2050);
+    },1100);
   });
 });
 })();
