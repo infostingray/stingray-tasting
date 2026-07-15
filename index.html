@@ -3322,7 +3322,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 44';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 45';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4152,7 +4152,7 @@ B['Beit Zaytoun']=(d)=>{
     </div>`).join('');
   s.innerHTML=`
   <div class="bhero3">
-    <div class="cph" style="background-image:url('${IMGS.lebanese.gal[0][0]}')"></div>
+    <div class="cph" style="background-image:url('${U('1577805947697-89e18249d767')}')"></div>
     <div class="cscrim sc-beit"></div>
     <div class="b3low">
       <span class="blabel" style="color:#F2C08A">beirut \u00b7 the long table \u00b7 since forever</span>
@@ -4615,15 +4615,15 @@ setTimeout(()=>openCat(p),rm?300:2400);
 /* V44 · the kitchen photo wall: assign cuisine dishes once all pools exist */
 (function(){
 const PH={
-  lounge:IMGS.lounge.gal[1][0],
-  italian:IMGS.italian.gal[0][0],
-  japanese:IMGS.japanese.gal[0][0],
-  lebanese:IMGS.lebanese.gal[0][0],
-  coffeeshop:IMGS.coffeeshop.dish,
-  nightclub:IMGS.nightclub.gal[0][0],
+  lounge:U('1514362545857-3bc16c4c7d1b'),
+  italian:U('1565299624946-b28f40a0ae38'),
+  japanese:U('1553621042-f6e147245754'),
+  lebanese:U('1577805947697-89e18249d767'),
+  coffeeshop:U('1509042239860-f550ce710b93'),
+  nightclub:U('1470229722913-7c0e2dbbafd3'),
   dessert:U('1569864358642-9d1684040f43'),
-  icecream:IMGS.dessert.dish,
-  beach:IMGS.beach.gal[0][0]
+  icecream:U('1563805042-7684c019e1cb'),
+  beach:U('1507525428034-b723cf961d3e')
 };
 document.querySelectorAll('#cats .cat').forEach((b,i)=>{
   const k=Object.keys(CATS)[i];
