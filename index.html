@@ -2055,6 +2055,14 @@ body{font-family:var(--sans)}
 #intro>*{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){#intro::before{animation:none}}
 </style>
+<style id="v53">
+#sysbar{position:relative;z-index:80}
+#intro{justify-content:center!important}
+#typeline{width:100%;text-align:center;margin:0 0 20px!important}
+#introBtn{margin-top:34px!important}
+#intro::before{opacity:.16}
+.isteps{align-items:center;text-align:center;margin:24px 0 0}
+</style>
 </head>
 <body>
 
@@ -2374,7 +2382,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#is','#introBtn'].forEach((s,n)=>setTimeout(()=>$(s).classList.add('in'),n*180))}
+function revealIntro(){['#ih','#is','.isteps','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4630,7 +4638,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v52</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v53</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
