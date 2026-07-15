@@ -2013,6 +2013,17 @@ body{font-family:var(--sans)}
 .sel2 .pass .p{position:static;transform:none;float:right;margin-top:-38px}
 @media(prefers-reduced-motion:reduce){.stmw{display:none}}
 </style>
+<style id="v44">
+/* ═════════ V44 · THE KITCHEN PHOTO WALL ═════════ */
+#cats .cat{position:relative;overflow:hidden;min-height:88px;isolation:isolate}
+#cats .cat .catph{opacity:.5;transition:opacity .5s,transform .8s;transform:scale(1.02)}
+#cats .cat::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,5,.18),rgba(5,5,5,.82))}
+#cats .cat>*{position:relative;z-index:2}
+#cats .cat .glyph{text-shadow:0 2px 14px rgba(0,0,0,.6)}
+#cats .cat:hover .catph,#cats .cat:focus-visible .catph{opacity:.78;transform:scale(1.07)}
+@media(prefers-reduced-motion:reduce){#cats .cat .catph{transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -2616,17 +2627,11 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 
 /* kitchen cards get food photography on hover */
-const CATPH={
-  lounge:IMGS.lounge.gal[1][0],
-  italian:IMGS.italian.gal[0][0],
-  lebanese:IMGS.lebanese.gal[0][0],
-  pub:IMGS.pub.gal[2][0],
-  dessert:IMGS.dessert.gal[0][0]
-};
+const CATPH={};
 document.querySelectorAll('#cats .cat').forEach((b,i)=>{
   const k=Object.keys(CATS)[i];
   const d=document.createElement('div');
-  d.className='catph';d.style.backgroundImage=`url('${CATPH[k]}')`;
+  d.className='catph';if(CATPH[k])d.style.backgroundImage=`url('${CATPH[k]}')`;
   b.prepend(d);
 });
 
@@ -3317,7 +3322,7 @@ buildDeck=function(){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* visible version so cache confusion dies */
 const left=document.querySelector('#sysbar span');
-if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 43';left.appendChild(v)}
+if(left){const v=document.createElement('span');v.id='ver';v.textContent=' \u00b7 LOC DBAYEH \u00b7 LB \u00b7 VER 44';left.appendChild(v)}
 
 /* per-design photography overrides (no more donuts on Qashta) */
 const OV={
@@ -4453,7 +4458,7 @@ B['MELT']=(d)=>{
       <div class="slist" data-slist></div>
       <div class="stotal" data-stot></div>
     </div></div>
-  <div class="cinter rv"><div class="cbg" style="background-image:url('${IMGS.dessert.gal[2][0]}')"></div><b>DRIP</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
+  <div class="cinter rv"><div class="cbg" style="background-image:url('${P2('1497034825429-c343d7c6a68f')}')"></div><b>DRIP</b><small style="position:absolute;left:22px;bottom:8px"></small></div>
   ${res(s,'skip the line')}`;
   /* melt clock */
   const mt=s.querySelector('[data-mt]');
@@ -4604,6 +4609,28 @@ const p=new URLSearchParams(location.search).get('type');
 if(!p||!CATS[p])return;
 const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 setTimeout(()=>openCat(p),rm?300:2400);
+})();
+</script>
+<script id="v44js">
+/* V44 · the kitchen photo wall: assign cuisine dishes once all pools exist */
+(function(){
+const PH={
+  lounge:IMGS.lounge.gal[1][0],
+  italian:IMGS.italian.gal[0][0],
+  japanese:IMGS.japanese.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],
+  coffeeshop:IMGS.coffeeshop.dish,
+  nightclub:IMGS.nightclub.gal[0][0],
+  dessert:U('1569864358642-9d1684040f43'),
+  icecream:IMGS.dessert.dish,
+  beach:IMGS.beach.gal[0][0]
+};
+document.querySelectorAll('#cats .cat').forEach((b,i)=>{
+  const k=Object.keys(CATS)[i];
+  let d=b.querySelector('.catph');
+  if(!d){d=document.createElement('div');d.className='catph';b.prepend(d);}
+  if(PH[k])d.style.backgroundImage=`url('${PH[k]}')`;
+});
 })();
 </script>
 </body>
