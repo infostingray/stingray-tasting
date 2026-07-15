@@ -2063,6 +2063,19 @@ body{font-family:var(--sans)}
 #intro::before{opacity:.16}
 .isteps{align-items:center;text-align:center;margin:24px 0 0}
 </style>
+<style id="v54">
+/* ═════════ V54 · THE TASTING REEL ═════════ */
+#intro::before{content:none!important}
+.heroReel{position:absolute;inset:-7% 0;z-index:0;pointer-events:none;
+  transition:transform 1.2s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.heroReel .hr{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 2s ease;animation:senken 22s ease-in-out infinite alternate}
+.heroReel .hr.on{opacity:.22}
+.hrCap{margin-top:16px;font-family:var(--mono);font-size:7px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--taste);opacity:.85;min-height:10px;transition:opacity .5s}
+.hrCap.sw{opacity:0}
+@media(prefers-reduced-motion:reduce){.heroReel .hr{animation:none}.heroReel{transition:none}}
+</style>
 </head>
 <body>
 
@@ -2084,6 +2097,7 @@ body{font-family:var(--sans)}
     <span><b>02</b> taste its flagship</span>
     <span><b>03</b> reserve your build · live in 7 days</span>
   </div>
+  <div class="hrCap reveal" id="hrCap">now tasting · beirut</div>
   <button class="btn reveal tastebtn" id="introBtn">begin the tasting →</button>
 </section>
 
@@ -2382,7 +2396,7 @@ function runIntro(){
     if(i>=typeStr.length){clearInterval(t);setTimeout(revealIntro,250)}
   },34);
 }
-function revealIntro(){['#ih','#is','.isteps','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
+function revealIntro(){['#ih','#is','.isteps','#hrCap','#introBtn'].forEach((s,n)=>setTimeout(()=>{const el=$(s);el&&el.classList.add('in')},n*160))}
 $('#introBtn').addEventListener('click',()=>goto('kitchen'));
 
 /* ═════════ KITCHEN ═════════ */
@@ -4638,7 +4652,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:none';
-  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v53</i>';
+  v.innerHTML='stingray \u00b7 a <b style="color:var(--bone-dim)">swot creative hub</b> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v54</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -4696,6 +4710,43 @@ window.addEventListener('popstate',()=>{
   }catch(_){}
   suppress=false;
 });
+})();
+</script>
+<script id="v54js">
+/* V54 · the tasting reel: nine verified worlds breathing behind the headline */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const REEL=[
+  [U('1699345461139-73dfeecab9b6'),'beirut \u00b7 the long table'],
+  [U('1579751626657-72bc17010498'),'napoli \u00b7 the fire'],
+  [U('1553621042-f6e147245754'),'tokyo \u00b7 the counter'],
+  [U('1509042239860-f550ce710b93'),'the caf\u00e9 \u00b7 slow mornings'],
+  [U('1569864358642-9d1684040f43'),'the patisserie \u00b7 douceur'],
+  [U('1563805042-7684c019e1cb'),'the gelateria \u00b7 melting'],
+  [U('1470229722913-7c0e2dbbafd3'),'the club \u00b7 after midnight'],
+  [U('1514362545857-3bc16c4c7d1b'),'the lounge \u00b7 golden hour'],
+  [U('1507525428034-b723cf961d3e'),'the coast \u00b7 salt air']
+];
+const intro=document.querySelector('#intro');
+const reel=document.createElement('div');reel.className='heroReel';
+reel.innerHTML=REEL.map(r=>`<div class="hr" style="background-image:url('${r[0]}')"></div>`).join('');
+intro.prepend(reel);
+const slides=[...reel.children],cap=document.querySelector('#hrCap');
+let i=0;slides[0].classList.add('on');
+setInterval(()=>{
+  slides[i].classList.remove('on');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('on');
+  if(cap){cap.classList.add('sw');setTimeout(()=>{cap.textContent='now tasting \u00b7 '+REEL[i][1];cap.classList.remove('sw')},500)}
+},4200);
+if(!RM){
+  intro.addEventListener('pointermove',e=>{
+    const r=intro.getBoundingClientRect();
+    const dx=((e.clientX-r.left)/(r.width||1)-0.5)*14;
+    const dy=((e.clientY-r.top)/(r.height||1)-0.5)*10;
+    reel.style.transform=`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px)`;
+  });
+}
 })();
 </script>
 </body>
