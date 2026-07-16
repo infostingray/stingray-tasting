@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v90">
+<meta name="build" content="v91">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2620,6 +2620,24 @@ body{font-family:var(--sans)}
   padding:11px 18px;border-radius:100px;border:1px solid rgba(244,239,230,.2);
   background:rgba(16,13,11,.92);color:#F4EFE6;backdrop-filter:blur(6px);
   box-shadow:0 16px 34px -12px rgba(0,0,0,.8);animation:sahbounce .4s cubic-bezier(.3,1.8,.4,1)}
+</style>
+<style id="v91">
+/* ═════════ V91 · home typography, tuned ═════════ */
+#intro .intro-h{font-size:clamp(31px,8.2vw,44px)!important;line-height:1.05!important;
+  letter-spacing:-.015em;margin-top:4px!important}
+#intro .intro-h em{letter-spacing:-.01em}
+#intro .intro-sub{font-size:13.5px!important;line-height:1.72!important;max-width:330px!important;
+  margin-top:13px!important;color:var(--bone-dim)!important}
+#intro .intro-sub b{color:var(--bone)}
+#intro #mm{margin-top:18px!important;max-width:334px!important}
+#intro .mmHead{font-size:7.5px!important;letter-spacing:.28em!important}
+#intro .mmHead b{margin-left:9px}
+#intro .mmToggle{margin:11px 0 12px!important}
+#intro .mmToggle button{font-size:8.5px!important;padding:8px 17px!important;letter-spacing:.24em!important}
+#intro .mmLine{font-size:6.5px!important;letter-spacing:.24em!important;margin-top:11px!important;line-height:2.1!important}
+#intro #introBtn{font-size:9px!important;letter-spacing:.26em!important;padding:15px 30px!important;margin-top:20px!important}
+#intro #venture{font-size:7px!important;letter-spacing:.24em!important}
+#hv{font-size:7px!important}
 </style>
 </head>
 <body>
@@ -5248,7 +5266,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v90</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v91</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5321,7 +5339,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v90';
+  var v=document.createElement('span');v.id='hv';v.textContent='v91';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
