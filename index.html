@@ -21,7 +21,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-RXBJ5P7YV0');
 </script>
-<meta name="build" content="v119">
+<meta name="build" content="v120">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2910,6 +2910,19 @@ select.lf:valid{color:var(--bone)}
 .ldP{margin-top:10px;font-size:13px;line-height:1.7;color:var(--bone-dim)}
 #ldBack{margin-top:14px}
 </style>
+<style id="v120">
+/* ═════════ V120 · the form you cannot miss ═════════ */
+.lfHead{margin-top:22px;font-family:var(--mono);font-size:8px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--taste-l)}
+.lfHead b{color:var(--bone);font-weight:400}
+#leadForm{margin-top:10px;padding:16px 14px 18px;border:1px solid rgba(255,77,46,.4);border-radius:16px;
+  background:linear-gradient(180deg,rgba(255,77,46,.07),rgba(255,77,46,.02));
+  box-shadow:0 18px 44px -20px rgba(255,77,46,.35)}
+.lfRow{display:flex;gap:8px}
+.lfCC{flex:0 0 108px;padding-left:10px!important;padding-right:6px!important}
+.lfRow .lf[name=phone]{flex:1}
+.lfBtn{width:100%;margin-top:14px;padding:15px!important;font-size:9.5px!important;letter-spacing:.26em}
+</style>
 </head>
 <body>
 
@@ -3005,6 +3018,7 @@ select.lf:valid{color:var(--bone)}
       <div class="addline"><b>add-ons</b> · content production · food photography &amp; videography · growth strategy · platform integrations</div>
     </div>
     <div class="adnote">built by an ads agency first · every site arrives wired to sell · designed from scratch, never a template</div>
+    <div class="lfHead">get your build · <b>30 seconds</b></div>
     <form id="leadForm" novalidate autocomplete="on">
       <input class="lf" name="name" placeholder="your name" required>
       <input class="lf" name="restaurant" placeholder="restaurant / concept name" required>
@@ -3019,7 +3033,21 @@ select.lf:valid{color:var(--bone)}
         <option value="dessert">dessert &amp; pâtisserie</option>
         <option value="other">something else</option>
       </select>
-      <input class="lf" name="phone" type="tel" placeholder="phone number" required>
+      <div class="lfRow">
+        <select class="lf lfCC" name="country" aria-label="country code">
+          <option value="+961" selected>🇱🇧 +961</option>
+          <option value="+974">🇶🇦 +974</option>
+          <option value="+971">🇦🇪 +971</option>
+          <option value="+966">🇸🇦 +966</option>
+          <option value="+965">🇰🇼 +965</option>
+          <option value="+973">🇧🇭 +973</option>
+          <option value="+968">🇴🇲 +968</option>
+          <option value="+962">🇯🇴 +962</option>
+          <option value="+20">🇪🇬 +20</option>
+          <option value="other">🌍 other</option>
+        </select>
+        <input class="lf" name="phone" type="tel" placeholder="phone number" required>
+      </div>
       <button class="btn lfBtn" type="submit">request my build →</button>
       <div class="lfNote">no spam · one call to scope your build · live in 5 days</div>
       <div class="lfErr" id="lfErr" hidden>please fill your name and phone so we can reach you.</div>
@@ -6011,10 +6039,10 @@ f.addEventListener('submit',e=>{
   try{fetch('https://formsubmit.co/ajax/rami@swottm.com',{method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({_subject:'taste \u00b7 new build request',
-      name:d.name,restaurant:d.restaurant||'-',category:d.category||'-',phone:d.phone,
+      name:d.name,restaurant:d.restaurant||'-',category:d.category||'-',phone:((d.country&&d.country!=='other')?d.country+' ':'')+d.phone,
       page:'taste.stingray-ads.com'})}).catch(()=>{})}catch(_){}
   try{if(typeof gtag==='function')gtag('event','generate_lead',{category:d.category||'unset'})}catch(_){}
-  try{if(typeof fbq==='function')fbq('track','Lead')}catch(_){}
+  try{if(typeof fbq==='function')fbq('track','Lead',{content_category:d.category||'unset'})}catch(_){}
   f.hidden=true;done.hidden=false;
   try{if(navigator.vibrate)navigator.vibrate([10,50,14])}catch(_){}
   done.scrollIntoView&&done.scrollIntoView({block:'center'});
