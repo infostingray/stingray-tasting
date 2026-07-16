@@ -2861,6 +2861,15 @@ html.touch *:hover{transform:none!important}
 .tikT i{flex:1;border-bottom:1px dotted rgba(32,24,15,.4);transform:translateY(-2px)}
 .stkNm{font-size:21px;margin-top:12px}
 </style>
+<style id="v107">
+/* ═════════ V107 · the flap board, receipt intact ═════════ */
+.stkB{position:relative;perspective:800px}
+.stkPh{transition:transform .175s cubic-bezier(.55,0,.7,.4),filter .175s;transform-origin:50% 100%;backface-visibility:hidden}
+.stkPh.flip{transform:rotateX(84deg)!important;filter:brightness(1.5)}
+.stkDots{display:flex;justify-content:center;gap:7px;margin-top:13px}
+.stkDots i{width:5px;height:5px;border-radius:50%;background:rgba(244,241,234,.25);transition:background .25s,transform .25s}
+.stkDots i.on{background:#FFC93C;transform:scale(1.3)}
+</style>
 </head>
 <body>
 
@@ -5658,10 +5667,10 @@ setInterval(()=>{
 const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&h=560&q=72`;
 const BURG=Q('1568901346375-23c9450c58cd');
 const LV=[
- ['THE CLASSIC','american \u00b7 pickles',9,BURG,'a fine start.',0.92,0.95],
- ['THE DOUBLE','booth approved',12,BURG,'now we\u2019re talking.',1,1.05],
- ['THE TRIPLE','you were warned',15,BURG,'the jukebox approves.',1.09,1.18],
- ['THE ELVIS','peanut butter \u00b7 bacon',18,BURG,'thank you very much.',1.17,1.32]
+ ['THE CLASSIC','american \u00b7 pickles',9,Q('1568901346375-23c9450c58cd'),'a fine start.'],
+ ['THE DOUBLE','booth approved',12,Q('1572802419224-296b0aeee0d9'),'now we\u2019re talking.'],
+ ['THE TRIPLE','you were warned',15,Q('1553979459-d2229ba7433b'),'the jukebox approves.'],
+ ['THE ELVIS','it left the building',18,Q('1632203171982-cc0df6e9ceb4'),'thank you very much.']
 ];
 const _oc=openCat;
 openCat=function(k){_oc(k);if(k!=='american')return;
@@ -5705,14 +5714,29 @@ openCat=function(k){_oc(k);if(k!=='american')return;
           tl=b.querySelector('[data-tikl]'),tt=b.querySelector('[data-tikt]'),tn=b.querySelector('[data-tikn]');
     ph.style.backgroundImage=`url('${BURG}')`;
     const lineHTML=(txt,p,fresh)=>`<div class="tline${fresh?' new':''}"><span>${txt}</span><i></i><b>${p}</b></div>`;
+    const host=ph.closest('.stkB')||ph.parentElement;
+    let dd=host.querySelector('.stkDots');
+    if(!dd){dd=document.createElement('div');dd.className='stkDots';
+      dd.innerHTML='<i></i><i></i><i></i><i></i>';ph.after(dd);}
+    const dots=[...dd.children];
     const paint=(fresh)=>{const d=LV[lv];
-      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];
-      let rows=lineHTML('SMASH CLASSIC',9,false);
-      for(let k=1;k<=lv;k++)rows+=lineHTML('+ SMASHED PATTY',3,fresh&&k===lv);
-      tl.innerHTML=rows;
-      tt.textContent=d[2];
-      ph.classList.remove('pop');void ph.offsetWidth;ph.classList.add('pop');
-      add.textContent=lv<LV.length-1?'+ PATTY':'RESET \u21ba';
+      const swap=()=>{
+        ph.style.backgroundImage=`url('${d[3]}')`;
+        nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];
+        let rows=lineHTML('SMASH CLASSIC',9,false);
+        for(let k=1;k<=lv;k++)rows+=lineHTML('+ SMASHED PATTY',3,fresh&&k===lv);
+        tl.innerHTML=rows;
+        tt.textContent=d[2];
+        add.textContent=lv<LV.length-1?'+ PATTY':'RESET \u21ba';
+        dots.forEach((x,n)=>x.classList.toggle('on',n===lv));
+      };
+      if(!fresh){swap();return}
+      ph.classList.add('flip');
+      setTimeout(()=>{swap();ph.classList.remove('flip')},175);
+      if(lv===LV.length-1){
+        const f=document.createElement('i');f.className='oflash';f.textContent='ORDER UP!';
+        f.style.top='28%';host.appendChild(f);setTimeout(()=>f.remove(),750);
+        try{if(navigator.vibrate)navigator.vibrate([12,50,12,50,20])}catch(_){}}
     };
     add.addEventListener('pointerdown',e=>e.stopPropagation());
     add.addEventListener('click',()=>{
