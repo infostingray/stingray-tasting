@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v91">
+<meta name="build" content="v92">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2639,6 +2639,29 @@ body{font-family:var(--sans)}
 #intro #venture{font-size:7px!important;letter-spacing:.24em!important}
 #hv{font-size:7px!important}
 </style>
+<style id="v92">
+.mmStamp{position:absolute;left:50%;top:46%;z-index:20;transform:translate(-50%,-50%) rotate(-8deg) scale(1.5);
+  opacity:0;pointer-events:none;text-align:center;padding:10px 16px;border:2.5px solid currentColor;border-radius:4px;
+  transition:transform .22s cubic-bezier(.2,1.6,.3,1),opacity .18s}
+.mmStamp.show{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}
+.mmStamp.red{color:#D6363E;background:rgba(214,54,62,.06)}
+.mmStamp.gold{color:#E8A33D;background:rgba(232,163,61,.08)}
+.mmStamp b{display:block;font-family:var(--sans);font-weight:800;font-style:italic;font-size:15px;letter-spacing:.02em;text-transform:lowercase}
+.mmStamp i{display:block;margin-top:4px;font-style:normal;font-family:var(--mono);font-size:6px;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+.mmStage.thunk{animation:sahbounce .32s cubic-bezier(.3,1.8,.4,1)}
+.hero.h-ghost{background:
+  linear-gradient(180deg,rgba(11,11,16,.55),rgba(11,11,16,.62) 55%,rgba(11,11,16,.96)),
+  radial-gradient(80% 45% at 50% 100%,rgba(74,222,128,.14),transparent 70%),
+  url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=760&q=72') center/cover,#0B0B10!important}
+.h-ghost .nm{font-weight:800;letter-spacing:.06em;color:#E8F0EA}
+.h-ghost .gstat{margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,240,234,.75)}
+.h-ghost .gstat b{color:#4ADE80;font-weight:400}
+.hero.h-grande{background:
+  linear-gradient(180deg,rgba(14,12,9,.45),rgba(14,12,9,.55) 55%,rgba(14,12,9,.95)),
+  url('https://images.unsplash.com/photo-1699345461139-73dfeecab9b6?auto=format&fit=crop&w=760&q=72') center/cover,#0E0C09!important}
+.h-grande .nm{font-family:'Fraunces',serif;font-size:40px;line-height:1.06;color:#EFE7D8}
+.h-grande .nm i{font-style:italic}
+</style>
 </head>
 <body>
 
@@ -2659,6 +2682,7 @@ body{font-family:var(--sans)}
     <div class="mmHead">a menu · or a mark? <b>tap to feel it</b></div>
     <div class="mmToggle"><button class="on" data-m="menu">menu</button><button data-m="mark">mark →</button></div>
     <div class="mmStage" id="mmStage">
+      <div class="mmStamp" data-stamp></div>
       <i class="emberline"></i><i class="charfill"></i>
       <div class="mmMenu">
         <div class="t">menu_final_v3.pdf</div>
@@ -2768,7 +2792,13 @@ american:{
 restaurant:{gal:[[U('1579751626657-72bc17010498'),'the fire'],[U('1553621042-f6e147245754'),'the counter'],[U('1537734796389-e1fc293cf856'),'the craft']],dish:U('1574071318508-1cdbab80d002')},
 cafe:{
   gal:[[U('1509042239860-f550ce710b93'),'the pour'],[U('1551024601-bec78aea704b'),'the counter'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
-  dish:U('1555507036-ab1f4038808a')}
+  dish:U('1555507036-ab1f4038808a')},
+delivery:{
+  gal:[[U('1594212699903-ec8a3eca50f5'),'the combo'],[U('1636447155412-d57350005073'),'the line'],[U('1553979459-d2229ba7433b'),'up close']],
+  dish:U('1594212699903-ec8a3eca50f5')},
+catering:{
+  gal:[[U('1699345461139-73dfeecab9b6'),'the long table'],[U('1555939594-58d7cb561ad1'),'off the fire'],[U('1514362545857-3bc16c4c7d1b'),'golden hour']],
+  dish:U('1699345461139-73dfeecab9b6')}
 };
 
 /* ═════════ DESIGN DATA ═════════ */
@@ -4487,6 +4517,33 @@ const MATIN={name:'Kissa',font:"'Marcellus',serif",bg:'#101013',tx:'#EDEDF2',ac:
  tabs:[['the counter',[['Pour over \u00b7 gesha','92\u00b0 \u00b7 by the seat','7'],['Matcha \u00b7 stone-ground','usucha','6'],['Flat white','double ristretto','5']]],
        ['the oven',[['Croissant','laminated \u00b7 27 layers','4'],['Yuzu tart','torched','6'],['Milk bread \u00b7 shokupan','honey butter','5']]]],
  hours:'daily \u00b7 7\u20134 \u00b7 seven seats',loc:'the quiet corner \u00b7 jdeideh',cta:'save a seat'};
+const GHOST={name:'GHOST',font:"'Poppins',sans-serif",bg:'#0B0B10',tx:'#E8F0EA',ac:'#4ADE80',
+ heroClass:'h-ghost',
+ hero:`<div class="inner"><div class="sk" style="color:#4ADE80">cloud kitchen \u00b7 delivery only</div>
+   <div class="nm">GHOST</div>
+   <div class="tg">no dining room. no waiting. just the food.</div>
+   <div class="gstat"><b data-gcount>47</b> orders tonight \u00b7 avg door time <b data-geta>23</b> min</div></div>
+   <button class="chip-cta" data-sheet style="background:#4ADE80;color:#06130B;border:none">order now</button>
+   <div class="down">\u2193</div>`,
+ pull:'\u201cThe restaurant is an app. The kitchen is very real.\u201d',
+ story:'One kitchen, zero tables, a menu engineered for the box \u2014 food that survives the ride and photographs like it didn\u2019t have to. Built for delivery apps, rated like a flagship.',
+ dish:{n:'The Rider Combo',d:'burger + fries \u00b7 box-engineered',p:'13'},
+ tabs:[['bestsellers',[['The Rider Combo','burger + fries','13'],['Loaded fries','cheddar \u00b7 jalape\u00f1o','8'],['Wings \u00b7 12','honey harissa','12']]],
+       ['ops',[['Family box','feeds 4 \u00b7 no fights','34'],['Late run','after midnight menu','\u2014'],['Track your rider','live \u00b7 in-app','\u2014']]]],
+ hours:'delivery \u00b7 11am\u20132am',loc:'everywhere in 30 min',cta:'order now \u2192'};
+const GRANDE={name:'La Grande Table',font:"'Fraunces',serif",bg:'#0E0C09',tx:'#EFE7D8',ac:'#C9A96A',
+ heroClass:'h-grande',
+ hero:`<div class="inner"><div class="sk" style="color:#C9A96A">catering & events \u00b7 weddings \u00b7 corporate</div>
+   <div class="nm"><i>La Grande Table</i></div>
+   <div class="tg">one long table, set for three hundred.</div></div>
+   <button class="chip-cta" data-sheet style="background:#C9A96A;color:#1A150C;border:none">plan your event</button>
+   <div class="down">\u2193</div>`,
+ pull:'\u201cWe bring the kitchen, the fire, and the hush before the toast.\u201d',
+ story:'Weddings on rooftops, boardroom lunches, three hundred plates leaving the pass at once. Menus composed per event, staff in black, and a long table that makes strangers into guests.',
+ dish:{n:'The Banquet',d:'per guest \u00b7 composed menu',p:'\u2014'},
+ tabs:[['events',[['Weddings','full production','\u2014'],['Corporate','lunches \u00b7 launches','\u2014'],['Private chef','at your table','\u2014']]],
+       ['the table',[['The long mezze','to open','\u2014'],['Live fire station','carved to order','\u2014'],['The finale','patisserie wall','\u2014']]]],
+ hours:'by appointment',loc:'beirut \u00b7 doha \u00b7 anywhere',cta:'plan your event \u2192'};
 
 /* new world photography */
 IMGS.japanese={gal:[[U('1579584425555-c3ce17fd4351'),'the counter'],[U('1553621042-f6e147245754'),'the maki'],[U('1526318896980-cf78c088247c'),'the room']],dish:U('1579584425555-c3ce17fd4351')};
@@ -4558,6 +4615,8 @@ Object.assign(CATS,{
  restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli soul',designs:[FORNO]},
  cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#C6472E',desc:'kissaten \u00b7 quiet mornings',designs:[MATIN]},
  american:{label:'Fast Food',glyph:'\u2261',accent:'#FF2E4C',desc:'diner \u00b7 neon \u00b7 open late',designs:[STACK2]},
+ delivery:{label:'Delivery & Cloud Kitchen',glyph:'\u25c8',accent:'#4ADE80',desc:'apps \u00b7 boxes \u00b7 speed',designs:[GHOST]},
+ catering:{label:'Catering & Events',glyph:'\u2749',accent:'#C9A96A',desc:'weddings \u00b7 corporate \u00b7 300 plates',designs:[GRANDE]},
  dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
 });
 
@@ -4575,7 +4634,7 @@ window.__V23_BD={
 /* rebuild kitchen cards for the nine worlds */
 const catsEl=document.querySelector('#cats');
 const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
-  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1579751626657-72bc17010498'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1579751626657-72bc17010498'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),delivery:U('1594212699903-ec8a3eca50f5'),catering:U('1699345461139-73dfeecab9b6'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
   dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
 catsEl.innerHTML='';
 Object.entries(CATS).forEach(([key,c])=>{
@@ -5266,7 +5325,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v91</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v92</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5339,7 +5398,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v91';
+  var v=document.createElement('span');v.id='hv';v.textContent='v92';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5364,14 +5423,15 @@ btns.forEach(b=>{
     /* MARK: burn the pdf, open the kitchen */
     burning=true;
     btns.forEach(x=>x.classList.toggle('on',x===b));
-    stage.classList.add('toss');
+    if(window.__stamp)window.__stamp('archived.','opening the real thing \u2192','gold');
     try{if(navigator.vibrate)navigator.vibrate([6,50,10])}catch(_){}
-    setTimeout(()=>goto('kitchen'),620);
+    setTimeout(()=>stage.classList.add('toss'),480);
+    setTimeout(()=>goto('kitchen'),1100);
     setTimeout(()=>{
       stage.classList.remove('toss');
       btns.forEach(x=>x.classList.toggle('on',x.dataset.m==='menu'));
       burning=false;
-    },1100);
+    },1600);
   });
 });
 })();
@@ -5481,6 +5541,35 @@ document.addEventListener('click',e=>{
   }else{pill&&pill.remove();try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}}
   update(phone);
 });
+})();
+</script>
+<script id="v92js">
+(function(){
+const stamp=document.querySelector('[data-stamp]'),stage=document.querySelector('#mmStage');
+let st=null;
+window.__stamp=(t1,t2,mode)=>{
+  if(!stamp)return;
+  stamp.innerHTML='<b>'+t1+'</b><i>'+t2+'</i>';
+  stamp.className='mmStamp show '+(mode||'red');
+  try{if(navigator.vibrate)navigator.vibrate([9,40,9])}catch(_){}
+  stage.classList.add('thunk');setTimeout(()=>stage.classList.remove('thunk'),350);
+  clearTimeout(st);st=setTimeout(()=>stamp.classList.remove('show'),1700);
+};
+const menu=document.querySelector('.mmMenu');
+if(menu){menu.style.cursor='pointer';
+  menu.addEventListener('pointerdown',e=>e.stopPropagation());
+  menu.addEventListener('click',()=>{
+    const intro=document.querySelector('#intro');
+    if(intro&&intro.classList.contains('menuMode'))
+      window.__stamp('this is not a website.','it\u2019s where customers give up.','red');
+  });
+}
+setInterval(()=>{
+  const c=document.querySelector('[data-gcount]');
+  if(c&&Math.random()<0.5)c.textContent=String(parseInt(c.textContent||'47',10)+1);
+  const e=document.querySelector('[data-geta]');
+  if(e&&Math.random()<0.3)e.textContent=String(21+Math.floor(Math.random()*5));
+},6000);
 })();
 </script>
 </body>
