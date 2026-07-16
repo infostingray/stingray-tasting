@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v83">
+<meta name="build" content="v84">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2517,6 +2517,29 @@ body{font-family:var(--sans)}
 .h-morning .chip-cta{position:relative;z-index:2;margin-top:20px}
 .h-morning .down{position:relative;z-index:2;color:#5A4632}
 </style>
+<style id="v84">
+/* ═════════ V84 · STACK, bespoke: loud, live, stackable ═════════ */
+.stkMq{position:relative;z-index:3;overflow:hidden;background:#FFC93C;transform:rotate(-1.1deg) scale(1.02);
+  padding:8px 0;box-shadow:0 10px 26px -12px rgba(0,0,0,.6)}
+.stkMq b{display:inline-block;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.14em;
+  color:#1A1206;animation:stkroll 14s linear infinite}
+@keyframes stkroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.stkFry{background:#0D0A07;border-bottom:1px solid rgba(255,201,60,.2);padding:9px 18px;
+  font-family:var(--mono);font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:#FFC93C;text-align:center}
+.stkB{background:#120D07;padding:34px 22px 40px;text-align:center;border-top:1px solid rgba(255,201,60,.15)}
+.stkBt{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.1em;color:#F4EFE6}
+.stkPh{width:190px;height:190px;border-radius:50%;margin:18px auto 0;background-size:cover;background-position:center;
+  box-shadow:0 26px 46px -18px rgba(0,0,0,.9),0 0 0 4px rgba(255,201,60,.25);
+  transition:transform .35s cubic-bezier(.3,1.6,.4,1),filter .35s}
+.stkPh.pop{animation:sahbounce .4s cubic-bezier(.3,1.8,.4,1)}
+.stkNm{margin-top:16px;font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.08em;color:#FFC93C}
+.stkSub{font-family:var(--mono);font-size:7px;letter-spacing:.26em;text-transform:uppercase;color:rgba(244,239,230,.6);margin-top:4px}
+.stkPr{margin-top:8px;font-family:var(--mono);font-size:12px;color:#F4EFE6}
+.stkAdd{margin-top:18px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.14em;cursor:pointer;
+  background:#FFC93C;color:#1A1206;border:none;border-radius:100px;padding:14px 34px;
+  box-shadow:0 16px 32px -12px rgba(255,201,60,.65)}
+.stkAdd:active{transform:scale(.94)}
+</style>
 </head>
 <body>
 
@@ -2641,7 +2664,7 @@ const IMGS={
   gal:[[U('1551024601-bec78aea704b'),'the counter'],[U('1578985545062-69928b1d9587'),'the showcase'],[U('1499636136210-6f4ee915583e'),'fresh out the oven']],
   dish:U('1563805042-7684c019e1cb')},
 american:{
-  gal:[[U('1572802419224-296b0aeee0d9'),'the double'],[U('1594212699903-ec8a3eca50f5'),'with fries'],[U('1553979459-d2229ba7433b'),'up close']],
+  gal:[[U('1572802419224-296b0aeee0d9'),'the double'],[U('1594212699903-ec8a3eca50f5'),'with fries'],[U('1553979459-d2229ba7433b'),'up close'],[U('1632203171982-cc0df6e9ceb4'),'incoming']],
   dish:U('1568901346375-23c9450c58cd')},
 restaurant:{gal:[[U('1579751626657-72bc17010498'),'the fire'],[U('1553621042-f6e147245754'),'the counter'],[U('1537734796389-e1fc293cf856'),'the craft']],dish:U('1574071318508-1cdbab80d002')},
 cafe:{
@@ -5144,7 +5167,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v83</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v84</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5217,7 +5240,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v83';
+  var v=document.createElement('span');v.id='hv';v.textContent='v84';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5262,6 +5285,60 @@ setInterval(()=>{
   const d=new Date();
   c.textContent='fresh batch \u00b7 '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
 },1000);
+})();
+</script>
+<script id="v84js">
+/* V84 · STACK bespoke layer: marquee, fry drop, build-your-stack */
+(function(){
+const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&h=560&q=72`;
+const LV=[
+ ['THE CLASSIC','single \u00b7 shredded lettuce',9,Q('1568901346375-23c9450c58cd'),'tap it. you know you want to.',1,1],
+ ['THE DOUBLE','how it should be',12,Q('1572802419224-296b0aeee0d9'),'now we\u2019re talking.',1,1.08],
+ ['THE TRIPLE','you were warned',15,Q('1572802419224-296b0aeee0d9'),'structural engineering.',1.06,1.22],
+ ['THE QUAD','no forks. no regrets.',18,Q('1572802419224-296b0aeee0d9'),'call it a day after this.',1.12,1.38]
+];
+const _oc=openCat;
+openCat=function(k){_oc(k);if(k!=='american')return;
+  setTimeout(()=>{
+    const site=[...document.querySelectorAll('#deck .phone .site')].find(s=>/STACK/.test(s.textContent));
+    if(!site||site.querySelector('.stkB'))return;
+    const hero=site.querySelector('.hero')||site.firstElementChild;
+    /* marquee + fry drop */
+    const mq=document.createElement('div');mq.className='stkMq';
+    const line='SMASHED FRESH \u00b7 NO FORKS IN THE BUILDING \u00b7 ASK FOR IT A DOUBLE \u00b7 FRIES EVERY 7 MINUTES \u00b7 ';
+    mq.innerHTML='<b>'+line+line+'</b>';
+    hero.after(mq);
+    const fry=document.createElement('div');fry.className='stkFry';mq.after(fry);
+    const tick=()=>{const s=420-Math.floor(Date.now()/1000)%420;
+      fry.textContent='next fry drop \u00b7 '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+    tick();const ti=setInterval(()=>{if(!document.contains(fry)){clearInterval(ti);return}tick()},1000);
+    /* build your stack */
+    const b=document.createElement('section');b.className='stkB';
+    b.innerHTML=`<div class="stkBt">BUILD YOUR STACK</div>
+      <div class="stkPh" data-sph></div>
+      <div class="stkNm" data-snm></div><div class="stkSub" data-ssub></div><div class="stkPr" data-spr></div>
+      <button class="stkAdd" data-sadd>+ PATTY</button>`;
+    fry.after(b);
+    let lv=0;
+    const ph=b.querySelector('[data-sph]'),nm=b.querySelector('[data-snm]'),
+          sub=b.querySelector('[data-ssub]'),pr=b.querySelector('[data-spr]'),add=b.querySelector('[data-sadd]');
+    const paint=()=>{const d=LV[lv];
+      ph.style.backgroundImage=`url('${d[3]}')`;
+      ph.style.transform=`scale(${d[5]})`;
+      ph.style.filter=`saturate(${d[6]})`;
+      ph.classList.remove('pop');void ph.offsetWidth;ph.classList.add('pop');
+      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];pr.textContent=d[2]+' \u2014 out the window in 6 min';
+      add.textContent=lv<LV.length-1?'+ PATTY':'RESET \u21ba';
+    };
+    add.addEventListener('pointerdown',e=>e.stopPropagation());
+    add.addEventListener('click',()=>{
+      lv=lv<LV.length-1?lv+1:0;
+      try{if(navigator.vibrate)navigator.vibrate(lv===0?4:[6,30,10])}catch(_){}
+      paint();
+    });
+    paint();
+  },350);
+};
 })();
 </script>
 </body>
