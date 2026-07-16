@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v101">
+<meta name="build" content="v102">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2588,23 +2588,23 @@ body{font-family:var(--sans)}
 .hero.h-stack{
   background:
     linear-gradient(180deg,rgba(10,12,20,.4),rgba(10,12,20,.55) 55%,rgba(10,12,20,.95)),
-    radial-gradient(90% 55% at 50% 100%,rgba(255,46,76,.18),transparent 70%),
+    radial-gradient(90% 55% at 50% 100%,rgba(255,201,60,.18),transparent 70%),
     url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=760&q=72') center/cover,
     #0A0C14!important}
 .neon{pointer-events:auto;color:#FFF7F8;
-  text-shadow:0 0 7px #FF2E4C,0 0 22px #FF2E4C,0 0 58px rgba(255,46,76,.75);
+  text-shadow:0 0 7px #FFC93C,0 0 22px #FFC93C,0 0 58px rgba(255,201,60,.75);
   animation:neonflick 2.2s ease 1;transition:color .25s,text-shadow .25s}
 .neon.off{color:rgba(244,241,234,.22);text-shadow:none}
 @keyframes neonflick{0%,4%,8%{opacity:.25;text-shadow:none}2%,6%,10%,100%{opacity:1}11%{opacity:.4}13%{opacity:1}}
-.stkMq{background:#11060B;border-top-color:rgba(255,46,76,.3);border-bottom-color:rgba(255,46,76,.3)}
-.stkMq b{color:#FF2E4C}
-.stkFry{background:#0A0C14;color:#FF2E4C;border-bottom-color:rgba(255,46,76,.16)}
+.stkMq{background:#11060B;border-top-color:rgba(255,201,60,.3);border-bottom-color:rgba(255,201,60,.3)}
+.stkMq b{color:#FFC93C}
+.stkFry{background:#0A0C14;color:#FFC93C;border-bottom-color:rgba(255,201,60,.16)}
 .stkJb{background:#0A0C14;padding:8px 18px;text-align:center;border-bottom:1px solid rgba(76,224,230,.16);
   font-family:var(--mono);font-size:7.5px;letter-spacing:.26em;text-transform:uppercase;color:#4CE0E6}
-.stkB{background:#0C0F1A;border-top-color:rgba(255,46,76,.14)}
-.stkNm{color:#FF2E4C}
-.stkPh{box-shadow:0 26px 46px -18px rgba(0,0,0,.95),0 0 0 3px rgba(255,46,76,.3),0 0 44px -6px rgba(255,46,76,.35)}
-.stkAdd{background:#FF2E4C;color:#FFF4F6;box-shadow:0 16px 32px -12px rgba(255,46,76,.6)}
+.stkB{background:#0C0F1A;border-top-color:rgba(255,201,60,.14)}
+.stkNm{color:#FFC93C}
+.stkPh{box-shadow:0 26px 46px -18px rgba(0,0,0,.95),0 0 0 3px rgba(255,201,60,.3),0 0 44px -6px rgba(255,201,60,.35)}
+.stkAdd{background:#FFC93C;color:#1A1206;box-shadow:0 16px 32px -12px rgba(255,201,60,.6)}
 </style>
 <style id="v90">
 /* ═════════ V90 · every menu is alive: tap to add, the table tallies ═════════ */
@@ -2796,6 +2796,21 @@ html.touch *:hover{transform:none!important}
 @media(prefers-reduced-motion:reduce){
   .tapspark{display:none}
   #cats .cat .catph,.mmToggle button[data-m="mark"],.wa::after{animation:none!important}}
+</style>
+<style id="v102">
+/* ═════════ V102 · yellow diner + hero life ═════════ */
+.dbell{margin-top:14px;font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;
+  cursor:pointer;background:transparent;color:#FFC93C;border:1px solid rgba(255,201,60,.5);
+  border-radius:100px;padding:9px 16px}
+.dbell b{font-weight:400;color:#FFF7E8}
+.dbell:active{transform:scale(.95)}
+.oflash{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:8;pointer-events:none;
+  font-family:'Fraunces',serif;font-style:italic;font-size:30px;color:#FFC93C;white-space:nowrap;
+  text-shadow:0 0 26px rgba(255,201,60,.85);animation:oflashpop .75s cubic-bezier(.2,1.4,.3,1) forwards}
+@keyframes oflashpop{0%{transform:translate(-50%,-50%) scale(.4);opacity:0}
+  25%{opacity:1}70%{opacity:1}100%{transform:translate(-50%,-56%) scale(1.15);opacity:0}}
+.hero.h-stack,.hero.h-morning,.hero.h-ghost,.hero.h-grande{transition:background-position .5s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){.oflash{animation:none;display:none}}
 </style>
 </head>
 <body>
@@ -4623,13 +4638,14 @@ buildDeck=function(){
 const pick=(c,n)=>CATS[c]&&CATS[c].designs.find(d=>d.name===n);
 const OF=pick('lounge','OF\u00f4lies'),FORNO=pick('italian','Forno'),
       BEIT=pick('lebanese','Beit Zaytoun'),SUCRE=pick('dessert','Sucr\u00e9'),MELT=pick('dessert','MELT');
-const STACK2={name:'ROSIES',font:"'Fraunces',serif",bg:'#0A0C14',tx:'#F4F1EA',ac:'#FF2E4C',
+const STACK2={name:'ROSIES',font:"'Fraunces',serif",bg:'#0A0C14',tx:'#F4F1EA',ac:'#FFC93C',
  heroClass:'h-stack',
  hero:`<div class="stkph"></div><div class="stksc"></div>
    <div class="inner"><div class="sk" style="color:#FFC93C">american diner \u00b7 open late</div>
    <div class="nm"><i class="neon" data-neon>Rosie\u2019s</i></div>
-   <div class="tg">shakes cold. patties loud. tap the sign.</div></div>
-   <button class="chip-cta" data-sheet style="background:#FF2E4C;color:#FFF4F6;border:none">grab a booth</button>
+   <div class="tg">shakes cold. patties loud. tap the sign.</div>
+   <button class="dbell" data-bell>ring for service \u00b7 <b data-tix>127</b></button></div>
+   <button class="chip-cta" data-sheet style="background:#FFC93C;color:#1A1206;border:none">grab a booth</button>
    <div class="down">\u2193</div>`,
  pull:'\u201cTwo straws, one malt, and a booth by the window.\u201d',
  story:'Checker floor, red vinyl, a jukebox with opinions. Patties smashed loud, malts spun by hand, pie always \u00e0 la mode. Open late \u2014 later than you.',
@@ -4751,7 +4767,7 @@ Object.assign(CATS,{
  lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
  restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli soul',designs:[FORNO]},
  cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#C6472E',desc:'kissaten \u00b7 quiet mornings',designs:[MATIN]},
- american:{label:'Fast Food',glyph:'\u2261',accent:'#FF2E4C',desc:'diner \u00b7 neon \u00b7 open late',designs:[STACK2]},
+ american:{label:'Fast Food',glyph:'\u2261',accent:'#FFC93C',desc:'diner \u00b7 neon \u00b7 open late',designs:[STACK2]},
  delivery:{label:'Delivery & Cloud Kitchen',glyph:'\u25c8',accent:'#4ADE80',desc:'apps \u00b7 boxes \u00b7 speed',designs:[GHOST]},
  catering:{label:'Catering & Events',glyph:'\u2749',accent:'#C9A96A',desc:'weddings \u00b7 corporate \u00b7 300 plates',designs:[GRANDE]},
  dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
@@ -5462,7 +5478,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v101</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v102</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5535,7 +5551,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v101';
+  var v=document.createElement('span');v.id='hv';v.textContent='v102';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5786,6 +5802,31 @@ if(!RM)document.addEventListener('pointerdown',e=>{
   s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
   document.body.appendChild(s);setTimeout(()=>s.remove(),520);
 },{passive:true});
+})();
+</script>
+<script id="v102js">
+/* V102 · hero parallax everywhere + the service bell */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!RM)document.addEventListener('pointermove',e=>{
+  const h=e.target.closest('.hero.h-stack,.hero.h-morning,.hero.h-ghost,.hero.h-grande');
+  if(!h)return;
+  const r=h.getBoundingClientRect();
+  const dx=((e.clientX-r.left)/(r.width||1)-.5)*5;
+  const dy=((e.clientY-r.top)/(r.height||1)-.5)*4;
+  h.style.backgroundPosition=`center,center,${(50+dx).toFixed(1)}% ${(50+dy).toFixed(1)}%`;
+},{passive:true});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-bell]');
+  if(!b)return;
+  e.stopPropagation();
+  const t=b.querySelector('[data-tix]');
+  if(t)t.textContent=String(parseInt(t.textContent||'127',10)+1);
+  try{if(navigator.vibrate)navigator.vibrate([10,40,10])}catch(_){}
+  const hero=b.closest('.hero');if(!hero)return;
+  const f=document.createElement('i');f.className='oflash';f.textContent='ORDER UP!';
+  hero.appendChild(f);setTimeout(()=>f.remove(),750);
+});
 })();
 </script>
 </body>
