@@ -3555,8 +3555,6 @@ if(canHover&&!reduced){
 $('#pickBtn').addEventListener('click',()=>{
   const c=CATS[cat],d=c.designs[idx];
   $('#resPick').innerHTML=`${c.label} · direction <b>“${d.name}”</b>`;
-  const msg=encodeURIComponent(`Hi stingray 👋 I run a ${c.label.toLowerCase()} spot. I scrolled the “${d.name}” direction and I want my landing + menu built like that. What's next?`);
-  $('#waBtn').href=`https://wa.me/${WA_NUMBER}?text=${msg}`;
   goto('reserve');
 });
 $('#backToDeck').addEventListener('click',()=>{goto('tasting');updateDeck(true)});
@@ -6010,7 +6008,7 @@ f.addEventListener('submit',e=>{
     try{if(navigator.vibrate)navigator.vibrate([8,40,8])}catch(_){}
     return}
   err.hidden=true;
-  try{fetch('https://formsubmit.co/ajax/info@swottm.com',{method:'POST',
+  try{fetch('https://formsubmit.co/ajax/rami@swottm.com',{method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({_subject:'taste \u00b7 new build request',
       name:d.name,restaurant:d.restaurant||'-',category:d.category||'-',phone:d.phone,
