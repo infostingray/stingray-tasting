@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v96">
+<meta name="build" content="v97">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2719,6 +2719,23 @@ body{font-family:var(--sans)}
   text-transform:uppercase;color:#C9A96A;text-shadow:0 0 14px rgba(201,169,106,.4)}
 @media(prefers-reduced-motion:reduce){.kdot{animation:none;opacity:.8}}
 </style>
+<style id="v97">
+/* ═════════ V97 · one button, zero cheapness ═════════ */
+.mmToggle{justify-content:center}
+.mmToggle button[data-m="mark"]{padding:10px 26px!important;font-size:9px!important}
+/* picked rows: state, not twitching */
+.menu-pane .row.picked{transform:none!important;background:rgba(255,255,255,.055);
+  border-radius:7px;margin:0 -9px;padding-left:9px!important;padding-right:9px!important;
+  animation:sahbounce .3s cubic-bezier(.3,1.6,.4,1)}
+.menu-pane .row.picked::before{content:none!important}
+.addpill{border:1px solid currentColor;border-radius:100px;padding:2.5px 8px;font-size:5.5px;
+  animation:sahbounce .35s cubic-bezier(.3,1.8,.4,1)}
+/* kitchen tiles: alive always, never jerky */
+#cats .cat .catph{transform:none!important;animation:senken 18s ease-in-out infinite alternate;
+  transition:filter .45s,opacity .45s}
+#cats .cat:hover .catph,#cats .cat:active .catph{transform:none!important;opacity:1;
+  filter:brightness(1.12) saturate(1.12)}
+</style>
 </head>
 <body>
 
@@ -2736,8 +2753,8 @@ body{font-family:var(--sans)}
   <h1 class="intro-h" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
   <p class="intro-sub" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, booking plugins · resos-ready.</p>
   <div class="mm" id="mm">
-    <div class="mmHead">a menu · or a mark? <b>tap to feel it</b></div>
-    <div class="mmToggle"><button class="on" data-m="menu">menu</button><button data-m="mark">mark →</button></div>
+    <div class="mmHead">this is a menu. <b>tap it · we dare you</b></div>
+    <div class="mmToggle"><button data-m="mark">mark →</button></div>
     <div class="mmStage" id="mmStage">
       <div class="mmStamp" data-stamp></div>
       <i class="emberline"></i><i class="charfill"></i>
@@ -5384,7 +5401,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v96</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v97</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5457,7 +5474,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v96';
+  var v=document.createElement('span');v.id='hv';v.textContent='v97';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
