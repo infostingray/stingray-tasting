@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v100">
+<meta name="build" content="v101">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2769,6 +2769,34 @@ body{font-family:var(--sans)}
 #cats .cat{transition:filter .3s ease}
 #cats .cat:active{filter:brightness(1.1)}
 </style>
+<style id="v101">
+/* ═════════ V101 · THE FINAL CUT ═════════ */
+/* the law: on touch devices, nothing moves on hover. ever. */
+html.touch *:hover{transform:none!important}
+*{-webkit-tap-highlight-color:transparent}
+/* every touch is acknowledged: the spark */
+.tapspark{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:999;
+  background:radial-gradient(circle,rgba(255,140,95,.95),rgba(255,77,46,0) 70%);
+  transform:translate(-50%,-50%);animation:sparkout .5s ease-out forwards}
+@keyframes sparkout{to{transform:translate(-50%,-50%) scale(4.5);opacity:0}}
+/* the kitchen wall breathes, each tile on its own rhythm */
+@keyframes catbreathe{50%{filter:brightness(1.08) saturate(1.06)}}
+#cats .cat .catph{animation:catbreathe 7s ease-in-out infinite!important}
+#cats .cat:nth-child(2n) .catph{animation-delay:-2.3s!important}
+#cats .cat:nth-child(3n) .catph{animation-delay:-4.6s!important}
+/* the mark button breathes fire while idle */
+@keyframes markpulse{50%{box-shadow:0 14px 34px -8px rgba(255,77,46,.9)}}
+.mmToggle button[data-m="mark"]{animation:markpulse 3.4s ease-in-out infinite}
+/* the whatsapp CTA catches the light */
+.wa{position:relative;overflow:hidden}
+.wa::after{content:'';position:absolute;top:0;bottom:0;width:45%;left:-70%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);
+  animation:washeen 5.5s ease-in-out infinite}
+@keyframes washeen{0%{left:-70%}40%,100%{left:140%}}
+@media(prefers-reduced-motion:reduce){
+  .tapspark{display:none}
+  #cats .cat .catph,.mmToggle button[data-m="mark"],.wa::after{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -5434,7 +5462,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v100</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v101</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5507,7 +5535,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v100';
+  var v=document.createElement('span');v.id='hv';v.textContent='v101';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5744,6 +5772,20 @@ setInterval(()=>{
   const m=Math.floor(s/60);s-=m*60;
   el.textContent=`next event \u00b7 sat 19:00 \u00b7 ${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 },1000);
+})();
+</script>
+<script id="v101js">
+/* V101 · touch law + the spark */
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.addEventListener('touchstart',function once(){document.documentElement.classList.add('touch');
+  window.removeEventListener('touchstart',once)},{passive:true});
+if(!RM)document.addEventListener('pointerdown',e=>{
+  if(e.target.closest('input,select,textarea'))return;
+  const s=document.createElement('i');s.className='tapspark';
+  s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),520);
+},{passive:true});
 })();
 </script>
 </body>
