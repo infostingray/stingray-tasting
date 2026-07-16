@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v86">
+<meta name="build" content="v87">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2477,7 +2477,7 @@ body{font-family:var(--sans)}
 #cats .cat:last-child{grid-column:auto;min-height:110px}
 .h-stack{overflow:hidden}
 .h-stack .stkph{position:absolute;inset:-4%;
-  background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=760&q=72');
+  background-image:url('https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=760&q=72');
   background-size:cover;background-position:center}
 .h-stack .stksc{position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(10,7,4,.3),rgba(10,7,4,.45) 55%,rgba(13,10,7,.94))}
@@ -2539,6 +2539,25 @@ body{font-family:var(--sans)}
   background:#FFC93C;color:#1A1206;border:none;border-radius:100px;padding:14px 34px;
   box-shadow:0 16px 32px -12px rgba(255,201,60,.65)}
 .stkAdd:active{transform:scale(.94)}
+</style>
+<style id="v87">
+/* ═════════ V87 · EMBER: burgers after dark ═════════ */
+.stkMq{background:#170C07;transform:rotate(0deg) scale(1);box-shadow:none;
+  border-top:1px solid rgba(255,90,43,.25);border-bottom:1px solid rgba(255,90,43,.25);padding:9px 0}
+.stkMq b{font-family:var(--mono);font-size:8px;letter-spacing:.32em;color:#FF5A2B;animation-duration:22s}
+.stkFry{background:#0A0605;color:#FF5A2B;border-bottom:1px solid rgba(255,90,43,.15)}
+.h-stack .nm{font-family:'Fraunces',serif;font-weight:500;font-size:56px;letter-spacing:0;color:#EAE0D2;text-transform:none}
+.h-stack .nm i{font-style:italic}
+.h-stack .stksc{background:linear-gradient(180deg,rgba(10,6,5,.35),rgba(10,6,5,.5) 55%,rgba(10,6,5,.95)),
+  radial-gradient(90% 50% at 50% 100%,rgba(255,90,43,.16),transparent 70%)}
+.h-stack .tg{color:rgba(234,224,210,.85)}
+.stkB{background:#0D0705;border-top:1px solid rgba(255,90,43,.14)}
+.stkBt{font-family:'Fraunces',serif;font-style:italic;font-size:22px;letter-spacing:0;text-transform:none;color:#EAE0D2}
+.stkPh{box-shadow:0 26px 46px -18px rgba(0,0,0,.95),0 0 0 3px rgba(255,90,43,.3),0 0 44px -6px rgba(255,90,43,.35)}
+.stkNm{font-family:'Fraunces',serif;font-style:italic;font-size:24px;letter-spacing:0;color:#FF5A2B;text-transform:none}
+.stkPr{color:#EAE0D2}
+.stkAdd{font-family:var(--mono);font-size:9px;letter-spacing:.26em;background:#FF5A2B;color:#FFF3EC;
+  box-shadow:0 16px 32px -12px rgba(255,90,43,.6)}
 </style>
 </head>
 <body>
@@ -4359,20 +4378,20 @@ buildDeck=function(){
 const pick=(c,n)=>CATS[c]&&CATS[c].designs.find(d=>d.name===n);
 const OF=pick('lounge','OF\u00f4lies'),FORNO=pick('italian','Forno'),
       BEIT=pick('lebanese','Beit Zaytoun'),SUCRE=pick('dessert','Sucr\u00e9'),MELT=pick('dessert','MELT');
-const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EFE6',ac:'#FFC93C',
+const STACK2={name:'EMBER',font:"'Fraunces',serif",bg:'#0A0605',tx:'#EAE0D2',ac:'#FF5A2B',
  heroClass:'h-stack',
  hero:`<div class="stkph"></div><div class="stksc"></div>
-   <div class="inner"><div class="sk" style="color:#FFC93C">smashburgers \u00b7 fries \u00b7 shakes</div>
-   <div class="nm">STACK</div>
-   <div class="tg">smashed loud. stacked louder.</div></div>
-   <button class="chip-cta" data-sheet style="background:#FFC93C;color:#1A1206;border:none">order up</button>
+   <div class="inner"><div class="sk" style="color:#FFC93C">burgers off the charcoal \u00b7 after dark</div>
+   <div class="nm"><i>ember.</i></div>
+   <div class="tg">lights low. smash loud.</div></div>
+   <button class="chip-cta" data-sheet style="background:#FF5A2B;color:#FFF3EC;border:none">walk in</button>
    <div class="down">\u2193</div>`,
- pull:'\u201cFlat-top thunder. Ask for it as a double.\u201d',
- story:'Two smashed patties with burnt lace edges, american cheese doing what it was born to do, pickles for law and order. Fries drop every seven minutes. No forks in the building.',
- dish:{n:'The Double',d:'two smashed \u00b7 double american \u00b7 pickles',p:'12'},
- tabs:[['the stack',[['The Classic','single \u00b7 shredded lettuce','9'],['The Double','how it should be','12'],['The Triple','you were warned','15']]],
-       ['sides & shakes',[['Crinkle fries','salted hard','5'],['Cheese fries','over the top','7'],['Vanilla shake','real scoop \u00b7 thick','6']]]],
- hours:'daily \u00b7 noon\u2013midnight',loc:'dbayeh highway',cta:'order up \u2192'};
+ pull:'\u201cCharcoal, smoke, and a burger that ends the night.\u201d',
+ story:'Dry-aged blend smashed on charcoal steel, buns toasted in beef fat, lights kept low enough to forgive anyone. We open at six \u2014 we matter after midnight.',
+ dish:{n:'The Double',d:'off the charcoal \u00b7 ask for it pink',p:'14'},
+ tabs:[['off the charcoal',[['The Single','dry-aged blend \u00b7 pink','11'],['The Double','how the night starts','14'],['Truffle Smash','black garlic mayo','17']]],
+       ['late night',[['Charcoal fries','smoked salt','6'],['Burnt-honey shake','vanilla bean','7'],['The 3am','double + fries + shake','21']]]],
+ hours:'daily \u00b7 6pm\u20133am',loc:'the back street \u00b7 dbayeh',cta:'walk in \u2192'};
 const MATIN={name:'Kissa',font:"'Fraunces',serif",bg:'#F4EDE2',tx:'#2A2118',ac:'#B0754A',
  heroClass:'h-morning',
  hero:`<div class="mtph"></div><div class="mtsc"></div>
@@ -4458,7 +4477,7 @@ Object.assign(CATS,{
  lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
  restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli soul',designs:[FORNO]},
  cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#B0754A',desc:'slow mornings \u00b7 fresh ovens',designs:[MATIN]},
- american:{label:'Fast Food',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
+ american:{label:'Fast Food',glyph:'\u2261',accent:'#FF5A2B',desc:'smash \u00b7 charcoal \u00b7 after dark',designs:[STACK2]},
  dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
 });
 
@@ -4476,7 +4495,7 @@ window.__V23_BD={
 /* rebuild kitchen cards for the nine worlds */
 const catsEl=document.querySelector('#cats');
 const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
-  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1579751626657-72bc17010498'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],american:U('1572802419224-296b0aeee0d9'),restaurant:U('1579751626657-72bc17010498'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
   dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
 catsEl.innerHTML='';
 Object.entries(CATS).forEach(([key,c])=>{
@@ -5167,7 +5186,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v86</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v87</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5240,7 +5259,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v86';
+  var v=document.createElement('span');v.id='hv';v.textContent='v87';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5293,20 +5312,20 @@ setInterval(()=>{
 const Q=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=560&h=560&q=72`;
 const BURG=Q('1572802419224-296b0aeee0d9');
 const LV=[
- ['THE CLASSIC','single \u00b7 shredded lettuce',9,BURG,'tap it. you know you want to.',0.92,0.95],
- ['THE DOUBLE','how it should be',12,BURG,'now we\u2019re talking.',1,1.05],
- ['THE TRIPLE','you were warned',15,BURG,'structural engineering.',1.09,1.18],
- ['THE QUAD','no forks. no regrets.',18,BURG,'call it a day after this.',1.17,1.32]
+ ['THE SINGLE','dry-aged \u00b7 pink',11,BURG,'the night is young.',0.92,0.95],
+ ['THE DOUBLE','how the night starts',14,BURG,'now we\u2019re talking.',1,1.05],
+ ['THE TRIPLE','you were warned',17,BURG,'charcoal doesn\u2019t judge.',1.09,1.18],
+ ['THE LAST ONE','no forks. no regrets.',21,BURG,'the night ends here.',1.17,1.32]
 ];
 const _oc=openCat;
 openCat=function(k){_oc(k);if(k!=='american')return;
   setTimeout(()=>{
-    const site=[...document.querySelectorAll('#deck .phone .site')].find(s=>/STACK/.test(s.textContent));
+    const site=[...document.querySelectorAll('#deck .phone .site')].find(s=>/ember\./i.test(s.textContent));
     if(!site||site.querySelector('.stkB'))return;
     const hero=site.querySelector('.hero')||site.firstElementChild;
     /* marquee + fry drop */
     const mq=document.createElement('div');mq.className='stkMq';
-    const line='SMASHED FRESH \u00b7 NO FORKS IN THE BUILDING \u00b7 ASK FOR IT A DOUBLE \u00b7 FRIES EVERY 7 MINUTES \u00b7 ';
+    const line='OFF THE CHARCOAL \u00b7 ASK FOR IT PINK \u00b7 SEVEN-MINUTE FRIES \u00b7 OPEN TILL 3AM \u00b7 ';
     mq.innerHTML='<b>'+line+line+'</b>';
     hero.after(mq);
     const fry=document.createElement('div');fry.className='stkFry';mq.after(fry);
@@ -5315,7 +5334,7 @@ openCat=function(k){_oc(k);if(k!=='american')return;
     tick();const ti=setInterval(()=>{if(!document.contains(fry)){clearInterval(ti);return}tick()},1000);
     /* build your stack */
     const b=document.createElement('section');b.className='stkB';
-    b.innerHTML=`<div class="stkBt">BUILD YOUR STACK</div>
+    b.innerHTML=`<div class="stkBt">build it darker</div>
       <div class="stkPh" data-sph></div>
       <div class="stkNm" data-snm></div><div class="stkSub" data-ssub></div><div class="stkPr" data-spr></div>
       <button class="stkAdd" data-sadd>+ PATTY</button>`;
@@ -5328,7 +5347,7 @@ openCat=function(k){_oc(k);if(k!=='american')return;
       ph.style.transform=`scale(${d[5]})`;
       ph.style.filter=`saturate(${d[6]})`;
       ph.classList.remove('pop');void ph.offsetWidth;ph.classList.add('pop');
-      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];pr.textContent=d[2]+' \u2014 out the window in 6 min';
+      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];pr.textContent=d[2]+' \u2014 off the charcoal in 6 min';
       add.textContent=lv<LV.length-1?'+ PATTY':'RESET \u21ba';
     };
     add.addEventListener('pointerdown',e=>e.stopPropagation());
