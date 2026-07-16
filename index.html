@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v80">
+<meta name="build" content="v81">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -4433,7 +4433,7 @@ const SEL={name:'Sel',font:"'Cormorant Garamond',serif",bg:'#F2ECDF',tx:'#1F4F5E
 Object.keys(CATS).forEach(k=>delete CATS[k]);
 Object.assign(CATS,{
  lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
- restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#9E3B30',desc:'fine \u00b7 casual \u00b7 yours',designs:[BEIT]},
+ restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#9E3B30',desc:'beit \u00b7 forno \u00b7 sen \u00b7 three souls',designs:[BEIT,FORNO,SEN]},
  cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#B0754A',desc:'slow mornings \u00b7 fresh ovens',designs:[MATIN]},
  american:{label:'Fast Food',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
  dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
@@ -5144,7 +5144,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v80</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v81</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5217,7 +5217,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v80';
+  var v=document.createElement('span');v.id='hv';v.textContent='v81';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
