@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v103">
+<meta name="build" content="v104">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2812,6 +2812,14 @@ html.touch *:hover{transform:none!important}
 .hero.h-stack,.hero.h-morning,.hero.h-ghost,.hero.h-grande{transition:background-position .5s cubic-bezier(.2,.8,.2,1)}
 @media(prefers-reduced-motion:reduce){.oflash{animation:none;display:none}}
 </style>
+<style id="v104">
+/* ═════════ V104 · say it plainly first, enchant second ═════════ */
+.ikick{font-family:var(--mono);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--taste-l);margin-bottom:12px}
+#intro .intro-h{font-size:clamp(28px,7.4vw,40px)!important}
+.ihelp{margin-top:11px;font-family:var(--mono);font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--bone-faint)}
+</style>
 </head>
 <body>
 
@@ -2826,7 +2834,8 @@ html.touch *:hover{transform:none!important}
 <!-- ═══ INTRO ═══ -->
 <section class="screen active menuMode" id="intro">
   <div id="typeline" style="display:none"></div>
-  <h1 class="intro-h" id="ih">your restaurant<br>deserves a <em>mark</em>.</h1>
+  <div class="ikick">websites for restaurants & cafés · live in 7 days</div>
+  <h1 class="intro-h" id="ih">your restaurant deserves<br>a <em>real website</em>.</h1>
   <p class="intro-sub" id="is">Most places live in a PDF menu. Yours is about to live in a <b>full website</b> · story, gallery, menu, booking plugins · resos-ready.</p>
   <div class="mm" id="mm">
     <div class="mmHead">this is a menu. <b>tap it · we dare you</b></div>
@@ -2852,6 +2861,7 @@ html.touch *:hover{transform:none!important}
     <div class="mmLine">what you taste here is our <b>minimum</b> · with your brand + your photos, it only gets better</div>
   </div>
   <button class="btn tastebtn" id="introBtn">begin the tasting →</button>
+  <div class="ihelp">seven demo websites inside · find your kind of place</div>
 </section>
 
 <!-- ═══ THE KITCHEN ═══ -->
@@ -5478,7 +5488,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v103</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v104</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5551,7 +5561,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v103';
+  var v=document.createElement('span');v.id='hv';v.textContent='v104';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
