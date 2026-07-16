@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v82">
+<meta name="build" content="v83">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -4350,21 +4350,21 @@ const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EF
  tabs:[['the stack',[['The Classic','single \u00b7 shredded lettuce','9'],['The Double','how it should be','12'],['The Triple','you were warned','15']]],
        ['sides & shakes',[['Crinkle fries','salted hard','5'],['Cheese fries','over the top','7'],['Vanilla shake','real scoop \u00b7 thick','6']]]],
  hours:'daily \u00b7 noon\u2013midnight',loc:'dbayeh highway',cta:'order up \u2192'};
-const MATIN={name:'Matin',font:"'Fraunces',serif",bg:'#F4EDE2',tx:'#2A2118',ac:'#B0754A',
+const MATIN={name:'Kissa',font:"'Fraunces',serif",bg:'#F4EDE2',tx:'#2A2118',ac:'#B0754A',
  heroClass:'h-morning',
  hero:`<div class="mtph plx"></div><div class="mtsc"></div>
-   <div class="inner"><div class="sk" style="color:#B0754A">caf\u00e9 & bakery \u00b7 since sunrise</div>
-   <div class="nm"><i>Matin</i></div>
-   <div class="tg">the first pour, the first batch.</div>
+   <div class="inner"><div class="sk" style="color:#B0754A">caf\u00e9 & bakery \u00b7 the quiet hour</div>
+   <div class="nm"><i>Kissa</i></div>
+   <div class="tg">seven seats. one kettle. the quiet hour.</div>
    <div class="mclock" data-mclock>fresh batch \u00b7 --:--</div></div>
    <button class="chip-cta" data-sheet style="background:#B0754A;color:#FFF6EA;border:none">save a seat</button>
    <div class="down">\u2193</div>`,
- pull:'\u201cButter, steam, and a table by the window.\u201d',
- story:'Croissants out at seven, sourdough at nine, and an espresso machine that never sleeps past six. Mornings here are a ritual \u2014 flaky, golden, unhurried.',
- dish:{n:'Croissant + Flat White',d:'the opening move',p:'8'},
- tabs:[['morning',[['Croissant','laminated \u00b7 27 layers','4'],['Flat white','double ristretto','5'],['Sourdough toast','burnt honey \u00b7 labneh','7']]],
+ pull:'\u201cCoffee as ceremony \u2014 slow, precise, quiet.\u201d',
+ story:'Seven seats at a pale-wood counter. One barista, the kettle held at 92\u00b0, croissants out of the oven behind you. We borrowed the omakase spirit and gave it to the morning.',
+ dish:{n:'Pour Over + Croissant',d:'the opening ceremony',p:'9'},
+ tabs:[['the counter',[['Pour over \u00b7 gesha','92\u00b0 \u00b7 by the seat','7'],['Matcha \u00b7 stone-ground','usucha','6'],['Flat white','double ristretto','5']]],
        ['all day',[['Grilled halloumi bun','chili jam','9'],['Lemon tart','torched to order','6'],['Cold brew','48h steep','6']]]],
- hours:'daily \u00b7 6am\u20136pm',loc:'the corner \u00b7 jdeideh',cta:'save a seat'};
+ hours:'daily \u00b7 7am\u20134pm',loc:'seven seats \u00b7 jdeideh',cta:'save a seat'};
 
 /* new world photography */
 IMGS.japanese={gal:[[U('1579584425555-c3ce17fd4351'),'the counter'],[U('1553621042-f6e147245754'),'the maki'],[U('1526318896980-cf78c088247c'),'the room']],dish:U('1579584425555-c3ce17fd4351')};
@@ -4433,7 +4433,7 @@ const SEL={name:'Sel',font:"'Cormorant Garamond',serif",bg:'#F2ECDF',tx:'#1F4F5E
 Object.keys(CATS).forEach(k=>delete CATS[k]);
 Object.assign(CATS,{
  lounge:{label:'Lounge',glyph:'\u263e',accent:'#C9A96A',desc:'of\u00f4lies \u00b7 live client',designs:[OF]},
- restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#B33A2B',desc:'forno \u00b7 sen \u00b7 two souls',designs:[FORNO,SEN]},
+ restaurant:{label:'Restaurant',glyph:'\u273b',accent:'#B33A2B',desc:'wood fire \u00b7 napoli soul',designs:[FORNO]},
  cafe:{label:'Caf\u00e9 & Bakery',glyph:'\u2740',accent:'#B0754A',desc:'slow mornings \u00b7 fresh ovens',designs:[MATIN]},
  american:{label:'Fast Food',glyph:'\u2261',accent:'#FFC93C',desc:'smash \u00b7 stack \u00b7 shake',designs:[STACK2]},
  dessert:{label:'Dessert & P\u00e2tisserie',glyph:'\u2726',accent:'#E88AA6',desc:'gold foil \u00b7 gelato \u00b7 douceur',designs:[SUCRE]},
@@ -4453,7 +4453,7 @@ window.__V23_BD={
 /* rebuild kitchen cards for the nine worlds */
 const catsEl=document.querySelector('#cats');
 const CATPH2={lounge:U('1514933651103-005eec06c04b'),italian:IMGS.italian.gal[0][0],japanese:IMGS.japanese.dish,
-  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1553621042-f6e147245754'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
+  lebanese:IMGS.lebanese.gal[0][0],american:U('1568901346375-23c9450c58cd'),restaurant:U('1579751626657-72bc17010498'),cafe:U('1509042239860-f550ce710b93'),dessert:U('1569864358642-9d1684040f43'),coffeeshop:IMGS.coffeeshop.dish,nightclub:IMGS.nightclub.gal[0][0],
   dessert:U('1569864358642-9d1684040f43'),icecream:IMGS.dessert.dish,beach:IMGS.beach.gal[0][0]};
 catsEl.innerHTML='';
 Object.entries(CATS).forEach(([key,c])=>{
@@ -5144,7 +5144,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v82</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v83</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5217,7 +5217,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v82';
+  var v=document.createElement('span');v.id='hv';v.textContent='v83';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
