@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v95">
+<meta name="build" content="v96">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2708,6 +2708,17 @@ body{font-family:var(--sans)}
   background:transparent!important;color:var(--bone-dim)!important;
   border-color:rgba(244,244,251,.28)!important;box-shadow:none}
 </style>
+<style id="v96">
+/* ═════════ V96 · living heroes ═════════ */
+.kettle{margin-top:8px;font-family:var(--mono);font-size:7px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(237,237,242,.6)}
+.kdot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#C6472E;margin-left:8px;
+  vertical-align:1px;animation:kbreath 2.4s ease-in-out infinite;box-shadow:0 0 10px rgba(198,71,46,.8)}
+@keyframes kbreath{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.h-grande .gcount{margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:.22em;
+  text-transform:uppercase;color:#C9A96A;text-shadow:0 0 14px rgba(201,169,106,.4)}
+@media(prefers-reduced-motion:reduce){.kdot{animation:none;opacity:.8}}
+</style>
 </head>
 <body>
 
@@ -4554,7 +4565,8 @@ const MATIN={name:'Kissa',font:"'Marcellus',serif",bg:'#101013',tx:'#EDEDF2',ac:
    <div class="inner"><div class="sk" style="color:#C6472E">kissaten \u00b7 coffee in near-silence</div>
    <div class="nm"><i>Kissa</i></div>
    <div class="tg">seven seats. one kettle. surrender the morning.</div>
-   <div class="mclock" data-mclock>fresh batch \u00b7 --:--</div></div>
+   <div class="mclock" data-mclock>fresh batch \u00b7 --:--</div>
+   <div class="kettle">the kettle is on<span class="kdot"></span></div></div>
    <button class="chip-cta" data-sheet style="background:#C6472E;color:#FFF4F0;border:none">take a seat</button>
    <div class="down">\u2193</div>`,
  pull:'\u201cSeven seats. One kettle. No rush \u00b7 only steam.\u201d',
@@ -4581,7 +4593,8 @@ const GRANDE={name:'La Grande Table',font:"'Fraunces',serif",bg:'#0E0C09',tx:'#E
  heroClass:'h-grande',
  hero:`<div class="inner"><div class="sk" style="color:#C9A96A">catering & events \u00b7 weddings \u00b7 corporate</div>
    <div class="nm"><i>La Grande Table</i></div>
-   <div class="tg">one long table, set for three hundred.</div></div>
+   <div class="tg">one long table, set for three hundred.</div>
+   <div class="gcount" data-gtc>next event \u00b7 \u2014</div></div>
    <button class="chip-cta" data-sheet style="background:#C9A96A;color:#1A150C;border:none">plan your event</button>
    <div class="down">\u2193</div>`,
  pull:'\u201cWe bring the kitchen, the fire, and the hush before the toast.\u201d',
@@ -5371,7 +5384,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v95</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v96</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5444,7 +5457,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v95';
+  var v=document.createElement('span');v.id='hv';v.textContent='v96';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5662,6 +5675,25 @@ openCat=function(k){_oc(k);if(k!=='catering')return;
     paint();
   },350);
 };
+})();
+</script>
+<script id="v96js">
+/* V96 · the heroes breathe: kettle pulse + event countdown */
+(function(){
+setInterval(()=>{
+  const el=document.querySelector('[data-gtc]');
+  if(!el)return;
+  const now=new Date();
+  const t=new Date(now);
+  t.setDate(now.getDate()+((6-now.getDay()+7)%7||7));
+  t.setHours(19,0,0,0);
+  if(t-now<0)t.setDate(t.getDate()+7);
+  let s=Math.floor((t-now)/1000);
+  const d=Math.floor(s/86400);s-=d*86400;
+  const h=Math.floor(s/3600);s-=h*3600;
+  const m=Math.floor(s/60);s-=m*60;
+  el.textContent=`next event \u00b7 sat 19:00 \u00b7 ${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+},1000);
 })();
 </script>
 </body>
