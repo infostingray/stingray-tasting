@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v98">
+<meta name="build" content="v99">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2746,6 +2746,18 @@ body{font-family:var(--sans)}
 .gtS{margin-top:12px}
 .menu-pane .row i:last-child{font-size:8.5px;letter-spacing:.06em;text-align:right;max-width:86px;line-height:1.5}
 </style>
+<style id="v99">
+/* ═════════ V99 · heroes anchor to the bottom third, where the scrim lives ═════════ */
+.hero.h-stack,.hero.h-morning,.hero.h-ghost,.hero.h-grande{display:flex!important}
+.hero.h-stack .hwrap,.hero.h-morning .hwrap,.hero.h-ghost .hwrap,.hero.h-grande .hwrap{
+  margin-top:auto;width:100%;padding:0 22px 46px;box-sizing:border-box}
+.hero.h-grande{background:
+  linear-gradient(180deg,rgba(14,12,9,.3),rgba(14,12,9,.22) 45%,rgba(14,12,9,.93) 100%),
+  url('https://images.unsplash.com/photo-1699345461139-73dfeecab9b6?auto=format&fit=crop&w=760&q=72') center/cover,
+  #0E0C09!important}
+.h-grande .chip-cta,.h-ghost .chip-cta,.h-morning .chip-cta,.h-stack .chip-cta{margin-top:18px}
+.h-grande .down,.h-ghost .down,.h-morning .down,.h-stack .down{position:static;margin-top:14px;opacity:.6}
+</style>
 </head>
 <body>
 
@@ -5411,7 +5423,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v98</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v99</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5484,7 +5496,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v98';
+  var v=document.createElement('span');v.id='hv';v.textContent='v99';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
