@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v89">
+<meta name="build" content="v90">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2605,6 +2605,21 @@ body{font-family:var(--sans)}
 .stkNm{color:#FF2E4C}
 .stkPh{box-shadow:0 26px 46px -18px rgba(0,0,0,.95),0 0 0 3px rgba(255,46,76,.3),0 0 44px -6px rgba(255,46,76,.35)}
 .stkAdd{background:#FF2E4C;color:#FFF4F6;box-shadow:0 16px 32px -12px rgba(255,46,76,.6)}
+</style>
+<style id="v90">
+/* ═════════ V90 · every menu is alive: tap to add, the table tallies ═════════ */
+.menu-pane .row{cursor:pointer;position:relative;transition:transform .22s,opacity .22s}
+.menu-pane .row:active{transform:scale(.985)}
+.menu-pane .row.picked{transform:translateX(5px)}
+.menu-pane .row.picked::before{content:'';position:absolute;left:-11px;top:5px;bottom:5px;width:2px;
+  background:currentColor;opacity:.65;border-radius:2px}
+.addpill{flex:0 0 auto;margin-left:8px;font-family:var(--mono);font-size:6px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.85;animation:sahbounce .35s cubic-bezier(.3,1.8,.4,1)}
+.orderChip{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:40;white-space:nowrap;
+  font-family:var(--mono);font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+  padding:11px 18px;border-radius:100px;border:1px solid rgba(244,239,230,.2);
+  background:rgba(16,13,11,.92);color:#F4EFE6;backdrop-filter:blur(6px);
+  box-shadow:0 16px 34px -12px rgba(0,0,0,.8);animation:sahbounce .4s cubic-bezier(.3,1.8,.4,1)}
 </style>
 </head>
 <body>
@@ -5233,7 +5248,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v89</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v90</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5306,7 +5321,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v89';
+  var v=document.createElement('span');v.id='hv';v.textContent='v90';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5415,6 +5430,39 @@ openCat=function(k){_oc(k);if(k!=='american')return;
     paint();
   },350);
 };
+})();
+</script>
+<script id="v90js">
+/* V90 · tap a dish, build the table */
+(function(){
+const money=r=>{const is=r.querySelectorAll('i');
+  const p=parseFloat((is[is.length-1].textContent||'').replace(/[^\d.]/g,''));return isNaN(p)?0:p};
+const update=phone=>{
+  const site=phone.querySelector('.site');if(!site)return;
+  const picked=[...site.querySelectorAll('.menu-pane .row.picked')];
+  let chip=phone.querySelector('.orderChip');
+  if(!picked.length){chip&&chip.remove();return}
+  if(!chip){chip=document.createElement('button');chip.className='orderChip';phone.appendChild(chip);
+    chip.addEventListener('pointerdown',e=>e.stopPropagation());
+    chip.addEventListener('click',e=>{e.stopPropagation();
+      chip.textContent='goes live with your build \u00b7 ordering \u00b7 booking \u00b7 whatsapp';
+      try{if(navigator.vibrate)navigator.vibrate(8)}catch(_){}
+      setTimeout(()=>update(phone),2300);});}
+  const total=picked.reduce((t,r)=>t+money(r),0);
+  chip.textContent=`your table \u00b7 ${picked.length} ${picked.length===1?'dish':'dishes'} \u00b7 ${total%1?total.toFixed(1):total}`;
+};
+document.addEventListener('click',e=>{
+  const row=e.target.closest('.menu-pane .row');
+  if(!row)return;
+  const phone=row.closest('.phone');if(!phone)return;
+  row.classList.toggle('picked');
+  let pill=row.querySelector('.addpill');
+  if(row.classList.contains('picked')){
+    if(!pill){pill=document.createElement('b');pill.className='addpill';pill.textContent='\u2713';row.appendChild(pill)}
+    try{if(navigator.vibrate)navigator.vibrate([5,25,8])}catch(_){}
+  }else{pill&&pill.remove();try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}}
+  update(phone);
+});
 })();
 </script>
 </body>
