@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v106">
+<meta name="build" content="v107">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2840,6 +2840,27 @@ html.touch *:hover{transform:none!important}
 #cats .cat:last-child .glyph{margin-bottom:4px!important;font-size:13px!important}
 .knote2{margin:13px auto 0!important;font-size:5.8px!important;line-height:1.9!important}
 </style>
+<style id="v107">
+/* ═════════ V107 · the ticket prints ═════════ */
+.stkPh{width:150px;height:150px}
+.tik{width:230px;margin:16px auto 0;background:#FFF9EE;color:#20180F;text-align:left;
+  padding:12px 14px 16px;border-radius:2px;box-shadow:0 16px 30px -14px rgba(0,0,0,.85);
+  position:relative;transition:transform .5s,opacity .45s;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat,
+    conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) bottom/14px 7px repeat-x}
+.tik.tear{transform:rotate(7deg) translateY(46px);opacity:0}
+.tikH{font-family:var(--mono);font-size:7px;letter-spacing:.2em;padding-bottom:7px;margin-bottom:7px;
+  border-bottom:1px dashed rgba(32,24,15,.35)}
+.tline{display:flex;align-items:baseline;gap:6px;font-family:var(--mono);font-size:8px;letter-spacing:.08em;
+  padding:2.5px 0;overflow:hidden}
+.tline i{flex:1;border-bottom:1px dotted rgba(32,24,15,.4);transform:translateY(-2px)}
+.tline.new{animation:printline .4s cubic-bezier(.2,1,.3,1)}
+@keyframes printline{from{max-height:0;opacity:0;transform:translateY(-5px)}to{max-height:20px;opacity:1;transform:none}}
+.tikT{display:flex;align-items:baseline;gap:6px;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.1em;margin-top:7px;padding-top:7px;border-top:1px dashed rgba(32,24,15,.35)}
+.tikT i{flex:1;border-bottom:1px dotted rgba(32,24,15,.4);transform:translateY(-2px)}
+.stkNm{font-size:21px;margin-top:12px}
+</style>
 </head>
 <body>
 
@@ -5510,7 +5531,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v106</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v107</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5583,7 +5604,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v106';
+  var v=document.createElement('span');v.id='hv';v.textContent='v107';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5670,27 +5691,42 @@ openCat=function(k){_oc(k);if(k!=='american')return;
     const b=document.createElement('section');b.className='stkB';
     b.innerHTML=`<div class="stkBt">stack it higher</div>
       <div class="stkPh" data-sph></div>
-      <div class="stkNm" data-snm></div><div class="stkSub" data-ssub></div><div class="stkPr" data-spr></div>
+      <div class="stkNm" data-snm></div><div class="stkSub" data-ssub></div>
+      <div class="tik" data-tik>
+        <div class="tikH">ROSIE\u2019S \u00b7 TICKET #<b data-tikn>47</b></div>
+        <div class="tikL" data-tikl></div>
+        <div class="tikT"><span>TOTAL</span><i></i><b data-tikt>9</b></div>
+      </div>
       <button class="stkAdd" data-sadd>+ PATTY</button>`;
     fry.after(b);
-    let lv=0;
-    const ph=b.querySelector('[data-sph]'),nm=b.querySelector('[data-snm]'),
-          sub=b.querySelector('[data-ssub]'),pr=b.querySelector('[data-spr]'),add=b.querySelector('[data-sadd]');
-    const paint=()=>{const d=LV[lv];
-      ph.style.backgroundImage=`url('${d[3]}')`;
-      ph.style.transform=`scale(${d[5]})`;
-      ph.style.filter=`saturate(${d[6]})`;
+    let lv=0,tikn=47;
+    const ph=b.querySelector('[data-sph]'),nm=b.querySelector('[data-snm]'),sub=b.querySelector('[data-ssub]'),
+          add=b.querySelector('[data-sadd]'),tik=b.querySelector('[data-tik]'),
+          tl=b.querySelector('[data-tikl]'),tt=b.querySelector('[data-tikt]'),tn=b.querySelector('[data-tikn]');
+    ph.style.backgroundImage=`url('${BURG}')`;
+    const lineHTML=(txt,p,fresh)=>`<div class="tline${fresh?' new':''}"><span>${txt}</span><i></i><b>${p}</b></div>`;
+    const paint=(fresh)=>{const d=LV[lv];
+      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];
+      let rows=lineHTML('SMASH CLASSIC',9,false);
+      for(let k=1;k<=lv;k++)rows+=lineHTML('+ SMASHED PATTY',3,fresh&&k===lv);
+      tl.innerHTML=rows;
+      tt.textContent=d[2];
       ph.classList.remove('pop');void ph.offsetWidth;ph.classList.add('pop');
-      nm.textContent=d[0];sub.textContent=d[1]+' \u00b7 '+d[4];pr.textContent=d[2]+' \u2014 at your booth in 6 min';
       add.textContent=lv<LV.length-1?'+ PATTY':'RESET \u21ba';
     };
     add.addEventListener('pointerdown',e=>e.stopPropagation());
     add.addEventListener('click',()=>{
-      lv=lv<LV.length-1?lv+1:0;
-      try{if(navigator.vibrate)navigator.vibrate(lv===0?4:[6,30,10])}catch(_){}
-      paint();
+      if(lv<LV.length-1){lv++;
+        try{if(navigator.vibrate)navigator.vibrate([6,30,10])}catch(_){}
+        paint(true);
+      }else{
+        try{if(navigator.vibrate)navigator.vibrate([10,40,10])}catch(_){}
+        tik.classList.add('tear');
+        setTimeout(()=>{lv=0;tikn++;tn.textContent=tikn;
+          tik.classList.remove('tear');paint(false);},520);
+      }
     });
-    paint();
+    paint(false);
   },350);
 };
 })();
