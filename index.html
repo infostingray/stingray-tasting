@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v105">
+<meta name="build" content="v106">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2825,6 +2825,21 @@ html.touch *:hover{transform:none!important}
 .ksub{margin:10px auto 4px;text-align:center;font-family:var(--mono);font-size:6.5px;
   letter-spacing:.26em;text-transform:uppercase;color:var(--taste-l);flex:0 0 auto}
 </style>
+<style id="v106">
+/* ═════════ V106 · the kitchen on one plate ═════════ */
+#kitchen{padding-top:76px!important;padding-bottom:20px!important}
+.kitchen-h{font-size:clamp(22px,5.8vw,28px)!important;line-height:1.08!important;margin-bottom:6px!important}
+.ksub{margin:6px auto 2px!important;font-size:6px!important}
+.kitchen-sub{font-size:11.5px!important;margin:4px auto 0!important}
+#cats{gap:10px!important;margin-top:14px!important}
+#cats .cat{min-height:104px!important;padding:13px 14px!important;border-radius:12px}
+#cats .cat .glyph{font-size:15px!important;margin-bottom:8px!important}
+#cats .cat .clabel{font-size:16.5px!important;line-height:1.15}
+#cats .cat .cdesc{font-size:5.5px!important;letter-spacing:.2em!important;margin-top:5px!important}
+#cats .cat:last-child{min-height:62px!important;padding:10px 14px!important}
+#cats .cat:last-child .glyph{margin-bottom:4px!important;font-size:13px!important}
+.knote2{margin:13px auto 0!important;font-size:5.8px!important;line-height:1.9!important}
+</style>
 </head>
 <body>
 
@@ -2874,7 +2889,7 @@ html.touch *:hover{transform:none!important}
 <section class="screen" id="kitchen">
   <h2 class="kitchen-h">What kind of<br>place do you run?</h2>
   <div class="ksub">seven concept tastings · not templates · yours is designed from zero</div>
-  <p class="kitchen-sub">Every cuisine has its own light. Pick yours.</p>
+  <p class="kitchen-sub">Every kind of place has its own light. Pick yours.</p>
   <div class="cats" id="cats"></div>
   <div class="knote2">don’t see your kind of place? café · bakery · fine dining · food truck · rooftop<br>we build for <b>every</b> table.</div>
 </section>
@@ -5495,7 +5510,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v105</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v106</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5568,7 +5583,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v105';
+  var v=document.createElement('span');v.id='hv';v.textContent='v106';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
