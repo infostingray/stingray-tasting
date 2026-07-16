@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v97">
+<meta name="build" content="v98">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2736,6 +2736,16 @@ body{font-family:var(--sans)}
 #cats .cat:hover .catph,#cats .cat:active .catph{transform:none!important;opacity:1;
   filter:brightness(1.12) saturate(1.12)}
 </style>
+<style id="v98">
+/* ═════════ V98 · grande, composed ═════════ */
+.h-grande .nm{font-size:clamp(30px,8vw,38px)!important;letter-spacing:-.01em;max-width:290px}
+.h-grande .gcount{margin-top:14px}
+.gtB{padding:28px 22px 32px}
+.gtT{font-size:19px}
+.gtDots{margin-top:15px;min-height:30px}
+.gtS{margin-top:12px}
+.menu-pane .row i:last-child{font-size:8.5px;letter-spacing:.06em;text-align:right;max-width:86px;line-height:1.5}
+</style>
 </head>
 <body>
 
@@ -4604,7 +4614,7 @@ const GHOST={name:'GHOST',font:"'Poppins',sans-serif",bg:'#0B0B10',tx:'#E8F0EA',
  story:'One kitchen, zero tables, a menu engineered for the box \u2014 food that survives the ride and photographs like it didn\u2019t have to. Built for delivery apps, rated like a flagship.',
  dish:{n:'The Rider Combo',d:'burger + fries \u00b7 box-engineered',p:'13'},
  tabs:[['bestsellers',[['The Rider Combo','burger + fries','13'],['Loaded fries','cheddar \u00b7 jalape\u00f1o','8'],['Wings \u00b7 12','honey harissa','12']]],
-       ['ops',[['Family box','feeds 4 \u00b7 no fights','34'],['Late run','after midnight menu','\u2014'],['Track your rider','live \u00b7 in-app','\u2014']]]],
+       ['ops',[['Family box','feeds 4 \u00b7 no fights','34'],['Late run','after midnight menu','till 2am'],['Track your rider','live \u00b7 in-app','free']]]],
  hours:'delivery \u00b7 11am\u20132am',loc:'everywhere in 30 min',cta:'order now \u2192'};
 const GRANDE={name:'La Grande Table',font:"'Fraunces',serif",bg:'#0E0C09',tx:'#EFE7D8',ac:'#C9A96A',
  heroClass:'h-grande',
@@ -4616,9 +4626,9 @@ const GRANDE={name:'La Grande Table',font:"'Fraunces',serif",bg:'#0E0C09',tx:'#E
    <div class="down">\u2193</div>`,
  pull:'\u201cWe bring the kitchen, the fire, and the hush before the toast.\u201d',
  story:'Weddings on rooftops, boardroom lunches, three hundred plates leaving the pass at once. Menus composed per event, staff in black, and a long table that makes strangers into guests.',
- dish:{n:'The Banquet',d:'per guest \u00b7 composed menu',p:'\u2014'},
- tabs:[['events',[['Weddings','full production','\u2014'],['Corporate','lunches \u00b7 launches','\u2014'],['Private chef','at your table','\u2014']]],
-       ['the table',[['The long mezze','to open','\u2014'],['Live fire station','carved to order','\u2014'],['The finale','patisserie wall','\u2014']]]],
+ dish:{n:'The Banquet',d:'per guest \u00b7 composed menu',p:'from 45'},
+ tabs:[['events',[['Weddings','full production','from 45/guest'],['Corporate','lunches \u00b7 launches','from 30/guest'],['Private chef','at your table','on request']]],
+       ['the table',[['The long mezze','to open','course 01'],['Live fire station','carved to order','course 02'],['The finale','patisserie wall','course 03']]]],
  hours:'by appointment',loc:'beirut \u00b7 doha \u00b7 anywhere',cta:'plan your event \u2192'};
 
 /* new world photography */
@@ -5401,7 +5411,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v97</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v98</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5474,7 +5484,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v97';
+  var v=document.createElement('span');v.id='hv';v.textContent='v98';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
