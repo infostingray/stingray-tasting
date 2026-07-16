@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v85">
+<meta name="build" content="v86">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -4361,7 +4361,7 @@ const OF=pick('lounge','OF\u00f4lies'),FORNO=pick('italian','Forno'),
       BEIT=pick('lebanese','Beit Zaytoun'),SUCRE=pick('dessert','Sucr\u00e9'),MELT=pick('dessert','MELT');
 const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EFE6',ac:'#FFC93C',
  heroClass:'h-stack',
- hero:`<div class="stkph plx"></div><div class="stksc"></div>
+ hero:`<div class="stkph"></div><div class="stksc"></div>
    <div class="inner"><div class="sk" style="color:#FFC93C">smashburgers \u00b7 fries \u00b7 shakes</div>
    <div class="nm">STACK</div>
    <div class="tg">smashed loud. stacked louder.</div></div>
@@ -4375,7 +4375,7 @@ const STACK2={name:'STACK',font:"'Bebas Neue',sans-serif",bg:'#0D0A07',tx:'#F4EF
  hours:'daily \u00b7 noon\u2013midnight',loc:'dbayeh highway',cta:'order up \u2192'};
 const MATIN={name:'Kissa',font:"'Fraunces',serif",bg:'#F4EDE2',tx:'#2A2118',ac:'#B0754A',
  heroClass:'h-morning',
- hero:`<div class="mtph plx"></div><div class="mtsc"></div>
+ hero:`<div class="mtph"></div><div class="mtsc"></div>
    <div class="inner"><div class="sk" style="color:#B0754A">caf\u00e9 & bakery \u00b7 the quiet hour</div>
    <div class="nm"><i>Kissa</i></div>
    <div class="tg">seven seats. one kettle. the quiet hour.</div>
@@ -5167,7 +5167,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v85</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v86</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5240,7 +5240,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v85';
+  var v=document.createElement('span');v.id='hv';v.textContent='v86';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
