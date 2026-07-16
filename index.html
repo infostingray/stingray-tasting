@@ -11,7 +11,7 @@
 <meta property="og:description" content="Pick your cuisine. Scroll, drag and play inside a flagship site built for it · live in 7 days.">
 <meta property="og:url" content="https://infostingray.github.io/stingray-tasting/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
-<meta name="build" content="v92">
+<meta name="build" content="v93">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2661,6 +2661,25 @@ body{font-family:var(--sans)}
   url('https://images.unsplash.com/photo-1699345461139-73dfeecab9b6?auto=format&fit=crop&w=760&q=72') center/cover,#0E0C09!important}
 .h-grande .nm{font-family:'Fraunces',serif;font-size:40px;line-height:1.06;color:#EFE7D8}
 .h-grande .nm i{font-style:italic}
+</style>
+<style id="v93">
+/* ═════════ V93 · set the table + centered dessert ═════════ */
+.gtB{background:#0B0906;padding:32px 22px 36px;text-align:center;border-top:1px solid rgba(201,169,106,.18)}
+.gtT{font-family:'Fraunces',serif;font-style:italic;font-size:21px;color:#EFE7D8}
+.gtN{margin-top:12px;font-family:var(--mono);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(239,231,216,.7)}
+.gtN b{font-size:26px;letter-spacing:.04em;color:#C9A96A;font-weight:400;margin-right:8px;vertical-align:-2px}
+.gtR{width:82%;margin:16px auto 0;appearance:none;height:2px;border-radius:2px;background:rgba(201,169,106,.35);outline:none}
+.gtR::-webkit-slider-thumb{appearance:none;width:24px;height:24px;border-radius:50%;cursor:grab;
+  background:radial-gradient(circle at 35% 30%,#E8CE9C,#C9A96A 70%);box-shadow:0 0 16px rgba(201,169,106,.7)}
+.gtR::-moz-range-thumb{width:24px;height:24px;border:none;border-radius:50%;cursor:grab;
+  background:#C9A96A;box-shadow:0 0 16px rgba(201,169,106,.7)}
+.gtDots{margin:18px auto 0;max-width:250px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:34px}
+.gtDots i{width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F4EBDB,#D8C39A 75%);
+  box-shadow:0 3px 5px rgba(0,0,0,.5),inset 0 0 0 1.5px rgba(120,95,50,.35);animation:sahbounce .35s cubic-bezier(.3,1.8,.4,1)}
+.gtS{margin-top:14px;font-family:var(--mono);font-size:7px;letter-spacing:.26em;text-transform:uppercase;color:#C9A96A}
+.gtHint{margin-top:9px;font-family:var(--mono);font-size:6px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,231,216,.5)}
+#cats .cat:last-child{align-items:center!important;text-align:center!important;justify-content:center!important}
+#cats .cat:last-child>*{margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
@@ -5325,7 +5344,7 @@ if(intro&&!document.querySelector('#venture')){
   const v=document.createElement('div');
   v.id='venture';
   v.style.cssText='position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);line-height:2.1;pointer-events:auto';
-  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v92</i>';
+  v.innerHTML='stingray \u00b7 a <a href="https://www.swottm.com" target="_blank" rel="noopener" style="color:var(--bone-dim);text-decoration:none;border-bottom:1px dotted var(--bone-faint)">swot creative hub</a> venture <i id="vv" style="font-style:normal;opacity:.5;margin-left:8px">v93</i>';
   const anchor=intro.querySelector('.proof')||intro.lastElementChild;
   if(anchor)anchor.after(v);else intro.appendChild(v);
 }
@@ -5398,7 +5417,7 @@ try{
 /* version visible in the header itself */
 var sb=document.querySelector('#sysbar');
 if(sb&&!document.querySelector('#hv')){
-  var v=document.createElement('span');v.id='hv';v.textContent='v92';
+  var v=document.createElement('span');v.id='hv';v.textContent='v93';
   v.style.cssText='margin-left:auto;font-family:var(--mono);font-size:7px;letter-spacing:.2em;color:var(--bone-faint);align-self:center';
   sb.appendChild(v);
 }
@@ -5423,7 +5442,7 @@ btns.forEach(b=>{
     /* MARK: burn the pdf, open the kitchen */
     burning=true;
     btns.forEach(x=>x.classList.toggle('on',x===b));
-    if(window.__stamp)window.__stamp('archived.','opening the real thing \u2192','gold');
+    if(window.__stamp)window.__stamp('taken off the menu.','something better is cooking \u2192','gold');
     try{if(navigator.vibrate)navigator.vibrate([6,50,10])}catch(_){}
     setTimeout(()=>stage.classList.add('toss'),480);
     setTimeout(()=>goto('kitchen'),1100);
@@ -5558,10 +5577,20 @@ window.__stamp=(t1,t2,mode)=>{
 const menu=document.querySelector('.mmMenu');
 if(menu){menu.style.cursor='pointer';
   menu.addEventListener('pointerdown',e=>e.stopPropagation());
+  const JOKES=[
+    ['this is not a website.','it\u2019s where customers give up.'],
+    ['last updated 2019.','your customers noticed.'],
+    ['zoom to read?','customers don\u2019t.'],
+    ['41 downloads.','all of them were you.'],
+    ['hommos deserves better','than helvetica.']
+  ];
+  let ji=0;
   menu.addEventListener('click',()=>{
     const intro=document.querySelector('#intro');
-    if(intro&&intro.classList.contains('menuMode'))
-      window.__stamp('this is not a website.','it\u2019s where customers give up.','red');
+    if(intro&&intro.classList.contains('menuMode')){
+      const j=JOKES[ji%JOKES.length];ji++;
+      window.__stamp(j[0],j[1],'red');
+    }
   });
 }
 setInterval(()=>{
@@ -5570,6 +5599,42 @@ setInterval(()=>{
   const e=document.querySelector('[data-geta]');
   if(e&&Math.random()<0.3)e.textContent=String(21+Math.floor(Math.random()*5));
 },6000);
+})();
+</script>
+<script id="v93js">
+/* V93 · La Grande Table: set the table */
+(function(){
+const _oc=openCat;
+openCat=function(k){_oc(k);if(k!=='catering')return;
+  setTimeout(()=>{
+    const site=[...document.querySelectorAll('#deck .phone .site')].find(s=>/Grande Table/.test(s.textContent));
+    if(!site||site.querySelector('.gtB'))return;
+    const hero=site.querySelector('.hero')||site.firstElementChild;
+    const b=document.createElement('section');b.className='gtB';
+    b.innerHTML=`<div class="gtT">set the table</div>
+      <div class="gtN"><b data-gtn>120</b> guests</div>
+      <input type="range" min="20" max="500" step="10" value="120" class="gtR" data-gtr>
+      <div class="gtDots" data-gtd></div>
+      <div class="gtS" data-gts></div>
+      <div class="gtHint">drag \u00b7 watch your event take shape</div>`;
+    hero.after(b);
+    const r=b.querySelector('[data-gtr]'),n=b.querySelector('[data-gtn]'),
+          d=b.querySelector('[data-gtd]'),s=b.querySelector('[data-gts]');
+    let lastTick=0;
+    const paint=()=>{
+      const g=+r.value;
+      n.textContent=g;
+      const dots=Math.min(60,Math.max(4,Math.round(g/8)));
+      d.innerHTML=Array.from({length:dots},()=>'<i></i>').join('');
+      s.textContent=`staff ${Math.max(2,Math.ceil(g/12))} \u00b7 table ${Math.round(g*0.65)}m \u00b7 plates ${g*3}`;
+      const tk=Math.floor(g/50);
+      if(tk!==lastTick){lastTick=tk;try{if(navigator.vibrate)navigator.vibrate(4)}catch(_){}}
+    };
+    r.addEventListener('input',paint);
+    r.addEventListener('pointerdown',e=>e.stopPropagation());
+    paint();
+  },350);
+};
 })();
 </script>
 </body>
