@@ -21,7 +21,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-RXBJ5P7YV0');
 </script>
-<meta name="build" content="v123">
+<meta name="build" content="v124">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -340,8 +340,6 @@ img{display:block;max-width:100%}
 .res-k{font-family:var(--mono);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:14px}
 .res-h{font-weight:200;font-stretch:75%;font-size:clamp(28px,8vw,42px);letter-spacing:-.02em;line-height:1.02;margin-bottom:6px}
 .res-h em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--amb);transition:color 1.1s}
-#resPick{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);margin:12px 0 4px}
-#resPick b{color:var(--bone);font-weight:400}
 .res-promise{font-size:12.5px;color:var(--bone-dim);font-weight:300;line-height:1.7;margin-bottom:18px}
 .res-promise b{color:var(--bone);font-weight:500}
 .includes-k{font-family:var(--mono);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:10px}
@@ -3027,7 +3025,6 @@ select.lf:valid{color:var(--bone)}
   <div class="card">
     <div class="res-k">course 03 · the build</div>
     <h2 class="res-h">reserve<br>your <em>build</em>.</h2>
-    <div id="resPick">· · ·</div>
     <p class="res-promise">A full website, designed from scratch around your brand · nothing here is a template · <b>live in 5 days.</b></p>
     <div class="includes-k">every build ships with</div>
     <div class="includes">
@@ -3035,7 +3032,7 @@ select.lf:valid{color:var(--bone)}
       <div class="addline"><b>add-ons</b> · content production · food photography &amp; videography · growth strategy · platform integrations</div>
     </div>
     <div class="adnote">built by an ads agency first · wired to sell</div>
-    <div class="lfHead">get your build</div>
+    
     <form id="leadForm" novalidate autocomplete="on">
       <input class="lf" name="name" placeholder="your name" required>
       <input class="lf" name="restaurant" placeholder="restaurant / concept name" required>
@@ -3588,7 +3585,6 @@ if(canHover&&!reduced){
 /* ═════════ RESERVE ═════════ */
 $('#pickBtn').addEventListener('click',()=>{
   const c=CATS[cat],d=c.designs[idx];
-  $('#resPick').innerHTML=`${c.label} · direction <b>“${d.name}”</b>`;
   goto('reserve');
 });
 $('#backToDeck').addEventListener('click',()=>{goto('tasting');updateDeck(true)});
