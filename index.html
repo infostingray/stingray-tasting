@@ -21,7 +21,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-RXBJ5P7YV0');
 </script>
-<meta name="build" content="v129">
+<meta name="build" content="v130">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -2997,6 +2997,11 @@ select.lf:valid{color:var(--bone)}
 .custom-note{color:var(--taste-l)!important;font-size:7px!important;opacity:1!important}
 .custom-note b{color:var(--bone)!important}
 </style>
+<style id="v130">
+#tasting{padding-top:0!important}
+#deck{margin-top:6px!important}
+#deck .phone{margin-top:8px!important}
+</style>
 </head>
 <body>
 
@@ -4065,13 +4070,7 @@ const _update=updateDeck;
 updateDeck=function(inst){
   _update(inst);
   const d=CATS[cat].designs[idx];
-  const L=LAYOUT[d.name]||'editorial';
-  const pi=document.querySelector('#plateIdx');
-  if(pi&&!pi.querySelector('.ctag')){
-    const t=document.createElement('span');t.className='ctag';pi.appendChild(document.createElement('br'));pi.appendChild(t);
-  }
-  const tag=pi&&pi.querySelector('.ctag');
-  if(tag)tag.textContent=TAG[L];
+
 };
 })();
 </script>
