@@ -21,7 +21,18 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-RXBJ5P7YV0');
 </script>
-<meta name="build" content="v131">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1330205665498733');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1330205665498733&ev=PageView&noscript=1"/></noscript>
+<meta name="build" content="v132">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -6095,7 +6106,6 @@ f.addEventListener('submit',e=>{
       name:d.name,restaurant:d.restaurant||'-',category:d.category||'-',phone:((d.country&&d.country!=='other')?d.country+' ':'')+d.phone,
       page:'taste.stingray-ads.com'})}).catch(()=>{})}catch(_){}
   try{if(typeof gtag==='function')gtag('event','generate_lead',{category:d.category||'unset'})}catch(_){}
-  try{if(typeof fbq==='function')fbq('track','Lead',{content_category:d.category||'unset'})}catch(_){}
   f.hidden=true;done.hidden=false;
   try{if(navigator.vibrate)navigator.vibrate([10,50,14])}catch(_){}
   done.scrollIntoView&&done.scrollIntoView({block:'center'});
@@ -6137,6 +6147,83 @@ openCat=function(k){_oc(k);
     setTimeout(()=>t.classList.remove('show'),4200);
   },1100);
 };
+})();
+</script>
+<script id="v131js">
+/* V131 · meta pixel + CAPI: one helper, shared event_id, dedup */
+(function(){
+const CAPI_URL='https://capi.stingray-ads.com/e';
+const STD=['PageView','ViewContent','InitiateCheckout','Lead'];
+const uid=()=> (crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(16).slice(2));
+const ck=n=>{const m=document.cookie.match('(^|;)\\s*'+n+'=([^;]+)');return m?m[2]:''};
+try{
+  const fbclid=new URLSearchParams(location.search).get('fbclid');
+  if(fbclid&&!ck('_fbc')){
+    document.cookie='_fbc=fb.1.'+Date.now()+'.'+fbclid+';path=/;max-age=7776000;domain=.stingray-ads.com;secure';
+  }
+}catch(_){}
+const mx=(name,custom,user)=>{
+  const id=uid();
+  try{
+    if(typeof fbq==='function')
+      fbq(STD.includes(name)?'track':'trackCustom',name,custom||{},{eventID:id});
+  }catch(_){}
+  try{
+    const p=Object.assign({event_name:name,event_id:id,url:location.href,
+      fbp:ck('_fbp'),fbc:ck('_fbc'),custom_data:custom||{}},user||{});
+    fetch(CAPI_URL,{method:'POST',keepalive:true,
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{});
+  }catch(_){}
+};
+window.__mx=mx;
+const cat=()=>window.__lastCat||'unset';
+mx('PageView');
+const ib=document.querySelector('#introBtn');
+if(ib)ib.addEventListener('click',()=>mx('BeginTasting'));
+if(typeof openCat==='function'){
+  const _oc=openCat;
+  openCat=function(k){
+    _oc(k);
+    let label=k;try{label=(CATS[k]&&CATS[k].label)||k}catch(_){}
+    mx('ViewContent',{content_type:'demo_category',content_ids:[k],content_name:label,content_category:k});
+  };
+}
+const pn=document.getElementById('plateName'),pi=document.getElementById('plateIdx');
+if(pn){
+  let last='';
+  new MutationObserver(()=>{
+    const n=(pn.textContent||'').trim();
+    if(n&&n!==last){last=n;
+      mx('DesignView',{design_name:n,category:cat(),position:(pi&&pi.textContent||'').trim()});
+    }
+  }).observe(pn,{childList:true,characterData:true,subtree:true});
+}
+document.addEventListener('change',e=>{
+  if(e.target&&e.target.matches&&e.target.matches('[data-gtr]'))
+    mx('DemoInteraction',{action:'set_the_table',guests:+e.target.value,category:cat()});
+},true);
+document.addEventListener('click',e=>{
+  if(e.target.closest&&e.target.closest('.mmMenu'))
+    mx('DemoInteraction',{action:'menu_tap',category:cat()});
+});
+let ic=false;
+document.addEventListener('click',e=>{
+  if(!e.target.closest)return;
+  if(e.target.closest('#pickBtn,[data-goto="reserve"]')&&!ic){
+    ic=true;
+    mx('InitiateCheckout',{content_name:'website_build',content_category:cat()});
+  }
+});
+const lf=document.getElementById('leadForm');
+if(lf)lf.addEventListener('submit',e=>{
+  const d=Object.fromEntries(new FormData(lf).entries());
+  if(!d.name||!d.phone)return;
+  const rawPhone=((d.country&&d.country!=='other')?d.country:'')+(d.phone||'');
+  mx('Lead',
+    {content_name:'website_build_request',content_category:d.category||'unset'},
+    {ph:rawPhone,fn:d.name}
+  );
+});
 })();
 </script>
 </body>
