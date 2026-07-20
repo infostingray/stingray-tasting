@@ -32,7 +32,7 @@ fbq('init','1330205665498733');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1330205665498733&ev=PageView&noscript=1"/></noscript>
-<meta name="build" content="v133">
+<meta name="build" content="v134">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="the tasting · stingray taste">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&h=630&q=75">
@@ -6117,6 +6117,7 @@ if(back)back.addEventListener('click',()=>{f.hidden=false;done.hidden=true;goto(
 /* V121 · the whole world can order a website */
 (function(){
 const CC=[["AF","+93"],["AL","+355"],["DZ","+213"],["AD","+376"],["AO","+244"],["AR","+54"],["AM","+374"],["AU","+61"],["AT","+43"],["AZ","+994"],["BH","+973"],["BD","+880"],["BY","+375"],["BE","+32"],["BJ","+229"],["BO","+591"],["BA","+387"],["BW","+267"],["BR","+55"],["BN","+673"],["BG","+359"],["BF","+226"],["BI","+257"],["KH","+855"],["CM","+237"],["CA","+1"],["CV","+238"],["TD","+235"],["CL","+56"],["CN","+86"],["CO","+57"],["KM","+269"],["CG","+242"],["CD","+243"],["CR","+506"],["CI","+225"],["HR","+385"],["CU","+53"],["CY","+357"],["CZ","+420"],["DK","+45"],["DJ","+253"],["DO","+1809"],["EC","+593"],["EG","+20"],["SV","+503"],["EE","+372"],["ET","+251"],["FJ","+679"],["FI","+358"],["FR","+33"],["GA","+241"],["GM","+220"],["GE","+995"],["DE","+49"],["GH","+233"],["GR","+30"],["GT","+502"],["GN","+224"],["HT","+509"],["HN","+504"],["HK","+852"],["HU","+36"],["IS","+354"],["IN","+91"],["ID","+62"],["IR","+98"],["IQ","+964"],["IE","+353"],["IT","+39"],["JM","+1876"],["JP","+81"],["JO","+962"],["KZ","+7"],["KE","+254"],["KW","+965"],["KG","+996"],["LA","+856"],["LV","+371"],["LS","+266"],["LR","+231"],["LY","+218"],["LI","+423"],["LT","+370"],["LU","+352"],["MO","+853"],["MK","+389"],["MG","+261"],["MW","+265"],["MY","+60"],["MV","+960"],["ML","+223"],["MT","+356"],["MR","+222"],["MU","+230"],["MX","+52"],["MD","+373"],["MC","+377"],["MN","+976"],["ME","+382"],["MA","+212"],["MZ","+258"],["MM","+95"],["NA","+264"],["NP","+977"],["NL","+31"],["NZ","+64"],["NI","+505"],["NE","+227"],["NG","+234"],["NO","+47"],["OM","+968"],["PK","+92"],["PS","+970"],["PA","+507"],["PG","+675"],["PY","+595"],["PE","+51"],["PH","+63"],["PL","+48"],["PT","+351"],["QA","+974"],["RO","+40"],["RU","+7"],["RW","+250"],["SA","+966"],["SN","+221"],["RS","+381"],["SC","+248"],["SL","+232"],["SG","+65"],["SK","+421"],["SI","+386"],["SO","+252"],["ZA","+27"],["KR","+82"],["SS","+211"],["ES","+34"],["LK","+94"],["SD","+249"],["SE","+46"],["CH","+41"],["SY","+963"],["TW","+886"],["TJ","+992"],["TZ","+255"],["TH","+66"],["TG","+228"],["TN","+216"],["TR","+90"],["TM","+993"],["UG","+256"],["UA","+380"],["AE","+971"],["GB","+44"],["US","+1"],["UY","+598"],["UZ","+998"],["VE","+58"],["VN","+84"],["YE","+967"],["ZM","+260"],["ZW","+263"]];
+window.__CC=CC;
 const flag=cc=>cc.replace(/./g,ch=>String.fromCodePoint(127397+ch.charCodeAt(0)));
 const sel=document.querySelector('.lfCC');
 if(sel){
@@ -6161,6 +6162,11 @@ try{
     document.cookie='_fbc=fb.1.'+Date.now()+'.'+fbclid+';path=/;max-age=7776000;domain=.stingray-ads.com;secure';
   }
 }catch(_){}
+let XID='';try{XID=localStorage.getItem('sg_xid')||'';if(!XID){XID=uid();localStorage.setItem('sg_xid',XID)}}catch(_){XID=uid()}
+const dial2iso=d=>{if(d==='+961')return 'lb';try{const hit=(window.__CC||[]).find(p=>p[1]===d);return hit?hit[0].toLowerCase():''}catch(_){return ''}};
+const AM={external_id:XID};
+try{const s=JSON.parse(localStorage.getItem('sg_am')||'null');if(s)Object.assign(AM,s)}catch(_){}
+try{if(typeof fbq==='function')fbq('init','1330205665498733',AM)}catch(_){}
 const mx=(name,custom,user)=>{
   const id=uid();
   try{
@@ -6169,7 +6175,7 @@ const mx=(name,custom,user)=>{
   }catch(_){}
   try{
     const p=Object.assign({event_name:name,event_id:id,url:location.href,
-      fbp:ck('_fbp'),fbc:ck('_fbc'),custom_data:custom||{}},user||{});
+      fbp:ck('_fbp'),fbc:ck('_fbc'),external_id:XID,custom_data:custom||{}},user||{});
     fetch(CAPI_URL,{method:'POST',keepalive:true,
       headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{});
   }catch(_){}
@@ -6218,9 +6224,17 @@ if(lf)lf.addEventListener('submit',e=>{
   const d=Object.fromEntries(new FormData(lf).entries());
   if(!d.name||!d.phone)return;
   const rawPhone=((d.country&&d.country!=='other')?d.country:'')+(d.phone||'');
+  const digits=rawPhone.replace(/\D/g,'').replace(/^0+/,'');
+  const parts=(d.name||'').trim().toLowerCase().split(/\s+/);
+  const fn=parts[0]||'',ln=parts.length>1?parts[parts.length-1]:'';
+  const iso=(d.country&&d.country!=='other')?dial2iso(d.country):'';
+  const am={external_id:XID};
+  if(fn)am.fn=fn;if(ln)am.ln=ln;if(digits.length>=7)am.ph=digits;if(iso)am.country=iso;
+  try{if(typeof fbq==='function')fbq('init','1330205665498733',am)}catch(_){}
+  try{localStorage.setItem('sg_am',JSON.stringify(am))}catch(_){}
   mx('Lead',
     {content_name:'website_build_request',content_category:d.category||'unset'},
-    {ph:rawPhone,fn:d.name}
+    {ph:rawPhone,fn:d.name,ln:ln,country:iso}
   );
 });
 })();
