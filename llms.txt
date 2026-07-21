@@ -1,0 +1,9 @@
+# stingray taste
+> Custom website design for restaurants, cafés, lounges, cloud kitchens and catering companies. Designed from scratch (never templates), delivered live in 5 days, with booking-software integrations, Meta pixel and conversion tracking built in. Serving Lebanon and the GCC (Qatar, UAE, Saudi Arabia, Kuwait, Bahrain, Oman). A venture by Swot Creative Hub (swottm.com), a creative and digital agency operating between Beirut and Doha.
+
+## Key facts
+- Product: custom hospitality websites, from scratch, live in 5 days
+- Not templates: the on-site "concept tastings" are design demonstrations only
+- Included: custom design, story, gallery, menu, reservation integrations (API-ready), Meta pixel + conversion events, retargeting-ready tracking
+- Add-ons: content production, food photography & videography, growth strategy, platform integrations
+- Contact: request form at https://taste.stingray-ads.com/
